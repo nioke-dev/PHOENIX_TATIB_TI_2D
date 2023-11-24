@@ -3,7 +3,7 @@ $(function () {
     $("#formModalLabel").html("Tambah Data Mahasiswa");
     $(".modal-footer button[type=submit]").html("Tambah Data");
     $("#nama").val("");
-    $("#nrp").val("");
+    $("#nim").val("");
     $("#email").val("");
     $("#jurusan").val("");
     $("#id").val("");
@@ -26,7 +26,7 @@ $(function () {
       dataType: "json",
       success: function (data) {
         $("#nama").val(data.nama);
-        $("#nrp").val(data.nrp);
+        $("#nim").val(data.nim);
         $("#email").val(data.email);
         $("#jurusan").val(data.jurusan);
         $("#id").val(data.id);

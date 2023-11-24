@@ -28,19 +28,33 @@
   </div>
 
   <div class="row">
-    <div class="col-lg-6">
-      <h3>Daftar Mahasiswa</h3>
-      <ul class="list-group">
+    <h3>Daftar Mahasiswa</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">nim</th>
+          <th scope="col">nama</th>
+          <th scope="col">kelas</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
         <?php foreach ($data['mhs'] as $mhs) : ?>
-          <li class="list-group-item">
-            <?= $mhs['nama']; ?>
-            <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['id']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
-            <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs['id']; ?>" class="badge bg-success float-right tampilModalUbah" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $mhs['id']; ?>">ubah</a>
-            <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" class="badge bg-primary float-right">detail</a>
-          </li>
+          <tr>
+            <th scope="row"><?= $mhs['id']; ?></th>
+            <td><?= $mhs['nama']; ?></td>
+            <td><?= $mhs['nim']; ?></td>
+            <td><?= $mhs['kelas']; ?></td>
+            <td>
+              <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['id']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
+              <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs['id']; ?>" class="badge bg-success float-right tampilModalUbah" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $mhs['id']; ?>">ubah</a>
+              <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" class="badge bg-primary float-right">detail</a>
+            </td>
+          </tr>
         <?php endforeach; ?>
-      </ul>
-    </div>
+      </tbody>
+    </table>
   </div>
 
 </div>
@@ -65,8 +79,8 @@
           </div>
 
           <div class="form-group">
-            <label for="nrp">NRP</label>
-            <input type="number" class="form-control" id="nrp" name="nrp" autocomplete="off">
+            <label for="nim">NIM</label>
+            <input type="number" class="form-control" id="nim" name="nim" autocomplete="off">
           </div>
 
           <div class="form-group">

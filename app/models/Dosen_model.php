@@ -71,7 +71,7 @@ class Dosen_model {
     }
 
 
-    public function cariDataMahasiswa()
+    public function cariDataDosen()
     {
         $keyword = $_POST['keyword'];
         $query = "SELECT * FROM dosen WHERE nama LIKE :keyword";

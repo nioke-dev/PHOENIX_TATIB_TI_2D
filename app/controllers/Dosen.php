@@ -1,6 +1,6 @@
 <?php
 
-class Mahasiswa extends Controller
+class Dosen extends Controller
 {
     public function index()
     {
@@ -10,7 +10,7 @@ class Mahasiswa extends Controller
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);
-        $this->view('mahasiswa/index', $data);
+        $this->view('dosen/index', $data);
         $this->view('templates/footer', $data);
     }
 
@@ -21,7 +21,7 @@ class Mahasiswa extends Controller
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);
-        $this->view('mahasiswa/detail', $data);
+        $this->view('dosen/detail', $data);
         $this->view('templates/footer', $data);
     }
 
@@ -72,12 +72,12 @@ class Mahasiswa extends Controller
     public function cari()
     {
         $data['judul'] = 'Daftar Dosen';
-        $data['mhs'] = $this->model('Dosen_model')->cariDataDosen();
+        $data['dsn'] = $this->model('Dosen_model')->cariDataDosen();
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);
-        $this->view('mahasiswa/index', $data);
+        $this->view('dosen/index', $data);
         $this->view('templates/footer', $data);
     }
 }

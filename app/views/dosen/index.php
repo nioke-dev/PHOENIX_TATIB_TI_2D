@@ -79,13 +79,8 @@
           </div>
 
           <div class="form-group">
-            <label for="nim">NIM</label>
-            <input type="number" class="form-control" id="nim" name="nim" autocomplete="off">
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="email@example.com">
+            <label for="nip">NIP</label>
+            <input type="number" class="form-control" id="nip" name="nip" autocomplete="off">
           </div>
 
           <div class="form-group">

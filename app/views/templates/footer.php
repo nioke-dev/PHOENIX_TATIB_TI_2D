@@ -17,6 +17,16 @@
 <script src="<?= BASEURL; ?>/assets/js/dashboard.js"></script>
 <script src="<?= BASEURL; ?>/js/script.js"></script>
 <!-- <script src="<?= BASEURL; ?>/sweetalert/sweetalert2.all.min.js"></script> -->
+<script>
+    <?php if (isset($_SESSION['sweetalert'])) : ?>
+        Swal.fire({
+            icon: '<?php echo $_SESSION['sweetalert']['icon']; ?>',
+            title: '<?php echo $_SESSION['sweetalert']['title']; ?>',
+            text: '<?php echo $_SESSION['sweetalert']['text']; ?>',
+        });
+        <?php unset($_SESSION['sweetalert']); ?>
+    <?php endif; ?>
+</script>
 </body>
 
 </html>

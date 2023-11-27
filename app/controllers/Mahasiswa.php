@@ -41,7 +41,8 @@ class Mahasiswa extends Controller
     public function hapus($id)
     {
         if ($this->model('Mahasiswa_model')->hapusDataMahasiswa($id) > 0) {
-            Flasher::setFlash('berhasil', 'dihapus', 'success', 'Mahasiswa');
+            // Flasher::setFlash('berhasil', 'dihapus', 'success', 'Mahasiswa');
+            $this->showSweetAlert('success', 'Berhasil', 'Data mahasiswa berhasil dihapus');
             header('Location: ' . BASEURL . '/mahasiswa');
             exit;
         } else {
@@ -49,6 +50,16 @@ class Mahasiswa extends Controller
             header('Location: ' . BASEURL . '/mahasiswa');
             exit;
         }
+    }
+
+    private function showSweetAlert($icon, $title, $text)
+    {
+        // Sesuaikan dengan session atau cara penyimpanan pesan flash di proyek Anda        
+        $_SESSION['sweetalert'] = [
+            'icon' => $icon,
+            'title' => $title,
+            'text' => $text,
+        ];
     }
 
     public function getubah()

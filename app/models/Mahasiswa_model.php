@@ -25,9 +25,8 @@ class Mahasiswa_model
 
     public function tambahDataMahasiswa($data)
     {
-        $query = "INSERT INTO mahasiswa
-                    VALUES
-                  ('', :nim, :nama, :kelas, :email, :jurusan)";
+        $query = "INSERT INTO mahasiswa (nim, nama, kelas, email, jurusan) VALUES (:nim, :nama, :kelas, :email, :jurusan)";
+
 
         $this->db->query($query);
         $this->db->bind('nim', $data['nim']);

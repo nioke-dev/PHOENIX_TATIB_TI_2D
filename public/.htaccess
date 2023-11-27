@@ -4,3 +4,12 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php?url=$1 [L]
+
+
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteBase /mvc_login_system/public
+#     RewriteCond %{REQUEST_FILENAME} !-f
+#     RewriteCond %{REQUEST_FILENAME} !-d
+#     RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+# </IfModule>

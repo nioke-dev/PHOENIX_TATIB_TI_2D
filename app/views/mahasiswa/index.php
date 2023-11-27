@@ -20,7 +20,7 @@
         <div class="input-group">
           <input type="text" class="form-control" placeholder="cari mahasiswa.." name="keyword" id="keyword" autocomplete="off">
           <div class="input-group-append">
-            <button class="btn btn-primary" type="submit" id="tombolCari">Cari</button>
+            <button class="btn btn-primary ms-2" type="submit" id="tombolCari">Cari</button>
           </div>
         </div>
       </form>
@@ -36,6 +36,8 @@
           <th scope="col">nim</th>
           <th scope="col">nama</th>
           <th scope="col">kelas</th>
+          <th scope="col">Email</th>
+          <th scope="col">Jurusan</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -43,9 +45,11 @@
         <?php foreach ($data['mhs'] as $mhs) : ?>
           <tr>
             <th scope="row"><?= $mhs['id']; ?></th>
-            <td><?= $mhs['nama']; ?></td>
             <td><?= $mhs['nim']; ?></td>
+            <td><?= $mhs['nama']; ?></td>
             <td><?= $mhs['kelas']; ?></td>
+            <td><?= $mhs['email']; ?></td>
+            <td><?= $mhs['jurusan']; ?></td>
             <td>
               <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['id']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
               <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs['id']; ?>" class="badge bg-success float-right tampilModalUbah" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $mhs['id']; ?>">ubah</a>
@@ -74,14 +78,20 @@
         <form action="<?= BASEURL; ?>/mahasiswa/tambah" method="post">
           <input type="hidden" name="id" id="id">
           <div class="form-group">
+            <label for="nim">NIM</label>
+            <input type="number" class="form-control" id="nim" name="nim" autocomplete="off">
+          </div>
+
+          <div class="form-group">
             <label for="nama">Nama</label>
             <input type="text" class="form-control" id="nama" name="nama" autocomplete="off" required>
           </div>
 
           <div class="form-group">
-            <label for="nim">NIM</label>
-            <input type="number" class="form-control" id="nim" name="nim" autocomplete="off">
+            <label for="kelas">Kelas</label>
+            <input type="text" class="form-control" id="kelas" name="kelas" autocomplete="off" required>
           </div>
+
 
           <div class="form-group">
             <label for="email">Email</label>

@@ -2,8 +2,9 @@ $(function () {
   $(".tombolTambahData").on("click", function () {
     $("#formModalLabel").html("Tambah Data Mahasiswa");
     $(".modal-footer button[type=submit]").html("Tambah Data");
-    $("#nama").val("");
     $("#nim").val("");
+    $("#nama").val("");
+    $("#kelas").val("");
     $("#email").val("");
     $("#jurusan").val("");
     $("#id").val("");
@@ -25,8 +26,9 @@ $(function () {
       method: "post",
       dataType: "json",
       success: function (data) {
-        $("#nama").val(data.nama);
         $("#nim").val(data.nim);
+        $("#nama").val(data.nama);
+        $("#kelas").val(data.kelas);
         $("#email").val(data.email);
         $("#jurusan").val(data.jurusan);
         $("#id").val(data.id);

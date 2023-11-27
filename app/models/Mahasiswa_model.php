@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class Mahasiswa_model {
+class Mahasiswa_model
+{
     private $table = 'mahasiswa';
     private $db;
 
@@ -26,11 +27,12 @@ class Mahasiswa_model {
     {
         $query = "INSERT INTO mahasiswa
                     VALUES
-                  ('', :nama, :nim, :email, :jurusan)";
-        
+                  ('', :nim, :nama, :kelas, :email, :jurusan)";
+
         $this->db->query($query);
-        $this->db->bind('nama', $data['nama']);
         $this->db->bind('nim', $data['nim']);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('kelas', $data['kelas']);
         $this->db->bind('email', $data['email']);
         $this->db->bind('jurusan', $data['jurusan']);
 
@@ -42,11 +44,19 @@ class Mahasiswa_model {
     public function hapusDataMahasiswa($id)
     {
         $query = "DELETE FROM mahasiswa WHERE id = :id";
-        
+
         $this->db->query($query);
         $this->db->bind('id', $id);
 
         $this->db->execute();
+
+        echo "<script language='javascript'>
+            Swal.fire(
+                title: 'Berhasil',
+                text: 'Data mahasiswa berhasil dihapus',
+                icon: 'success'
+            });
+        </script>";
 
         return $this->db->rowCount();
     }
@@ -55,15 +65,17 @@ class Mahasiswa_model {
     public function ubahDataMahasiswa($data)
     {
         $query = "UPDATE mahasiswa SET
-                    nama = :nama,
                     nim = :nim,
+                    nama = :nama,
+                    kelas = :kelas,
                     email = :email,
                     jurusan = :jurusan
                   WHERE id = :id";
-        
+
         $this->db->query($query);
-        $this->db->bind('nama', $data['nama']);
         $this->db->bind('nim', $data['nim']);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('kelas', $data['kelas']);
         $this->db->bind('email', $data['email']);
         $this->db->bind('jurusan', $data['jurusan']);
         $this->db->bind('id', $data['id']);
@@ -82,5 +94,4 @@ class Mahasiswa_model {
         $this->db->bind('keyword', "%$keyword%");
         return $this->db->resultSet();
     }
-
 }

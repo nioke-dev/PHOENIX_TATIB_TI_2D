@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class Dosen_model {
+class Dosen_model
+{
     private $table = 'dosen';
     private $db;
 
@@ -24,10 +25,10 @@ class Dosen_model {
 
     public function tambahDataDosen($data)
     {
-        $query = "INSERT INTO dosen
+        $query = "INSERT INTO dosen (nama, nip, matkul)
                     VALUES
-                  ('', :nama, :nip, :matkul)";
-        
+                  (:nama, :nip, :matkul)";
+
         $this->db->query($query);
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('nip', $data['nip']);
@@ -41,7 +42,7 @@ class Dosen_model {
     public function hapusDataDosen($id)
     {
         $query = "DELETE FROM dosen WHERE id = :id";
-        
+
         $this->db->query($query);
         $this->db->bind('id', $id);
 
@@ -58,7 +59,7 @@ class Dosen_model {
                     nip = :nip,
                     matkul = :matkul
                   WHERE id = :id";
-        
+
         $this->db->query($query);
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('nip', $data['nip']);
@@ -79,5 +80,4 @@ class Dosen_model {
         $this->db->bind('keyword', "%$keyword%");
         return $this->db->resultSet();
     }
-
 }

@@ -28,11 +28,11 @@ class Dosen extends Controller
     public function tambah()
     {
         if ($this->model('Dosen_model')->tambahDataDosen($_POST) > 0) {
-            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            // Flasher::setFlash('berhasil', 'ditambahkan', 'success');
             header('Location: ' . BASEURL . '/dosen');
             exit;
         } else {
-            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            // Flasher::setFlash('gagal', 'ditambahkan', 'danger');
             header('Location: ' . BASEURL . '/dosen');
             exit;
         }
@@ -41,11 +41,11 @@ class Dosen extends Controller
     public function hapus($id)
     {
         if ($this->model('Dosen_model')->hapusDataDosen($id) > 0) {
-            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            // Flasher::setFlash('berhasil', 'dihapus', 'success');
             header('Location: ' . BASEURL . '/dosen');
             exit;
         } else {
-            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            // Flasher::setFlash('gagal', 'dihapus', 'danger');
             header('Location: ' . BASEURL . '/dosen');
             exit;
         }
@@ -59,11 +59,11 @@ class Dosen extends Controller
     public function ubah()
     {
         if ($this->model('Dosen_model')->ubahDataDosen($_POST) > 0) {
-            Flasher::setFlash('berhasil', 'diubah', 'success');
+            // Flasher::setFlash('berhasil', 'diubah', 'success');
             header('Location: ' . BASEURL . '/dosen');
             exit;
         } else {
-            Flasher::setFlash('gagal', 'diubah', 'danger');
+            // Flasher::setFlash('gagal', 'diubah', 'danger');
             header('Location: ' . BASEURL . '/dosen');
             exit;
         }

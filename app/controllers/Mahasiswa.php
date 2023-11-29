@@ -52,16 +52,6 @@ class Mahasiswa extends Controller
         }
     }
 
-    private function showSweetAlert($icon, $title, $text)
-    {
-        // Sesuaikan dengan session atau cara penyimpanan pesan flash di proyek Anda        
-        $_SESSION['sweetalert'] = [
-            'icon' => $icon,
-            'title' => $title,
-            'text' => $text,
-        ];
-    }
-
     public function getubah()
     {
         echo json_encode($this->model('Mahasiswa_model')->getMahasiswaById($_POST['id']));

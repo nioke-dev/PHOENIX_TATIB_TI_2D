@@ -1,0 +1,135 @@
+<div class="container mt-3">
+
+    <div class="row">
+        <div class="col-lg-6">
+            <?php Flasher::flash(); ?>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-lg-6">
+            <button type="button" class="btn btn-primary tombolTambahDataMatkulDosen" data-bs-toggle="modal" data-bs-target="#formModalMatkulDosen">
+                Tambah Data Matkul Dosen
+            </button>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-lg-6">
+            <form action="<?= BASEURL; ?>/dosen/cari" method="post">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="cari Matkul.." name="keyword" id="keyword" autocomplete="off">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit" id="tombolCari">Cari</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <h3>Daftar Dosen</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">NIP Dosen</th>
+                    <th scope="col">Nama Matkul</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $no = 1;
+                foreach ($data['matkul'] as $matkul) : ?>
+                    <tr>
+                        <th scope="row"><?= $no++; ?></th>
+                        <td><?= $matkul['nip_dosen']; ?></td>
+                        <td><?= $matkul['matkul']; ?></td>
+                        <td>
+                            <a href="<?= BASEURL; ?>/matkul/hapus/<?= $matkul['id_matkul']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
+                            <a href="<?= BASEURL; ?>/matkul/ubah/<?= $matkul['id_matkul']; ?>" class="badge bg-success float-right tampilModalUbahMatkul" data-bs-toggle="modal" data-bs-target="#formModalMatkulDosen" data-nip="<?= $matkul['id_matkul']; ?>">ubah</a>
+                            <!-- <a href="<?= BASEURL; ?>/matkul/detail/<?= $matkul['id_matkul']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalDosen" data-id_matkul="<?= $matkul['id_matkul']; ?>">Detail</a> -->
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<!-- Modal Detail -->
+<div class="modal fade" id="detailModalDosen" tabindex="-1" aria-labelledby="detailModalDosenLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailModalDosenLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <p><strong>NIP:</strong> <span id="detailNip"></span></p>
+                </div>
+
+                <div class="form-group">
+                    <p><strong>Nama:</strong> <span id="detailNama"></span></p>
+                </div>
+
+                <div class="form-group">
+                    <p><strong>Email:</strong> <span id="detailEmail"></span></p>
+                </div>
+
+                <div class="form-group">
+                    <p><strong>Username:</strong> <span id="detailUsername"></span></p>
+                </div>
+
+                <div class="form-group">
+                    <p><strong>Password:</strong> <span id="detailPassword"></span></p>
+                </div>
+
+                <div class="form-group">
+                    <p><strong>Matkul:</strong> <span id="detailMatkul"></span></p>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal Add and Edit -->
+<div class="modal fade" id="formModalMatkulDosen" tabindex="-1" aria-labelledby="formModalMatkulDosenLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formModalMatkulDosenLabel">Tambah Data Dosen</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?= BASEURL; ?>/matkul/tambah" method="post">
+                    <input type="hidden" name="id_matkul" id="id_matkul">
+                    <div class="form-group">
+                        <label for="nip_dosen">NIP Dosen</label>
+                        <input type="number" class="form-control" id="nip_dosen" name="nip_dosen" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nama_matkul">Nama Matkul</label>
+                        <input type="text" class="form-control" id="nama_matkul" name="nama_matkul" autocomplete="off" required>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Tambah Data</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

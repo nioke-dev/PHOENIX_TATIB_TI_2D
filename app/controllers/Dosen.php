@@ -14,25 +14,31 @@ class Dosen extends Controller
         $this->view('templates/footer', $data);
     }
 
-    public function detail($id)
+    public function detail()
     {
-        $data['judul'] = 'Detail Dosen';
-        $data['dsn'] = $this->model('Dosen_model')->getDosenById($id);
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('templates/headerNav', $data);
-        $this->view('dosen/detail', $data);
-        $this->view('templates/footer', $data);
+        echo json_encode($this->model('Dosen_model')->getDosenByNip($_POST['nip_dosen']));
     }
 
     public function tambah()
     {
-        if ($this->model('Dosen_model')->tambahDataDosen($_POST) > 0) {
-            // Flasher::setFlash('berhasil', 'ditambahkan', 'success');
-            header('Location: ' . BASEURL . '/dosen');
-            exit;
+        if ($this->model('Dosen_model')->tambahUserDosen($_POST) > 0) {
+            # code...
+            $dataUser['userDosenId'] = $this->model('Dosen_model')->getUserDosenByNip($_POST);
+
+            if (
+                $this->model('Dosen_model')->tambahDataDosen($_POST, $dataUser) > 0
+            ) {
+
+                $this->showSweetAlert('success', 'Berhasil', 'Data Dosen berhasil ditambahkan');
+                header('Location: ' . BASEURL . '/dosen');
+                exit;
+            } else {
+                $this->showSweetAlert('error', 'Ooops', 'Data Dosen Gagal ditambahkan');
+                header('Location: ' . BASEURL . '/dosen');
+                exit;
+            }
         } else {
-            // Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            $this->showSweetAlert('error', 'Ooops', 'Data Dosen Gagal ditambahkan');
             header('Location: ' . BASEURL . '/dosen');
             exit;
         }

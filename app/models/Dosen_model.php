@@ -103,16 +103,31 @@ class Dosen_model
     public function ubahDataDosen($data)
     {
         $query = "UPDATE dosen SET
-                    nama = :nama,
-                    nip = :nip,
-                    matkul = :matkul
-                  WHERE id = :id";
+                    nama_dosen = :nama_dosen,
+                    email_dosen = :email_dosen
+                  WHERE nip_dosen = :nip_dosen";
 
         $this->db->query($query);
-        $this->db->bind('nama', $data['nama']);
-        $this->db->bind('nip', $data['nip']);
-        $this->db->bind('matkul', $data['matkul']);
-        $this->db->bind('id', $data['id']);
+        $this->db->bind('nama_dosen', $data['nama']);
+        $this->db->bind('email_dosen', $data['email']);
+        $this->db->bind('nip_dosen', $data['nip']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    public function ubahDataUser($data)
+    {
+        $query = "UPDATE user SET
+                    username = :username,
+                    password = :password
+                  WHERE id_user = :id_user";
+
+        $this->db->query($query);
+        $this->db->bind('username', $data['nip']);
+        $this->db->bind('password', $data['password']);
+        $this->db->bind('id_user', $data['id_user']);
 
         $this->db->execute();
 
@@ -123,7 +138,7 @@ class Dosen_model
     public function cariDataDosen()
     {
         $keyword = $_POST['keyword'];
-        $query = "SELECT * FROM dosen WHERE nama LIKE :keyword";
+        $query = "SELECT * FROM dosen WHERE nama_dosen LIKE :keyword OR nip_dosen LIKE :keyword";
         $this->db->query($query);
         $this->db->bind('keyword', "%$keyword%");
         return $this->db->resultSet();

@@ -42,7 +42,7 @@ class Matkul extends Controller
             header('Location: ' . BASEURL . '/matkul');
             exit;
         } else {
-            // Flasher::setFlash('gagal', 'dihapus', 'danger');
+            $this->showSweetAlert('success', 'Berhasil', 'Data Matkul Dosen Gagal Dihapus');
             header('Location: ' . BASEURL . '/matkul');
             exit;
         }
@@ -50,32 +50,33 @@ class Matkul extends Controller
 
     public function getubah()
     {
-        echo json_encode($this->model('Matkul_model')->getMatkulById_Matkul($_POST['id_matkul']));
+        echo json_encode($this->model('Matkul_model')->getMatkulById(['id_matkul' => $_POST['id_matkul']]));
     }
 
 
-    // public function ubah()
-    // {
-    //     if ($this->model('Dosen_model')->ubahDataDosen($_POST) > 0) {
-    //         // Flasher::setFlash('berhasil', 'diubah', 'success');
-    //         header('Location: ' . BASEURL . '/dosen');
-    //         exit;
-    //     } else {
-    //         // Flasher::setFlash('gagal', 'diubah', 'danger');
-    //         header('Location: ' . BASEURL . '/dosen');
-    //         exit;
-    //     }
-    // }
 
-    // public function cari()
-    // {
-    //     $data['judul'] = 'Daftar Dosen';
-    //     $data['dsn'] = $this->model('Dosen_model')->cariDataDosen();
+    public function ubah()
+    {
+        if ($this->model('Matkul_model')->ubahDataMatkul($_POST) > 0) {
+            $this->showSweetAlert('success', 'Berhasil', 'Data Matkul Dosen Berhasil Diubah');
+            header('Location: ' . BASEURL . '/matkul');
+            exit;
+        } else {
+            $this->showSweetAlert('error', 'Berhasil', 'Data Matkul Dosen Gagal Diubah');
+            header('Location: ' . BASEURL . '/matkul');
+            exit;
+        }
+    }
 
-    //     $this->view('templates/header', $data);
-    //     $this->view('templates/sidebar', $data);
-    //     $this->view('templates/headerNav', $data);
-    //     $this->view('dosen/index', $data);
-    //     $this->view('templates/footer', $data);
-    // }
+    public function cari()
+    {
+        $data['judul'] = 'Daftar Matkul';
+        $data['matkul'] = $this->model('Matkul_model')->cariDataMatkul();
+
+        $this->view('templates/header', $data);
+        $this->view('templates/sidebar', $data);
+        $this->view('templates/headerNav', $data);
+        $this->view('matkul/index', $data);
+        $this->view('templates/footer', $data);
+    }
 }

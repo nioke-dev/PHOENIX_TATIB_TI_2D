@@ -16,12 +16,10 @@
 
     <div class="row mb-3">
         <div class="col-lg-6">
-            <form action="<?= BASEURL; ?>/dosen/cari" method="post">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="cari Matkul.." name="keyword" id="keyword" autocomplete="off">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit" id="tombolCari">Cari</button>
-                    </div>
+            <form action="<?= BASEURL; ?>/matkul/cari" method="post">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Cari Matkul.." name="keyword" id="keyword" autocomplete="off">
+                    <button class="btn btn-primary" type="submit" id="tombolCari">Cari</button>
                 </div>
             </form>
         </div>
@@ -47,8 +45,7 @@
                         <td><?= $matkul['matkul']; ?></td>
                         <td>
                             <a href="<?= BASEURL; ?>/matkul/hapus/<?= $matkul['id_matkul']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
-                            <a href="<?= BASEURL; ?>/matkul/ubah/<?= $matkul['id_matkul']; ?>" class="badge bg-success float-right tampilModalUbahMatkul" data-bs-toggle="modal" data-bs-target="#formModalMatkulDosen" data-nip="<?= $matkul['id_matkul']; ?>">ubah</a>
-                            <!-- <a href="<?= BASEURL; ?>/matkul/detail/<?= $matkul['id_matkul']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalDosen" data-id_matkul="<?= $matkul['id_matkul']; ?>">Detail</a> -->
+                            <a href="<?= BASEURL; ?>/matkul/ubah/<?= $matkul['id_matkul']; ?>" class="badge bg-success float-right tampilModalUbahMatkul" data-bs-toggle="modal" data-bs-target="#formModalMatkulDosen" data-id_matkul="<?= $matkul['id_matkul']; ?>">ubah</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -108,7 +105,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="formModalMatkulDosenLabel">Tambah Data Dosen</h5>
+                <h5 class="modal-title" id="formModalMatkulDosenLabel">Tambah Data Matkul</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
@@ -121,8 +118,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="nama_matkul">Nama Matkul</label>
-                        <input type="text" class="form-control" id="nama_matkul" name="nama_matkul" autocomplete="off" required>
+                        <label for="matkul">Nama Matkul</label>
+                        <input type="text" class="form-control" id="matkul" name="matkul" autocomplete="off" required>
                     </div>
             </div>
             <div class="modal-footer">

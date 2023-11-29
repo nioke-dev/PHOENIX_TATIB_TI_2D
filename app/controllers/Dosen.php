@@ -59,19 +59,23 @@ class Dosen extends Controller
 
     public function getubah()
     {
-        echo json_encode($this->model('Dosen_model')->getDosenById($_POST['id']));
+        echo json_encode($this->model('Dosen_model')->getDosenByNip($_POST['nip_dosen']));
     }
 
     public function ubah()
     {
-        if ($this->model('Dosen_model')->ubahDataDosen($_POST) > 0) {
-            // Flasher::setFlash('berhasil', 'diubah', 'success');
-            header('Location: ' . BASEURL . '/dosen');
-            exit;
+        if ($this->model('Dosen_model')->ubahDataUser($_POST) > 0) {
+            if ($this->model('Dosen_model')->ubahDataDosen($_POST) > 0) {
+                $this->showSweetAlert('success', 'Berhasil', 'Data Dosen berhasil Diubah');
+                header('Location: ' . BASEURL . '/dosen');
+                exit;
+            } else {
+                $this->showSweetAlert('error', 'Ooops', 'Data Dosen Gagal Diubah');
+                header('Location: ' . BASEURL . '/dosen');
+                exit;
+            }
         } else {
-            // Flasher::setFlash('gagal', 'diubah', 'danger');
-            header('Location: ' . BASEURL . '/dosen');
-            exit;
+            $this->showSweetAlert('error', 'Ooops', 'Data Dosen Gagal Diubahh');
         }
     }
 

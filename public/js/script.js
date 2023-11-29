@@ -10,28 +10,28 @@ $(function () {
     $("#matkul").val("");
   });
 
-  $(".tampilModalUbah").on("click", function () {
-    $("#formModalLabel").html("Ubah Data Mahasiswa");
+  $(".tampilModalUbahDosen").on("click", function () {
+    $("#formModalDosenLabel").html("Ubah Data Dosen");
     $(".modal-footer button[type=submit]").html("Ubah Data");
     $(".modal-body form").attr(
       "action",
-      "http://localhost/PHOENIX_TATIB_TI_2D/public/mahasiswa/ubah"
+      "http://localhost/PHOENIX_TATIB_TI_2D/public/dosen/ubah"
     );
 
-    const id = $(this).data("id");
+    const nip_dosen = $(this).data("nip_dosen");
 
     $.ajax({
-      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/mahasiswa/getubah",
-      data: { id: id },
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/dosen/getubah",
+      data: { nip_dosen: nip_dosen },
       method: "post",
       dataType: "json",
       success: function (data) {
-        $("#nim").val(data.nim);
-        $("#nama").val(data.nama);
-        $("#kelas").val(data.kelas);
-        $("#email").val(data.email);
-        $("#jurusan").val(data.jurusan);
-        $("#id").val(data.id);
+        $("#nip").val(data.nip_dosen);
+        $("#nama").val(data.nama_dosen);
+        $("#email").val(data.email_dosen);
+        $("#password").val(data.password);
+        $("#id_user").val(data.id_user);
+        $("#password").attr("type", "text");
       },
     });
   });
@@ -73,7 +73,7 @@ $(function () {
     $("#formModalMatkulDosenLabel").html("Tambah Data Matkul Dosen");
     $(".modal-footer button[type=submit]").html("Tambah Data");
     $("#nip_dosen").val("");
-    $("#nama_matkul").val("");
+    $("#matkul").val("");
   });
 
   $(".tampilModalUbahMatkul").on("click", function () {
@@ -94,7 +94,7 @@ $(function () {
       success: function (data) {
         console.log("Respons Server:", data);
         $("#nip_dosen").val(data.nip_dosen);
-        $("#nama_matkul").val(data.matkul);
+        $("#matkul").val(data.matkul);
         $("#id_matkul").val(data.id_matkul);
       },
     });

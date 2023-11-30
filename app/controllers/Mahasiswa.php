@@ -65,21 +65,21 @@ class Mahasiswa extends Controller
     // Fungsi untuk mengubah data mahasiswa
     public function ubah()
     {
-        if ($this->model('Mahasiswa_model')->ubahDataUser($_POST) > 0) {
-            if ($this->model('Mahasiswa_model')->ubahDataMahasiswa($_POST) > 0) {
-                $this->showSweetAlert('success', 'Berhasil', 'Data Mahasiswa berhasil Diubah');
-                header('Location: ' . BASEURL . '/mahasiswa');
-                exit;
-            } else {
-                $this->showSweetAlert('error', 'Ooops', 'Data Mahasiswa Gagal Diubah');
-                header('Location: ' . BASEURL . '/mahasiswa');
-                exit;
-            }
+        // if ($this->model('Mahasiswa_model')->ubahDataUserMahasiswa($_POST) > 0) {
+        if ($this->model('Mahasiswa_model')->ubahDataUserMahasiswa($_POST) > 0 && $this->model('Mahasiswa_model')->ubahDataMahasiswa($_POST) > 0) {
+            $this->showSweetAlert('success', 'Berhasil', 'Data Mahasiswa berhasil Diubah');
+            header('Location: ' . BASEURL . '/mahasiswa');
+            exit;
         } else {
-            $this->showSweetAlert('error', 'Ooops', 'Data Mahasiswa Gagal Diubahss');
+            $this->showSweetAlert('error', 'Ooops', 'Data Mahasiswa Gagal Diubah');
             header('Location: ' . BASEURL . '/mahasiswa');
             exit;
         }
+        // } else {
+        //     $this->showSweetAlert('error', 'Ooops', 'Data Mahasiswa Gagal Diubahsss');
+        //     header('Location: ' . BASEURL . '/mahasiswa');
+        //     exit;
+        // }
     }
 
     // Fungsi untuk mencari data mahasiswa berdasarkan keyword

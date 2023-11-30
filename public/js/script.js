@@ -104,11 +104,11 @@ $(function () {
   $(".tombolTambahDataMahasiswa").on("click", function () {
     $("#formModalMahasiswaLabel").html("Tambah Data Mahasiswa");
     $(".modal-footer button[type=submit]").html("Tambah Data");
-    $("#nim").val("");
-    $("#nama").val("");
-    $("#kelas").val("");
-    $("#prodi").val("");
-    $("#email").val("");
+    $("#nim_mahasiswa").val("");
+    $("#nama_mahasiswa").val("");
+    $("#kelas_mahasiswa").val("");
+    $("#prodi_mahasiswa").val("");
+    $("#email_mahasiswa").val("");
     $("#password").val("");
   });
 
@@ -139,7 +139,7 @@ $(function () {
   });
 
   $(".tampilModalUbahMahasiswa").on("click", function () {
-    $("#formModalMahasiswaLabel").html("Ubah Data Mahasiswa");
+    $("#formModalMahasiswaLabel").html("Ubah Data Mahasiswaaaa");
     $(".modal-footer button[type=submit]").html("Ubah Data");
     $(".modal-body form").attr(
       "action",
@@ -154,11 +154,11 @@ $(function () {
       method: "post",
       dataType: "json",
       success: function (data) {
-        $("#nim").val(data.nim_mahasiswa);
-        $("#nama").val(data.nama_mahasiswa);
-        $("#kelas").val(data.kelas_mahasiswa);
-        $("#prodi").val(data.prodi_mahasiswa);
-        $("#email").val(data.email_mahasiswa);
+        $("#nim_mahasiswa").val(data.nim_mahasiswa);
+        $("#nama_mahasiswa").val(data.nama_mahasiswa);
+        $("#kelas_mahasiswa").val(data.kelas_mahasiswa);
+        $("#prodi_mahasiswa").val(data.prodi_mahasiswa);
+        $("#email_mahasiswa").val(data.email_mahasiswa);
         $("#password").val(data.password);
         $("#id_user").val(data.id_user);
       },

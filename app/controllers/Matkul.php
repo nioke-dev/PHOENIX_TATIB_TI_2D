@@ -62,7 +62,7 @@ class Matkul extends Controller
             header('Location: ' . BASEURL . '/matkul');
             exit;
         } else {
-            $this->showSweetAlert('error', 'Berhasil', 'Data Matkul Dosen Gagal Diubah');
+            $this->showSweetAlert('error', 'Ooops', 'Data Matkul Dosen Gagal Diubah');
             header('Location: ' . BASEURL . '/matkul');
             exit;
         }

@@ -114,7 +114,7 @@
                     <input type="hidden" name="id_matkul" id="id_matkul">
                     <div class="form-group">
                         <label for="nip_dosen">NIP Dosen</label>
-                        <input type="text" class="form-control" id="nip_dosen" name="nip_dosen" autocomplete="off" disabled>
+                        <input type="text" class="form-control" id="nip_dosen" name="nip_dosen" autocomplete="off">
                     </div>
 
                     <div class="form-group">

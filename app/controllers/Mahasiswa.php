@@ -25,7 +25,7 @@ class Mahasiswa extends Controller
     public function tambah()
     {
         if ($this->model('Mahasiswa_model')->tambahUserMahasiswa($_POST) > 0) {
-            $dataUser['userDosenId'] = $this->model('Mahasiswa_model')->getUserMahasiswaByNim($_POST);
+            $dataUser['userMahasiswaId'] = $this->model('Mahasiswa_model')->getUserMahasiswaByNim($_POST);
             if ($this->model('Mahasiswa_model')->tambahDataMahasiswa($_POST, $dataUser) > 0) {
                 $this->showSweetAlert('success', 'Berhasil', 'Data Mahasiswa berhasil ditambahkan');
                 header('Location: ' . BASEURL . '/mahasiswa');

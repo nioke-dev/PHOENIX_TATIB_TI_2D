@@ -37,7 +37,7 @@ class Mahasiswa_model
         // Eksekusi query
         $this->db->query($query);
         $this->db->bind('nim_mahasiswa', $data['nim_mahasiswa']);
-        $this->db->bind('id_user', $id_user['userDosenId']['id_user']);
+        $this->db->bind('id_user', $id_user['userMahasiswaId']['id_user']);
         $this->db->bind('nama_mahasiswa', $data['nama_mahasiswa']);
         $this->db->bind('kelas_mahasiswa', $data['kelas_mahasiswa']);
         $this->db->bind('prodi_mahasiswa', $data['prodi_mahasiswa']);

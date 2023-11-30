@@ -99,6 +99,8 @@ $(function () {
         console.log("Respons Server:", data);
         $("#nip_dosen").val(data.nip_dosen);
         $("#matkul").val(data.matkul);
+        $("#nip_dosen_lama").val(data.nip_dosen);
+        $("#matkul_lama").val(data.matkul);
         $("#id_matkul").val(data.id_matkul);
       },
     });

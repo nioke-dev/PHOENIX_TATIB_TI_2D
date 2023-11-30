@@ -64,20 +64,6 @@ class Dosen extends Controller
 
     public function ubah()
     {
-        if ($this->model('Dosen_model')->ubahDataUser($_POST) > 0) {
-            if ($this->model('Dosen_model')->ubahDataDosen($_POST) > 0) {
-                $this->showSweetAlert('success', 'Berhasil', 'Data Dosen berhasil Diubah');
-                header('Location: ' . BASEURL . '/dosen');
-                exit;
-            } else {
-                $this->showSweetAlert('error', 'Ooops', 'Data Dosen Gagal Diubah');
-                header('Location: ' . BASEURL . '/dosen');
-                exit;
-            }
-        } else {
-            $this->showSweetAlert('error', 'Ooops', 'Data Dosen Gagal Diubahh');
-        }
-
         // Pengecekan perubahan di user
         if (
             $_POST['password'] != $_POST['password_lama'] ||

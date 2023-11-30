@@ -112,7 +112,7 @@
       </div>
       <div class="modal-body">
         <form action="<?= BASEURL; ?>/mahasiswa/tambah" method="post">
-          <input type="text" name="id_user" id="id_user">
+          <input type="hidden" name="id_user" id="id_user">
           <div class="form-group">
             <label for="nim">NIM</label>
             <input type="number" class="form-control" id="nim" name="nim" autocomplete="off">

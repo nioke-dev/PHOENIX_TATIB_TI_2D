@@ -118,21 +118,25 @@
           <div class="form-group">
             <label for="nip">NIP</label>
             <input type="number" class="form-control" id="nip" name="nip" autocomplete="off">
+            <input type="hidden" class="form-control" id="nip_lama" name="nip_lama" autocomplete="off">
           </div>
 
           <div class="form-group">
             <label for="nama">Nama</label>
             <input type="text" class="form-control" id="nama" name="nama" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="nama_lama" name="nama_lama" autocomplete="off" required>
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
             <input type="email" class="form-control" id="email" name="email" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="email_lama" name="email_lama" autocomplete="off" required>
           </div>
 
           <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" name="password" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="password_lama" name="password_lama" autocomplete="off" required>
           </div>
 
       </div>

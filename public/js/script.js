@@ -30,6 +30,10 @@ $(function () {
         $("#nama").val(data.nama_dosen);
         $("#email").val(data.email_dosen);
         $("#password").val(data.password);
+        $("#nip_lama").val(data.nip_dosen);
+        $("#nama_lama").val(data.nama_dosen);
+        $("#email_lama").val(data.email_dosen);
+        $("#password_lama").val(data.password);
         $("#id_user").val(data.id_user);
         $("#password").attr("type", "text");
       },

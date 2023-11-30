@@ -2,6 +2,7 @@
 
 class Mahasiswa extends Controller
 {
+    // Fungsi untuk menampilkan halaman daftar mahasiswa
     public function index()
     {
         $data['judul'] = 'Daftar Mahasiswa';
@@ -14,62 +15,74 @@ class Mahasiswa extends Controller
         $this->view('templates/footer', $data);
     }
 
-    public function detail($id)
+    // Fungsi untuk menampilkan detail mahasiswa dalam format JSON
+    public function detail()
     {
-        $data['judul'] = 'Detail Mahasiswa';
-        $data['mhs'] = $this->model('Mahasiswa_model')->getMahasiswaById($id);
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('templates/headerNav', $data);
-        $this->view('mahasiswa/detail', $data);
-        $this->view('templates/footer', $data);
+        echo json_encode($this->model('Mahasiswa_model')->getMahasiswaByNim($_POST['nim_mahasiswa']));
     }
 
+    // Fungsi untuk menambahkan data mahasiswa
     public function tambah()
     {
-        if ($this->model('Mahasiswa_model')->tambahDataMahasiswa($_POST) > 0) {
-            Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'Mahasiswa');
-            header('Location: ' . BASEURL . '/mahasiswa');
-            exit;
+        if ($this->model('Mahasiswa_model')->tambahUserMahasiswa($_POST) > 0) {
+            $dataUser['userDosenId'] = $this->model('Mahasiswa_model')->getUserMahasiswaByNim($_POST);
+            if ($this->model('Mahasiswa_model')->tambahDataMahasiswa($_POST, $dataUser) > 0) {
+                $this->showSweetAlert('success', 'Berhasil', 'Data Mahasiswa berhasil ditambahkan');
+                header('Location: ' . BASEURL . '/mahasiswa');
+                exit;
+            } else {
+                $this->showSweetAlert('error', 'Ooops', 'Data Mahasiswa Gagal ditambahkan');
+                header('Location: ' . BASEURL . '/mahasiswa');
+                exit;
+            }
         } else {
-            Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'Mahasiswa');
+            $this->showSweetAlert('error', 'Ooops', 'Data Mahasiswa Gagal ditambahkan');
             header('Location: ' . BASEURL . '/mahasiswa');
             exit;
         }
     }
 
-    public function hapus($id)
+    // Fungsi untuk menghapus data mahasiswa
+    public function hapus($nim)
     {
-        if ($this->model('Mahasiswa_model')->hapusDataMahasiswa($id) > 0) {
-            // Flasher::setFlash('berhasil', 'dihapus', 'success', 'Mahasiswa');
-            $this->showSweetAlert('success', 'Berhasil', 'Data mahasiswa berhasil dihapus');
+        if ($this->model('Mahasiswa_model')->hapusDataMahasiswa($nim) > 0) {
+            $this->showSweetAlert('success', 'Berhasil', 'Data Mahasiswa berhasil dihapus');
             header('Location: ' . BASEURL . '/mahasiswa');
             exit;
         } else {
-            Flasher::setFlash('gagal', 'dihapus', 'danger', 'Mahasiswa');
+            $this->showSweetAlert('error', 'Ooops', 'Data Mahasiswa Gagal dihapus');
             header('Location: ' . BASEURL . '/mahasiswa');
             exit;
         }
     }
 
+    // Fungsi untuk menampilkan data mahasiswa dalam format JSON untuk keperluan pengeditan
     public function getubah()
     {
-        echo json_encode($this->model('Mahasiswa_model')->getMahasiswaById($_POST['id']));
+        echo json_encode($this->model('Mahasiswa_model')->getMahasiswaByNim($_POST['nim_mahasiswa']));
     }
 
+    // Fungsi untuk mengubah data mahasiswa
     public function ubah()
     {
-        if ($this->model('Mahasiswa_model')->ubahDataMahasiswa($_POST) > 0) {
-            Flasher::setFlash('berhasil', 'diubah', 'success', 'Mahasiswa');
-            header('Location: ' . BASEURL . '/mahasiswa');
-            exit;
+        if ($this->model('Mahasiswa_model')->ubahDataUser($_POST) > 0) {
+            if ($this->model('Mahasiswa_model')->ubahDataMahasiswa($_POST) > 0) {
+                $this->showSweetAlert('success', 'Berhasil', 'Data Mahasiswa berhasil Diubah');
+                header('Location: ' . BASEURL . '/mahasiswa');
+                exit;
+            } else {
+                $this->showSweetAlert('error', 'Ooops', 'Data Mahasiswa Gagal Diubah');
+                header('Location: ' . BASEURL . '/mahasiswa');
+                exit;
+            }
         } else {
-            Flasher::setFlash('gagal', 'diubah', 'danger', 'Mahasiswa');
+            $this->showSweetAlert('error', 'Ooops', 'Data Mahasiswa Gagal Diubahss');
             header('Location: ' . BASEURL . '/mahasiswa');
             exit;
         }
     }
 
+    // Fungsi untuk mencari data mahasiswa berdasarkan keyword
     public function cari()
     {
         $data['judul'] = 'Daftar Mahasiswa';

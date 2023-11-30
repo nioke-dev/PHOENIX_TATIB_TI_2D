@@ -99,4 +99,71 @@ $(function () {
       },
     });
   });
+
+  // Mahasiswa Function
+  $(".tombolTambahDataMahasiswa").on("click", function () {
+    $("#formModalMahasiswaLabel").html("Tambah Data Mahasiswa");
+    $(".modal-footer button[type=submit]").html("Tambah Data");
+    $("#nim").val("");
+    $("#nama").val("");
+    $("#kelas").val("");
+    $("#prodi").val("");
+    $("#email").val("");
+    $("#password").val("");
+  });
+
+  $(".tampilModalDetailMahasiswa").on("click", function () {
+    $("#detailModalMahasiswaLabel").html("Detail Data Mahasiswa");
+
+    const nim_mahasiswa = $(this).data("nim_mahasiswa");
+    console.log(nim_mahasiswa);
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/mahasiswa/detail",
+      data: { nim_mahasiswa: nim_mahasiswa },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#detailNimMahasiswa").text(data.nim_mahasiswa);
+        $("#detailNamaMahasiswa").text(data.nama_mahasiswa);
+        $("#detailKelasMahasiswa").text(data.kelas_mahasiswa);
+        $("#detailProdiMahasiswa").text(data.prodi_mahasiswa);
+        $("#detailEmailMahasiswa").text(data.email_mahasiswa);
+        $("#detailPasswordMahasiswa").text(data.password);
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      },
+    });
+  });
+
+  $(".tampilModalUbahMahasiswa").on("click", function () {
+    $("#formModalMahasiswaLabel").html("Ubah Data Mahasiswa");
+    $(".modal-footer button[type=submit]").html("Ubah Data");
+    $(".modal-body form").attr(
+      "action",
+      "http://localhost/PHOENIX_TATIB_TI_2D/public/mahasiswa/ubah"
+    );
+
+    const nim_mahasiswa = $(this).data("nim_mahasiswa");
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/mahasiswa/getubah",
+      data: { nim_mahasiswa: nim_mahasiswa },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        $("#nim").val(data.nim_mahasiswa);
+        $("#nama").val(data.nama_mahasiswa);
+        $("#kelas").val(data.kelas_mahasiswa);
+        $("#prodi").val(data.prodi_mahasiswa);
+        $("#email").val(data.email_mahasiswa);
+        $("#password").val(data.password);
+        $("#id_user").val(data.id_user);
+      },
+    });
+  });
+
+  // ... (fungsi-fungsi lainnya)
 });

@@ -56,6 +56,14 @@
                           </a>
                       </li>
                       <li class="sidebar-item">
+                          <a class="sidebar-link" href="<?= BASEURL; ?>/dpa" aria-expanded="false">
+                              <span>
+                                  <i class="ti ti-cards"></i>
+                              </span>
+                              <span class="hide-menu">DPA</span>
+                          </a>
+                      </li>
+                      <li class="sidebar-item">
                           <a class="sidebar-link" href="<?= BASEURL; ?>/matkul" aria-expanded="false">
                               <span>
                                   <i class="ti ti-file-description"></i>

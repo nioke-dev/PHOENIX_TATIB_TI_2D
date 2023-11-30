@@ -171,5 +171,73 @@ $(function () {
     });
   });
 
+  // DPA Function
+  $(".tombolTambahDataDpa").on("click", function () {
+    $("#formModalDpaLabel").html("Tambah Data DPA");
+    $(".modal-footer button[type=submit]").html("Tambah Data");
+    $("#nip_dpa").val("");
+    $("#nama_dpa").val("");
+    $("#kelas_dpa").val("");
+    $("#email_dpa").val("");
+    $("#password").val("");
+  });
+
+  $(".tampilModalDetailDpa").on("click", function () {
+    $("#detailModalDpaLabel").html("Detail Data DPA");
+
+    const nip_dpa = $(this).data("nip_dpa");
+    console.log(nip_dpa);
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/dpa/detail",
+      data: { nip_dpa: nip_dpa },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#detailNipDpa").text(data.nip_dpa);
+        $("#detailNamaDpa").text(data.nama_dpa);
+        $("#detailKelasDpa").text(data.kelas_dpa);
+        $("#detailEmailDpa").text(data.email_dpa);
+        $("#detailPasswordDpa").text(data.password);
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      },
+    });
+  });
+
+  $(".tampilModalUbahDpa").on("click", function () {
+    $("#formModalDpaLabel").html("Ubah Data DPA");
+    $(".modal-footer button[type=submit]").html("Ubah Data");
+    $(".modal-body form").attr(
+      "action",
+      "http://localhost/PHOENIX_TATIB_TI_2D/public/dpa/ubah"
+    );
+
+    const nip_dpa = $(this).data("nip_dpa");
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/dpa/getubah",
+      data: { nip_dpa: nip_dpa },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#nip_dpa").val(data.nip_dpa);
+        $("#nama_dpa").val(data.nama_dpa);
+        $("#kelas_dpa").val(data.kelas_dpa);
+        $("#email_dpa").val(data.email_dpa);
+        $("#password").val(data.password);
+        $("#nip_dpa_lama").val(data.nip_dpa);
+        $("#nama_dpa_lama").val(data.nama_dpa);
+        $("#kelas_dpa_lama").val(data.kelas_dpa);
+        $("#email_dpa_lama").val(data.email_dpa);
+        $("#password_lama").val(data.password);
+        $("#id_user").val(data.id_user);
+      },
+    });
+  });
+
   // ... (fungsi-fungsi lainnya)
 });

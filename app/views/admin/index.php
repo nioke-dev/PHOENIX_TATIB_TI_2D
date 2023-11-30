@@ -42,13 +42,13 @@
         foreach ($data['adm'] as $adm) : ?>
           <tr>
             <th scope="row"><?= $no++; ?></th>
-            <td><?= $dsn['nip_admin']; ?></td>
-            <td><?= $dsn['nama_admin']; ?></td>
-            <td><?= $dsn['email_admin']; ?></td>
+            <td><?= $adm['nip_admin']; ?></td>
+            <td><?= $adm['nama_admin']; ?></td>
+            <td><?= $adm['email_admin']; ?></td>
             <td>
               <a href="<?= BASEURL; ?>/admin/hapus/<?= $adm['nip_admin']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
-              <a href="<?= BASEURL; ?>/admin/ubah/<?= $adm['nip_admin']; ?>" class="badge bg-success float-right tampilModalUbahAdmin" data-bs-toggle="modal" data-bs-target="#formModalAdmin" data-nip_admin="<?= $adm['nip_dosen']; ?>">ubah</a>
-              <a href="<?= BASEURL; ?>/admin/detail/<?= $adm['nip_admin']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalAdmin" data-nip_admin="<?= $adm['nip_dosen']; ?>">Detail</a>
+              <a href="<?= BASEURL; ?>/admin/ubah/<?= $adm['nip_admin']; ?>" class="badge bg-success float-right tampilModalUbahAdmin" data-bs-toggle="modal" data-bs-target="#formModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">ubah</a>
+              <a href="<?= BASEURL; ?>/admin/detail/<?= $adm['nip_admin']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">Detail</a>
             </td>
           </tr>
         <?php endforeach; ?>
@@ -104,35 +104,39 @@
 
 
 <!-- Modal Add and Edit -->
-<div class="modal fade" id="formModalDosen" tabindex="-1" aria-labelledby="formModalDosenLabel" aria-hidden="true">
+<div class="modal fade" id="formModalAdmin" tabindex="-1" aria-labelledby="formModalAdminLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="formModalDosenLabel">Tambah Data Dosen</h5>
+        <h5 class="modal-title" id="formModalAdminLabel">Tambah Data Admin</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
         </button>
       </div>
       <div class="modal-body">
-        <form action="<?= BASEURL; ?>/dosen/tambah" method="post">
+        <form action="<?= BASEURL; ?>/admin/tambah" method="post">
           <input type="hidden" name="id_user" id="id_user">
           <div class="form-group">
             <label for="nip">NIP</label>
             <input type="number" class="form-control" id="nip" name="nip" autocomplete="off">
+            <input type="hidden" class="form-control" id="nip_lama" name="nip_lama" autocomplete="off">
           </div>
 
           <div class="form-group">
             <label for="nama">Nama</label>
             <input type="text" class="form-control" id="nama" name="nama" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="nama_lama" name="nama_lama" autocomplete="off">
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
             <input type="email" class="form-control" id="email" name="email" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="email_lama" name="email_lama" autocomplete="off">
           </div>
 
           <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" name="password" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="password_lama" name="password_lama" autocomplete="off">
           </div>
 
       </div>

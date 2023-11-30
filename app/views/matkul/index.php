@@ -115,11 +115,13 @@
                     <div class="form-group">
                         <label for="nip_dosen">NIP Dosen</label>
                         <input type="text" class="form-control" id="nip_dosen" name="nip_dosen" autocomplete="off">
+                        <input type="hidden" class="form-control" id="nip_dosen_lama" name="nip_dosen_lama" autocomplete="off">
                     </div>
 
                     <div class="form-group">
                         <label for="matkul">Nama Matkul</label>
                         <input type="text" class="form-control" id="matkul" name="matkul" autocomplete="off" required>
+                        <input type="hidden" class="form-control" id="matkul_lama" name="matkul_lama" autocomplete="off" required>
                     </div>
             </div>
             <div class="modal-footer">

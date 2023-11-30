@@ -18,9 +18,9 @@ class Admin_model
 
     public function tambahDataAdmin($data, $id_user)
     {
-        $query = "INSERT INTO dosen (nip_admin, id_admin, nama_admin, email_admin)
+        $query = "INSERT INTO admin (nip_admin, id_user, nama_admin, email_admin)
                     VALUES
-                  (:nip_admin, :id_admin, :nama_admin, :email_admin)";
+                  (:nip_admin, :id_user, :nama_admin, :email_admin)";
         $this->db->query($query);
         $this->db->bind('nip_admin', $data['nip']);
         $this->db->bind('id_user', $id_user['userAdminId']['id_user']);

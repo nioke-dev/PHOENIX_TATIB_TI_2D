@@ -30,6 +30,10 @@ $(function () {
         $("#nama").val(data.nama_dosen);
         $("#email").val(data.email_dosen);
         $("#password").val(data.password);
+        $("#nip_lama").val(data.nip_dosen);
+        $("#nama_lama").val(data.nama_dosen);
+        $("#email_lama").val(data.email_dosen);
+        $("#password_lama").val(data.password);
         $("#id_user").val(data.id_user);
         $("#password").attr("type", "text");
       },
@@ -95,6 +99,8 @@ $(function () {
         console.log("Respons Server:", data);
         $("#nip_dosen").val(data.nip_dosen);
         $("#matkul").val(data.matkul);
+        $("#nip_dosen_lama").val(data.nip_dosen);
+        $("#matkul_lama").val(data.matkul);
         $("#id_matkul").val(data.id_matkul);
       },
     });
@@ -171,70 +177,73 @@ $(function () {
     });
   });
 
-  // DPA Function
-  $(".tombolTambahDataDpa").on("click", function () {
-    $("#formModalDpaLabel").html("Tambah Data DPA");
+  // Admin Function
+  $(".tombolTambahDataAdmin").on("click", function () {
+    $("#formModalAdminLabel").html("Tambah Data Admin");
     $(".modal-footer button[type=submit]").html("Tambah Data");
-    $("#nip_dpa").val("");
-    $("#nama_dpa").val("");
-    $("#kelas_dpa").val("");
-    $("#email_dpa").val("");
+    $("#nip").val("");
+    $("#nama").val("");
+    $("#email").val("");
     $("#password").val("");
   });
 
-  $(".tampilModalDetailDpa").on("click", function () {
-    $("#detailModalDpaLabel").html("Detail Data DPA");
+  $(".tampilModalUbahAdmin").on("click", function () {
+    $("#formModalAdminLabel").html("Ubah Data Admin");
+    $(".modal-footer button[type=submit]").html("Ubah Data");
+    $(".modal-body form").attr(
+      "action",
+      "http://localhost/PHOENIX_TATIB_TI_2D/public/admin/ubah"
+    );
 
-    const nip_dpa = $(this).data("nip_dpa");
-    console.log(nip_dpa);
+    const nip_admin = $(this).data("nip_admin");
 
     $.ajax({
-      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/dpa/detail",
-      data: { nip_dpa: nip_dpa },
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/admin/getubah",
+      data: { nip_admin: nip_admin},
       method: "post",
       dataType: "json",
       success: function (data) {
-        console.log("Respons Server:", data);
-        $("#detailNipDpa").text(data.nip_dpa);
-        $("#detailNamaDpa").text(data.nama_dpa);
-        $("#detailKelasDpa").text(data.kelas_dpa);
-        $("#detailEmailDpa").text(data.email_dpa);
-        $("#detailPasswordDpa").text(data.password);
-      },
-      error: function (xhr, status, error) {
-        console.error("Error:", error);
+        $("#nip").val(data.nip_admin);
+        $("#nama").val(data.nama_admin);
+        $("#email").val(data.email_admin);
+        $("#password").val(data.password);
+        $("#nip_lama").val(data.nip_admin);
+        $("#nama_lama").val(data.nama_admin);
+        $("#email_lama").val(data.email_admin);
+        $("#password_lama").val(data.password);
+        $("#id_user").val(data.id_user);
+        $("#password").attr("type", "text");
       },
     });
   });
 
-  $(".tampilModalUbahDpa").on("click", function () {
-    $("#formModalDpaLabel").html("Ubah Data DPA");
-    $(".modal-footer button[type=submit]").html("Ubah Data");
-    $(".modal-body form").attr(
-      "action",
-      "http://localhost/PHOENIX_TATIB_TI_2D/public/dpa/ubah"
-    );
+  $(".tampilModalDetail").on("click", function () {
+    $("#detailModalAdminLabel").html("Detail Data Admin");
 
-    const nip_dpa = $(this).data("nip_dpa");
+    const nip_admin = $(this).data("nip_admin");
+    console.log("nip_admin:", nip_admin);
 
     $.ajax({
-      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/dpa/getubah",
-      data: { nip_dpa: nip_dpa },
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/admin/detail",
+      data: { nip_admin: nip_admin },
       method: "post",
       dataType: "json",
       success: function (data) {
         console.log("Respons Server:", data);
-        $("#nip_dpa").val(data.nip_dpa);
-        $("#nama_dpa").val(data.nama_dpa);
-        $("#kelas_dpa").val(data.kelas_dpa);
-        $("#email_dpa").val(data.email_dpa);
-        $("#password").val(data.password);
-        $("#nip_dpa_lama").val(data.nip_dpa);
-        $("#nama_dpa_lama").val(data.nama_dpa);
-        $("#kelas_dpa_lama").val(data.kelas_dpa);
-        $("#email_dpa_lama").val(data.email_dpa);
-        $("#password_lama").val(data.password);
-        $("#id_user").val(data.id_user);
+        $("#detailNip").text(data.nip_admin);
+        $("#detailNama").text(data.nama_admin);
+        $("#detailEmail").text(data.email_admin);
+        $("#detailUsername").text(data.username);
+        $("#detailPassword").text(data.password);
+        // Menangani hasil yang mungkin merupakan kumpulan matkul
+        // if (data.matkul) {
+        //   $("#detailMatkul").text(data.matkul);
+        // } else {
+        //   $("#detailMatkul").text("Tidak ada matkul");
+        // }
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
       },
     });
   });

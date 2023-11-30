@@ -75,7 +75,7 @@ class Mahasiswa extends Controller
                 $userChanged = true;
             } else {
                 // SweetAlert jika ada masalah pada perubahan user
-                $this->showSweetAlert('error', 'Ooops', 'Data User Gagal Diubah');
+                $this->showSweetAlert('error', 'Ooops', 'Data Mahasiswa Gagal Diubah');
                 header('Location: ' . BASEURL . '/mahasiswa');
                 exit;
             }
@@ -107,7 +107,7 @@ class Mahasiswa extends Controller
 
         // SweetAlert jika tidak ada perubahan di kedua entitas
         if (!$userChanged && !$mahasiswaChanged) {
-            $this->showSweetAlert('info', 'Tidak ada perubahan pada data User dan Mahasiswa', 'info');
+            $this->showSweetAlert('info', 'Tidak ada perubahan pada data Mahasiswa', 'info');
             header('Location: ' . BASEURL . '/mahasiswa');
             exit;
         } else {

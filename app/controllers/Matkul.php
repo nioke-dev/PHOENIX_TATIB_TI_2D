@@ -57,12 +57,29 @@ class Matkul extends Controller
 
     public function ubah()
     {
-        if ($this->model('Matkul_model')->ubahDataMatkul($_POST) > 0) {
-            $this->showSweetAlert('success', 'Berhasil', 'Data Matkul Dosen Berhasil Diubah');
+        // Pengecekan perubahan di matkul
+        if ($_POST['matkul'] != $_POST['matkul_lama'] || $_POST['nip_dosen'] != $_POST['nip_dosen_lama']) {
+            // Ubah data matkul
+            if ($this->model('Matkul_model')->ubahDataMatkul($_POST) > 0) {
+                $matkulChanged = true;
+            } else {
+                // SweetAlert jika ada masalah pada perubahan matkul
+                $this->showSweetAlert('error', 'Ooops', 'Data Matkul Dosen Gagal Diubah');
+                header('Location: ' . BASEURL . '/matkul');
+                exit;
+            }
+        } else {
+            // Tidak ada perubahan di matkul
+            $matkulChanged = false;
+        }
+
+        // SweetAlert jika tidak ada perubahan pada data matkul
+        if (!$matkulChanged) {
+            $this->showSweetAlert('info', 'Tidak ada perubahan pada data Matkul Dosen', 'info');
             header('Location: ' . BASEURL . '/matkul');
             exit;
         } else {
-            $this->showSweetAlert('error', 'Ooops', 'Data Matkul Dosen Gagal Diubah');
+            $this->showSweetAlert('success', 'Berhasil', 'Data berhasil Diubah');
             header('Location: ' . BASEURL . '/matkul');
             exit;
         }

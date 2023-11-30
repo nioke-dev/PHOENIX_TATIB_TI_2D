@@ -61,6 +61,7 @@ class Dpa_model
                   (:username, :password, :user_type)";
 
         $this->db->query($query);
+
         $this->db->bind('username', $data['nip_dpa']);
         $this->db->bind('password', $data['password']);
         $this->db->bind('user_type', 'dpa');
@@ -130,7 +131,7 @@ class Dpa_model
         $keyword = $_POST['keyword'];
 
         // Query SQL untuk mencari data dpa berdasarkan nama atau NIP
-        $query = "SELECT * FROM dpa WHERE nama_dpa LIKE :keyword OR nip_dpa LIKE :keyword";
+        $query = "SELECT * FROM dpa WHERE nama_dpa LIKE :keyword OR nip_dpa LIKE :keyword OR kelas_dpa LIKE :keyword OR email_dpa LIKE :keyword";
 
         // Eksekusi query
         $this->db->query($query);

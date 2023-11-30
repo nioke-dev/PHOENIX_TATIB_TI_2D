@@ -27,16 +27,16 @@ class Dpa extends Controller
         if ($this->model('Dpa_model')->tambahUserDpa($_POST) > 0) {
             $dataUser['userDpaId'] = $this->model('Dpa_model')->getUserDpaByNip($_POST);
             if ($this->model('Dpa_model')->tambahDataDpa($_POST, $dataUser) > 0) {
-                $this->showSweetAlert('Success', 'Berhasil', 'Data DPA Berhasil Ditambahkan');
+                $this->showSweetAlert('success', 'Berhasil', 'Data DPA Berhasil Ditambahkan');
                 header('Location: ' . BASEURL . '/dpa');
                 exit;
             } else {
-                $this->showSweetAlert('Error', 'Gagal', 'Data DPA Gagal Ditambahkan');
+                $this->showSweetAlert('error', 'Gagal', 'Data DPA Gagal Ditambahkan');
                 header('Location: ' . BASEURL . '/dpa');
                 exit;
             }
         } else {
-            $this->showSweetAlert('Error', 'Gagal', 'Data DPA Gagal Ditambahkan');
+            $this->showSweetAlert('error', 'Gagal', 'Data DPA Gagal Ditambahkan');
             header('Location: ' . BASEURL . '/dpa');
             exit;
         }
@@ -46,11 +46,11 @@ class Dpa extends Controller
     public function hapus($nip_dpa)
     {
         if ($this->model('Dpa_model')->hapusDataDpa($nip_dpa) > 0) {
-            $this->showSweetAlert('Success', 'Berhasil', 'Data DPA Berhasil Dihapus');
+            $this->showSweetAlert('success', 'Berhasil', 'Data DPA Berhasil Dihapus');
             header('Location: ' . BASEURL . '/dpa');
             exit;
         } else {
-            $this->showSweetAlert('Error', 'Gagal', 'Data DPA Gagal Dihapus');
+            $this->showSweetAlert('error', 'Gagal', 'Data DPA Gagal Dihapus');
             header('Location: ' . BASEURL . '/dpa');
             exit;
         }
@@ -75,7 +75,7 @@ class Dpa extends Controller
                 $userChanged = true;
             } else {
                 // SweetAlert jika ada masalah pada perubahan user
-                $this->showSweetAlert('Error', 'Gagal', 'Data User Gagal Diubah');
+                $this->showSweetAlert('error', 'Gagal', 'Data User Gagal Diubah');
                 header('Location: ' . BASEURL . '/dpa');
                 exit;
             }
@@ -95,7 +95,7 @@ class Dpa extends Controller
                 $dpaChanged = true;
             } else {
                 // SweetAlert jika ada masalah pada perubahan dpa
-                $this->showSweetAlert('Error', 'Gagal', 'Data DPA Gagal Diubah');
+                $this->showSweetAlert('error', 'Gagal', 'Data DPA Gagal Diubah');
                 header('Location: ' . BASEURL . '/dpa');
                 exit;
             }
@@ -110,7 +110,7 @@ class Dpa extends Controller
             header('Location: ' . BASEURL . '/dpa');
             exit;
         } else {
-            $this->showSweetAlert('Success', 'Berhasil', 'Data Berhasil Diubah');
+            $this->showSweetAlert('success', 'Berhasil', 'Data Berhasil Diubah');
             header('Location: ' . BASEURL . '/dpa');
             exit;
         }

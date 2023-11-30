@@ -116,26 +116,32 @@
           <div class="form-group">
             <label for="nim_mahasiswa">NIM</label>
             <input type="number" class="form-control" id="nim_mahasiswa" name="nim_mahasiswa" autocomplete="off">
+            <input type="hidden" class="form-control" id="nim_mahasiswa_lama" name="nim_mahasiswa_lama" autocomplete="off">
           </div>
           <div class="form-group">
             <label for="nama_mahasiswa">Nama</label>
             <input type="text" class="form-control" id="nama_mahasiswa" name="nama_mahasiswa" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="nama_mahasiswa_lama" name="nama_mahasiswa_lama" autocomplete="off" required>
           </div>
           <div class="form-group">
             <label for="kelas_mahasiswa">Kelas</label>
             <input type="text" class="form-control" id="kelas_mahasiswa" name="kelas_mahasiswa" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="kelas_mahasiswa_lama" name="kelas_mahasiswa_lama" autocomplete="off" required>
           </div>
           <div class="form-group">
             <label for="prodi_mahasiswa">Program Studi</label>
             <input type="text" class="form-control" id="prodi_mahasiswa" name="prodi_mahasiswa" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="prodi_mahasiswa_lama" name="prodi_mahasiswa_lama" autocomplete="off" required>
           </div>
           <div class="form-group">
             <label for="email_mahasiswa">Email</label>
             <input type="email" class="form-control" id="email_mahasiswa" name="email_mahasiswa" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="email_mahasiswa_lama" name="email_mahasiswa_lama" autocomplete="off" required>
           </div>
           <div class="form-group">
             <label for="password">password</label>
             <input type="text" class="form-control" id="password" name="password" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="password_lama" name="password_lama" autocomplete="off" required>
           </div>
       </div>
       <div class="modal-footer">

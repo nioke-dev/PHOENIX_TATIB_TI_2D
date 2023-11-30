@@ -160,6 +160,12 @@ $(function () {
         $("#prodi_mahasiswa").val(data.prodi_mahasiswa);
         $("#email_mahasiswa").val(data.email_mahasiswa);
         $("#password").val(data.password);
+        $("#nim_mahasiswa_lama").val(data.nim_mahasiswa);
+        $("#nama_mahasiswa_lama").val(data.nama_mahasiswa);
+        $("#kelas_mahasiswa_lama").val(data.kelas_mahasiswa);
+        $("#prodi_mahasiswa_lama").val(data.prodi_mahasiswa);
+        $("#email_mahasiswa_lama").val(data.email_mahasiswa);
+        $("#password_lama").val(data.password);
         $("#id_user").val(data.id_user);
       },
     });

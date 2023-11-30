@@ -89,7 +89,7 @@ class Mahasiswa_model
     // Fungsi untuk mengubah data mahasiswa
     public function ubahDataMahasiswa($data)
     {
-        // Query SQL untuk mengubah data mahasiswa
+        // Query SQL untuk mengubah data mahasiswa        
         $query = "UPDATE mahasiswa SET
                     nama_mahasiswa = :nama_mahasiswa,
                     kelas_mahasiswa = :kelas_mahasiswa,

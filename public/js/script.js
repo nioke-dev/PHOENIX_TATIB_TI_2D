@@ -192,13 +192,13 @@ $(function () {
     $(".modal-footer button[type=submit]").html("Ubah Data");
     $(".modal-body form").attr(
       "action",
-      "http://localhost/PHOENIX_TATIB_TI_2D/public/dosen/ubah"
+      "http://localhost/PHOENIX_TATIB_TI_2D/public/admin/ubah"
     );
 
-    const nip_dosen = $(this).data("nip_admin");
+    const nip_admin = $(this).data("nip_admin");
 
     $.ajax({
-      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/dosen/getubah",
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/admin/getubah",
       data: { nip_admin: nip_admin},
       method: "post",
       dataType: "json",
@@ -224,7 +224,7 @@ $(function () {
     console.log("nip_admin:", nip_admin);
 
     $.ajax({
-      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/dosen/detail",
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/admin/detail",
       data: { nip_admin: nip_admin },
       method: "post",
       dataType: "json",

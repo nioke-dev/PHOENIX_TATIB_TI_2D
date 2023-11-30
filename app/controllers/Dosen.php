@@ -47,11 +47,11 @@ class Dosen extends Controller
     public function hapus($id)
     {
         if ($this->model('Dosen_model')->hapusDataDosen($id) > 0) {
-            // Flasher::setFlash('berhasil', 'dihapus', 'success');
+            $this->showSweetAlert('success', 'Berhasil', 'Data Dosen berhasil Dihapus');
             header('Location: ' . BASEURL . '/dosen');
             exit;
         } else {
-            // Flasher::setFlash('gagal', 'dihapus', 'danger');
+            $this->showSweetAlert('error', 'Ooops', 'Data Dosen Gagal dihapus');
             header('Location: ' . BASEURL . '/dosen');
             exit;
         }

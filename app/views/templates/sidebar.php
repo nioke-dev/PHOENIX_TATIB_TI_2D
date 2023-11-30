@@ -64,6 +64,14 @@
                           </a>
                       </li>
                       <li class="sidebar-item">
+                        <a class="sidebar-link" href="<?= BASEURL; ?>/admin" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-file-description"></i>
+                            </span>
+                            <span class="hide-menu">Admin</span>
+                        </a>
+                    </li>
+                      <li class="sidebar-item">
                           <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
                               <span>
                                   <i class="ti ti-typography"></i>

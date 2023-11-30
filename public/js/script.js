@@ -177,5 +177,76 @@ $(function () {
     });
   });
 
+  // Admin Function
+  $(".tombolTambahDataAdmin").on("click", function () {
+    $("#formModalAdminLabel").html("Tambah Data Admin");
+    $(".modal-footer button[type=submit]").html("Tambah Data");
+    $("#nip").val("");
+    $("#nama").val("");
+    $("#email").val("");
+    $("#password").val("");
+  });
+
+  $(".tampilModalUbahAdmin").on("click", function () {
+    $("#formModalAdminLabel").html("Ubah Data Admin");
+    $(".modal-footer button[type=submit]").html("Ubah Data");
+    $(".modal-body form").attr(
+      "action",
+      "http://localhost/PHOENIX_TATIB_TI_2D/public/dosen/ubah"
+    );
+
+    const nip_dosen = $(this).data("nip_admin");
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/dosen/getubah",
+      data: { nip_admin: nip_admin},
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        $("#nip").val(data.nip_admin);
+        $("#nama").val(data.nama_admin);
+        $("#email").val(data.email_admin);
+        $("#password").val(data.password);
+        $("#nip_lama").val(data.nip_admin);
+        $("#nama_lama").val(data.nama_admin);
+        $("#email_lama").val(data.email_admin);
+        $("#password_lama").val(data.password);
+        $("#id_user").val(data.id_user);
+        $("#password").attr("type", "text");
+      },
+    });
+  });
+
+  $(".tampilModalDetail").on("click", function () {
+    $("#detailModalAdminLabel").html("Detail Data Admin");
+
+    const nip_admin = $(this).data("nip_admin");
+    console.log("nip_admin:", nip_admin);
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/dosen/detail",
+      data: { nip_admin: nip_admin },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#detailNip").text(data.nip_admin);
+        $("#detailNama").text(data.nama_admin);
+        $("#detailEmail").text(data.email_admin);
+        $("#detailUsername").text(data.username);
+        $("#detailPassword").text(data.password);
+        // Menangani hasil yang mungkin merupakan kumpulan matkul
+        // if (data.matkul) {
+        //   $("#detailMatkul").text(data.matkul);
+        // } else {
+        //   $("#detailMatkul").text("Tidak ada matkul");
+        // }
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      },
+    });
+  });
+
   // ... (fungsi-fungsi lainnya)
 });

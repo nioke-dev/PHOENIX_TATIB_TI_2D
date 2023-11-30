@@ -22,23 +22,18 @@ class Admin extends Controller
     public function tambah()
     {
         if ($this->model('Admin_model')->tambahUserAdmin($_POST) > 0) {
-            # code...
             $dataUser['userAdminId'] = $this->model('Admin_model')->getUserAdminByNip($_POST);
-
-            if (
-                $this->model('Admin_model')->tambahDataAdmin($_POST, $dataUser) > 0
-            ) {
-
-                $this->showSweetAlert('success', 'Berhasil', 'Data Admin berhasil ditambahkan');
+            if ($this->model('Admin_model')->tambahDataAdmin($_POST, $dataUser) > 0) {
+                $this->showSweetAlert('success', 'Berhasil', 'Data Admin Berhasil Ditambahkan');
                 header('Location: ' . BASEURL . '/admin');
                 exit;
             } else {
-                $this->showSweetAlert('error', 'Ooops', 'Data Admin Gagal ditambahkan');
+                $this->showSweetAlert('error', 'Gagal', 'Data Admin Gagal Ditambahkan');
                 header('Location: ' . BASEURL . '/admin');
                 exit;
             }
         } else {
-            $this->showSweetAlert('error', 'Ooops', 'Data Admin Gagal ditambahkan');
+            $this->showSweetAlert('error', 'Gagal', 'Data Admin Gagal Ditambahkan');
             header('Location: ' . BASEURL . '/admin');
             exit;
         }
@@ -64,18 +59,53 @@ class Admin extends Controller
 
     public function ubah()
     {
-        if ($this->model('Admin_model')->ubahDataUser($_POST) > 0) {
-            if ($this->model('Admin_model')->ubahDataAdmin($_POST) > 0) {
-                $this->showSweetAlert('success', 'Berhasil', 'Data Admin berhasil Diubah');
+        // Pengecekan perubahan di user
+        if (
+            $_POST['password'] != $_POST['password_lama'] ||
+            $_POST['nip_admin'] != $_POST['nip_admin_lama']
+        ) {
+            // Ubah data user admin
+            if ($this->model('Admin_model')->ubahDataUser($_POST) > 0) {
+                $userChanged = true;
+            } else {
+                // SweetAlert jika ada masalah pada perubahan user
+                $this->showSweetAlert('error', 'Ooops', 'Data User Admin Gagal Diubah');
                 header('Location: ' . BASEURL . '/admin');
                 exit;
+            }
+        } else {
+            // Tidak ada perubahan di user
+            $userChanged = false;
+        }
+
+        // Pengecekan perubahan di admin
+        if (
+            $_POST['nama_admin'] != $_POST['nama_admin_lama'] ||
+            $_POST['email_admin'] != $_POST['email_admin_lama']
+        ) {
+            // Ubah data admin
+            if ($this->model('Admin_model')->ubahDataAdmin($_POST) > 0) {
+                $adminChanged = true;
             } else {
+                // SweetAlert jika ada masalah pada perubahan admin
                 $this->showSweetAlert('error', 'Ooops', 'Data Admin Gagal Diubah');
                 header('Location: ' . BASEURL . '/admin');
                 exit;
             }
         } else {
-            $this->showSweetAlert('error', 'Ooops', 'Data Admin Gagal Diubahh');
+            // Tidak ada perubahan di admin
+            $adminChanged = false;
+        }
+
+        // SweetAlert jika tidak ada perubahan di kedua entitas
+        if (!$userChanged && !$adminChanged) {
+            $this->showSweetAlert('info', 'Tidak ada perubahan pada data Admin', 'info');
+            header('Location: ' . BASEURL . '/admin');
+            exit;
+        } else {
+            $this->showSweetAlert('success', 'Berhasil', 'Data berhasil Diubah');
+            header('Location: ' . BASEURL . '/admin');
+            exit;
         }
     }
 

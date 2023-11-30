@@ -181,9 +181,9 @@ $(function () {
   $(".tombolTambahDataAdmin").on("click", function () {
     $("#formModalAdminLabel").html("Tambah Data Admin");
     $(".modal-footer button[type=submit]").html("Tambah Data");
-    $("#nip").val("");
-    $("#nama").val("");
-    $("#email").val("");
+    $("#nip_admin").val("");
+    $("#nama_admin").val("");
+    $("#email_admin").val("");
     $("#password").val("");
   });
 
@@ -203,13 +203,13 @@ $(function () {
       method: "post",
       dataType: "json",
       success: function (data) {
-        $("#nip").val(data.nip_admin);
-        $("#nama").val(data.nama_admin);
-        $("#email").val(data.email_admin);
+        $("#nip_admin").val(data.nip_admin);
+        $("#nama_admin").val(data.nama_admin);
+        $("#email_admin").val(data.email_admin);
         $("#password").val(data.password);
-        $("#nip_lama").val(data.nip_admin);
-        $("#nama_lama").val(data.nama_admin);
-        $("#email_lama").val(data.email_admin);
+        $("#nip_admin_lama").val(data.nip_admin);
+        $("#nama_admin_lama").val(data.nama_admin);
+        $("#email_admin_lama").val(data.email_admin);
         $("#password_lama").val(data.password);
         $("#id_user").val(data.id_user);
         $("#password").attr("type", "text");
@@ -230,11 +230,11 @@ $(function () {
       dataType: "json",
       success: function (data) {
         console.log("Respons Server:", data);
-        $("#detailNip").text(data.nip_admin);
-        $("#detailNama").text(data.nama_admin);
-        $("#detailEmail").text(data.email_admin);
-        $("#detailUsername").text(data.username);
-        $("#detailPassword").text(data.password);
+        $("#detailNipAdmin").text(data.nip_admin);
+        $("#detailNamaAdmin").text(data.nama_admin);
+        $("#detailEmailAdmin").text(data.email_admin);
+        $("#detailUsernameAdmin").text(data.username);
+        $("#detailPasswordAdmin").text(data.password);
         // Menangani hasil yang mungkin merupakan kumpulan matkul
         // if (data.matkul) {
         //   $("#detailMatkul").text(data.matkul);

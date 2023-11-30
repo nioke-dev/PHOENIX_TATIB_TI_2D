@@ -69,23 +69,23 @@
       <div class="modal-body">
 
         <div class="form-group">
-          <p><strong>NIP:</strong> <span id="detailNip"></span></p>
+          <p><strong>NIP:</strong> <span id="detailNipAdmin"></span></p>
         </div>
 
         <div class="form-group">
-          <p><strong>Nama:</strong> <span id="detailNama"></span></p>
+          <p><strong>Nama:</strong> <span id="detailNamaAdmin"></span></p>
         </div>
 
         <div class="form-group">
-          <p><strong>Email:</strong> <span id="detailEmail"></span></p>
+          <p><strong>Email:</strong> <span id="detailEmailAdmin"></span></p>
         </div>
 
         <div class="form-group">
-          <p><strong>Username:</strong> <span id="detailUsername"></span></p>
+          <p><strong>Username:</strong> <span id="detailUsernameAdmin"></span></p>
         </div>
 
         <div class="form-group">
-          <p><strong>Password:</strong> <span id="detailPassword"></span></p>
+          <p><strong>Password:</strong> <span id="detailPasswordAdmin"></span></p>
         </div>
 
         <!-- <div class="form-group">
@@ -118,19 +118,19 @@
           <div class="form-group">
             <label for="nip">NIP</label>
             <input type="number" class="form-control" id="nip" name="nip" autocomplete="off">
-            <input type="hidden" class="form-control" id="nip_lama" name="nip_lama" autocomplete="off">
+            <input type="hidden" class="form-control" id="nip_admin_lama" name="nip_admin_lama" autocomplete="off">
           </div>
 
           <div class="form-group">
             <label for="nama">Nama</label>
             <input type="text" class="form-control" id="nama" name="nama" autocomplete="off" required>
-            <input type="hidden" class="form-control" id="nama_lama" name="nama_lama" autocomplete="off">
+            <input type="hidden" class="form-control" id="nama_admin_lama" name="nama_admin_lama" autocomplete="off">
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
             <input type="email" class="form-control" id="email" name="email" autocomplete="off" required>
-            <input type="hidden" class="form-control" id="email_lama" name="email_lama" autocomplete="off">
+            <input type="hidden" class="form-control" id="email_admin_lama" name="email_admin_lama" autocomplete="off">
           </div>
 
           <div class="form-group">

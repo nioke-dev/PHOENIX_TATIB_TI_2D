@@ -22,10 +22,10 @@ class Admin_model
                     VALUES
                   (:nip_admin, :id_user, :nama_admin, :email_admin)";
         $this->db->query($query);
-        $this->db->bind('nip_admin', $data['nip']);
+        $this->db->bind('nip_admin', $data['nip_admin']);
         $this->db->bind('id_user', $id_user['userAdminId']['id_user']);
-        $this->db->bind('nama_admin', $data['nama']);
-        $this->db->bind('email_admin', $data['email']);
+        $this->db->bind('nama_admin', $data['nama_admin']);
+        $this->db->bind('email_admin', $data['email_admin']);
 
         $this->db->execute();
 
@@ -34,8 +34,8 @@ class Admin_model
 
     public function getUserAdminByNip($data)
     {
-        $this->db->query('SELECT * FROM user WHERE username=:nip');
-        $this->db->bind('nip', $data['nip']);
+        $this->db->query('SELECT * FROM user WHERE username=:nip_admin');
+        $this->db->bind('nip_admin', $data['nip_admin']);
         return $this->db->single();
     }
 
@@ -46,7 +46,7 @@ class Admin_model
                   (:username, :password, :user_type)";
 
         $this->db->query($query);
-        $this->db->bind('username', $data['nip']);
+        $this->db->bind('username', $data['nip_admin']);
         $this->db->bind('password', $data['password']);
         $this->db->bind('user_type', 'admin');
 
@@ -91,9 +91,9 @@ class Admin_model
                   WHERE nip_admin = :nip_admin";
 
         $this->db->query($query);
-        $this->db->bind('nama_admin', $data['nama']);
-        $this->db->bind('email_admin', $data['email']);
-        $this->db->bind('nip_admin', $data['nip']);
+        $this->db->bind('nama_admin', $data['nama_admin']);
+        $this->db->bind('email_admin', $data['email_admin']);
+        $this->db->bind('nip_admin', $data['nip_admin']);
 
         $this->db->execute();
 
@@ -108,7 +108,7 @@ class Admin_model
                   WHERE id_user = :id_user";
 
         $this->db->query($query);
-        $this->db->bind('username', $data['nip']);
+        $this->db->bind('username', $data['nip_admin']);
         $this->db->bind('password', $data['password']);
         $this->db->bind('id_user', $data['id_user']);
 

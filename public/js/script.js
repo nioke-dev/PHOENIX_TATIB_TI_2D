@@ -199,7 +199,7 @@ $(function () {
 
     $.ajax({
       url: "http://localhost/PHOENIX_TATIB_TI_2D/public/admin/getubah",
-      data: { nip_admin: nip_admin},
+      data: { nip_admin: nip_admin },
       method: "post",
       dataType: "json",
       success: function (data) {
@@ -275,7 +275,7 @@ $(function () {
         console.log("Respons Server:", data);
         $("#detailNipDpa").text(data.nip_dpa);
         $("#detailNamaDpa").text(data.nama_dpa);
-        $("#detailKelasDpa").text(data.kelas_dpa);        
+        $("#detailKelasDpa").text(data.kelas_dpa);
         $("#detailEmailDpa").text(data.email_dpa);
         $("#detailPasswordDpa").text(data.password);
       },
@@ -303,7 +303,7 @@ $(function () {
       success: function (data) {
         $("#nip_dpa").val(data.nip_dpa);
         $("#nama_dpa").val(data.nama_dpa);
-        $("#kelas_dpa").val(data.kelas_dpa);        
+        $("#kelas_dpa").val(data.kelas_dpa);
         $("#email_dpa").val(data.email_dpa);
         $("#password").val(data.password);
         $("#nip_dpa_lama").val(data.nip_dpa);
@@ -312,6 +312,69 @@ $(function () {
         $("#email_dpa_lama").val(data.email_dpa);
         $("#password_lama").val(data.password);
         $("#id_user").val(data.id_user);
+      },
+    });
+  });
+
+  // Tatib Function
+  $(".tombolTambahDataTatib").on("click", function () {
+    $("#formModalTatibLabel").html("Tambah Data Tatib");
+    $(".modal-footer button[type=submit]").html("Tambah Data");
+    $("#deskripsi").val("");
+    $("#tatib").val("");
+  });
+
+  $(".tampilModalUbahTatib").on("click", function () {
+    $("#formModalTatibLabel").html("Ubah Data Tatib");
+    $(".modal-footer button[type=submit]").html("Ubah Data");
+    $(".modal-body form").attr(
+      "action",
+      "http://localhost/PHOENIX_TATIB_TI_2D/public/tatib/ubah"
+    );
+
+    const id_tatib = $(this).data("id_tatib");
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/tatib/getubah",
+      data: { id_tatib: id_tatib },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#deskripsi").val(data.deskripsi);
+        $("#tatib").val(data.tatib);
+        $("#id_tatib").val(data.id_tatib);
+        $("#id_tingkatSanksi").val(data.id_tingkatSanksi);
+      },
+    });
+  });
+
+  $(".tampilModalDetailTatib").on("click", function () {
+    $("#detailModalTatibLabel").html("Detail Data Tatib");
+
+    const id_tatib = $(this).data("id_tatib");
+    console.log("id_tatib:", id_tatib);
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/tatib/getubah",
+      data: { id_tatib: id_tatib },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#detailDeskripsi").text(data.deskripsi);
+        $("#detailTingkatSanksi").text(data.id_tingkatSanksi);
+        $("#id_tatib").text(data.id_tatib);
+        $("#id_tingkatSanksi").text(data.id_tingkatSanksi);
+
+        if (data.tatib) {
+          $("#detailTatib").text(data.tatib);
+        } else {
+          $("#detailTatib").text("Tidak ada tatib");
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
       },
     });
   });

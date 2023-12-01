@@ -44,8 +44,8 @@
                         <td><?= $matkul['nip_dosen']; ?></td>
                         <td><?= $matkul['matkul']; ?></td>
                         <td>
-                            <a href="<?= BASEURL; ?>/matkul/hapus/<?= $matkul['id_matkul']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
                             <a href="<?= BASEURL; ?>/matkul/ubah/<?= $matkul['id_matkul']; ?>" class="badge bg-success float-right tampilModalUbahMatkul" data-bs-toggle="modal" data-bs-target="#formModalMatkulDosen" data-id_matkul="<?= $matkul['id_matkul']; ?>">ubah</a>
+                            <a href="<?= BASEURL; ?>/matkul/hapus/<?= $matkul['id_matkul']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

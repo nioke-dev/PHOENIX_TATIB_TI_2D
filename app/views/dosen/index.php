@@ -46,9 +46,9 @@
             <td><?= $dsn['nama_dosen']; ?></td>
             <td><?= $dsn['email_dosen']; ?></td>
             <td>
-              <a href="<?= BASEURL; ?>/dosen/hapus/<?= $dsn['nip_dosen']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
+            <a href="<?= BASEURL; ?>/dosen/detail/<?= $dsn['nip_dosen']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">Detail</a>
               <a href="<?= BASEURL; ?>/dosen/ubah/<?= $dsn['nip_dosen']; ?>" class="badge bg-success float-right tampilModalUbahDosen" data-bs-toggle="modal" data-bs-target="#formModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">ubah</a>
-              <a href="<?= BASEURL; ?>/dosen/detail/<?= $dsn['nip_dosen']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">Detail</a>
+              <a href="<?= BASEURL; ?>/dosen/hapus/<?= $dsn['nip_dosen']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
             </td>
           </tr>
         <?php endforeach; ?>

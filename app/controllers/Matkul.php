@@ -6,6 +6,7 @@ class Matkul extends Controller
     {
         $data['judul'] = 'Daftar Matkul Dosen';
         $data['matkul'] = $this->model('Matkul_model')->getAllMatkul();
+        $data['nama'] = $this->model('User_model')->getUser();
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);

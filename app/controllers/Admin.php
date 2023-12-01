@@ -6,6 +6,7 @@ class Admin extends Controller
     {
         $data['judul'] = 'Daftar Admin';
         $data['adm'] = $this->model('Admin_model')->getAllAdmin();
+        $data['nama'] = $this->model('User_model')->getUser();
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);

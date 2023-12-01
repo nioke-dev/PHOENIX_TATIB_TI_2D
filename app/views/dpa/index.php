@@ -52,10 +52,10 @@
             <td><?= $dpa['kelas_dpa']; ?></td>
             <td><?= $dpa['email_dpa']; ?></td>
             <td>
-              <a href="<?= BASEURL; ?>/dpa/hapus/<?= $dpa['nip_dpa']; ?>" class="badge bg-danger float-right" onclick="return confirm('Anda Yakin Untuk Menghapus Data Berikut?');">Hapus</a>
+            <a href="<?= BASEURL; ?>/dpa/detail/<?= $dpa['nip_dpa']; ?>" class="badge bg-primary float-right tampilModalDetailDpa" data-bs-toggle="modal" data-bs-target="#detailModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Detail</a>
               <a href="<?= BASEURL; ?>/dpa/ubah/<?= $dpa['nip_dpa']; ?>" class="badge bg-success float-right tampilModalUbahDpa" data-bs-toggle="modal" data-bs-target="#formModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Ubah</a>
-              <a href="<?= BASEURL; ?>/dpa/detail/<?= $dpa['nip_dpa']; ?>" class="badge bg-primary float-right tampilModalDetailDpa" data-bs-toggle="modal" data-bs-target="#detailModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Detail</a>
-            </td>
+              <a href="<?= BASEURL; ?>/dpa/hapus/<?= $dpa['nip_dpa']; ?>" class="badge bg-danger float-right" onclick="return confirm('Anda Yakin Untuk Menghapus Data Berikut?');">Hapus</a>
+              </td>
           </tr>
         <?php endforeach; ?>
       </tbody>

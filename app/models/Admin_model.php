@@ -16,7 +16,7 @@ class Admin_model
         return $this->db->resultSet();
     }
 
-    public function getAdminByNip($nip_dpa)
+    public function getAdminByNip($nip_admin)
     {
         $this->db->query('SELECT * FROM admin adm INNER JOIN user u ON adm.nip_admin = u.username WHERE nip_admin=:nip_admin');
         $this->db->bind('nip_admin', $nip_admin);

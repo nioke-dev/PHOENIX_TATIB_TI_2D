@@ -188,7 +188,7 @@ $(function () {
   });
 
   $(".tampilModalUbahAdmin").on("click", function () {
-    $("#formModalAdminLabel").html("Ubah Data Adminnnn");
+    $("#formModalAdminLabel").html("Ubah Data Admin");
     $(".modal-footer button[type=submit]").html("Ubah Data");
     $(".modal-body form").attr(
       "action",
@@ -203,6 +203,7 @@ $(function () {
       method: "post",
       dataType: "json",
       success: function (data) {
+        console.log("Respons Server:", data);
         $("#nip_admin").val(data.nip_admin);
         $("#nama_admin").val(data.nama_admin);
         $("#email_admin").val(data.email_admin);
@@ -218,7 +219,7 @@ $(function () {
   });
 
   $(".tampilModalDetail").on("click", function () {
-    $("#detailModalAdminLabel").html("Detail Data Adminnnnn");
+    $("#detailModalAdminLabel").html("Detail Data Admin");
 
     const nip_admin = $(this).data("nip_admin");
     console.log("nip_admin:", nip_admin);

@@ -18,6 +18,7 @@
                 </ul>
                 <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                     <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                        
                         <a href=""><?= $data['nama']; ?></a>
                         <!-- <a href="./authentication-login.html" target="_blank" class="btn btn-primary">Log Out</a> -->
                         <li class="nav-item dropdown">

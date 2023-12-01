@@ -56,6 +56,14 @@
                           </a>
                       </li>
                       <li class="sidebar-item">
+                          <a class="sidebar-link" href="<?= BASEURL; ?>/dpa" aria-expanded="false">
+                              <span>
+                                  <i class="ti ti-cards"></i>
+                              </span>
+                              <span class="hide-menu">DPA</span>
+                          </a>
+                      </li>
+                      <li class="sidebar-item">
                           <a class="sidebar-link" href="<?= BASEURL; ?>/matkul" aria-expanded="false">
                               <span>
                                   <i class="ti ti-file-description"></i>
@@ -64,7 +72,15 @@
                           </a>
                       </li>
                       <li class="sidebar-item">
-                          <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
+                          <a class="sidebar-link" href="<?= BASEURL; ?>/admin" aria-expanded="false">
+                              <span>
+                                  <i class="ti ti-file-description"></i>
+                              </span>
+                              <span class="hide-menu">Admin</span>
+                          </a>
+                      </li>
+                      <li class="sidebar-item">
+                          <a class="sidebar-link" href="<?= BASEURL; ?>/tatib" aria-expanded="false">
                               <span>
                                   <i class="ti ti-typography"></i>
                               </span>

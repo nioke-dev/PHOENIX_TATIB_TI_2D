@@ -25,7 +25,7 @@ class Mahasiswa extends Controller
     public function tambah()
     {
         if ($this->model('Mahasiswa_model')->tambahUserMahasiswa($_POST) > 0) {
-            $dataUser['userDosenId'] = $this->model('Mahasiswa_model')->getUserMahasiswaByNim($_POST);
+            $dataUser['userMahasiswaId'] = $this->model('Mahasiswa_model')->getUserMahasiswaByNim($_POST);
             if ($this->model('Mahasiswa_model')->tambahDataMahasiswa($_POST, $dataUser) > 0) {
                 $this->showSweetAlert('success', 'Berhasil', 'Data Mahasiswa berhasil ditambahkan');
                 header('Location: ' . BASEURL . '/mahasiswa');
@@ -65,18 +65,53 @@ class Mahasiswa extends Controller
     // Fungsi untuk mengubah data mahasiswa
     public function ubah()
     {
-        if ($this->model('Mahasiswa_model')->ubahDataUser($_POST) > 0) {
-            if ($this->model('Mahasiswa_model')->ubahDataMahasiswa($_POST) > 0) {
-                $this->showSweetAlert('success', 'Berhasil', 'Data Mahasiswa berhasil Diubah');
-                header('Location: ' . BASEURL . '/mahasiswa');
-                exit;
+        // Pengecekan perubahan di user
+        if (
+            $_POST['password'] != $_POST['password_lama'] ||
+            $_POST['nim_mahasiswa'] != $_POST['nim_mahasiswa_lama']
+        ) {
+            // Ubah data user mahasiswa
+            if ($this->model('Mahasiswa_model')->ubahDataUserMahasiswa($_POST) > 0) {
+                $userChanged = true;
             } else {
+                // SweetAlert jika ada masalah pada perubahan user
                 $this->showSweetAlert('error', 'Ooops', 'Data Mahasiswa Gagal Diubah');
                 header('Location: ' . BASEURL . '/mahasiswa');
                 exit;
             }
         } else {
-            $this->showSweetAlert('error', 'Ooops', 'Data Mahasiswa Gagal Diubahss');
+            // Tidak ada perubahan di user
+            $userChanged = false;
+        }
+
+        // Pengecekan perubahan di mahasiswa
+        if (
+            $_POST['nama_mahasiswa'] != $_POST['nama_mahasiswa_lama'] ||
+            $_POST['kelas_mahasiswa'] != $_POST['kelas_mahasiswa_lama'] ||
+            $_POST['prodi_mahasiswa'] != $_POST['prodi_mahasiswa_lama'] ||
+            $_POST['email_mahasiswa'] != $_POST['email_mahasiswa_lama']
+        ) {
+            // Ubah data mahasiswa
+            if ($this->model('Mahasiswa_model')->ubahDataMahasiswa($_POST) > 0) {
+                $mahasiswaChanged = true;
+            } else {
+                // SweetAlert jika ada masalah pada perubahan mahasiswa
+                $this->showSweetAlert('error', 'Ooops', 'Data Mahasiswa Gagal Diubah');
+                header('Location: ' . BASEURL . '/mahasiswa');
+                exit;
+            }
+        } else {
+            // Tidak ada perubahan di mahasiswa
+            $mahasiswaChanged = false;
+        }
+
+        // SweetAlert jika tidak ada perubahan di kedua entitas
+        if (!$userChanged && !$mahasiswaChanged) {
+            $this->showSweetAlert('info', 'Tidak ada perubahan pada data Mahasiswa', 'info');
+            header('Location: ' . BASEURL . '/mahasiswa');
+            exit;
+        } else {
+            $this->showSweetAlert('success', 'Berhasil', 'Data berhasil Diubah');
             header('Location: ' . BASEURL . '/mahasiswa');
             exit;
         }

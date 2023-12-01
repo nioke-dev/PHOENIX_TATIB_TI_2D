@@ -114,28 +114,34 @@
         <form action="<?= BASEURL; ?>/mahasiswa/tambah" method="post">
           <input type="hidden" name="id_user" id="id_user">
           <div class="form-group">
-            <label for="nim">NIM</label>
-            <input type="number" class="form-control" id="nim" name="nim" autocomplete="off">
+            <label for="nim_mahasiswa">NIM</label>
+            <input type="number" class="form-control" id="nim_mahasiswa" name="nim_mahasiswa" autocomplete="off">
+            <input type="hidden" class="form-control" id="nim_mahasiswa_lama" name="nim_mahasiswa_lama" autocomplete="off">
           </div>
           <div class="form-group">
-            <label for="nama">Nama</label>
-            <input type="text" class="form-control" id="nama" name="nama" autocomplete="off" required>
+            <label for="nama_mahasiswa">Nama</label>
+            <input type="text" class="form-control" id="nama_mahasiswa" name="nama_mahasiswa" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="nama_mahasiswa_lama" name="nama_mahasiswa_lama" autocomplete="off" required>
           </div>
           <div class="form-group">
-            <label for="kelas">Kelas</label>
-            <input type="text" class="form-control" id="kelas" name="kelas" autocomplete="off" required>
+            <label for="kelas_mahasiswa">Kelas</label>
+            <input type="text" class="form-control" id="kelas_mahasiswa" name="kelas_mahasiswa" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="kelas_mahasiswa_lama" name="kelas_mahasiswa_lama" autocomplete="off" required>
           </div>
           <div class="form-group">
-            <label for="prodi">Program Studi</label>
-            <input type="text" class="form-control" id="prodi" name="prodi" autocomplete="off" required>
+            <label for="prodi_mahasiswa">Program Studi</label>
+            <input type="text" class="form-control" id="prodi_mahasiswa" name="prodi_mahasiswa" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="prodi_mahasiswa_lama" name="prodi_mahasiswa_lama" autocomplete="off" required>
           </div>
           <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" autocomplete="off" required>
+            <label for="email_mahasiswa">Email</label>
+            <input type="email" class="form-control" id="email_mahasiswa" name="email_mahasiswa" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="email_mahasiswa_lama" name="email_mahasiswa_lama" autocomplete="off" required>
           </div>
           <div class="form-group">
             <label for="password">password</label>
-            <input type="password" class="form-control" id="password" name="password" autocomplete="off" required>
+            <input type="text" class="form-control" id="password" name="password" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="password_lama" name="password_lama" autocomplete="off" required>
           </div>
       </div>
       <div class="modal-footer">

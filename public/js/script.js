@@ -30,6 +30,10 @@ $(function () {
         $("#nama").val(data.nama_dosen);
         $("#email").val(data.email_dosen);
         $("#password").val(data.password);
+        $("#nip_lama").val(data.nip_dosen);
+        $("#nama_lama").val(data.nama_dosen);
+        $("#email_lama").val(data.email_dosen);
+        $("#password_lama").val(data.password);
         $("#id_user").val(data.id_user);
         $("#password").attr("type", "text");
       },
@@ -95,6 +99,8 @@ $(function () {
         console.log("Respons Server:", data);
         $("#nip_dosen").val(data.nip_dosen);
         $("#matkul").val(data.matkul);
+        $("#nip_dosen_lama").val(data.nip_dosen);
+        $("#matkul_lama").val(data.matkul);
         $("#id_matkul").val(data.id_matkul);
       },
     });
@@ -104,11 +110,11 @@ $(function () {
   $(".tombolTambahDataMahasiswa").on("click", function () {
     $("#formModalMahasiswaLabel").html("Tambah Data Mahasiswa");
     $(".modal-footer button[type=submit]").html("Tambah Data");
-    $("#nim").val("");
-    $("#nama").val("");
-    $("#kelas").val("");
-    $("#prodi").val("");
-    $("#email").val("");
+    $("#nim_mahasiswa").val("");
+    $("#nama_mahasiswa").val("");
+    $("#kelas_mahasiswa").val("");
+    $("#prodi_mahasiswa").val("");
+    $("#email_mahasiswa").val("");
     $("#password").val("");
   });
 
@@ -139,7 +145,7 @@ $(function () {
   });
 
   $(".tampilModalUbahMahasiswa").on("click", function () {
-    $("#formModalMahasiswaLabel").html("Ubah Data Mahasiswa");
+    $("#formModalMahasiswaLabel").html("Ubah Data Mahasiswaaaa");
     $(".modal-footer button[type=submit]").html("Ubah Data");
     $(".modal-body form").attr(
       "action",
@@ -154,13 +160,221 @@ $(function () {
       method: "post",
       dataType: "json",
       success: function (data) {
-        $("#nim").val(data.nim_mahasiswa);
-        $("#nama").val(data.nama_mahasiswa);
-        $("#kelas").val(data.kelas_mahasiswa);
-        $("#prodi").val(data.prodi_mahasiswa);
-        $("#email").val(data.email_mahasiswa);
+        $("#nim_mahasiswa").val(data.nim_mahasiswa);
+        $("#nama_mahasiswa").val(data.nama_mahasiswa);
+        $("#kelas_mahasiswa").val(data.kelas_mahasiswa);
+        $("#prodi_mahasiswa").val(data.prodi_mahasiswa);
+        $("#email_mahasiswa").val(data.email_mahasiswa);
         $("#password").val(data.password);
+        $("#nim_mahasiswa_lama").val(data.nim_mahasiswa);
+        $("#nama_mahasiswa_lama").val(data.nama_mahasiswa);
+        $("#kelas_mahasiswa_lama").val(data.kelas_mahasiswa);
+        $("#prodi_mahasiswa_lama").val(data.prodi_mahasiswa);
+        $("#email_mahasiswa_lama").val(data.email_mahasiswa);
+        $("#password_lama").val(data.password);
         $("#id_user").val(data.id_user);
+      },
+    });
+  });
+
+  // Admin Function
+  $(".tombolTambahDataAdmin").on("click", function () {
+    $("#formModalAdminLabel").html("Tambah Data Admin");
+    $(".modal-footer button[type=submit]").html("Tambah Data");
+    $("#nip_admin").val("");
+    $("#nama_admin").val("");
+    $("#email_admin").val("");
+    $("#password").val("");
+  });
+
+  $(".tampilModalUbahAdmin").on("click", function () {
+    $("#formModalAdminLabel").html("Ubah Data Admin");
+    $(".modal-footer button[type=submit]").html("Ubah Data");
+    $(".modal-body form").attr(
+      "action",
+      "http://localhost/PHOENIX_TATIB_TI_2D/public/admin/ubah"
+    );
+
+    const nip_admin = $(this).data("nip_admin");
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/admin/getubah",
+      data: { nip_admin: nip_admin },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        $("#nip_admin").val(data.nip_admin);
+        $("#nama_admin").val(data.nama_admin);
+        $("#email_admin").val(data.email_admin);
+        $("#password").val(data.password);
+        $("#nip_admin_lama").val(data.nip_admin);
+        $("#nama_admin_lama").val(data.nama_admin);
+        $("#email_admin_lama").val(data.email_admin);
+        $("#password_lama").val(data.password);
+        $("#id_user").val(data.id_user);
+        $("#password").attr("type", "text");
+      },
+    });
+  });
+
+  $(".tampilModalDetail").on("click", function () {
+    $("#detailModalAdminLabel").html("Detail Data Admin");
+
+    const nip_admin = $(this).data("nip_admin");
+    console.log("nip_admin:", nip_admin);
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/admin/detail",
+      data: { nip_admin: nip_admin },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#detailNipAdmin").text(data.nip_admin);
+        $("#detailNamaAdmin").text(data.nama_admin);
+        $("#detailEmailAdmin").text(data.email_admin);
+        $("#detailUsernameAdmin").text(data.username);
+        $("#detailPasswordAdmin").text(data.password);
+        // Menangani hasil yang mungkin merupakan kumpulan matkul
+        // if (data.matkul) {
+        //   $("#detailMatkul").text(data.matkul);
+        // } else {
+        //   $("#detailMatkul").text("Tidak ada matkul");
+        // }
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      },
+    });
+  });
+
+  // DPA Function
+  $(".tombolTambahDataDpa").on("click", function () {
+    $("#formModalDpaLabel").html("Tambah Data DPA");
+    $(".modal-footer button[type=submit]").html("Tambah Data");
+    $("#nip_dpa").val("");
+    $("#nama_dpa").val("");
+    $("#kelas_dpa").val("");
+    $("#prodi_dpa").val("");
+    $("#email_dpa").val("");
+    $("#password").val("");
+  });
+
+  $(".tampilModalDetailDpa").on("click", function () {
+    $("#detailModalDpaLabel").html("Detail Data DPA");
+
+    const nip_dpa = $(this).data("nip_dpa");
+    console.log(nip_dpa);
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/dpa/detail",
+      data: { nip_dpa: nip_dpa },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#detailNipDpa").text(data.nip_dpa);
+        $("#detailNamaDpa").text(data.nama_dpa);
+        $("#detailKelasDpa").text(data.kelas_dpa);
+        $("#detailEmailDpa").text(data.email_dpa);
+        $("#detailPasswordDpa").text(data.password);
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      },
+    });
+  });
+
+  $(".tampilModalUbahDpa").on("click", function () {
+    $("#formModalDpaLabel").html("Ubah Data DPA");
+    $(".modal-footer button[type=submit]").html("Ubah Data");
+    $(".modal-body form").attr(
+      "action",
+      "http://localhost/PHOENIX_TATIB_TI_2D/public/dpa/ubah"
+    );
+
+    const nip_dpa = $(this).data("nip_dpa");
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/dpa/getubah",
+      data: { nip_dpa: nip_dpa },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        $("#nip_dpa").val(data.nip_dpa);
+        $("#nama_dpa").val(data.nama_dpa);
+        $("#kelas_dpa").val(data.kelas_dpa);
+        $("#email_dpa").val(data.email_dpa);
+        $("#password").val(data.password);
+        $("#nip_dpa_lama").val(data.nip_dpa);
+        $("#nama_dpa_lama").val(data.nama_dpa);
+        $("#kelas_dpa_lama").val(data.kelas_dpa);
+        $("#email_dpa_lama").val(data.email_dpa);
+        $("#password_lama").val(data.password);
+        $("#id_user").val(data.id_user);
+      },
+    });
+  });
+
+  // Tatib Function
+  $(".tombolTambahDataTatib").on("click", function () {
+    $("#formModalTatibLabel").html("Tambah Data Tatib");
+    $(".modal-footer button[type=submit]").html("Tambah Data");
+    $("#deskripsi").val("");
+    $("#tatib").val("");
+  });
+
+  $(".tampilModalUbahTatib").on("click", function () {
+    $("#formModalTatibLabel").html("Ubah Data Tatib");
+    $(".modal-footer button[type=submit]").html("Ubah Data");
+    $(".modal-body form").attr(
+      "action",
+      "http://localhost/PHOENIX_TATIB_TI_2D/public/tatib/ubah"
+    );
+
+    const id_tatib = $(this).data("id_tatib");
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/tatib/getubah",
+      data: { id_tatib: id_tatib },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#deskripsi").val(data.deskripsi);
+        $("#tatib").val(data.tatib);
+        $("#id_tatib").val(data.id_tatib);
+        $("#id_tingkatSanksi").val(data.id_tingkatSanksi);
+      },
+    });
+  });
+
+  $(".tampilModalDetailTatib").on("click", function () {
+    $("#detailModalTatibLabel").html("Detail Data Tatib");
+
+    const id_tatib = $(this).data("id_tatib");
+    console.log("id_tatib:", id_tatib);
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/tatib/getubah",
+      data: { id_tatib: id_tatib },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#detailDeskripsi").text(data.deskripsi);
+        $("#detailTingkatSanksi").text(data.id_tingkatSanksi);
+        $("#id_tatib").text(data.id_tatib);
+        $("#id_tingkatSanksi").text(data.id_tingkatSanksi);
+
+        if (data.tatib) {
+          $("#detailTatib").text(data.tatib);
+        } else {
+          $("#detailTatib").text("Tidak ada tatib");
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
       },
     });
   });

@@ -36,12 +36,12 @@ class Mahasiswa_model
 
         // Eksekusi query
         $this->db->query($query);
-        $this->db->bind('nim_mahasiswa', $data['nim']);
-        $this->db->bind('id_user', $id_user['userDosenId']['id_user']);
-        $this->db->bind('nama_mahasiswa', $data['nama']);
-        $this->db->bind('kelas_mahasiswa', $data['kelas']);
-        $this->db->bind('prodi_mahasiswa', $data['prodi']);
-        $this->db->bind('email_mahasiswa', $data['email']);
+        $this->db->bind('nim_mahasiswa', $data['nim_mahasiswa']);
+        $this->db->bind('id_user', $id_user['userMahasiswaId']['id_user']);
+        $this->db->bind('nama_mahasiswa', $data['nama_mahasiswa']);
+        $this->db->bind('kelas_mahasiswa', $data['kelas_mahasiswa']);
+        $this->db->bind('prodi_mahasiswa', $data['prodi_mahasiswa']);
+        $this->db->bind('email_mahasiswa', $data['email_mahasiswa']);
         $this->db->execute();
 
         // Mengembalikan jumlah baris yang terpengaruh oleh operasi query
@@ -50,8 +50,8 @@ class Mahasiswa_model
 
     public function getUserMahasiswaByNim($data)
     {
-        $this->db->query('SELECT * FROM user WHERE username=:nim');
-        $this->db->bind('nim', $data['nim']);
+        $this->db->query('SELECT * FROM user WHERE username=:nim_mahasiswa');
+        $this->db->bind('nim_mahasiswa', $data['nim_mahasiswa']);
         return $this->db->single();
     }
 
@@ -62,7 +62,7 @@ class Mahasiswa_model
                   (:username, :password, :user_type)";
 
         $this->db->query($query);
-        $this->db->bind('username', $data['nim']);
+        $this->db->bind('username', $data['nim_mahasiswa']);
         $this->db->bind('password', $data['password']);
         $this->db->bind('user_type', 'mahasiswa');
 
@@ -89,7 +89,7 @@ class Mahasiswa_model
     // Fungsi untuk mengubah data mahasiswa
     public function ubahDataMahasiswa($data)
     {
-        // Query SQL untuk mengubah data mahasiswa
+        // Query SQL untuk mengubah data mahasiswa        
         $query = "UPDATE mahasiswa SET
                     nama_mahasiswa = :nama_mahasiswa,
                     kelas_mahasiswa = :kelas_mahasiswa,
@@ -99,17 +99,17 @@ class Mahasiswa_model
 
         // Eksekusi query
         $this->db->query($query);
-        $this->db->bind('nama_mahasiswa', $data['nama']);
-        $this->db->bind('kelas_mahasiswa', $data['kelas']);
-        $this->db->bind('prodi_mahasiswa', $data['prodi']);
-        $this->db->bind('email_mahasiswa', $data['email']);
-        $this->db->bind('nim_mahasiswa', $data['nim']);
+        $this->db->bind('nama_mahasiswa', $data['nama_mahasiswa']);
+        $this->db->bind('kelas_mahasiswa', $data['kelas_mahasiswa']);
+        $this->db->bind('prodi_mahasiswa', $data['prodi_mahasiswa']);
+        $this->db->bind('email_mahasiswa', $data['email_mahasiswa']);
+        $this->db->bind('nim_mahasiswa', $data['nim_mahasiswa']);
         $this->db->execute();
 
         // Mengembalikan jumlah baris yang terpengaruh oleh operasi query
         return $this->db->rowCount();
     }
-    public function ubahDataUser($data)
+    public function ubahDataUserMahasiswa($data)
     {
         $query = "UPDATE user SET
                     username = :username,
@@ -117,7 +117,7 @@ class Mahasiswa_model
                   WHERE id_user = :id_user";
 
         $this->db->query($query);
-        $this->db->bind('username', $data['nim']);
+        $this->db->bind('username', $data['nim_mahasiswa']);
         $this->db->bind('password', $data['password']);
         $this->db->bind('id_user', $data['id_user']);
 

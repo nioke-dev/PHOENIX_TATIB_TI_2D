@@ -8,17 +8,17 @@
 
   <div class="row mb-3">
     <div class="col-lg-6">
-      <button type="button" class="btn btn-primary tombolTambahDataDosen" data-bs-toggle="modal" data-bs-target="#formModalDosen">
-        Tambah Data Dosen
+      <button type="button" class="btn btn-primary tombolTambahDataAdmin" data-bs-toggle="modal" data-bs-target="#formModalAdmin">
+        Tambah Data Admin
       </button>
     </div>
   </div>
 
   <div class="row mb-3">
     <div class="col-lg-6">
-      <form action="<?= BASEURL; ?>/dosen/cari" method="post">
+      <form action="<?= BASEURL; ?>/admin/cari" method="post">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Cari dosen.." name="keyword" id="keyword" autocomplete="off">
+          <input type="text" class="form-control" placeholder="Cari admin.." name="keyword" id="keyword" autocomplete="off">
           <button class="btn btn-primary" type="submit" id="tombolCari">Cari</button>
         </div>
       </form>
@@ -26,7 +26,7 @@
   </div>
 
   <div class="row">
-    <h3>Daftar Dosen</h3>
+    <h3>Daftar Admin</h3>
     <table class="table">
       <thead>
         <tr>
@@ -39,16 +39,16 @@
       </thead>
       <tbody>
         <?php $no = 1;
-        foreach ($data['dsn'] as $dsn) : ?>
+        foreach ($data['adm'] as $adm) : ?>
           <tr>
             <th scope="row"><?= $no++; ?></th>
-            <td><?= $dsn['nip_dosen']; ?></td>
-            <td><?= $dsn['nama_dosen']; ?></td>
-            <td><?= $dsn['email_dosen']; ?></td>
+            <td><?= $adm['nip_admin']; ?></td>
+            <td><?= $adm['nama_admin']; ?></td>
+            <td><?= $adm['email_admin']; ?></td>
             <td>
-              <a href="<?= BASEURL; ?>/dosen/hapus/<?= $dsn['nip_dosen']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
-              <a href="<?= BASEURL; ?>/dosen/ubah/<?= $dsn['nip_dosen']; ?>" class="badge bg-success float-right tampilModalUbahDosen" data-bs-toggle="modal" data-bs-target="#formModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">ubah</a>
-              <a href="<?= BASEURL; ?>/dosen/detail/<?= $dsn['nip_dosen']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">Detail</a>
+              <a href="<?= BASEURL; ?>/admin/hapus/<?= $adm['nip_admin']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
+              <a href="<?= BASEURL; ?>/admin/ubah/<?= $adm['nip_admin']; ?>" class="badge bg-success float-right tampilModalUbahAdmin" data-bs-toggle="modal" data-bs-target="#formModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">ubah</a>
+              <a href="<?= BASEURL; ?>/admin/detail/<?= $adm['nip_admin']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">Detail</a>
             </td>
           </tr>
         <?php endforeach; ?>
@@ -59,38 +59,38 @@
 </div>
 
 <!-- Modal Detail -->
-<div class="modal fade" id="detailModalDosen" tabindex="-1" aria-labelledby="detailModalDosenLabel" aria-hidden="true">
+<div class="modal fade" id="detailModalAdmin" tabindex="-1" aria-labelledby="detailModalAdminLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="detailModalDosenLabel"></h5>
+        <h5 class="modal-title" id="detailModalAdminLabel"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
 
         <div class="form-group">
-          <p><strong>NIP:</strong> <span id="detailNip"></span></p>
+          <p><strong>NIP:</strong> <span id="detailNipAdmin"></span></p>
         </div>
 
         <div class="form-group">
-          <p><strong>Nama:</strong> <span id="detailNama"></span></p>
+          <p><strong>Nama:</strong> <span id="detailNamaAdmin"></span></p>
         </div>
 
         <div class="form-group">
-          <p><strong>Email:</strong> <span id="detailEmail"></span></p>
+          <p><strong>Email:</strong> <span id="detailEmailAdmin"></span></p>
         </div>
 
         <div class="form-group">
-          <p><strong>Username:</strong> <span id="detailUsername"></span></p>
+          <p><strong>Username:</strong> <span id="detailUsernameAdmin"></span></p>
         </div>
 
         <div class="form-group">
-          <p><strong>Password:</strong> <span id="detailPassword"></span></p>
+          <p><strong>Password:</strong> <span id="detailPasswordAdmin"></span></p>
         </div>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
           <p><strong>Matkul:</strong> <span id="detailMatkul"></span></p>
-        </div>
+        </div> -->
 
       </div>
       <div class="modal-footer">
@@ -104,39 +104,39 @@
 
 
 <!-- Modal Add and Edit -->
-<div class="modal fade" id="formModalDosen" tabindex="-1" aria-labelledby="formModalDosenLabel" aria-hidden="true">
+<div class="modal fade" id="formModalAdmin" tabindex="-1" aria-labelledby="formModalAdminLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="formModalDosenLabel">Tambah Data Dosen</h5>
+        <h5 class="modal-title" id="formModalAdminLabel">Tambah Data Admin</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
         </button>
       </div>
       <div class="modal-body">
-        <form action="<?= BASEURL; ?>/dosen/tambah" method="post">
+        <form action="<?= BASEURL; ?>/admin/tambah" method="post">
           <input type="hidden" name="id_user" id="id_user">
           <div class="form-group">
             <label for="nip">NIP</label>
             <input type="number" class="form-control" id="nip" name="nip" autocomplete="off">
-            <input type="hidden" class="form-control" id="nip_lama" name="nip_lama" autocomplete="off">
+            <input type="hidden" class="form-control" id="nip_admin_lama" name="nip_admin_lama" autocomplete="off">
           </div>
 
           <div class="form-group">
             <label for="nama">Nama</label>
             <input type="text" class="form-control" id="nama" name="nama" autocomplete="off" required>
-            <input type="hidden" class="form-control" id="nama_lama" name="nama_lama" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="nama_admin_lama" name="nama_admin_lama" autocomplete="off">
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
             <input type="email" class="form-control" id="email" name="email" autocomplete="off" required>
-            <input type="hidden" class="form-control" id="email_lama" name="email_lama" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="email_admin_lama" name="email_admin_lama" autocomplete="off">
           </div>
 
           <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" name="password" autocomplete="off" required>
-            <input type="hidden" class="form-control" id="password_lama" name="password_lama" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="password_lama" name="password_lama" autocomplete="off">
           </div>
 
       </div>

@@ -22,18 +22,23 @@ class Admin extends Controller
     public function tambah()
     {
         if ($this->model('Admin_model')->tambahUserAdmin($_POST) > 0) {
+            # code...
             $dataUser['userAdminId'] = $this->model('Admin_model')->getUserAdminByNip($_POST);
-            if ($this->model('Admin_model')->tambahDataAdmin($_POST, $dataUser) > 0) {
-                $this->showSweetAlert('success', 'Berhasil', 'Data Admin Berhasil Ditambahkan');
+
+            if (
+                $this->model('Admin_model')->tambahDataAdmin($_POST, $dataUser) > 0
+            ) {
+
+                $this->showSweetAlert('success', 'Berhasil', 'Data Admin berhasil ditambahkan');
                 header('Location: ' . BASEURL . '/admin');
                 exit;
             } else {
-                $this->showSweetAlert('error', 'Gagal', 'Data Admin Gagal Ditambahkan');
+                $this->showSweetAlert('error', 'Ooops', 'Data Admin Gagal ditambahkan');
                 header('Location: ' . BASEURL . '/admin');
                 exit;
             }
         } else {
-            $this->showSweetAlert('error', 'Gagal', 'Data Admin Gagal Ditambahkan');
+            $this->showSweetAlert('error', 'Ooops', 'Data Admin Gagal ditambahkan');
             header('Location: ' . BASEURL . '/admin');
             exit;
         }

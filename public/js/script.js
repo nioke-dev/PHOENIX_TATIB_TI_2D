@@ -188,7 +188,7 @@ $(function () {
   });
 
   $(".tampilModalUbahAdmin").on("click", function () {
-    $("#formModalAdminLabel").html("Ubah Data Admin");
+    $("#formModalAdminLabel").html("Ubah Data Adminnnn");
     $(".modal-footer button[type=submit]").html("Ubah Data");
     $(".modal-body form").attr(
       "action",
@@ -218,7 +218,7 @@ $(function () {
   });
 
   $(".tampilModalDetail").on("click", function () {
-    $("#detailModalAdminLabel").html("Detail Data Admin");
+    $("#detailModalAdminLabel").html("Detail Data Adminnnnn");
 
     const nip_admin = $(this).data("nip_admin");
     console.log("nip_admin:", nip_admin);

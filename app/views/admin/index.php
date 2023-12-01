@@ -88,10 +88,6 @@
           <p><strong>Password:</strong> <span id="detailPasswordAdmin"></span></p>
         </div>
 
-        <!-- <div class="form-group">
-          <p><strong>Matkul:</strong> <span id="detailMatkul"></span></p>
-        </div> -->
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -116,27 +112,27 @@
         <form action="<?= BASEURL; ?>/admin/tambah" method="post">
           <input type="hidden" name="id_user" id="id_user">
           <div class="form-group">
-            <label for="nip">NIP</label>
-            <input type="number" class="form-control" id="nip" name="nip" autocomplete="off">
+            <label for="nip_admin">NIP</label>
+            <input type="number" class="form-control" id="nip_admin" name="nip_admin" autocomplete="off">
             <input type="hidden" class="form-control" id="nip_admin_lama" name="nip_admin_lama" autocomplete="off">
           </div>
 
           <div class="form-group">
-            <label for="nama">Nama</label>
-            <input type="text" class="form-control" id="nama" name="nama" autocomplete="off" required>
-            <input type="hidden" class="form-control" id="nama_admin_lama" name="nama_admin_lama" autocomplete="off">
+            <label for="nama_admin">Nama</label>
+            <input type="text" class="form-control" id="nama_admin" name="nama_admin" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="nama_admin_lama" name="nama_admin_lama" autocomplete="off" required>
           </div>
 
           <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" autocomplete="off" required>
-            <input type="hidden" class="form-control" id="email_admin_lama" name="email_admin_lama" autocomplete="off">
+            <label for="email_admin">Email</label>
+            <input type="email" class="form-control" id="email_admin" name="email_admin" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="email_admin_lama" name="email_admin_lama" autocomplete="off" required>
           </div>
 
           <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" name="password" autocomplete="off" required>
-            <input type="hidden" class="form-control" id="password_lama" name="password_lama" autocomplete="off">
+            <input type="hidden" class="form-control" id="password_lama" name="password_lama" autocomplete="off" required>
           </div>
 
       </div>

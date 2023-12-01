@@ -16,6 +16,13 @@ class Admin_model
         return $this->db->resultSet();
     }
 
+    public function getAdminByNip($nip_dpa)
+    {
+        $this->db->query('SELECT * FROM admin adm INNER JOIN user u ON adm.nip_admin = u.username WHERE nip_admin=:nip_admin');
+        $this->db->bind('nip_admin', $nip_admin);
+        return $this->db->single();
+    }
+
     public function tambahDataAdmin($data, $id_user)
     {
         $query = "INSERT INTO admin (nip_admin, id_user, nama_admin, email_admin)
@@ -54,21 +61,6 @@ class Admin_model
 
         return $this->db->rowCount();
     }
-
-    // public function tambahMatkulDosen($data)
-    // {
-    //     $query = "INSERT INTO matkul (nip_dosen, matkul)
-    //                 VALUES
-    //               (:nip_dosen, :matkul)";
-
-    //     $this->db->query($query);
-    //     $this->db->bind('nip_dosen', $data['nip']);
-    //     $this->db->bind('matkul', $data['matkul']);
-
-    //     $this->db->execute();
-
-    //     return $this->db->rowCount();
-    // }
 
     public function hapusDataAdmin($id)
     {

@@ -12,22 +12,28 @@ class Login extends Controller
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        // Panggil model untuk memeriksa login
-        $userModel = $this->model('UserModel');
-        $userData = $userModel->getUserByUsernameAndPassword($username, $password);
+        // Panggil model untuk memeriksa login        
+        $userData = $this->model('User_model')->getUserByUsernameAndPassword($username, $password);
 
         if ($userData) {
-            // Jika login berhasil, arahkan URL sesuai dengan user_type
+
+            $_SESSION['user_id'] = $userData['id_user'];
+            $_SESSION['user_type'] = $userData['user_type'];
+
+            // Jika login berhasil, arahkan URL sesuai dengan user_type            
             switch ($userData['user_type']) {
                 case 'dosen':
-                    header('Location: /dosen');
+                    header('Location: ' . BASEURL . '/dosen');
                     break;
                 case 'mahasiswa':
-                    header('Location: /mahasiswa');
+                    header('Location: ' . BASEURL . '/mahasiswa');
+                    break;
+                case 'dpa':
+                    header('Location: ' . BASEURL . '/dpa');
                     break;
                     // Tambahkan case sesuai dengan user_type lainnya
                 default:
-                    header('Location: /default-url');
+                    $this->view('login/login', ['error' => 'Username or password is incorrect.']);
                     break;
             }
             exit;

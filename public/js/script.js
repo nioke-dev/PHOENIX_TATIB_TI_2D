@@ -344,9 +344,8 @@ $(function () {
       success: function (data) {
         console.log("Respons Server:", data);
         $("#deskripsi").val(data.deskripsi);
-        $("#tatib").val(data.tatib);
+        $("#id_tingkatSanksi").val(data.tingkat_sanksi);
         $("#id_tatib").val(data.id_tatib);
-        $("#id_tingkatSanksi").val(data.id_tingkatSanksi);
       },
     });
   });
@@ -365,9 +364,8 @@ $(function () {
       success: function (data) {
         console.log("Respons Server:", data);
         $("#detailDeskripsi").text(data.deskripsi);
-        $("#detailTingkatSanksi").text(data.id_tingkatSanksi);
+        $("#detailTingkatSanksi").text(data.tingkat_sanksi);
         $("#id_tatib").text(data.id_tatib);
-        $("#id_tingkatSanksi").text(data.id_tingkatSanksi);
 
         if (data.tatib) {
           $("#detailTatib").text(data.tatib);

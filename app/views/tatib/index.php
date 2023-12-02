@@ -38,27 +38,27 @@
             </thead>
             <tbody>
                 <?php $no = 1;
-                if(empty($data['tatib'])) : ?>
+                if (empty($data['tatib'])) : ?>
                     <tr>
-                      <td colspan="7">
-                        <div class="alert alert-danger" role="alert">
-                          Tidak ada data terkait.
-                        </div>
-                      </td>
-                    </tr>
-                  <?php else:
-                foreach ($data['tatib'] as $tatib) : ?>
-                    <tr>
-                        <th scope="row"><?= $no++; ?></th>
-                        <td><?= $tatib['deskripsi']; ?></td>
-                        <td><?= $tatib['id_tingkatSanksi']; ?></td>
-                        <td>
-                            <a href="<?= BASEURL; ?>/tatib/detail/<?= $tatib['id_tatib']; ?>" class="badge bg-primary float-right tampilModalDetailTatib" data-bs-toggle="modal" data-bs-target="#detailModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Detail</a>
-                            <a href="<?= BASEURL; ?>/tatib/ubah/<?= $tatib['id_tatib']; ?>" class="badge bg-success float-right tampilModalUbahTatib" data-bs-toggle="modal" data-bs-target="#formModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Ubah</a>
-                            <a href="<?= BASEURL; ?>/tatib/hapus/<?= $tatib['id_tatib']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Tata tertib berikut?');">Hapus</a>
+                        <td colspan="7">
+                            <div class="alert alert-danger" role="alert">
+                                Tidak ada data terkait.
+                            </div>
                         </td>
                     </tr>
-                <?php endforeach; 
+                    <?php else :
+                    foreach ($data['tatib'] as $tatib) : ?>
+                        <tr>
+                            <th scope="row"><?= $no++; ?></th>
+                            <td><?= $tatib['deskripsi']; ?></td>
+                            <td><?= $tatib['id_tingkatSanksi']; ?></td>
+                            <td>
+                                <a href="<?= BASEURL; ?>/tatib/detail/<?= $tatib['id_tatib']; ?>" class="badge bg-primary float-right tampilModalDetailTatib" data-bs-toggle="modal" data-bs-target="#detailModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Detail</a>
+                                <a href="<?= BASEURL; ?>/tatib/ubah/<?= $tatib['id_tatib']; ?>" class="badge bg-success float-right tampilModalUbahTatib" data-bs-toggle="modal" data-bs-target="#formModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Ubah</a>
+                                <a href="<?= BASEURL; ?>/tatib/hapus/<?= $tatib['id_tatib']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Tata tertib berikut?');">Hapus</a>
+                            </td>
+                        </tr>
+                <?php endforeach;
                 endif; ?>
             </tbody>
         </table>
@@ -75,12 +75,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
                 <div class="form-group">
                     <p><strong>Deskripsi Tata Tertib :</strong> <br> <span id="detailDeskripsi"></span></p>
                 </div>
                 <div class="form-group">
-                    <p><strong>Tingkat Sanksi        :</strong> <span id="detailTingkatSanksi"></span></p>
+                    <p><strong>Tingkat Sanksi :</strong> <span id="detailTingkatSanksi"></span></p>
                 </div>
             </div>
             <div class="modal-footer">
@@ -103,11 +102,19 @@
                     <input type="hidden" name="id_tatib" id="id_tatib">
                     <div class="form-group">
                         <label for="deskripsi">Deskripsi Tata Tertib</label>
-                        <input type="text" class="form-control" id="deskripsi" name="deskripsi" autocomplete="off">
+                        <input type="text" class="form-control" id="deskripsi" name="deskripsi" autocomplete="off" required>
                     </div>
                     <div class="form-group">
                         <label for="id_tingkatSanksi">Tingkat Sanksi</label>
-                        <input type="text" class="form-control" id="id_tingkatSanksi" name="id_tingkatSanksi" autocomplete="off">
+                        <select class="form-control choices-single" id="id_tingkatSanksi" name="id_tingkatSanksi" autocomplete="off" required>
+                            <option></option>
+                            <option value="1">I</option>
+                            <option value="2">II</option>
+                            <option value="3">III</option>
+                            <option value="4">IV</option>
+                            <option value="5">V</option>
+                            <option value="6">I / II</option>
+                        </select>
                     </div>
             </div>
             <div class="modal-footer">

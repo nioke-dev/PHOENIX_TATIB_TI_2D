@@ -66,13 +66,27 @@ class Tatib_model
         return $this->db->rowCount();
     }
 
+    // public function cariDataTatib()
+    // {
+    //     $keyword = $_POST['keyword'];
+    //     $query = "SELECT * FROM tatib WHERE deskripsi LIKE :keyword OR id_tingkatSanksi LIKE :keyword";
+    //     $this->db->query($query);
+    //     $this->db->bind('keyword', "%$keyword%");
+    //     return $this->db->resultSet();
+    // }
+
     public function cariDataTatib()
     {
-        $keyword = $_POST['keyword'];
-        $query = "SELECT * FROM tatib WHERE deskripsi LIKE :keyword OR id_tingkatSanksi LIKE :keyword";
-        $this->db->query($query);
-        $this->db->bind('keyword', "%$keyword%");
-        return $this->db->resultSet();
+    $keyword = $_POST['keyword'];
+    $query = "
+        SELECT t.*, ts.tingkat_sanksi
+        FROM tatib t
+        INNER JOIN tingkatSanksi ts ON t.id_tingkatSanksi = ts.id_tingkatSanksi
+        WHERE t.deskripsi LIKE :keyword
+    ";
+    $this->db->query($query);
+    $this->db->bind('keyword', "%$keyword%");
+    return $this->db->resultSet();
     }
 
     public function hapusDataTatib($id)

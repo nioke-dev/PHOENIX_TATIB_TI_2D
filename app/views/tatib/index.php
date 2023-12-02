@@ -54,8 +54,8 @@
                         <td><?= $tatib['id_tingkatSanksi']; ?></td>
                         <td>
                             <a href="<?= BASEURL; ?>/tatib/detail/<?= $tatib['id_tatib']; ?>" class="badge bg-primary float-right tampilModalDetailTatib" data-bs-toggle="modal" data-bs-target="#detailModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Detail</a>
-                            <a href="<?= BASEURL; ?>/tatib/ubah/<?= $tatib['id_tatib']; ?>" class="badge bg-success float-right tampilModalUbahTatib" data-bs-toggle="modal" data-bs-target="#formModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">ubah</a>
-                            <a href="<?= BASEURL; ?>/tatib/hapus/<?= $tatib['id_tatib']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Tata tertib berikut?');">hapus</a>
+                            <a href="<?= BASEURL; ?>/tatib/ubah/<?= $tatib['id_tatib']; ?>" class="badge bg-success float-right tampilModalUbahTatib" data-bs-toggle="modal" data-bs-target="#formModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Ubah</a>
+                            <a href="<?= BASEURL; ?>/tatib/hapus/<?= $tatib['id_tatib']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Tata tertib berikut?');">Hapus</a>
                         </td>
                     </tr>
                 <?php endforeach; 
@@ -77,10 +77,10 @@
             <div class="modal-body">
 
                 <div class="form-group">
-                    <p><strong>Deskripsi:</strong> <br> <span id="detailDeskripsi"></span></p>
+                    <p><strong>Deskripsi Tata Tertib :</strong> <br> <span id="detailDeskripsi"></span></p>
                 </div>
                 <div class="form-group">
-                    <p><strong>Tingkat Sanksi:</strong> <span id="detailTingkatSanksi"></span></p>
+                    <p><strong>Tingkat Sanksi        :</strong> <span id="detailTingkatSanksi"></span></p>
                 </div>
             </div>
             <div class="modal-footer">
@@ -104,6 +104,10 @@
                     <div class="form-group">
                         <label for="deskripsi">Deskripsi Tata Tertib</label>
                         <input type="text" class="form-control" id="deskripsi" name="deskripsi" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="deskripsi">Tingkat Sanksi</label>
+                        <input type="text" class="form-control" id="id_tingkatSanksi" name="id_tingkatSanksi" autocomplete="off">
                     </div>
             </div>
             <div class="modal-footer">

@@ -47,7 +47,7 @@ class Tatib_model
     public function ubahDataTatib($data)
     {
         $query = "UPDATE tatib SET
-                    deskripsi = :deskripsi             
+                    deskripsi = :deskripsi       
                   WHERE id_tatib = :id_tatib";
 
         $this->db->query($query);
@@ -62,7 +62,7 @@ class Tatib_model
     public function cariDataTatib()
     {
         $keyword = $_POST['keyword'];
-        $query = "SELECT * FROM tatib WHERE deskripsi LIKE :keyword OR deskripsi LIKE :keyword";
+        $query = "SELECT * FROM tatib WHERE deskripsi LIKE :keyword OR id_tingkatSanksi LIKE :keyword";
         $this->db->query($query);
         $this->db->bind('keyword', "%$keyword%");
         return $this->db->resultSet();

@@ -30,7 +30,7 @@ class Tatib extends Controller
             header('Location: ' . BASEURL . '/tatib');
             exit;
         } else {
-            $this->showSweetAlert('error', 'Ooops', 'Data Tatib Gagal ditambahkan');
+            $this->showSweetAlert('error', 'Gagal', 'Data Tatib Gagal Ditambahkan');
             header('Location: ' . BASEURL . '/tatib');
             exit;
         }
@@ -43,7 +43,7 @@ class Tatib extends Controller
             header('Location: ' . BASEURL . '/tatib');
             exit;
         } else {
-            $this->showSweetAlert('success', 'Berhasil', 'Data Tatib Gagal Dihapus');
+            $this->showSweetAlert('success', 'Gagal', 'Data Tatib Gagal Dihapus');
             header('Location: ' . BASEURL . '/tatib');
             exit;
         }
@@ -61,7 +61,7 @@ class Tatib extends Controller
             header('Location: ' . BASEURL . '/tatib');
             exit;
         } else {
-            $this->showSweetAlert('error', 'Berhasil', 'Data Tatib Gagal Diubah');
+            $this->showSweetAlert('error', 'Gagal', 'Data Tatib Gagal Diubah');
             header('Location: ' . BASEURL . '/tatib');
             exit;
         }

@@ -21,6 +21,7 @@ class Tatib_model
         $query = "INSERT INTO tatib (deskripsi)
                     VALUES
                   (:deskripsi)";
+
         $this->db->query($query);
         $this->db->bind('deskripsi', $data['deskripsi']);
 

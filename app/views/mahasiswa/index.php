@@ -63,9 +63,9 @@
             <td><?= $mhs['prodi_mahasiswa']; ?></td>
             <td><?= $mhs['email_mahasiswa']; ?></td>
             <td>
-              <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
-              <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-success float-right tampilModalUbahMahasiswa" data-bs-toggle="modal" data-bs-target="#formModalMahasiswa" data-nim_mahasiswa="<?= $mhs['nim_mahasiswa']; ?>">ubah</a>
               <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-primary float-right tampilModalDetailMahasiswa" data-bs-toggle="modal" data-bs-target="#detailModalMahasiswa" data-nim_mahasiswa="<?= $mhs['nim_mahasiswa']; ?>">Detail</a>
+              <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-success float-right tampilModalUbahMahasiswa" data-bs-toggle="modal" data-bs-target="#formModalMahasiswa" data-nim_mahasiswa="<?= $mhs['nim_mahasiswa']; ?>">ubah</a>
+              <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
             </td>
           </tr>
         <?php endforeach;
@@ -155,8 +155,8 @@
           </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
         <button type="submit" class="btn btn-primary">Tambah Data</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
         </form>
       </div>
     </div>

@@ -2,6 +2,11 @@
 
 class Admin extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('AuthMiddleware')->handle();
+    }
+
     public function index()
     {
         $data['judul'] = 'Daftar Admin';

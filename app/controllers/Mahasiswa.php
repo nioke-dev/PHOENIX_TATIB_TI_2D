@@ -2,10 +2,14 @@
 
 class Mahasiswa extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('AuthMiddleware')->handle();
+    }
+
     // Fungsi untuk menampilkan halaman daftar mahasiswa
     public function index()
     {
-        $this->middleware('AuthMiddleware')->handle();
 
         $data['judul'] = 'Daftar Mahasiswa';
         $data['mhs'] = $this->model('Mahasiswa_model')->getAllMahasiswa();

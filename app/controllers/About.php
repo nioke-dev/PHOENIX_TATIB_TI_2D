@@ -2,6 +2,11 @@
 
 class About extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('AuthMiddleware')->handle();
+    }
+
     public function index($nama = 'Nurul Mustofa', $pekerjaan = 'Programmer', $umur = 19)
     {
         $data['nama'] = $nama;

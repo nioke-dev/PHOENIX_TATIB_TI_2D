@@ -2,6 +2,11 @@
 
 class Dpa extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('AuthMiddleware')->handle();
+    }
+
     // Fungsi untuk menampilkan halaman daftar dpa
     public function index()
     {

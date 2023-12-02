@@ -4,7 +4,7 @@ class User_model
 {
     private $nama = 'Nurul Mustofa';
 
-    private $table = 'matkul';
+    private $table = 'user';
     private $db;
 
     public function __construct()
@@ -19,17 +19,11 @@ class User_model
 
     public function getUserByUsernameAndPassword($username, $password)
     {
-        $query = "SELECT * FROM user WHERE username = :username";
+        $query = "SELECT * FROM user WHERE username = :username AND password = :password";
         $this->db->query($query);
         $this->db->bind(':username', $username);
-        
-        $userData = $this->db->single();
+        $this->db->bind(':password', $password);
 
-        // Verify the password
-        if ($userData && password_verify($password, $userData['password'])) {
-            return $userData;
-        } else {
-            return false;
-        }
+        return $this->db->single();
     }
 }

@@ -39,11 +39,10 @@ class Tatib_model
     public function getTatibById($data)
     {
         $this->db->query('
-            SELECT tt.id_tatib, tt.deskripsi, ts.tingkat_sanksi
+            SELECT tt.id_tatib, tt.deskripsi, ts.tingkat_sanksi, ts.id_tingkatSanksi
             FROM ' . $this->table . ' tt
             INNER JOIN tingkatSanksi ts ON tt.id_tingkatSanksi = ts.id_tingkatSanksi
             WHERE tt.id_tatib = :id_tatib
-            GROUP BY tt.id_tatib
         ');
 
         $this->db->bind('id_tatib', $data['id_tatib']);

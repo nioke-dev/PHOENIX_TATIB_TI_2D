@@ -44,7 +44,16 @@
         </tr>
       </thead>
       <tbody>
-        <?php $no = 1;
+      <?php $no = 1;
+        if(empty($data['mhs'])) : ?>
+          <tr>
+            <td colspan="7">
+              <div class="alert alert-danger" role="alert">
+                Tidak ada data terkait.
+              </div>
+            </td>
+          </tr>
+        <?php else:
         foreach ($data['mhs'] as $mhs) : ?>
           <tr>
             <th scope="row"><?= $no++; ?></th>
@@ -54,12 +63,13 @@
             <td><?= $mhs['prodi_mahasiswa']; ?></td>
             <td><?= $mhs['email_mahasiswa']; ?></td>
             <td>
-            <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-primary float-right tampilModalDetailMahasiswa" data-bs-toggle="modal" data-bs-target="#detailModalMahasiswa" data-nim_mahasiswa="<?= $mhs['nim_mahasiswa']; ?>">Detail</a>
-              <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-success float-right tampilModalUbahMahasiswa" data-bs-toggle="modal" data-bs-target="#formModalMahasiswa" data-nim_mahasiswa="<?= $mhs['nim_mahasiswa']; ?>">ubah</a>
               <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
+              <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-success float-right tampilModalUbahMahasiswa" data-bs-toggle="modal" data-bs-target="#formModalMahasiswa" data-nim_mahasiswa="<?= $mhs['nim_mahasiswa']; ?>">ubah</a>
+              <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-primary float-right tampilModalDetailMahasiswa" data-bs-toggle="modal" data-bs-target="#detailModalMahasiswa" data-nim_mahasiswa="<?= $mhs['nim_mahasiswa']; ?>">Detail</a>
             </td>
           </tr>
-        <?php endforeach; ?>
+        <?php endforeach;
+        endif; ?>
       </tbody>
     </table>
   </div>

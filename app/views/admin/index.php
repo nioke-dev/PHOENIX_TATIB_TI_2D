@@ -39,6 +39,15 @@
       </thead>
       <tbody>
         <?php $no = 1;
+        if(empty($data['adm'])) : ?>
+          <tr>
+            <td colspan="7">
+              <div class="alert alert-danger" role="alert">
+                Tidak ada data terkait.
+              </div>
+            </td>
+          </tr>
+        <?php else:
         foreach ($data['adm'] as $adm) : ?>
           <tr>
             <th scope="row"><?= $no++; ?></th>
@@ -51,11 +60,11 @@
               <a href="<?= BASEURL; ?>/admin/hapus/<?= $adm['nip_admin']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
             </td>
           </tr>
-        <?php endforeach; ?>
+        <?php endforeach; 
+        endif; ?>
       </tbody>
     </table>
   </div>
-
 </div>
 
 <!-- Modal Detail -->

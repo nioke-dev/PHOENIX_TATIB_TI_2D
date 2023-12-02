@@ -44,6 +44,15 @@
       </thead>
       <tbody>
         <?php $no = 1;
+        if(empty($data['dp'])) : ?>
+          <tr>
+            <td colspan="7">
+              <div class="alert alert-danger" role="alert">
+                Tidak ada data terkait.
+              </div>
+            </td>
+          </tr>
+        <?php else:
         foreach ($data['dp'] as $dpa) : ?>
           <tr>
             <th scope="row"><?= $no++; ?></th>
@@ -57,7 +66,8 @@
               <a href="<?= BASEURL; ?>/dpa/hapus/<?= $dpa['nip_dpa']; ?>" class="badge bg-danger float-right" onclick="return confirm('Anda Yakin Untuk Menghapus Data Berikut?');">Hapus</a>
               </td>
           </tr>
-        <?php endforeach; ?>
+        <?php endforeach; 
+        endif; ?>
       </tbody>
     </table>
   </div>

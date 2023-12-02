@@ -39,6 +39,15 @@
       </thead>
       <tbody>
         <?php $no = 1;
+        if(empty($data['dsn'])) : ?>
+          <tr>
+            <td colspan="7">
+              <div class="alert alert-danger" role="alert">
+                Tidak ada data terkait.
+              </div>
+            </td>
+          </tr>
+        <?php else:
         foreach ($data['dsn'] as $dsn) : ?>
           <tr>
             <th scope="row"><?= $no++; ?></th>
@@ -51,7 +60,8 @@
               <a href="<?= BASEURL; ?>/dosen/hapus/<?= $dsn['nip_dosen']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
             </td>
           </tr>
-        <?php endforeach; ?>
+        <?php endforeach; 
+        endif; ?>
       </tbody>
     </table>
   </div>

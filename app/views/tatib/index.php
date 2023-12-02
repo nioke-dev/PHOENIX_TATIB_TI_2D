@@ -37,6 +37,15 @@
             </thead>
             <tbody>
                 <?php $no = 1;
+                if(empty($data['tatib'])) : ?>
+                    <tr>
+                      <td colspan="7">
+                        <div class="alert alert-danger" role="alert">
+                          Tidak ada data terkait.
+                        </div>
+                      </td>
+                    </tr>
+                  <?php else:
                 foreach ($data['tatib'] as $tatib) : ?>
                     <tr>
                         <th scope="row"><?= $no++; ?></th>
@@ -47,7 +56,8 @@
                             <a href="<?= BASEURL; ?>/tatib/hapus/<?= $tatib['id_tatib']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
                         </td>
                     </tr>
-                <?php endforeach; ?>
+                <?php endforeach; 
+                endif; ?>
             </tbody>
         </table>
     </div>

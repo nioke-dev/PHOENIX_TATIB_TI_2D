@@ -38,6 +38,15 @@
             </thead>
             <tbody>
                 <?php $no = 1;
+                if(empty($data['matkul'])) : ?>
+                    <tr>
+                      <td colspan="7">
+                        <div class="alert alert-danger" role="alert">
+                          Tidak ada data terkait.
+                        </div>
+                      </td>
+                    </tr>
+                  <?php else:
                 foreach ($data['matkul'] as $matkul) : ?>
                     <tr>
                         <th scope="row"><?= $no++; ?></th>
@@ -48,7 +57,8 @@
                             <a href="<?= BASEURL; ?>/matkul/hapus/<?= $matkul['id_matkul']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
                         </td>
                     </tr>
-                <?php endforeach; ?>
+                <?php endforeach; 
+                endif; ?>
             </tbody>
         </table>
     </div>

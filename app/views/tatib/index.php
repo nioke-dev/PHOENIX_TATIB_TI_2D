@@ -51,7 +51,7 @@
                         <tr>
                             <th scope="row"><?= $no++; ?></th>
                             <td><?= $tatib['deskripsi']; ?></td>
-                            <td><?= $tatib['id_tingkatSanksi']; ?></td>
+                            <td><?= $tatib['tingkat_sanksi']; ?></td>
                             <td>
                                 <a href="<?= BASEURL; ?>/tatib/detail/<?= $tatib['id_tatib']; ?>" class="badge bg-primary float-right tampilModalDetailTatib" data-bs-toggle="modal" data-bs-target="#detailModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Detail</a>
                                 <a href="<?= BASEURL; ?>/tatib/ubah/<?= $tatib['id_tatib']; ?>" class="badge bg-success float-right tampilModalUbahTatib" data-bs-toggle="modal" data-bs-target="#formModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Ubah</a>

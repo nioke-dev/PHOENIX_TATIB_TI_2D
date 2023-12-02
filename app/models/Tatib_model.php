@@ -12,7 +12,12 @@ class Tatib_model
 
     public function getAllTatib()
     {
-        $this->db->query('SELECT * FROM ' . $this->table);
+        $this->db->query('
+            SELECT tt.id_tatib, tt.deskripsi, ts.tingkat_sanksi
+            FROM ' . $this->table . ' tt
+            INNER JOIN tingkatSanksi ts ON tt.id_tingkatSanksi = ts.id_tingkatSanksi            
+            GROUP BY tt.id_tatib
+        ');
         return $this->db->resultSet();
     }
 

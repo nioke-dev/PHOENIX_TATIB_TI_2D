@@ -73,7 +73,7 @@
   <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM4 1v14H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm1 0h9a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5z"/>
 </svg>
                               </span>
-                              <span class="hide-menu">Matkul Dosen</span>
+                              <span class="hide-menu">Mata Kuliah Dosen</span>
                           </a>
                       </li>
                       <li class="sidebar-item">

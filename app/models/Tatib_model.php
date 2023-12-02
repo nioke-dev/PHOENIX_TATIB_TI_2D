@@ -16,7 +16,7 @@ class Tatib_model
             SELECT tt.id_tatib, tt.deskripsi, ts.tingkat_sanksi
             FROM ' . $this->table . ' tt
             INNER JOIN tingkatSanksi ts ON tt.id_tingkatSanksi = ts.id_tingkatSanksi            
-            ORDER BY tt.id_tatib
+            ORDER BY tt.id_tingkatSanksi DESC, tt.id_tatib ASC
         ');
         return $this->db->resultSet();
     }
@@ -52,7 +52,7 @@ class Tatib_model
     public function ubahDataTatib($data)
     {
         $query = "UPDATE tatib SET
-                    deskripsi = :deskripsi
+                    deskripsi = :deskripsi,
                     id_tingkatSanksi = :id_tingkatSanksi       
                   WHERE id_tatib = :id_tatib";
 

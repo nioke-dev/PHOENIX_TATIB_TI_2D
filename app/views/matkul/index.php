@@ -9,7 +9,7 @@
     <div class="row mb-3">
         <div class="col-lg-6">
             <button type="button" class="btn btn-primary tombolTambahDataMatkulDosen" data-bs-toggle="modal" data-bs-target="#formModalMatkulDosen">
-                Tambah Data Matkul Dosen
+                Tambah Data Mata Kuliah Dosen
             </button>
         </div>
     </div>
@@ -26,13 +26,13 @@
     </div>
 
     <div class="row">
-        <h3>Daftar Dosen</h3>
+        <h3>Daftar Mata Kuliah Dosen</h3>
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">NIP Dosen</th>
-                    <th scope="col">Nama Matkul</th>
+                    <th scope="col">Nama Mata Kuliah</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>

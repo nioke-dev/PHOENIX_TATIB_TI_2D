@@ -7,6 +7,12 @@
     <title>Modernize Free</title>
     <link rel="shortcut icon" type="image/png" href="<?= BASEURL; ?>/assets/images/logos/favicon.png" />
     <link rel="stylesheet" href="<?= BASEURL; ?>/assets/css/styles.min.css" />
+
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body>
@@ -59,6 +65,16 @@
     </div>
     <script src="<?= BASEURL; ?>/assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="<?= BASEURL; ?>/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        <?php if (isset($_SESSION['sweetalert'])) : ?>
+            Swal.fire({
+                icon: '<?php echo $_SESSION['sweetalert']['icon']; ?>',
+                title: '<?php echo $_SESSION['sweetalert']['title']; ?>',
+                text: '<?php echo $_SESSION['sweetalert']['text']; ?>',
+            });
+            <?php unset($_SESSION['sweetalert']); ?>
+        <?php endif; ?>
+    </script>
 </body>
 
 </html>

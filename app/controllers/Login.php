@@ -16,7 +16,7 @@ class Login extends Controller
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         // Panggil model untuk memeriksa login        
-        $userData = $this->model('User_model')->getUserByUsernameAndPassword($username, $hashedpassword);
+        $userData = $this->model('User_model')->getUserByUsernameAndPassword($username, $hashedPassword);
 
         if ($userData) {
 

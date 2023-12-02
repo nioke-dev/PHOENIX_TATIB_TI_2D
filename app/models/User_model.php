@@ -19,11 +19,17 @@ class User_model
 
     public function getUserByUsernameAndPassword($username, $password)
     {
-        $query = "SELECT * FROM user WHERE username = :username AND password = :password";
+        $query = "SELECT * FROM user WHERE username = :username";
         $this->db->query($query);
         $this->db->bind(':username', $username);
-        $this->db->bind(':password', $password);
+        
+        $userData = $this->db->single();
 
-        return $this->db->single();
+        // Verify the password
+        if ($userData && password_verify($password, $userData['password'])) {
+            return $userData;
+        } else {
+            return false;
+        }
     }
 }

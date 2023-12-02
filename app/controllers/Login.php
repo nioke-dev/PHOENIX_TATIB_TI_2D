@@ -10,10 +10,7 @@ class Login extends Controller
     public function processLogin()
     {
         $username = $_POST['username'];
-        $password = $_POST['password'];
-
-        // Encrypt the password
-        // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $password = md5($_POST['password']);
 
         // Panggil model untuk memeriksa login        
         $userData = $this->model('User_model')->getUserByUsernameAndPassword($username, $password);

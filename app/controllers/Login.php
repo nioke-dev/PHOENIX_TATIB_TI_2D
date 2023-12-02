@@ -12,8 +12,11 @@ class Login extends Controller
         $username = $_POST['username'];
         $password = $_POST['password'];
 
+        // Encrypt the password
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
         // Panggil model untuk memeriksa login        
-        $userData = $this->model('User_model')->getUserByUsernameAndPassword($username, $password);
+        $userData = $this->model('User_model')->getUserByUsernameAndPassword($username, $hashedpassword);
 
         if ($userData) {
 

@@ -322,6 +322,7 @@ $(function () {
     $("#formModalTatibLabel").html("Tambah Data Tatib");
     $(".modal-footer button[type=submit]").html("Tambah Data");
     $("#deskripsi").val("");
+    $("#id_tingkatSanksi").val("");
     $("#tatib").val("");
   });
 

@@ -106,7 +106,7 @@
                         <input type="text" class="form-control" id="deskripsi" name="deskripsi" autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <label for="deskripsi">Tingkat Sanksi</label>
+                        <label for="id_tingkatSanksi">Tingkat Sanksi</label>
                         <input type="text" class="form-control" id="id_tingkatSanksi" name="id_tingkatSanksi" autocomplete="off">
                     </div>
             </div>

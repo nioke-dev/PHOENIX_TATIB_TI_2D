@@ -18,12 +18,13 @@ class Tatib_model
 
     public function tambahDataTatib($data)
     {
-        $query = "INSERT INTO tatib (deskripsi)
+        $query = "INSERT INTO tatib (deskripsi, id_tingkatSanksi)
                     VALUES
-                  (:deskripsi)";
+                  (:deskripsi, :id_tingkatSanksi)";
 
         $this->db->query($query);
         $this->db->bind('deskripsi', $data['deskripsi']);
+        $this->db->bind('id_tingkatSanksi', $data['id_tingkatSanksi']);
 
         $this->db->execute();
 
@@ -47,11 +48,13 @@ class Tatib_model
     public function ubahDataTatib($data)
     {
         $query = "UPDATE tatib SET
-                    deskripsi = :deskripsi       
+                    deskripsi = :deskripsi
+                    id_tingkatSanksi = :id_tingkatSanksi       
                   WHERE id_tatib = :id_tatib";
 
         $this->db->query($query);
         $this->db->bind('deskripsi', $data['deskripsi']);
+        $this->db->bind('id_tingkatSanksi', $data['id_tingkatSanksi']);
         $this->db->bind('id_tatib', $data['id_tatib']);
 
         $this->db->execute();

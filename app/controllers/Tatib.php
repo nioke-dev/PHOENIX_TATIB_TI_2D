@@ -6,7 +6,7 @@ class Tatib extends Controller
     {
         $data['judul'] = 'Daftar Tatib';
         $data['tatib'] = $this->model('Tatib_model')->getAllTatib();
-
+        $data['nama'] = $this->model('User_model')->getUser();
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);

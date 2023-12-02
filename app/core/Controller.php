@@ -22,4 +22,10 @@ class Controller
             'text' => $text,
         ];
     }
+
+    public function middleware($middleware)
+    {
+        require_once '../app/middleware/' . $middleware . '.php';
+        return new $middleware;
+    }
 }

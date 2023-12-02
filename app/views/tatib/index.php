@@ -108,12 +108,12 @@
                         <label for="id_tingkatSanksi">Tingkat Sanksi</label>
                         <select class="form-control choices-single" id="id_tingkatSanksi" name="id_tingkatSanksi" autocomplete="off" required>
                             <option></option>
+                            <option value="6">I / II</option>
                             <option value="1">I</option>
                             <option value="2">II</option>
                             <option value="3">III</option>
                             <option value="4">IV</option>
                             <option value="5">V</option>
-                            <option value="6">I / II</option>
                         </select>
                     </div>
             </div>

@@ -57,7 +57,7 @@
             <td>
               <a href="<?= BASEURL; ?>/admin/detail/<?= $adm['nip_admin']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">Detail</a>
               <a href="<?= BASEURL; ?>/admin/ubah/<?= $adm['nip_admin']; ?>" class="badge bg-success float-right tampilModalUbahAdmin" data-bs-toggle="modal" data-bs-target="#formModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">ubah</a>
-              <a href="<?= BASEURL; ?>/admin/hapus/<?= $adm['nip_admin']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
+              <a href="<?= BASEURL; ?>/admin/hapus/<?= $adm['nip_admin']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Admin berikut?');">hapus</a>
             </td>
           </tr>
         <?php endforeach; 

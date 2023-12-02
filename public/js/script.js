@@ -344,7 +344,7 @@ $(function () {
       success: function (data) {
         console.log("Respons Server:", data);
         $("#deskripsi").val(data.deskripsi);
-        $("#id_tingkatSanksi").val(data.tingkat_sanksi);
+        $("#id_tingkatSanksi").val(data.id_tingkatSanksi);
         $("#id_tatib").val(data.id_tatib);
       },
     });

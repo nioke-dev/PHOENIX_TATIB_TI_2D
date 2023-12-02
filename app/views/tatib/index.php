@@ -32,22 +32,34 @@
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Deskripsi Tata Tertib</th>
+                    <th scope="col">Tingkat Sanksi</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
                 <?php $no = 1;
+                if(empty($data['tatib'])) : ?>
+                    <tr>
+                      <td colspan="7">
+                        <div class="alert alert-danger" role="alert">
+                          Tidak ada data terkait.
+                        </div>
+                      </td>
+                    </tr>
+                  <?php else:
                 foreach ($data['tatib'] as $tatib) : ?>
                     <tr>
                         <th scope="row"><?= $no++; ?></th>
                         <td><?= $tatib['deskripsi']; ?></td>
+                        <td><?= $tatib['id_tingkatSanksi']; ?></td>
                         <td>
-                            <a href="<?= BASEURL; ?>/tatib/hapus/<?= $tatib['id_tatib']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
-                            <a href="<?= BASEURL; ?>/tatib/ubah/<?= $tatib['id_tatib']; ?>" class="badge bg-success float-right tampilModalUbahTatib" data-bs-toggle="modal" data-bs-target="#formModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">ubah</a>
                             <a href="<?= BASEURL; ?>/tatib/detail/<?= $tatib['id_tatib']; ?>" class="badge bg-primary float-right tampilModalDetailTatib" data-bs-toggle="modal" data-bs-target="#detailModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Detail</a>
+                            <a href="<?= BASEURL; ?>/tatib/ubah/<?= $tatib['id_tatib']; ?>" class="badge bg-success float-right tampilModalUbahTatib" data-bs-toggle="modal" data-bs-target="#formModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">ubah</a>
+                            <a href="<?= BASEURL; ?>/tatib/hapus/<?= $tatib['id_tatib']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Tata tertib berikut?');">hapus</a>
                         </td>
                     </tr>
-                <?php endforeach; ?>
+                <?php endforeach; 
+                endif; ?>
             </tbody>
         </table>
     </div>
@@ -65,7 +77,7 @@
             <div class="modal-body">
 
                 <div class="form-group">
-                    <p><strong>Deskripsi:</strong> <span id="detailDeskripsi"></span></p>
+                    <p><strong>Deskripsi:</strong> <br> <span id="detailDeskripsi"></span></p>
                 </div>
                 <div class="form-group">
                     <p><strong>Tingkat Sanksi:</strong> <span id="detailTingkatSanksi"></span></p>
@@ -95,8 +107,8 @@
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Tambah Data</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
                 </form>
             </div>
         </div>

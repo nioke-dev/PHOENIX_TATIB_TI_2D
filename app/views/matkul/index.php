@@ -38,17 +38,27 @@
             </thead>
             <tbody>
                 <?php $no = 1;
+                if(empty($data['matkul'])) : ?>
+                    <tr>
+                      <td colspan="7">
+                        <div class="alert alert-danger" role="alert">
+                          Tidak ada data terkait.
+                        </div>
+                      </td>
+                    </tr>
+                  <?php else:
                 foreach ($data['matkul'] as $matkul) : ?>
                     <tr>
                         <th scope="row"><?= $no++; ?></th>
                         <td><?= $matkul['nip_dosen']; ?></td>
                         <td><?= $matkul['matkul']; ?></td>
                         <td>
-                            <a href="<?= BASEURL; ?>/matkul/hapus/<?= $matkul['id_matkul']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
                             <a href="<?= BASEURL; ?>/matkul/ubah/<?= $matkul['id_matkul']; ?>" class="badge bg-success float-right tampilModalUbahMatkul" data-bs-toggle="modal" data-bs-target="#formModalMatkulDosen" data-id_matkul="<?= $matkul['id_matkul']; ?>">ubah</a>
+                            <a href="<?= BASEURL; ?>/matkul/hapus/<?= $matkul['id_matkul']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Mata Kuliah berikut?');">hapus</a>
                         </td>
                     </tr>
-                <?php endforeach; ?>
+                <?php endforeach; 
+                endif; ?>
             </tbody>
         </table>
     </div>
@@ -125,8 +135,8 @@
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Tambah Data</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
                 </form>
             </div>
         </div>

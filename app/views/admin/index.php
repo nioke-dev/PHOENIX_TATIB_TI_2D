@@ -39,6 +39,15 @@
       </thead>
       <tbody>
         <?php $no = 1;
+        if(empty($data['adm'])) : ?>
+          <tr>
+            <td colspan="7">
+              <div class="alert alert-danger" role="alert">
+                Tidak ada data terkait.
+              </div>
+            </td>
+          </tr>
+        <?php else:
         foreach ($data['adm'] as $adm) : ?>
           <tr>
             <th scope="row"><?= $no++; ?></th>
@@ -46,16 +55,16 @@
             <td><?= $adm['nama_admin']; ?></td>
             <td><?= $adm['email_admin']; ?></td>
             <td>
-              <a href="<?= BASEURL; ?>/admin/hapus/<?= $adm['nip_admin']; ?>" class="badge bg-danger float-right" onclick="return confirm('yakin?');">hapus</a>
-              <a href="<?= BASEURL; ?>/admin/ubah/<?= $adm['nip_admin']; ?>" class="badge bg-success float-right tampilModalUbahAdmin" data-bs-toggle="modal" data-bs-target="#formModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">ubah</a>
               <a href="<?= BASEURL; ?>/admin/detail/<?= $adm['nip_admin']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">Detail</a>
+              <a href="<?= BASEURL; ?>/admin/ubah/<?= $adm['nip_admin']; ?>" class="badge bg-success float-right tampilModalUbahAdmin" data-bs-toggle="modal" data-bs-target="#formModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">ubah</a>
+              <a href="<?= BASEURL; ?>/admin/hapus/<?= $adm['nip_admin']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Admin berikut?');">hapus</a>
             </td>
           </tr>
-        <?php endforeach; ?>
+        <?php endforeach; 
+        endif; ?>
       </tbody>
     </table>
   </div>
-
 </div>
 
 <!-- Modal Detail -->
@@ -137,8 +146,8 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Tambah Data</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
         </form>
       </div>
     </div>

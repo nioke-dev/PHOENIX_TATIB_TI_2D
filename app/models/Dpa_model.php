@@ -14,7 +14,7 @@ class Dpa_model
     // Fungsi untuk mendapatkan semua data dpa
     public function getAllDpa()
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' ORDER BY id_user DESC');
+        $this->db->query('SELECT * FROM ' . $this->table . ' ORDER BY kelas_dpa ASC');
         return $this->db->resultSet();
     }
 

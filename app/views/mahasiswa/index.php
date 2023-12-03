@@ -1,62 +1,61 @@
-<div class="container mt-3">
-
-  <!-- Flash message -->
-  <div class="row">
-    <div class="col-lg-6">
-      <?php Flasher::flash(); ?>
-    </div>
+<!-- Flash message -->
+<div class="row">
+  <div class="col-lg-6">
+    <?php Flasher::flash(); ?>
   </div>
+</div>
 
-  <!-- Tambah Data Mahasiswa -->
-  <div class="row mb-3">
-    <div class="col-lg-6">
-      <button type="button" class="btn btn-primary tombolTambahDataMahasiswa" data-bs-toggle="modal" data-bs-target="#formModalMahasiswa">
-        Tambah Data Mahasiswa
-      </button>
-    </div>
+<!-- Tambah Data Mahasiswa -->
+<div class="row mb-3">
+  <div class="col-lg-6">
+    <button type="button" class="btn btn-primary tombolTambahDataMahasiswa" data-bs-toggle="modal" data-bs-target="#formModalMahasiswa">
+      Tambah Data Mahasiswa
+    </button>
   </div>
+</div>
 
-  <!-- Form Cari Mahasiswa -->
-  <div class="row mb-3">
-    <div class="col-lg-6">
-      <form action="<?= BASEURL; ?>/mahasiswa/cari" method="post">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Cari mahasiswa.." name="keyword" id="keyword" autocomplete="off">
-          <button class="btn btn-primary" type="submit" id="tombolCari">Cari</button>
-        </div>
-      </form>
-    </div>
+<!-- Form Cari Mahasiswa -->
+<div class="row mb-3">
+  <div class="col-lg-6">
+    <form action="<?= BASEURL; ?>/mahasiswa/cari" method="post">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Cari mahasiswa.." name="keyword" id="keyword" autocomplete="off">
+        <button class="btn btn-primary" type="submit" id="tombolCari">Cari</button>
+      </div>
+    </form>
   </div>
+</div>
 
-  <!-- Daftar Mahasiswa -->
-  <div class="row">
-    <h3>Daftar Mahasiswa</h3>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">No</th>
-          <th scope="col">NIM</th>
-          <th scope="col">Nama</th>
-          <th scope="col">Kelas</th>
-          <th scope="col">Prodi</th>
-          <th scope="col">Email</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
+
+<!-- Daftar Mahasiswa -->
+<div class="row">
+  <h3>Daftar Mahasiswa</h3>
+  <table id="example" class="table table-striped" style="width:100%">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>NIM</th>
+        <th>Nama</th>
+        <th>Kelas</th>
+        <th>Prodi</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
       <?php $no = 1;
-        if(empty($data['mhs'])) : ?>
-          <tr>
-            <td colspan="7">
-              <div class="alert alert-danger" role="alert">
-                Tidak ada data terkait.
-              </div>
-            </td>
-          </tr>
-        <?php else:
+      if (empty($data['mhs'])) : ?>
+        <tr>
+          <td>
+            <div class="alert alert-danger" role="alert">
+              Tidak ada data terkait.
+            </div>
+          </td>
+        </tr>
+        <?php else :
         foreach ($data['mhs'] as $mhs) : ?>
           <tr>
-            <th scope="row"><?= $no++; ?></th>
+            <th><?= $no++; ?></th>
             <td><?= $mhs['nim_mahasiswa']; ?></td>
             <td><?= $mhs['nama_mahasiswa']; ?></td>
             <td><?= $mhs['kelas_mahasiswa']; ?></td>
@@ -68,11 +67,22 @@
               <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Mahasiswa berikut?');">hapus</a>
             </td>
           </tr>
-        <?php endforeach;
-        endif; ?>
-      </tbody>
-    </table>
-  </div>
+      <?php endforeach;
+      endif; ?>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>No</th>
+        <th>NIM</th>
+        <th>Nama</th>
+        <th>Kelas</th>
+        <th>Prodi</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
 
 </div>
 
@@ -161,4 +171,3 @@
       </div>
     </div>
   </div>
-</div>

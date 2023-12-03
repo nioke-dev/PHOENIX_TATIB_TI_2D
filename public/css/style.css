@@ -1,3 +1,30 @@
 .badge {
-    margin-left: 3px;
+  margin-left: 3px;
+}
+
+#example_filter,
+#example_paginate {
+  float: right;
+}
+
+#example_length {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#example_length label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+#example_length select {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#example th:last-child,
+#example td:last-child {
+  width: 20%;
 }

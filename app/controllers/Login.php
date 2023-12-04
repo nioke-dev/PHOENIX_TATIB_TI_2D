@@ -31,9 +31,12 @@ class Login extends Controller
                 case 'dpa':
                     header('Location: ' . BASEURL . '/dpa');
                     break;
+                case 'admin':
+                    header('Location: ' . BASEURL . '/AdminControllers/admin');
+                    break;
                     // Tambahkan case sesuai dengan user_type lainnya
                 default:
-                    $this->view('login/login', ['error' => 'Username or password is incorrect.']);
+                    $this->view('login/index', ['error' => 'Username or password is incorrect.']);
                     break;
             }
             exit;
@@ -41,5 +44,16 @@ class Login extends Controller
             // Jika login gagal, mungkin tampilkan pesan kesalahan atau arahkan kembali ke halaman login
             $this->view('login/index', ['error' => 'Username or password is incorrect.']);
         }
+    }
+
+    public function logout()
+    {
+        // Hapus semua data sesi
+        session_unset();
+        session_destroy();
+
+        // Redirect ke halaman login setelah logout
+        header('Location: ' . BASEURL . '/login');
+        exit;
     }
 }

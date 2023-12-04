@@ -31,11 +31,11 @@ class Tatib extends Controller
             $this->model('Tatib_model')->tambahDataTatib($_POST) > 0
         ) {
             $this->showSweetAlert('success', 'Berhasil', 'Data Tatib Berhasil Ditambahkan');
-            header('Location: ' . BASEURL . '/tatib');
+            header('Location: ' . BASEURL . 'AdminControllers/tatib');
             exit;
         } else {
             $this->showSweetAlert('error', 'Gagal', 'Data Tatib Gagal Ditambahkan');
-            header('Location: ' . BASEURL . '/tatib');
+            header('Location: ' . BASEURL . 'AdminControllers/tatib');
             exit;
         }
     }
@@ -44,11 +44,11 @@ class Tatib extends Controller
     {
         if ($this->model('Tatib_model')->hapusDataTatib($id_tatib) > 0) {
             $this->showSweetAlert('success', 'Berhasil', 'Data Tatib Berhasil Dihapus');
-            header('Location: ' . BASEURL . '/tatib');
+            header('Location: ' . BASEURL . 'AdminControllers/tatib');
             exit;
         } else {
             $this->showSweetAlert('success', 'Gagal', 'Data Tatib Gagal Dihapus');
-            header('Location: ' . BASEURL . '/tatib');
+            header('Location: ' . BASEURL . 'AdminControllers/tatib');
             exit;
         }
     }
@@ -62,11 +62,11 @@ class Tatib extends Controller
     {
         if ($this->model('Tatib_model')->ubahDataTatib($_POST) > 0) {
             $this->showSweetAlert('success', 'Berhasil', 'Data Tatib Berhasil Diubah');
-            header('Location: ' . BASEURL . '/tatib');
+            header('Location: ' . BASEURL . 'AdminControllers/tatib');
             exit;
         } else {
             $this->showSweetAlert('error', 'Gagal', 'Data Tatib Gagal Diubah');
-            header('Location: ' . BASEURL . '/tatib');
+            header('Location: ' . BASEURL . 'AdminControllers/tatib');
             exit;
         }
     }

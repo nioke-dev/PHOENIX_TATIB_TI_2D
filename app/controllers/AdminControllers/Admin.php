@@ -114,7 +114,7 @@ class Admin extends Controller
             exit;
         } else {
             $this->showSweetAlert('success', 'Berhasil', 'Data berhasil Diubah');
-            header('Location: ' . BASEURL . '/admin');
+            header('Location: ' . BASEURL . '/AdminControllers/admin');
             exit;
         }
     }

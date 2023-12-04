@@ -70,17 +70,6 @@
       <?php endforeach;
       endif; ?>
     </tbody>
-    <tfoot>
-      <tr>
-        <th>No</th>
-        <th>NIM</th>
-        <th>Nama</th>
-        <th>Kelas</th>
-        <th>Prodi</th>
-        <th>Email</th>
-        <th>Action</th>
-      </tr>
-    </tfoot>
   </table>
 </div>
 

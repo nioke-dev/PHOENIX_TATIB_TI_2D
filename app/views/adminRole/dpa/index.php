@@ -95,9 +95,6 @@
         <div class="form-group">
           <p><strong>Email:</strong> <span id="detailEmailDpa"></span></p>
         </div>
-        <div class="form-group">
-          <p><strong>Password:</strong> <span id="detailPasswordDpa"></span></p>
-        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -138,11 +135,7 @@
             <input type="email" class="form-control" id="email_dpa" name="email_dpa" autocomplete="off" required>
             <input type="hidden" class="form-control" id="email_dpa_lama" name="email_dpa_lama" autocomplete="off" required>
           </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="text" class="form-control" id="password" name="password" autocomplete="off" required>
-            <input type="hidden" class="form-control" id="password_lama" name="password_lama" autocomplete="off" required>
-          </div>
+
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary">Tambah Data</button>

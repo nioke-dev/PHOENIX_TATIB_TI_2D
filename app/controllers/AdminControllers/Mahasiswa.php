@@ -35,16 +35,16 @@ class Mahasiswa extends Controller
             $dataUser['userMahasiswaId'] = $this->model('Mahasiswa_model')->getUserMahasiswaByNim($_POST);
             if ($this->model('Mahasiswa_model')->tambahDataMahasiswa($_POST, $dataUser) > 0) {
                 $this->showSweetAlert('success', 'Berhasil', 'Data Mahasiswa berhasil ditambahkan');
-                header('Location: ' . BASEURL . 'AdminControllers/mahasiswa');
+                header('Location: ' . BASEURL . '/AdminControllers/mahasiswa');
                 exit;
             } else {
                 $this->showSweetAlert('error', 'Ooops', 'Data Mahasiswa Gagal ditambahkan');
-                header('Location: ' . BASEURL . 'AdminControllers/mahasiswa');
+                header('Location: ' . BASEURL . '/AdminControllers/mahasiswa');
                 exit;
             }
         } else {
             $this->showSweetAlert('error', 'Ooops', 'Data Mahasiswa Gagal ditambahkan');
-            header('Location: ' . BASEURL . 'AdminControllers/mahasiswa');
+            header('Location: ' . BASEURL . '/AdminControllers/mahasiswa');
             exit;
         }
     }
@@ -54,11 +54,11 @@ class Mahasiswa extends Controller
     {
         if ($this->model('Mahasiswa_model')->hapusDataMahasiswa($nim) > 0) {
             $this->showSweetAlert('success', 'Berhasil', 'Data Mahasiswa berhasil dihapus');
-            header('Location: ' . BASEURL . 'AdminControllers/mahasiswa');
+            header('Location: ' . BASEURL . '/AdminControllers/mahasiswa');
             exit;
         } else {
             $this->showSweetAlert('error', 'Ooops', 'Data Mahasiswa Gagal dihapus');
-            header('Location: ' . BASEURL . 'AdminControllers/mahasiswa');
+            header('Location: ' . BASEURL . '/AdminControllers/mahasiswa');
             exit;
         }
     }
@@ -83,7 +83,7 @@ class Mahasiswa extends Controller
             } else {
                 // SweetAlert jika ada masalah pada perubahan user
                 $this->showSweetAlert('error', 'Ooops', 'Data Mahasiswa Gagal Diubah');
-                header('Location: ' . BASEURL . 'AdminControllers/mahasiswa');
+                header('Location: ' . BASEURL . '/AdminControllers/mahasiswa');
                 exit;
             }
         } else {
@@ -104,7 +104,7 @@ class Mahasiswa extends Controller
             } else {
                 // SweetAlert jika ada masalah pada perubahan mahasiswa
                 $this->showSweetAlert('error', 'Ooops', 'Data Mahasiswa Gagal Diubah');
-                header('Location: ' . BASEURL . 'AdminControllers/mahasiswa');
+                header('Location: ' . BASEURL . '/AdminControllers/mahasiswa');
                 exit;
             }
         } else {
@@ -115,11 +115,11 @@ class Mahasiswa extends Controller
         // SweetAlert jika tidak ada perubahan di kedua entitas
         if (!$userChanged && !$mahasiswaChanged) {
             $this->showSweetAlert('info', 'Tidak ada perubahan pada data Mahasiswa', 'info');
-            header('Location: ' . BASEURL . 'AdminControllers/mahasiswa');
+            header('Location: ' . BASEURL . '/AdminControllers/mahasiswa');
             exit;
         } else {
             $this->showSweetAlert('success', 'Berhasil', 'Data berhasil Diubah');
-            header('Location: ' . BASEURL . 'AdminControllers/mahasiswa');
+            header('Location: ' . BASEURL . '/AdminControllers/mahasiswa');
             exit;
         }
     }

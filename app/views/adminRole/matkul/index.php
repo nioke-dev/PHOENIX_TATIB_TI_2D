@@ -65,51 +65,6 @@
 
 </div>
 
-<!-- Modal Detail -->
-<div class="modal fade" id="detailModalDosen" tabindex="-1" aria-labelledby="detailModalDosenLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="detailModalDosenLabel"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <div class="form-group">
-                    <p><strong>NIP:</strong> <span id="detailNip"></span></p>
-                </div>
-
-                <div class="form-group">
-                    <p><strong>Nama:</strong> <span id="detailNama"></span></p>
-                </div>
-
-                <div class="form-group">
-                    <p><strong>Email:</strong> <span id="detailEmail"></span></p>
-                </div>
-
-                <div class="form-group">
-                    <p><strong>Username:</strong> <span id="detailUsername"></span></p>
-                </div>
-
-                <div class="form-group">
-                    <p><strong>Password:</strong> <span id="detailPassword"></span></p>
-                </div>
-
-                <div class="form-group">
-                    <p><strong>Matkul:</strong> <span id="detailMatkul"></span></p>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
 <!-- Modal Add and Edit -->
 <div class="modal fade" id="formModalMatkulDosen" tabindex="-1" aria-labelledby="formModalMatkulDosenLabel" aria-hidden="true">
     <div class="modal-dialog">

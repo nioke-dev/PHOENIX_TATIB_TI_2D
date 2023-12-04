@@ -99,9 +99,6 @@
         <div class="form-group">
           <p><strong>Email:</strong> <span id="detailEmailMahasiswa"></span></p>
         </div>
-        <div class="form-group">
-          <p><strong>Password:</strong> <span id="detailPasswordMahasiswa"></span></p>
-        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -147,11 +144,7 @@
             <input type="email" class="form-control" id="email_mahasiswa" name="email_mahasiswa" autocomplete="off" required>
             <input type="hidden" class="form-control" id="email_mahasiswa_lama" name="email_mahasiswa_lama" autocomplete="off" required>
           </div>
-          <div class="form-group">
-            <label for="password">password</label>
-            <input type="text" class="form-control" id="password" name="password" autocomplete="off" required>
-            <input type="hidden" class="form-control" id="password_lama" name="password_lama" autocomplete="off" required>
-          </div>
+
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary">Tambah Data</button>

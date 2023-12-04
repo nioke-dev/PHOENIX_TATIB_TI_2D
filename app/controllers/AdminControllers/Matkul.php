@@ -31,11 +31,11 @@ class Matkul extends Controller
         ) {
 
             $this->showSweetAlert('success', 'Berhasil', 'Data Matkul Dosen Berhasil Ditambahkan');
-            header('Location: ' . BASEURL . 'AdminControllers/matkul');
+            header('Location: ' . BASEURL . '/AdminControllers/matkul');
             exit;
         } else {
             $this->showSweetAlert('error', 'Ooops', 'Data Matkul Dosen Gagal ditambahkan');
-            header('Location: ' . BASEURL . 'AdminControllers/matkul');
+            header('Location: ' . BASEURL . '/AdminControllers/matkul');
             exit;
         }
     }
@@ -44,11 +44,11 @@ class Matkul extends Controller
     {
         if ($this->model('Matkul_model')->hapusDataMatkul($id_matkul) > 0) {
             $this->showSweetAlert('success', 'Berhasil', 'Data Matkul Dosen Berhasil Dihapus');
-            header('Location: ' . BASEURL . 'AdminControllers/matkul');
+            header('Location: ' . BASEURL . '/AdminControllers/matkul');
             exit;
         } else {
             $this->showSweetAlert('success', 'Berhasil', 'Data Matkul Dosen Gagal Dihapus');
-            header('Location: ' . BASEURL . 'AdminControllers/matkul');
+            header('Location: ' . BASEURL . '/AdminControllers/matkul');
             exit;
         }
     }
@@ -70,7 +70,7 @@ class Matkul extends Controller
             } else {
                 // SweetAlert jika ada masalah pada perubahan matkul
                 $this->showSweetAlert('error', 'Ooops', 'Data Matkul Dosen Gagal Diubah');
-                header('Location: ' . BASEURL . 'AdminControllers/matkul');
+                header('Location: ' . BASEURL . '/AdminControllers/matkul');
                 exit;
             }
         } else {
@@ -81,11 +81,11 @@ class Matkul extends Controller
         // SweetAlert jika tidak ada perubahan pada data matkul
         if (!$matkulChanged) {
             $this->showSweetAlert('info', 'Tidak ada perubahan pada data Matkul Dosen', 'info');
-            header('Location: ' . BASEURL . 'AdminControllers/matkul');
+            header('Location: ' . BASEURL . '/AdminControllers/matkul');
             exit;
         } else {
             $this->showSweetAlert('success', 'Berhasil', 'Data berhasil Diubah');
-            header('Location: ' . BASEURL . 'AdminControllers/matkul');
+            header('Location: ' . BASEURL . '/AdminControllers/matkul');
             exit;
         }
     }

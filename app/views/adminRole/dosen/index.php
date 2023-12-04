@@ -95,10 +95,6 @@
         </div>
 
         <div class="form-group">
-          <p><strong>Password:</strong> <span id="detailPassword"></span></p>
-        </div>
-
-        <div class="form-group">
           <p><strong>Matkul:</strong> <span id="detailMatkul"></span></p>
         </div>
 
@@ -141,12 +137,6 @@
             <label for="email">Email</label>
             <input type="email" class="form-control" id="email" name="email" autocomplete="off" required>
             <input type="hidden" class="form-control" id="email_lama" name="email_lama" autocomplete="off" required>
-          </div>
-
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" autocomplete="off" required>
-            <input type="hidden" class="form-control" id="password_lama" name="password_lama" autocomplete="off" required>
           </div>
 
       </div>

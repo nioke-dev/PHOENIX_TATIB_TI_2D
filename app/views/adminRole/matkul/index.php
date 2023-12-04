@@ -16,7 +16,7 @@
 
     <div class="row mb-3">
         <div class="col-lg-6">
-            <form action="<?= BASEURL; ?>/matkul/cari" method="post">
+            <form action="<?= BASEURL; ?>/AdminControllers/matkul/cari" method="post">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Cari Matkul.." name="keyword" id="keyword" autocomplete="off">
                     <button class="btn btn-primary" type="submit" id="tombolCari">Cari</button>
@@ -53,8 +53,8 @@
                         <td><?= $matkul['nip_dosen']; ?></td>
                         <td><?= $matkul['matkul']; ?></td>
                         <td>
-                            <a href="<?= BASEURL; ?>/matkul/ubah/<?= $matkul['id_matkul']; ?>" class="badge bg-success float-right tampilModalUbahMatkul" data-bs-toggle="modal" data-bs-target="#formModalMatkulDosen" data-id_matkul="<?= $matkul['id_matkul']; ?>">ubah</a>
-                            <a href="<?= BASEURL; ?>/matkul/hapus/<?= $matkul['id_matkul']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Mata Kuliah berikut?');">hapus</a>
+                            <a href="<?= BASEURL; ?>/AdminControllers/matkul/ubah/<?= $matkul['id_matkul']; ?>" class="badge bg-success float-right tampilModalUbahMatkul" data-bs-toggle="modal" data-bs-target="#formModalMatkulDosen" data-id_matkul="<?= $matkul['id_matkul']; ?>">ubah</a>
+                            <a href="<?= BASEURL; ?>/AdminControllers/matkul/hapus/<?= $matkul['id_matkul']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Mata Kuliah berikut?');">hapus</a>
                         </td>
                     </tr>
                 <?php endforeach; 
@@ -120,7 +120,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= BASEURL; ?>/matkul/tambah" method="post">
+                <form action="<?= BASEURL; ?>/AdminControllers/matkul/tambah" method="post">
                     <input type="hidden" name="id_matkul" id="id_matkul">
                     <div class="form-group">
                         <label for="nip_dosen">NIP Dosen</label>

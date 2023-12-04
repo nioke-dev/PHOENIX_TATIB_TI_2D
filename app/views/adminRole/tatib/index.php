@@ -16,7 +16,7 @@
 
     <div class="row mb-3">
         <div class="col-lg-6">
-            <form action="<?= BASEURL; ?>/tatib/cari" method="post">
+            <form action="<?= BASEURL; ?>/AdminControllers/tatib/cari" method="post">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Cari Tatib.." name="keyword" id="keyword" autocomplete="off">
                     <button class="btn btn-primary" type="submit" id="tombolCari">Cari</button>
@@ -53,9 +53,9 @@
                             <td><?= $tatib['deskripsi']; ?></td>
                             <td><?= $tatib['tingkat_sanksi']; ?></td>
                             <td>
-                                <a href="<?= BASEURL; ?>/tatib/detail/<?= $tatib['id_tatib']; ?>" class="badge bg-primary float-right tampilModalDetailTatib" data-bs-toggle="modal" data-bs-target="#detailModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Detail</a>
-                                <a href="<?= BASEURL; ?>/tatib/ubah/<?= $tatib['id_tatib']; ?>" class="badge bg-success float-right tampilModalUbahTatib" data-bs-toggle="modal" data-bs-target="#formModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Ubah</a>
-                                <a href="<?= BASEURL; ?>/tatib/hapus/<?= $tatib['id_tatib']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Tata tertib berikut?');">Hapus</a>
+                                <a href="<?= BASEURL; ?>/AdminControllers/tatib/detail/<?= $tatib['id_tatib']; ?>" class="badge bg-primary float-right tampilModalDetailTatib" data-bs-toggle="modal" data-bs-target="#detailModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Detail</a>
+                                <a href="<?= BASEURL; ?>/AdminControllers/tatib/ubah/<?= $tatib['id_tatib']; ?>" class="badge bg-success float-right tampilModalUbahTatib" data-bs-toggle="modal" data-bs-target="#formModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Ubah</a>
+                                <a href="<?= BASEURL; ?>/AdminControllers/tatib/hapus/<?= $tatib['id_tatib']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Tata tertib berikut?');">Hapus</a>
                             </td>
                         </tr>
                 <?php endforeach;
@@ -98,7 +98,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="<?= BASEURL; ?>/tatib/tambah" method="post">
+                <form action="<?= BASEURL; ?>/AdminControllers/tatib/tambah" method="post">
                     <input type="hidden" name="id_tatib" id="id_tatib">
                     <div class="form-group">
                         <label for="deskripsi">Deskripsi Tata Tertib</label>

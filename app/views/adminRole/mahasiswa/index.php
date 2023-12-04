@@ -17,7 +17,7 @@
 <!-- Form Cari Mahasiswa -->
 <div class="row mb-3">
   <div class="col-lg-6">
-    <form action="<?= BASEURL; ?>/mahasiswa/cari" method="post">
+    <form action="<?= BASEURL; ?>/AdminControllers/mahasiswa/cari" method="post">
       <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Cari mahasiswa.." name="keyword" id="keyword" autocomplete="off">
         <button class="btn btn-primary" type="submit" id="tombolCari">Cari</button>
@@ -62,9 +62,9 @@
             <td><?= $mhs['prodi_mahasiswa']; ?></td>
             <td><?= $mhs['email_mahasiswa']; ?></td>
             <td>
-              <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-primary float-right tampilModalDetailMahasiswa" data-bs-toggle="modal" data-bs-target="#detailModalMahasiswa" data-nim_mahasiswa="<?= $mhs['nim_mahasiswa']; ?>">Detail</a>
-              <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-success float-right tampilModalUbahMahasiswa" data-bs-toggle="modal" data-bs-target="#formModalMahasiswa" data-nim_mahasiswa="<?= $mhs['nim_mahasiswa']; ?>">ubah</a>
-              <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Mahasiswa berikut?');">hapus</a>
+              <a href="<?= BASEURL; ?>/AdminControllers/mahasiswa/detail/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-primary float-right tampilModalDetailMahasiswa" data-bs-toggle="modal" data-bs-target="#detailModalMahasiswa" data-nim_mahasiswa="<?= $mhs['nim_mahasiswa']; ?>">Detail</a>
+              <a href="<?= BASEURL; ?>/AdminControllers/mahasiswa/ubah/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-success float-right tampilModalUbahMahasiswa" data-bs-toggle="modal" data-bs-target="#formModalMahasiswa" data-nim_mahasiswa="<?= $mhs['nim_mahasiswa']; ?>">ubah</a>
+              <a href="<?= BASEURL; ?>/AdminControllers/mahasiswa/hapus/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Mahasiswa berikut?');">hapus</a>
             </td>
           </tr>
       <?php endforeach;
@@ -120,7 +120,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="<?= BASEURL; ?>/mahasiswa/tambah" method="post">
+        <form action="<?= BASEURL; ?>/AdminControllers/mahasiswa/tambah" method="post">
           <input type="hidden" name="id_user" id="id_user">
           <div class="form-group">
             <label for="nim_mahasiswa">NIM</label>

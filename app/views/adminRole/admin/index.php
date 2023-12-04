@@ -16,7 +16,7 @@
 
   <div class="row mb-3">
     <div class="col-lg-6">
-      <form action="<?= BASEURL; ?>/admin/cari" method="post">
+      <form action="<?= BASEURL; ?>/AdminControllers/admin/cari" method="post">
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Cari admin.." name="keyword" id="keyword" autocomplete="off">
           <button class="btn btn-primary" type="submit" id="tombolCari">Cari</button>
@@ -55,9 +55,9 @@
               <td><?= $adm['nama_admin']; ?></td>
               <td><?= $adm['email_admin']; ?></td>
               <td>
-                <a href="<?= BASEURL; ?>/admin/detail/<?= $adm['nip_admin']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">Detail</a>
-                <a href="<?= BASEURL; ?>/admin/ubah/<?= $adm['nip_admin']; ?>" class="badge bg-success float-right tampilModalUbahAdmin" data-bs-toggle="modal" data-bs-target="#formModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">ubah</a>
-                <a href="<?= BASEURL; ?>/admin/hapus/<?= $adm['nip_admin']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Admin berikut?');">hapus</a>
+                <a href="<?= BASEURL; ?>/AdminControllers/admin/detail/<?= $adm['nip_admin']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">Detail</a>
+                <a href="<?= BASEURL; ?>/AdminControllers/admin/ubah/<?= $adm['nip_admin']; ?>" class="badge bg-success float-right tampilModalUbahAdmin" data-bs-toggle="modal" data-bs-target="#formModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">ubah</a>
+                <a href="<?= BASEURL; ?>/AdminControllers/admin/hapus/<?= $adm['nip_admin']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Admin berikut?');">hapus</a>
               </td>
             </tr>
         <?php endforeach;
@@ -114,7 +114,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="<?= BASEURL; ?>/admin/tambah" method="post">
+        <form action="<?= BASEURL; ?>/AdminControllers/admin/tambah" method="post">
           <input type="hidden" name="id_user" id="id_user">
           <div class="form-group">
             <label for="nip_admin">NIP</label>
@@ -132,7 +132,7 @@
             <label for="email_admin">Email</label>
             <input type="email" class="form-control" id="email_admin" name="email_admin" autocomplete="off" required>
             <input type="hidden" class="form-control" id="email_admin_lama" name="email_admin_lama" autocomplete="off" required>
-          </div>          
+          </div>
 
       </div>
       <div class="modal-footer">

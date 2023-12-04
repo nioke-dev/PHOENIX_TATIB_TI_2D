@@ -178,7 +178,7 @@ $(function () {
   });
 
   $(".tampilModalUbahAdmin").on("click", function () {
-    $("#formModalAdminLabel").html("Ubah Data Admin");
+    $("#formModalAdminLabel").html("Ubah Data AdminNNN");
     $(".modal-footer button[type=submit]").html("Ubah Data");
     $(".modal-body form").attr(
       "action",

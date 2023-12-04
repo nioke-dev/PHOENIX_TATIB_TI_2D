@@ -19,7 +19,7 @@
   <!-- Form Cari DPA -->
   <div class="row mb-3">
     <div class="col-lg-6">
-      <form action="<?= BASEURL; ?>/dpa/cari" method="post">
+      <form action="<?= BASEURL; ?>/AdminControllers/AdminControllers/dpa/cari" method="post">
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Cari dpa.." name="keyword" id="keyword" autocomplete="off">
           <button class="btn btn-primary" type="submit" id="tombolCari">Cari</button>
@@ -61,9 +61,9 @@
             <td><?= $dpa['kelas_dpa']; ?></td>
             <td><?= $dpa['email_dpa']; ?></td>
             <td>
-            <a href="<?= BASEURL; ?>/dpa/detail/<?= $dpa['nip_dpa']; ?>" class="badge bg-primary float-right tampilModalDetailDpa" data-bs-toggle="modal" data-bs-target="#detailModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Detail</a>
-              <a href="<?= BASEURL; ?>/dpa/ubah/<?= $dpa['nip_dpa']; ?>" class="badge bg-success float-right tampilModalUbahDpa" data-bs-toggle="modal" data-bs-target="#formModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Ubah</a>
-              <a href="<?= BASEURL; ?>/dpa/hapus/<?= $dpa['nip_dpa']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data DPA berikut?');">Hapus</a>
+            <a href="<?= BASEURL; ?>/AdminControllers/dpa/detail/<?= $dpa['nip_dpa']; ?>" class="badge bg-primary float-right tampilModalDetailDpa" data-bs-toggle="modal" data-bs-target="#detailModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Detail</a>
+              <a href="<?= BASEURL; ?>/AdminControllers/dpa/ubah/<?= $dpa['nip_dpa']; ?>" class="badge bg-success float-right tampilModalUbahDpa" data-bs-toggle="modal" data-bs-target="#formModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Ubah</a>
+              <a href="<?= BASEURL; ?>/AdminControllers/dpa/hapus/<?= $dpa['nip_dpa']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data DPA berikut?');">Hapus</a>
               </td>
           </tr>
         <?php endforeach; 
@@ -116,7 +116,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="<?= BASEURL; ?>/dpa/tambah" method="post">
+        <form action="<?= BASEURL; ?>/AdminControllers/dpa/tambah" method="post">
           <input type="hidden" name="id_user" id="id_user">
           <div class="form-group">
             <label for="nip_dpa">NIP</label>

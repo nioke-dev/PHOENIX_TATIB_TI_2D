@@ -14,7 +14,7 @@ class Mahasiswa_model
     // Fungsi untuk mendapatkan semua data mahasiswa
     public function getAllMahasiswa()
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' ORDER BY id_user DESC');
+        $this->db->query('SELECT * FROM ' . $this->table . ' ORDER BY id_user ASC');
         return $this->db->resultSet();
     }
 

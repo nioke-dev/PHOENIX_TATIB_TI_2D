@@ -35,16 +35,16 @@ class Dosen extends Controller
             ) {
 
                 $this->showSweetAlert('success', 'Berhasil', 'Data Dosen berhasil ditambahkan');
-                header('Location: ' . BASEURL . '/dosen');
+                header('Location: ' . BASEURL . '/AdminControllers/dosen');
                 exit;
             } else {
                 $this->showSweetAlert('error', 'Ooops', 'Data Dosen Gagal ditambahkan');
-                header('Location: ' . BASEURL . '/dosen');
+                header('Location: ' . BASEURL . '/AdminControllers/dosen');
                 exit;
             }
         } else {
             $this->showSweetAlert('error', 'Ooops', 'Data Dosen Gagal ditambahkan');
-            header('Location: ' . BASEURL . '/dosen');
+            header('Location: ' . BASEURL . '/AdminControllers/dosen');
             exit;
         }
     }
@@ -53,11 +53,11 @@ class Dosen extends Controller
     {
         if ($this->model('Dosen_model')->hapusDataDosen($id) > 0) {
             $this->showSweetAlert('success', 'Berhasil', 'Data Dosen berhasil Dihapus');
-            header('Location: ' . BASEURL . '/dosen');
+            header('Location: ' . BASEURL . '/AdminControllers/dosen');
             exit;
         } else {
             $this->showSweetAlert('error', 'Ooops', 'Data Dosen Gagal dihapus');
-            header('Location: ' . BASEURL . '/dosen');
+            header('Location: ' . BASEURL . '/AdminControllers/dosen');
             exit;
         }
     }
@@ -80,7 +80,7 @@ class Dosen extends Controller
             } else {
                 // SweetAlert jika ada masalah pada perubahan user
                 $this->showSweetAlert('error', 'Ooops', 'Data User Dosen Gagal Diubah');
-                header('Location: ' . BASEURL . '/dosen');
+                header('Location: ' . BASEURL . '/AdminControllers/dosen');
                 exit;
             }
         } else {
@@ -99,7 +99,7 @@ class Dosen extends Controller
             } else {
                 // SweetAlert jika ada masalah pada perubahan dosen
                 $this->showSweetAlert('error', 'Ooops', 'Data Dosen Gagal Diubah');
-                header('Location: ' . BASEURL . '/dosen');
+                header('Location: ' . BASEURL . '/AdminControllers/dosen');
                 exit;
             }
         } else {
@@ -110,11 +110,11 @@ class Dosen extends Controller
         // SweetAlert jika tidak ada perubahan di kedua entitas
         if (!$userChanged && !$dosenChanged) {
             $this->showSweetAlert('info', 'Tidak ada perubahan pada data Dosen', 'info');
-            header('Location: ' . BASEURL . '/dosen');
+            header('Location: ' . BASEURL . '/AdminControllers/dosen');
             exit;
         } else {
             $this->showSweetAlert('success', 'Berhasil', 'Data berhasil Diubah');
-            header('Location: ' . BASEURL . '/dosen');
+            header('Location: ' . BASEURL . '/AdminControllers/dosen');
             exit;
         }
     }

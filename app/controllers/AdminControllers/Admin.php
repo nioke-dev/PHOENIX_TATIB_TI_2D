@@ -35,16 +35,16 @@ class Admin extends Controller
             ) {
 
                 $this->showSweetAlert('success', 'Berhasil', 'Data Admin berhasil ditambahkan');
-                header('Location: ' . BASEURL . '/admin');
+                header('Location: ' . BASEURL . '/AdminControllers/admin');
                 exit;
             } else {
                 $this->showSweetAlert('error', 'Ooops', 'Data Admin Gagal ditambahkan');
-                header('Location: ' . BASEURL . '/admin');
+                header('Location: ' . BASEURL . '/AdminControllers/admin');
                 exit;
             }
         } else {
             $this->showSweetAlert('error', 'Ooops', 'Data Admin Gagal ditambahkan');
-            header('Location: ' . BASEURL . '/admin');
+            header('Location: ' . BASEURL . '/AdminControllers/admin');
             exit;
         }
     }
@@ -53,11 +53,11 @@ class Admin extends Controller
     {
         if ($this->model('Admin_model')->hapusDataAdmin($id) > 0) {
             $this->showSweetAlert('success', 'Berhasil', 'Data Admin berhasil Dihapus');
-            header('Location: ' . BASEURL . '/admin');
+            header('Location: ' . BASEURL . '/AdminControllers/admin');
             exit;
         } else {
             $this->showSweetAlert('error', 'Ooops', 'Data Admin Gagal dihapus');
-            header('Location: ' . BASEURL . '/admin');
+            header('Location: ' . BASEURL . '/AdminControllers/admin');
             exit;
         }
     }
@@ -80,7 +80,7 @@ class Admin extends Controller
             } else {
                 // SweetAlert jika ada masalah pada perubahan user
                 $this->showSweetAlert('error', 'Ooops', 'Data User Admin Gagal Diubah');
-                header('Location: ' . BASEURL . '/admin');
+                header('Location: ' . BASEURL . '/AdminControllers/admin');
                 exit;
             }
         } else {
@@ -99,7 +99,7 @@ class Admin extends Controller
             } else {
                 // SweetAlert jika ada masalah pada perubahan admin
                 $this->showSweetAlert('error', 'Ooops', 'Data Admin Gagal Diubah');
-                header('Location: ' . BASEURL . '/admin');
+                header('Location: ' . BASEURL . '/AdminControllers/admin');
                 exit;
             }
         } else {
@@ -110,7 +110,7 @@ class Admin extends Controller
         // SweetAlert jika tidak ada perubahan di kedua entitas
         if (!$userChanged && !$adminChanged) {
             $this->showSweetAlert('info', 'Tidak ada perubahan pada data Admin', 'info');
-            header('Location: ' . BASEURL . '/admin');
+            header('Location: ' . BASEURL . '/AdminControllers/admin');
             exit;
         } else {
             $this->showSweetAlert('success', 'Berhasil', 'Data berhasil Diubah');

@@ -31,9 +31,12 @@ class Login extends Controller
                 case 'dpa':
                     header('Location: ' . BASEURL . '/dpa');
                     break;
+                case 'admin':
+                    header('Location: ' . BASEURL . '/admin');
+                    break;    
                     // Tambahkan case sesuai dengan user_type lainnya
                 default:
-                    $this->view('login/login', ['error' => 'Username or password is incorrect.']);
+                    $this->view('login/index', ['error' => 'Username or password is incorrect.']);
                     break;
             }
             exit;

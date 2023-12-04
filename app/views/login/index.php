@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Modernize Free</title>
-    <link rel="shortcut icon" type="image/png" href="<?= BASEURL; ?>/assets/images/logos/favicon.png" />
+    <title>TATIB</title>
+    <link rel="shortcut icon" type="image/png" href="<?= BASEURL; ?>/assets/images/logos/tatib_icon.png" />
     <link rel="stylesheet" href="<?= BASEURL; ?>/assets/css/styles.min.css" />
 
     <!-- SweetAlert2 CSS -->
@@ -26,10 +26,11 @@
                     <div class="col-md-8 col-lg-6 col-xxl-3">
                         <div class="card mb-0">
                             <div class="card-body">
-                                <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                                    <img src="<?= BASEURL; ?>/assets/images/logos/dark-logo.svg" width="180" alt="">
+                                <a href="<?= BASEURL; ?>/login" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                                    <img src="<?= BASEURL; ?>/assets/images/logos/logos.png" width="180" alt="">
                                 </a>
-                                <p class="text-center">Your Social Campaigns</p>
+                                <div class="alert alert-danger mb-3" id="alert-login" style="text-align:center;margin-bottom: 0;">
+			                    Masukkan Username dan Password <br> (Menggunakan NIM / NIP &amp; Password : rahasia)</div>
 
                                 <?php if (isset($data['error'])) : ?>
                                     <p style="color: red;"><?php echo $data['error']; ?></p>
@@ -37,26 +38,16 @@
                                 <form action="<?= BASEURL; ?>/login/processLogin" method="post">
                                     <div class="mb-3">
                                         <label for="username" class="form-label">Username</label>
-                                        <input type="username" class="form-control" id="username" name="username" aria-describedby="emailHelp">
+                                        <input type="username" class="form-control" id="username" placeholder="Masukkan NIM / NIP" name="username" aria-describedby="emailHelp">
                                     </div>
                                     <div class="mb-4">
                                         <label for="password" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="password" name="password">
+                                        <input type="password" class="form-control" id="password" placeholder="Masukkan Password" name="password">
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input primary" type="checkbox" value="" id="flexCheckChecked" checked>
-                                            <label class="form-check-label text-dark" for="flexCheckChecked">
-                                                Remeber this Device
-                                            </label>
-                                        </div>
                                         <a class="text-primary fw-bold" href="./index.html">Forgot Password ?</a>
                                     </div>
                                     <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</button>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <p class="fs-4 mb-0 fw-bold">New to Modernize?</p>
-                                        <a class="text-primary fw-bold ms-2" href="./authentication-register.html">Create an account</a>
-                                    </div>
                                 </form>
                             </div>
                         </div>

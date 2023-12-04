@@ -15,7 +15,7 @@ class Matkul extends Controller
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);
-        $this->view('matkul/index', $data);
+        $this->view('adminRole/matkul/index', $data);
         $this->view('templates/footer', $data);
     }
 
@@ -98,7 +98,7 @@ class Matkul extends Controller
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);
-        $this->view('matkul/index', $data);
+        $this->view('adminRole/matkul/index', $data);
         $this->view('templates/footer', $data);
     }
 }

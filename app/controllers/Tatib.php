@@ -15,7 +15,7 @@ class Tatib extends Controller
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);
-        $this->view('tatib/index', $data);
+        $this->view('adminRole/tatib/index', $data);
         $this->view('templates/footer', $data);
     }
 
@@ -79,7 +79,7 @@ class Tatib extends Controller
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);
-        $this->view('tatib/index', $data);
+        $this->view('adminRole/tatib/index', $data);
         $this->view('templates/footer', $data);
     }
 }

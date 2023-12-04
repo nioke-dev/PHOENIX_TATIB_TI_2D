@@ -16,7 +16,7 @@ class Dpa extends Controller
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);
-        $this->view('dpa/index', $data);
+        $this->view('adminRole/dpa/index', $data);
         $this->view('templates/footer', $data);
     }
 
@@ -130,7 +130,7 @@ class Dpa extends Controller
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);
-        $this->view('dpa/index', $data);
+        $this->view('adminRole/dpa/index', $data);
         $this->view('templates/footer', $data);
     }
 }

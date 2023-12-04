@@ -18,7 +18,7 @@ class Mahasiswa extends Controller
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);
-        $this->view('mahasiswa/index', $data);
+        $this->view('adminRole/mahasiswa/index', $data);
         $this->view('templates/footer', $data);
     }
 
@@ -133,7 +133,7 @@ class Mahasiswa extends Controller
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);
-        $this->view('mahasiswa/index', $data);
+        $this->view('adminRole/mahasiswa/index', $data);
         $this->view('templates/footer', $data);
     }
 }

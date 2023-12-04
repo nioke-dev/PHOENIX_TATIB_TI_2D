@@ -15,7 +15,7 @@ class Dosen extends Controller
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);
-        $this->view('dosen/index', $data);
+        $this->view('adminRole/dosen/index', $data);
         $this->view('templates/footer', $data);
     }
 
@@ -127,7 +127,7 @@ class Dosen extends Controller
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);
-        $this->view('dosen/index', $data);
+        $this->view('adminRole/dosen/index', $data);
         $this->view('templates/footer', $data);
     }
 }

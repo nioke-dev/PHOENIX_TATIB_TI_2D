@@ -42,7 +42,8 @@ class Login extends Controller
             exit;
         } else {
             // Jika login gagal, mungkin tampilkan pesan kesalahan atau arahkan kembali ke halaman login
-            $this->view('login/index', ['error' => 'Username or password is incorrect.']);
+            $this->view('login/index');
+            $this->showSweetAlert('error', 'Login Gagal', 'Username dan Password yang Anda Masukkan Salah.');
         }
     }
 

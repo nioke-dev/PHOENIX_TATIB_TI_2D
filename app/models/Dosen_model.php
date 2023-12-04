@@ -64,7 +64,7 @@ class Dosen_model
 
         $this->db->query($query);
         $this->db->bind('username', $data['nip']);
-        $this->db->bind('password', $data['password']);
+        $this->db->bind('password', md5('rahasia'));
         $this->db->bind('user_type', 'dosen');
 
         $this->db->execute();
@@ -120,13 +120,11 @@ class Dosen_model
     public function ubahDataUser($data)
     {
         $query = "UPDATE user SET
-                    username = :username,
-                    password = :password
+                    username = :username,                    
                   WHERE id_user = :id_user";
 
         $this->db->query($query);
         $this->db->bind('username', $data['nip']);
-        $this->db->bind('password', $data['password']);
         $this->db->bind('id_user', $data['id_user']);
 
         $this->db->execute();

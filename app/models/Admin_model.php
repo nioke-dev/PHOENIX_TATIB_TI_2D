@@ -54,7 +54,7 @@ class Admin_model
 
         $this->db->query($query);
         $this->db->bind('username', $data['nip_admin']);
-        $this->db->bind('password', $data['password']);
+        $this->db->bind('password', md5('rahasia'));
         $this->db->bind('user_type', 'admin');
 
         $this->db->execute();
@@ -95,13 +95,11 @@ class Admin_model
     public function ubahDataUser($data)
     {
         $query = "UPDATE user SET
-                    username = :username,
-                    password = :password
+                    username = :username,                    
                   WHERE id_user = :id_user";
 
         $this->db->query($query);
         $this->db->bind('username', $data['nip_admin']);
-        $this->db->bind('password', $data['password']);
         $this->db->bind('id_user', $data['id_user']);
 
         $this->db->execute();

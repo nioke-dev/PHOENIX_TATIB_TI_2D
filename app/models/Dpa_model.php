@@ -63,7 +63,7 @@ class Dpa_model
         $this->db->query($query);
 
         $this->db->bind('username', $data['nip_dpa']);
-        $this->db->bind('password', $data['password']);
+        $this->db->bind('password', md5('rahasia'));
         $this->db->bind('user_type', 'dpa');
 
         $this->db->execute();
@@ -110,13 +110,11 @@ class Dpa_model
     public function ubahDataUserDpa($data)
     {
         $query = "UPDATE user SET
-                    username = :username,
-                    password = :password
+                    username = :username,                  
                   WHERE id_user = :id_user";
 
         $this->db->query($query);
         $this->db->bind('username', $data['nip_dpa']);
-        $this->db->bind('password', $data['password']);
         $this->db->bind('id_user', $data['id_user']);
 
         $this->db->execute();

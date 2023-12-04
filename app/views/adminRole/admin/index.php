@@ -39,7 +39,7 @@
       </thead>
       <tbody>
         <?php $no = 1;
-        if(empty($data['adm'])) : ?>
+        if (empty($data['adm'])) : ?>
           <tr>
             <td colspan="7">
               <div class="alert alert-danger" role="alert">
@@ -47,20 +47,20 @@
               </div>
             </td>
           </tr>
-        <?php else:
-        foreach ($data['adm'] as $adm) : ?>
-          <tr>
-            <th scope="row"><?= $no++; ?></th>
-            <td><?= $adm['nip_admin']; ?></td>
-            <td><?= $adm['nama_admin']; ?></td>
-            <td><?= $adm['email_admin']; ?></td>
-            <td>
-              <a href="<?= BASEURL; ?>/admin/detail/<?= $adm['nip_admin']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">Detail</a>
-              <a href="<?= BASEURL; ?>/admin/ubah/<?= $adm['nip_admin']; ?>" class="badge bg-success float-right tampilModalUbahAdmin" data-bs-toggle="modal" data-bs-target="#formModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">ubah</a>
-              <a href="<?= BASEURL; ?>/admin/hapus/<?= $adm['nip_admin']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Admin berikut?');">hapus</a>
-            </td>
-          </tr>
-        <?php endforeach; 
+          <?php else :
+          foreach ($data['adm'] as $adm) : ?>
+            <tr>
+              <th scope="row"><?= $no++; ?></th>
+              <td><?= $adm['nip_admin']; ?></td>
+              <td><?= $adm['nama_admin']; ?></td>
+              <td><?= $adm['email_admin']; ?></td>
+              <td>
+                <a href="<?= BASEURL; ?>/admin/detail/<?= $adm['nip_admin']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">Detail</a>
+                <a href="<?= BASEURL; ?>/admin/ubah/<?= $adm['nip_admin']; ?>" class="badge bg-success float-right tampilModalUbahAdmin" data-bs-toggle="modal" data-bs-target="#formModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">ubah</a>
+                <a href="<?= BASEURL; ?>/admin/hapus/<?= $adm['nip_admin']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Admin berikut?');">hapus</a>
+              </td>
+            </tr>
+        <?php endforeach;
         endif; ?>
       </tbody>
     </table>
@@ -91,10 +91,6 @@
 
         <div class="form-group">
           <p><strong>Username:</strong> <span id="detailUsernameAdmin"></span></p>
-        </div>
-
-        <div class="form-group">
-          <p><strong>Password:</strong> <span id="detailPasswordAdmin"></span></p>
         </div>
 
       </div>
@@ -136,13 +132,7 @@
             <label for="email_admin">Email</label>
             <input type="email" class="form-control" id="email_admin" name="email_admin" autocomplete="off" required>
             <input type="hidden" class="form-control" id="email_admin_lama" name="email_admin_lama" autocomplete="off" required>
-          </div>
-
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" autocomplete="off" required>
-            <input type="hidden" class="form-control" id="password_lama" name="password_lama" autocomplete="off" required>
-          </div>
+          </div>          
 
       </div>
       <div class="modal-footer">

@@ -6,7 +6,6 @@ $(function () {
     $("#nip").val("");
     $("#nama").val("");
     $("#email").val("");
-    $("#password").val("");
     $("#matkul").val("");
   });
 
@@ -15,13 +14,13 @@ $(function () {
     $(".modal-footer button[type=submit]").html("Ubah Data");
     $(".modal-body form").attr(
       "action",
-      "http://localhost/PHOENIX_TATIB_TI_2D/public/dosen/ubah"
+      "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/dosen/ubah"
     );
 
     const nip_dosen = $(this).data("nip_dosen");
 
     $.ajax({
-      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/dosen/getubah",
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/dosen/getubah",
       data: { nip_dosen: nip_dosen },
       method: "post",
       dataType: "json",
@@ -29,13 +28,10 @@ $(function () {
         $("#nip").val(data.nip_dosen);
         $("#nama").val(data.nama_dosen);
         $("#email").val(data.email_dosen);
-        $("#password").val(data.password);
         $("#nip_lama").val(data.nip_dosen);
         $("#nama_lama").val(data.nama_dosen);
         $("#email_lama").val(data.email_dosen);
-        $("#password_lama").val(data.password);
         $("#id_user").val(data.id_user);
-        $("#password").attr("type", "text");
       },
     });
   });
@@ -47,7 +43,7 @@ $(function () {
     console.log("nip_dosen:", nip_dosen);
 
     $.ajax({
-      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/dosen/detail",
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/dosen/detail",
       data: { nip_dosen: nip_dosen },
       method: "post",
       dataType: "json",
@@ -57,7 +53,6 @@ $(function () {
         $("#detailNama").text(data.nama_dosen);
         $("#detailEmail").text(data.email_dosen);
         $("#detailUsername").text(data.username);
-        $("#detailPassword").text(data.password);
         // Menangani hasil yang mungkin merupakan kumpulan matkul
         if (data.matkul) {
           $("#detailMatkul").text(data.matkul);
@@ -85,13 +80,13 @@ $(function () {
     $(".modal-footer button[type=submit]").html("Ubah Data");
     $(".modal-body form").attr(
       "action",
-      "http://localhost/PHOENIX_TATIB_TI_2D/public/matkul/ubah"
+      "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/matkul/ubah"
     );
 
     const id_matkul = $(this).data("id_matkul");
 
     $.ajax({
-      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/matkul/getubah",
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/matkul/getubah",
       data: { id_matkul: id_matkul },
       method: "post",
       dataType: "json",
@@ -115,7 +110,6 @@ $(function () {
     $("#kelas_mahasiswa").val("");
     $("#prodi_mahasiswa").val("");
     $("#email_mahasiswa").val("");
-    $("#password").val("");
   });
 
   $(".tampilModalDetailMahasiswa").on("click", function () {
@@ -125,7 +119,7 @@ $(function () {
     console.log(nim_mahasiswa);
 
     $.ajax({
-      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/mahasiswa/detail",
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/mahasiswa/detail",
       data: { nim_mahasiswa: nim_mahasiswa },
       method: "post",
       dataType: "json",
@@ -136,7 +130,6 @@ $(function () {
         $("#detailKelasMahasiswa").text(data.kelas_mahasiswa);
         $("#detailProdiMahasiswa").text(data.prodi_mahasiswa);
         $("#detailEmailMahasiswa").text(data.email_mahasiswa);
-        $("#detailPasswordMahasiswa").text(data.password);
       },
       error: function (xhr, status, error) {
         console.error("Error:", error);
@@ -149,13 +142,13 @@ $(function () {
     $(".modal-footer button[type=submit]").html("Ubah Data");
     $(".modal-body form").attr(
       "action",
-      "http://localhost/PHOENIX_TATIB_TI_2D/public/mahasiswa/ubah"
+      "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/mahasiswa/ubah"
     );
 
     const nim_mahasiswa = $(this).data("nim_mahasiswa");
 
     $.ajax({
-      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/mahasiswa/getubah",
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/mahasiswa/getubah",
       data: { nim_mahasiswa: nim_mahasiswa },
       method: "post",
       dataType: "json",
@@ -165,13 +158,11 @@ $(function () {
         $("#kelas_mahasiswa").val(data.kelas_mahasiswa);
         $("#prodi_mahasiswa").val(data.prodi_mahasiswa);
         $("#email_mahasiswa").val(data.email_mahasiswa);
-        $("#password").val(data.password);
         $("#nim_mahasiswa_lama").val(data.nim_mahasiswa);
         $("#nama_mahasiswa_lama").val(data.nama_mahasiswa);
         $("#kelas_mahasiswa_lama").val(data.kelas_mahasiswa);
         $("#prodi_mahasiswa_lama").val(data.prodi_mahasiswa);
         $("#email_mahasiswa_lama").val(data.email_mahasiswa);
-        $("#password_lama").val(data.password);
         $("#id_user").val(data.id_user);
       },
     });
@@ -184,7 +175,6 @@ $(function () {
     $("#nip_admin").val("");
     $("#nama_admin").val("");
     $("#email_admin").val("");
-    $("#password").val("");
   });
 
   $(".tampilModalUbahAdmin").on("click", function () {
@@ -192,13 +182,13 @@ $(function () {
     $(".modal-footer button[type=submit]").html("Ubah Data");
     $(".modal-body form").attr(
       "action",
-      "http://localhost/PHOENIX_TATIB_TI_2D/public/admin/ubah"
+      "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/admin/ubah"
     );
 
     const nip_admin = $(this).data("nip_admin");
 
     $.ajax({
-      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/admin/getubah",
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/admin/getubah",
       data: { nip_admin: nip_admin },
       method: "post",
       dataType: "json",
@@ -207,13 +197,10 @@ $(function () {
         $("#nip_admin").val(data.nip_admin);
         $("#nama_admin").val(data.nama_admin);
         $("#email_admin").val(data.email_admin);
-        $("#password").val(data.password);
         $("#nip_admin_lama").val(data.nip_admin);
         $("#nama_admin_lama").val(data.nama_admin);
         $("#email_admin_lama").val(data.email_admin);
-        $("#password_lama").val(data.password);
         $("#id_user").val(data.id_user);
-        $("#password").attr("type", "text");
       },
     });
   });
@@ -225,7 +212,7 @@ $(function () {
     console.log("nip_admin:", nip_admin);
 
     $.ajax({
-      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/admin/detail",
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/admin/detail",
       data: { nip_admin: nip_admin },
       method: "post",
       dataType: "json",
@@ -235,7 +222,6 @@ $(function () {
         $("#detailNamaAdmin").text(data.nama_admin);
         $("#detailEmailAdmin").text(data.email_admin);
         $("#detailUsernameAdmin").text(data.username);
-        $("#detailPasswordAdmin").text(data.password);
         // Menangani hasil yang mungkin merupakan kumpulan matkul
         // if (data.matkul) {
         //   $("#detailMatkul").text(data.matkul);
@@ -258,7 +244,6 @@ $(function () {
     $("#kelas_dpa").val("");
     $("#prodi_dpa").val("");
     $("#email_dpa").val("");
-    $("#password").val("");
   });
 
   $(".tampilModalDetailDpa").on("click", function () {
@@ -268,7 +253,7 @@ $(function () {
     console.log(nip_dpa);
 
     $.ajax({
-      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/dpa/detail",
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/dpa/detail",
       data: { nip_dpa: nip_dpa },
       method: "post",
       dataType: "json",
@@ -278,7 +263,6 @@ $(function () {
         $("#detailNamaDpa").text(data.nama_dpa);
         $("#detailKelasDpa").text(data.kelas_dpa);
         $("#detailEmailDpa").text(data.email_dpa);
-        $("#detailPasswordDpa").text(data.password);
       },
       error: function (xhr, status, error) {
         console.error("Error:", error);
@@ -291,13 +275,13 @@ $(function () {
     $(".modal-footer button[type=submit]").html("Ubah Data");
     $(".modal-body form").attr(
       "action",
-      "http://localhost/PHOENIX_TATIB_TI_2D/public/dpa/ubah"
+      "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/dpa/ubah"
     );
 
     const nip_dpa = $(this).data("nip_dpa");
 
     $.ajax({
-      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/dpa/getubah",
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/dpa/getubah",
       data: { nip_dpa: nip_dpa },
       method: "post",
       dataType: "json",
@@ -306,12 +290,10 @@ $(function () {
         $("#nama_dpa").val(data.nama_dpa);
         $("#kelas_dpa").val(data.kelas_dpa);
         $("#email_dpa").val(data.email_dpa);
-        $("#password").val(data.password);
         $("#nip_dpa_lama").val(data.nip_dpa);
         $("#nama_dpa_lama").val(data.nama_dpa);
         $("#kelas_dpa_lama").val(data.kelas_dpa);
         $("#email_dpa_lama").val(data.email_dpa);
-        $("#password_lama").val(data.password);
         $("#id_user").val(data.id_user);
       },
     });
@@ -331,13 +313,13 @@ $(function () {
     $(".modal-footer button[type=submit]").html("Ubah Data");
     $(".modal-body form").attr(
       "action",
-      "http://localhost/PHOENIX_TATIB_TI_2D/public/tatib/ubah"
+      "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/tatib/ubah"
     );
 
     const id_tatib = $(this).data("id_tatib");
 
     $.ajax({
-      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/tatib/getubah",
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/tatib/getubah",
       data: { id_tatib: id_tatib },
       method: "post",
       dataType: "json",
@@ -357,7 +339,7 @@ $(function () {
     console.log("id_tatib:", id_tatib);
 
     $.ajax({
-      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/tatib/getubah",
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/tatib/getubah",
       data: { id_tatib: id_tatib },
       method: "post",
       dataType: "json",

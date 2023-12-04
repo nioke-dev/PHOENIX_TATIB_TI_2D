@@ -55,6 +55,7 @@ class App
         }
 
         // Extract parameters from URL
+        unset($url[0]);
         $this->params = array_values($url);
 
         // Run the controller & method and pass parameters if any

@@ -38,26 +38,26 @@
             </thead>
             <tbody>
                 <?php $no = 1;
-                if(empty($data['matkul'])) : ?>
+                if (empty($data['matkul'])) : ?>
                     <tr>
-                      <td colspan="7">
-                        <div class="alert alert-danger" role="alert">
-                          Tidak ada data terkait.
-                        </div>
-                      </td>
-                    </tr>
-                  <?php else:
-                foreach ($data['matkul'] as $matkul) : ?>
-                    <tr>
-                        <th scope="row"><?= $no++; ?></th>
-                        <td><?= $matkul['nip_dosen']; ?></td>
-                        <td><?= $matkul['matkul']; ?></td>
-                        <td>
-                            <a href="<?= BASEURL; ?>/AdminControllers/matkul/ubah/<?= $matkul['id_matkul']; ?>" class="badge bg-success float-right tampilModalUbahMatkul" data-bs-toggle="modal" data-bs-target="#formModalMatkulDosen" data-id_matkul="<?= $matkul['id_matkul']; ?>">ubah</a>
-                            <a href="<?= BASEURL; ?>/AdminControllers/matkul/hapus/<?= $matkul['id_matkul']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Mata Kuliah berikut?');">hapus</a>
+                        <td colspan="7">
+                            <div class="alert alert-danger" role="alert">
+                                Tidak ada data terkait.
+                            </div>
                         </td>
                     </tr>
-                <?php endforeach; 
+                    <?php else :
+                    foreach ($data['matkul'] as $matkul) : ?>
+                        <tr>
+                            <th scope="row"><?= $no++; ?></th>
+                            <td><?= $matkul['nip_dosen']; ?></td>
+                            <td><?= $matkul['matkul']; ?></td>
+                            <td>
+                                <a href="<?= BASEURL; ?>/AdminControllers/matkul/ubah/<?= $matkul['id_matkul']; ?>" class="badge bg-success float-right tampilModalUbahMatkul" data-bs-toggle="modal" data-bs-target="#formModalMatkulDosen" data-id_matkul="<?= $matkul['id_matkul']; ?>">ubah</a>
+                                <a href="<?= BASEURL; ?>/AdminControllers/matkul/hapus/<?= $matkul['id_matkul']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Mata Kuliah berikut?');">hapus</a>
+                            </td>
+                        </tr>
+                <?php endforeach;
                 endif; ?>
             </tbody>
         </table>
@@ -77,14 +77,10 @@
             <div class="modal-body">
                 <form action="<?= BASEURL; ?>/AdminControllers/matkul/tambah" method="post">
                     <input type="hidden" name="id_matkul" id="id_matkul">
-                    <div class="form-group">
-                        <label for="nip_dosen">NIP Dosen</label>
-                        <input type="text" class="form-control" id="nip_dosen" name="nip_dosen" autocomplete="off">
-                        <input type="hidden" class="form-control" id="nip_dosen_lama" name="nip_dosen_lama" autocomplete="off">
-                    </div>
 
                     <div class="form-group">
                         <label for="matkul">Nama Matkul</label>
+                        <input type="hidden" class="form-control" id="nip_dosen" name="nip_dosen" autocomplete="off">
                         <input type="text" class="form-control" id="matkul" name="matkul" autocomplete="off" required>
                         <input type="hidden" class="form-control" id="matkul_lama" name="matkul_lama" autocomplete="off" required>
                     </div>

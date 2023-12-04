@@ -95,7 +95,7 @@ class Admin_model
     public function ubahDataUser($data)
     {
         $query = "UPDATE user SET
-                    username = :username,                    
+                    username = :username                    
                   WHERE id_user = :id_user";
 
         $this->db->query($query);

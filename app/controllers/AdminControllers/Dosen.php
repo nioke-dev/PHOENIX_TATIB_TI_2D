@@ -51,12 +51,13 @@ class Dosen extends Controller
 
     public function hapus($id)
     {
+        echo "Nilai parameter id: " . $id;
         if ($this->model('Dosen_model')->hapusDataDosen($id) > 0) {
-            $this->showSweetAlert('success', 'Berhasil', 'Data Dosen berhasil Dihapus');
+            $this->showSweetAlert('success', 'Berhasil', 'Data Dosen berhasil Dihapus' . $id);
             header('Location: ' . BASEURL . '/AdminControllers/dosen');
             exit;
         } else {
-            $this->showSweetAlert('error', 'Ooops', 'Data Dosen Gagal dihapus');
+            $this->showSweetAlert('error', 'Ooops', 'Data Dosen Gagal dihapus' . $id);
             header('Location: ' . BASEURL . '/AdminControllers/dosen');
             exit;
         }
@@ -71,7 +72,6 @@ class Dosen extends Controller
     {
         // Pengecekan perubahan di user
         if (
-            $_POST['password'] != $_POST['password_lama'] ||
             $_POST['nip'] != $_POST['nip_lama']
         ) {
             // Ubah data user dosen

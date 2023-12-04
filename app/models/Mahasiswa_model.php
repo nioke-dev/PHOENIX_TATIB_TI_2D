@@ -112,7 +112,7 @@ class Mahasiswa_model
     public function ubahDataUserMahasiswa($data)
     {
         $query = "UPDATE user SET
-                    username = :username,
+                    username = :username
                   WHERE id_user = :id_user";
 
         $this->db->query($query);

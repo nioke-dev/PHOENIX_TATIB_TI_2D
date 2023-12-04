@@ -71,7 +71,6 @@ class Admin extends Controller
     {
         // Pengecekan perubahan di user
         if (
-            $_POST['password'] != $_POST['password_lama'] ||
             $_POST['nip_admin'] != $_POST['nip_admin_lama']
         ) {
             // Ubah data user admin

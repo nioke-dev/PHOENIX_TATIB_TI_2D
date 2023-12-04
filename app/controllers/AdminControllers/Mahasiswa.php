@@ -74,7 +74,6 @@ class Mahasiswa extends Controller
     {
         // Pengecekan perubahan di user
         if (
-            $_POST['password'] != $_POST['password_lama'] ||
             $_POST['nim_mahasiswa'] != $_POST['nim_mahasiswa_lama']
         ) {
             // Ubah data user mahasiswa

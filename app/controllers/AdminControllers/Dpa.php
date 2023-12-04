@@ -72,7 +72,6 @@ class Dpa extends Controller
     {
         // Pengecekan perubahan di user
         if (
-            $_POST['password'] != $_POST['password_lama'] ||
             $_POST['nip_dpa'] != $_POST['nip_dpa_lama']
         ) {
             // Ubah data user dpa
@@ -125,7 +124,7 @@ class Dpa extends Controller
     public function cari()
     {
         $data['judul'] = 'Daftar DPA';
-        $data['dp'] = $this->model('Dpa_model')->cariDataDpa();
+        $data['dpa'] = $this->model('Dpa_model')->cariDataDpa();
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);

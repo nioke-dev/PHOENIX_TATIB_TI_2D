@@ -23,16 +23,16 @@ class Login extends Controller
             // Jika login berhasil, arahkan URL sesuai dengan user_type            
             switch ($userData['user_type']) {
                 case 'dosen':
-                    header('Location: ' . BASEURL . '/dosen');
+                    header('Location: ' . BASEURL . '/DosenControllers/home');
                     break;
                 case 'mahasiswa':
-                    header('Location: ' . BASEURL . '/mahasiswa');
+                    header('Location: ' . BASEURL . '/MahasiswaControllers/home');
                     break;
                 case 'dpa':
-                    header('Location: ' . BASEURL . '/dpa');
+                    header('Location: ' . BASEURL . '/DpaControllers/home');
                     break;
                 case 'admin':
-                    header('Location: ' . BASEURL . '/AdminControllers/admin');
+                    header('Location: ' . BASEURL . '/AdminControllers/home');
                     break;
                     // Tambahkan case sesuai dengan user_type lainnya
                 default:

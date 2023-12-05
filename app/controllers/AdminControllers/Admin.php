@@ -122,6 +122,7 @@ class Admin extends Controller
     {
         $data['judul'] = 'Daftar Admin';
         $data['adm'] = $this->model('Admin_model')->cariDataAdmin();
+        $data['nama'] = $this->model('User_model')->getUser();
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);

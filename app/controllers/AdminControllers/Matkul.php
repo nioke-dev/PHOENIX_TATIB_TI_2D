@@ -94,6 +94,7 @@ class Matkul extends Controller
     {
         $data['judul'] = 'Daftar Matkul';
         $data['matkul'] = $this->model('Matkul_model')->cariDataMatkul();
+        $data['nama'] = $this->model('User_model')->getUser();
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);

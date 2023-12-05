@@ -123,6 +123,7 @@ class Dosen extends Controller
     {
         $data['judul'] = 'Daftar Dosen';
         $data['dsn'] = $this->model('Dosen_model')->cariDataDosen();
+        $data['nama'] = $this->model('User_model')->getUser();
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);

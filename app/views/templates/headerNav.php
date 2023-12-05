@@ -19,7 +19,9 @@
                 <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                     <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
 
-                        <a><?= $data['nama']; ?></a>
+                        <a><?php foreach ($data['nama'] as $nama) : ?>
+                                <?= $nama; ?>
+                            <?php endforeach; ?></a>
                         <!-- <a href="./authentication-login.html" target="_blank" class="btn btn-primary">Log Out</a> -->
                         <li class="nav-item dropdown">
                             <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">

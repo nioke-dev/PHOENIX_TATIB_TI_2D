@@ -128,6 +128,7 @@ class Mahasiswa extends Controller
     {
         $data['judul'] = 'Daftar Mahasiswa';
         $data['mhs'] = $this->model('Mahasiswa_model')->cariDataMahasiswa();
+        $data['nama'] = $this->model('User_model')->getUser();
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);

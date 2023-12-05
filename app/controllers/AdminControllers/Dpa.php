@@ -125,6 +125,7 @@ class Dpa extends Controller
     {
         $data['judul'] = 'Daftar DPA';
         $data['dpa'] = $this->model('Dpa_model')->cariDataDpa();
+        $data['nama'] = $this->model('User_model')->getUser();
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);

@@ -1,7 +1,7 @@
 <?php
 class User_model
 {
-    private $nama = 'Nurul Mustofa';
+    // private $nama = 'Nurul Mustofa';
 
     private $table = 'user';
     private $db;
@@ -13,7 +13,15 @@ class User_model
 
     public function getUser()
     {
-        return $this->nama;
+        if (isset($_SESSION['user_id'])) {
+            $user_type = $_SESSION['user_type'];
+            $user_id = $_SESSION['user_id'];
+            $query = "SELECT nama_$user_type FROM $user_type WHERE id_user = :user_id";
+            $this->db->query($query);
+            $this->db->bind(':user_id', $user_id);
+
+            return $this->db->single();
+        }
     }
 
     public function getUserByUsernameAndPassword($username, $password)

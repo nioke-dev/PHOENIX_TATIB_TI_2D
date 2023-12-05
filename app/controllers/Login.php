@@ -36,7 +36,8 @@ class Login extends Controller
                     break;
                     // Tambahkan case sesuai dengan user_type lainnya
                 default:
-                    $this->view('login/index', ['error' => 'Username or password is incorrect.']);
+                    $this->view('login/index');
+                    $this->showSweetAlert('error', 'Login Gagal', 'Username dan Password yang Anda Masukkan Salah.');
                     break;
             }
             exit;

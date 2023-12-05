@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  <div class="row mb-3">
+  <!-- <div class="row mb-3">
     <div class="col-lg-6">
       <form action="<?= BASEURL; ?>/AdminControllers/dosen/cari" method="post">
         <div class="input-group mb-3">
@@ -23,11 +23,11 @@
         </div>
       </form>
     </div>
-  </div>
+  </div> -->
 
   <div class="row">
     <h3>Daftar Dosen</h3>
-    <table class="table">
+    <table id="example" class="table table-striped" style="width:100%">
       <thead>
         <tr>
           <th scope="col">No</th>

@@ -13,6 +13,7 @@ class About extends Controller
         $data['pekerjaan'] = $pekerjaan;
         $data['umur'] = $umur;
         $data['judul'] = 'About Me';
+        $data['nama'] = $this->model('User_model')->getUser();
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);

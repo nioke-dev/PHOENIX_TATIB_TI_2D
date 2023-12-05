@@ -17,7 +17,7 @@
   </div>
 
   <!-- Form Cari DPA -->
-  <div class="row mb-3">
+  <!-- <div class="row mb-3">
     <div class="col-lg-6">
       <form action="<?= BASEURL; ?>/AdminControllers/AdminControllers/dpa/cari" method="post">
         <div class="input-group mb-3">
@@ -26,12 +26,12 @@
         </div>
       </form>
     </div>
-  </div>
+  </div> -->
 
   <!-- Daftar DPA -->
   <div class="row">
     <h3>Daftar DPA</h3>
-    <table class="table">
+    <table id="example" class="table table-striped" style="width:100%">
       <thead>
         <tr>
           <th scope="col">No</th>
@@ -44,7 +44,7 @@
       </thead>
       <tbody>
         <?php $no = 1;
-        if(empty($data['dp'])) : ?>
+        if (empty($data['dp'])) : ?>
           <tr>
             <td colspan="7">
               <div class="alert alert-danger" role="alert">
@@ -52,21 +52,21 @@
               </div>
             </td>
           </tr>
-        <?php else:
-        foreach ($data['dp'] as $dpa) : ?>
-          <tr>
-            <th scope="row"><?= $no++; ?></th>
-            <td><?= $dpa['nip_dpa']; ?></td>
-            <td><?= $dpa['nama_dpa']; ?></td>
-            <td><?= $dpa['kelas_dpa']; ?></td>
-            <td><?= $dpa['email_dpa']; ?></td>
-            <td>
-            <a href="<?= BASEURL; ?>/AdminControllers/dpa/detail/<?= $dpa['nip_dpa']; ?>" class="badge bg-primary float-right tampilModalDetailDpa" data-bs-toggle="modal" data-bs-target="#detailModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Detail</a>
-              <a href="<?= BASEURL; ?>/AdminControllers/dpa/ubah/<?= $dpa['nip_dpa']; ?>" class="badge bg-success float-right tampilModalUbahDpa" data-bs-toggle="modal" data-bs-target="#formModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Ubah</a>
-              <a href="<?= BASEURL; ?>/AdminControllers/dpa/hapus/<?= $dpa['nip_dpa']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data DPA berikut?');">Hapus</a>
+          <?php else :
+          foreach ($data['dp'] as $dpa) : ?>
+            <tr>
+              <th scope="row"><?= $no++; ?></th>
+              <td><?= $dpa['nip_dpa']; ?></td>
+              <td><?= $dpa['nama_dpa']; ?></td>
+              <td><?= $dpa['kelas_dpa']; ?></td>
+              <td><?= $dpa['email_dpa']; ?></td>
+              <td>
+                <a href="<?= BASEURL; ?>/AdminControllers/dpa/detail/<?= $dpa['nip_dpa']; ?>" class="badge bg-primary float-right tampilModalDetailDpa" data-bs-toggle="modal" data-bs-target="#detailModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Detail</a>
+                <a href="<?= BASEURL; ?>/AdminControllers/dpa/ubah/<?= $dpa['nip_dpa']; ?>" class="badge bg-success float-right tampilModalUbahDpa" data-bs-toggle="modal" data-bs-target="#formModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Ubah</a>
+                <a href="<?= BASEURL; ?>/AdminControllers/dpa/hapus/<?= $dpa['nip_dpa']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data DPA berikut?');">Hapus</a>
               </td>
-          </tr>
-        <?php endforeach; 
+            </tr>
+        <?php endforeach;
         endif; ?>
       </tbody>
     </table>

@@ -17,7 +17,7 @@ class About extends Controller
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);
-        $this->view('dosenRole/about/index', $data);
+        $this->view('dpaRole/about/index', $data);
         $this->view('templates/footer', $data);
     }
 
@@ -29,7 +29,7 @@ class About extends Controller
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);
-        $this->view('dosenRole/about/page', $data);
+        $this->view('dpaRole/about/page', $data);
         $this->view('templates/footer', $data);
     }
 }

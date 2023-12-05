@@ -15,7 +15,7 @@ class Home extends Controller
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);
-        $this->view('dosenRole/home/index', $data);
+        $this->view('dpaRole/home/index', $data);
         $this->view('templates/footer');
     }
 }

@@ -15,7 +15,8 @@
               <!-- Sidebar navigation-->
               <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
                   <ul id="sidebarnav">
-                      <?php if ($_SESSION['user_type'] = 'admin') : ?>
+                      <?php if ($_SESSION['user_type'] == 'admin') : ?>
+
                           <li class="nav-small-cap">
                               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                               <span class="hide-menu">Home</span>
@@ -113,7 +114,7 @@
                                   <span class="hide-menu">About</span>
                               </a>
                           </li>
-                      <?php elseif ($_SESSION['user_type'] = 'mahasiswa') : ?>
+                      <?php elseif ($_SESSION['user_type'] == 'mahasiswa') : ?>
                           <li class="nav-small-cap">
                               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                               <span class="hide-menu">Home</span>
@@ -128,69 +129,7 @@
                                   <span class="hide-menu">Dashboard Mahasiswa</span>
                               </a>
                           </li>
-                          <li class="nav-small-cap">
-                              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                              <span class="hide-menu">Menu</span>
-                          </li>
-                          <li class="sidebar-item">
-                              <a class="sidebar-link" href="<?= BASEURL; ?>/MahasiswaControllers/mahasiswa" aria-expanded="false">
-                                  <span>
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 15 15">
-                                          <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4" />
-                                      </svg>
-                                  </span>
-                                  <span class="hide-menu">Tata Tertib</span>
-                              </a>
-                          </li>
-                          <li class="sidebar-item">
-                              <a class="sidebar-link" href="<?= BASEURL; ?>/MahasiswaControllers/dosen" aria-expanded="false">
-                                  <span>
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-person-video" viewBox="0 0 14 14">
-                                          <path d="M8 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
-                                          <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm10.798 11c-.453-1.27-1.76-3-4.798-3-3.037 0-4.345 1.73-4.798 3H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1z" />
-                                      </svg>
-                                  </span>
-                                  <span class="hide-menu">Laporan</span>
-                              </a>
-                          </li>
-                          <li class="sidebar-item">
-                              <a class="sidebar-link" href="<?= BASEURL; ?>/MahasiswaControllers/dpa" aria-expanded="false">
-                                  <span>
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 14 14">
-                                          <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
-                                          <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2z" />
-                                      </svg>
-                                  </span>
-                                  <span class="hide-menu">Banding</span>
-                              </a>
-                          </li>
-                          <li class="nav-small-cap">
-                              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                              <span class="hide-menu">SETTINGS</span>
-                          </li>
-                          <li class="sidebar-item">
-                              <a class="sidebar-link" href="<?= BASEURL; ?>/AdminControllers/about" aria-expanded="false">
-                                  <span>
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 15 16">
-                                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                                          <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
-                                      </svg>
-                                  </span>
-                                  <span class="hide-menu">Profil</span>
-                              </a>
-                          </li>
-                          <li class="sidebar-item">
-                              <a class="sidebar-link" href="<?= BASEURL; ?>/AdminControllers/about" aria-expanded="false">
-                                  <span>
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 15 16">
-                                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                                          <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
-                                      </svg>
-                                  </span>
-                                  <span class="hide-menu">Tentang</span>
-                              </a>
-                          </li>
-                      <?php elseif ($_SESSION['user_type'] = 'dosen') : ?>
+                      <?php elseif ($_SESSION['user_type'] == 'dosen') : ?>
                           <li class="nav-small-cap">
                               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                               <span class="hide-menu">Home</span>
@@ -202,72 +141,10 @@
                                           <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z" />
                                       </svg>
                                   </span>
-                                  <span class="hide-menu">Dashboard Dos`en</span>
+                                  <span class="hide-menu">Dashboard Dosen</span>
                               </a>
                           </li>
-                          <li class="nav-small-cap">
-                              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                              <span class="hide-menu">Menu</span>
-                          </li>
-                          <li class="sidebar-item">
-                              <a class="sidebar-link" href="<?= BASEURL; ?>/MahasiswaControllers/mahasiswa" aria-expanded="false">
-                                  <span>
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 15 15">
-                                          <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4" />
-                                      </svg>
-                                  </span>
-                                  <span class="hide-menu">Tata Tertib</span>
-                              </a>
-                          </li>
-                          <li class="sidebar-item">
-                              <a class="sidebar-link" href="<?= BASEURL; ?>/MahasiswaControllers/dosen" aria-expanded="false">
-                                  <span>
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-person-video" viewBox="0 0 14 14">
-                                          <path d="M8 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
-                                          <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm10.798 11c-.453-1.27-1.76-3-4.798-3-3.037 0-4.345 1.73-4.798 3H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1z" />
-                                      </svg>
-                                  </span>
-                                  <span class="hide-menu">Laporan</span>
-                              </a>
-                          </li>
-                          <li class="sidebar-item">
-                              <a class="sidebar-link" href="<?= BASEURL; ?>/MahasiswaControllers/dpa" aria-expanded="false">
-                                  <span>
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 14 14">
-                                          <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
-                                          <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2z" />
-                                      </svg>
-                                  </span>
-                                  <span class="hide-menu">Banding</span>
-                              </a>
-                          </li>
-                          <li class="nav-small-cap">
-                              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                              <span class="hide-menu">SETTINGS</span>
-                          </li>
-                          <li class="sidebar-item">
-                              <a class="sidebar-link" href="<?= BASEURL; ?>/AdminControllers/about" aria-expanded="false">
-                                  <span>
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 15 16">
-                                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                                          <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
-                                      </svg>
-                                  </span>
-                                  <span class="hide-menu">Profil</span>
-                              </a>
-                          </li>
-                          <li class="sidebar-item">
-                              <a class="sidebar-link" href="<?= BASEURL; ?>/AdminControllers/about" aria-expanded="false">
-                                  <span>
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 15 16">
-                                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                                          <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
-                                      </svg>
-                                  </span>
-                                  <span class="hide-menu">Tentang</span>
-                              </a>
-                          </li>
-                      <?php elseif ($_SESSION['user_type'] = 'dpa') : ?>
+                      <?php elseif ($_SESSION['user_type'] == 'dpa') : ?>
                           <li class="nav-small-cap">
                               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                               <span class="hide-menu">Home</span>
@@ -280,68 +157,6 @@
                                       </svg>
                                   </span>
                                   <span class="hide-menu">Dashboard DPA</span>
-                              </a>
-                          </li>
-                          <li class="nav-small-cap">
-                              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                              <span class="hide-menu">Menu</span>
-                          </li>
-                          <li class="sidebar-item">
-                              <a class="sidebar-link" href="<?= BASEURL; ?>/MahasiswaControllers/mahasiswa" aria-expanded="false">
-                                  <span>
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 15 15">
-                                          <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4" />
-                                      </svg>
-                                  </span>
-                                  <span class="hide-menu">Tata Tertib</span>
-                              </a>
-                          </li>
-                          <li class="sidebar-item">
-                              <a class="sidebar-link" href="<?= BASEURL; ?>/MahasiswaControllers/dosen" aria-expanded="false">
-                                  <span>
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-person-video" viewBox="0 0 14 14">
-                                          <path d="M8 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
-                                          <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm10.798 11c-.453-1.27-1.76-3-4.798-3-3.037 0-4.345 1.73-4.798 3H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1z" />
-                                      </svg>
-                                  </span>
-                                  <span class="hide-menu">Laporan</span>
-                              </a>
-                          </li>
-                          <li class="sidebar-item">
-                              <a class="sidebar-link" href="<?= BASEURL; ?>/MahasiswaControllers/dpa" aria-expanded="false">
-                                  <span>
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 14 14">
-                                          <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
-                                          <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2z" />
-                                      </svg>
-                                  </span>
-                                  <span class="hide-menu">Banding</span>
-                              </a>
-                          </li>
-                          <li class="nav-small-cap">
-                              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                              <span class="hide-menu">SETTINGS</span>
-                          </li>
-                          <li class="sidebar-item">
-                              <a class="sidebar-link" href="<?= BASEURL; ?>/AdminControllers/about" aria-expanded="false">
-                                  <span>
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 15 16">
-                                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                                          <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
-                                      </svg>
-                                  </span>
-                                  <span class="hide-menu">Profil</span>
-                              </a>
-                          </li>
-                          <li class="sidebar-item">
-                              <a class="sidebar-link" href="<?= BASEURL; ?>/AdminControllers/about" aria-expanded="false">
-                                  <span>
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 15 16">
-                                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                                          <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
-                                      </svg>
-                                  </span>
-                                  <span class="hide-menu">Tentang</span>
                               </a>
                           </li>
                       <?php endif; ?>

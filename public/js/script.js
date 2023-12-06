@@ -361,5 +361,59 @@ $(function () {
     });
   });
 
+  // Mahasiswa Melanggar Function
+
+  $(".tampilModalDetailMahasiswaMelanggar").on("click", function () {
+    $("#detailModalMahasiswaMelanggarLabel").html(
+      "Detail Data Mahasiswa Melanggar"
+    );
+
+    const nim_mahasiswa = $(this).data("nim_mahasiswa");
+    console.log(nim_mahasiswa);
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/mahasiswaMelanggar/detail",
+      data: { nim_mahasiswa: nim_mahasiswa },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#detailNimMahasiswaMelanggar").text(data.nim_mahasiswa);
+        $("#detailNamaMahasiswaMelanggar").text(data.nama_mahasiswa);
+        $("#detailKelasMahasiswaMelanggar").text(data.kelas_mahasiswa);
+        $("#detailProdiMahasiswaMelanggar").text(data.prodi_mahasiswa);
+        $("#detailEmailMahasiswaMelanggar").text(data.email_mahasiswa);
+        $("#detailStatusSanksiMahasiswaMelanggar").text(data.status_sanksi);
+        $("#detailTingkatSanksiMahasiswaMelanggar").text(data.tingkat_sanksi);
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      },
+    });
+  });
+
+  $(".tampilModalUbahMahasiswa").on("click", function () {
+    $("#formModalMahasiswaLabel").html("Ubah Data Mahasiswa Melanggar");
+    $(".modal-footer button[type=submit]").html("Ubah Data");
+    $(".modal-body form").attr(
+      "action",
+      "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/mahasiswaMelanggar/ubah"
+    );
+
+    const nim_mahasiswa = $(this).data("nim_mahasiswa");
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/mahasiswaMelanggar/getubah",
+      data: { nim_mahasiswa: nim_mahasiswa },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#id_tingkatSanksi").val(data.id_tingkatSanksi);
+        $("#nim_mahasiswa").val(data.nim_mahasiswa);
+      },
+    });
+  });
+
   // ... (fungsi-fungsi lainnya)
 });

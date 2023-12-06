@@ -34,17 +34,12 @@ class Login extends Controller
                 case 'admin':
                     header('Location: ' . BASEURL . '/AdminControllers/home');
                     break;
-                    // Tambahkan case sesuai dengan user_type lainnya
-                default:
-                    $this->view('login/index');
-                    $this->showSweetAlert('error', 'Login Gagal', 'Username dan Password yang Anda Masukkan Salah.');
-                    break;
             }
             exit;
         } else {
             // Jika login gagal, mungkin tampilkan pesan kesalahan atau arahkan kembali ke halaman login
             $this->view('login/index');
-            $this->showSweetAlert('error', 'Login Gagal', 'Username dan Password yang Anda Masukkan Salah.');
+            $this->showSweetAlert('error', 'Login Gagal', 'Username atau Password yang Anda Masukkan Salah.');
         }
     }
 

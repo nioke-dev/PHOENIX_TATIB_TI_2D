@@ -28,10 +28,8 @@ class MahasiswaMelanggar_model
             INNER JOIN mahasiswa ON mahasiswaMelanggar.nim_mahasiswa = mahasiswa.nim_mahasiswa
             INNER JOIN statusSanksi ON mahasiswaMelanggar.id_statusSanksi = statusSanksi.id_statusSanksi
             INNER JOIN tingkatSanksi ON mahasiswaMelanggar.id_tingkatSanksi = tingkatSanksi.id_tingkatSanksi
-            WHERE mahasiswa.kelas_mahasiswa = :kelas_mahasiswa');
-        $this->db->bind('kelas_mahasiswa', $data);
-
-
+            WHERE mahasiswa.kelas_mahasiswa = :kelas_dpa');
+        $this->db->bind('kelas_dpa', $data['kelas_dpa']);
         return $this->db->resultSet();
     }
 
@@ -41,8 +39,6 @@ class MahasiswaMelanggar_model
         $this->db->bind('nip_dpa', $nip_dpa);
         return $this->db->single();
     }
-
-
 
 
     // Fungsi untuk mendapatkan data mahasiswa berdasarkan NIM

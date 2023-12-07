@@ -12,7 +12,7 @@ class MahasiswaMelanggar extends Controller
     {
 
         $data['judul'] = 'Daftar Mahasiswa Melanggar';
-        $getKelasDPA = $this->model('MahasiswaMelanggar_model')->getDpaKelas($_SESSION['user_id']);
+        $getKelasDPA = $this->model('MahasiswaMelanggar_model')->getDpaKelas($_SESSION['username']);
         $data['mhs_melanggar'] = $this->model('MahasiswaMelanggar_model')->getAllMahasiswaMelanggarFilterKelas($getKelasDPA);
         $data['nama'] = $this->model('User_model')->getUser();
 

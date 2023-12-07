@@ -19,6 +19,7 @@ class Login extends Controller
 
             $_SESSION['user_id'] = $userData['id_user'];
             $_SESSION['user_type'] = $userData['user_type'];
+            $_SESSION['username'] = $userData['username'];
 
             // Jika login berhasil, arahkan URL sesuai dengan user_type            
             switch ($userData['user_type']) {

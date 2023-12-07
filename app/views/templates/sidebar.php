@@ -111,9 +111,20 @@
                                 <span class="hide-menu">Mahasiswa Melanggar</span>
                             </a>
                         </li>
+                        <!-- download tatib.pdf  -->
+                        <li class="nav-small-cap">
+                              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                              <span class="hide-menu">Tata tertib</span>
+                          </li>
+                          <li class="sidebar-item">
+                          <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" target="_blank" class="badge bg-danger float-right" ><svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="15" height="15" fill="currentColor" class="bi bi-file-earmark-pdf" viewBox="0 0 16 16" download>
+  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+  <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"/>
+</svg>Download TATIB</a>
+                          </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">SETTINGS</span>
+                            <span class="hide-menu">More</span>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= BASEURL; ?>/AdminControllers/about" aria-expanded="false">
@@ -126,17 +137,7 @@
                                 <span class="hide-menu">About</span>
                             </a>
                         </li>
-                        <!-- download tatib.pdf  -->
-                        <li class="nav-small-cap">
-                              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                              <span class="hide-menu">Tata tertib</span>
-                          </li>
-                          <li class="sidebar-item">
-                              <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" target="_blank" class="badge bg-danger float-right" ><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-file-earmark-pdf" viewBox="0 0 16 16" download>
-  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
-  <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"/>
-</svg> Download .pdf</a>
-                          </li>
+                        
 
                         <!-- side Bar Mahasiswa -->
                     <?php elseif ($_SESSION['user_type'] == 'mahasiswa') : ?>
@@ -159,21 +160,35 @@
                               <span class="hide-menu">Menu</span>
                           </li>
                           
-                          <li class="nav-small-cap">
-                              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                              <span class="hide-menu">Settings</span>
-                          </li>
                           <!-- download tatib.pdf  -->
                         <li class="nav-small-cap">
                               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                               <span class="hide-menu">Tata tertib</span>
                           </li>
+                          
                           <li class="sidebar-item">
-                              <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" target="_blank" class="badge bg-danger float-right" ><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-file-earmark-pdf" viewBox="0 0 16 16" download>
+                          <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" target="_blank" class="badge bg-danger float-right" ><svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="15" height="15" fill="currentColor" class="bi bi-file-earmark-pdf" viewBox="0 0 16 16" download>
   <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
   <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"/>
-</svg> Download .pdf</a>
+</svg>Download TATIB</a>
                           </li>
+                          
+                          <li class="nav-small-cap">
+                              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                              <span class="hide-menu">More</span>
+                          </li>
+                          <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= BASEURL; ?>/DpaControllers/about" aria-expanded="false">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 15 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                        <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
+                                    </svg>
+                                </span>
+                                <span class="hide-menu">About</span>
+                            </a>
+                        </li>
+                          
 
                         <!-- side Bar Dosen -->
                     <?php elseif ($_SESSION['user_type'] == 'dosen') : ?>
@@ -196,21 +211,33 @@
                               <span class="hide-menu">Menu</span>
                           </li>
                           
-                          <li class="nav-small-cap">
-                              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                              <span class="hide-menu">Settings</span>
-                          </li>
                           <!-- download tatib.pdf  -->
                         <li class="nav-small-cap">
                               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                               <span class="hide-menu">Tata tertib</span>
                           </li>
                           <li class="sidebar-item">
-                              <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" target="_blank" class="badge bg-danger float-right" ><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-file-earmark-pdf" viewBox="0 0 16 16" download>
+                          <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" target="_blank" class="badge bg-danger float-right" ><svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="15" height="15" fill="currentColor" class="bi bi-file-earmark-pdf" viewBox="0 0 16 16" download>
   <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
   <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"/>
-</svg> Download .pdf</a>
+</svg>Download TATIB</a>
                           </li>
+
+                          <li class="nav-small-cap">
+                              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                              <span class="hide-menu">More</span>
+                          </li>
+                          <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= BASEURL; ?>/DpaControllers/about" aria-expanded="false">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 15 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                        <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
+                                    </svg>
+                                </span>
+                                <span class="hide-menu">About</span>
+                            </a>
+                        </li>
 
                         <!-- side Bar Dpa -->
                     <?php elseif ($_SESSION['user_type'] == 'dpa') : ?>
@@ -228,7 +255,13 @@
                                 <span class="hide-menu">Dashboard DPA</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
+                      
+                        <li class="nav-small-cap">
+                              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                              <span class="hide-menu">Menu</span>
+                          </li>  
+
+                          <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= BASEURL; ?>/DpaControllers/mahasiswaMelanggar" aria-expanded="false">
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-card-list" viewBox="0 0 15 15">
@@ -239,26 +272,41 @@
                                 <span class="hide-menu">Mahasiswa Melanggar</span>
                             </a>
                         </li>
-                        <li class="nav-small-cap">
-                              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                              <span class="hide-menu">Menu</span>
-                          </li>
-                          
+
                           <li class="nav-small-cap">
-                              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                              <span class="hide-menu">Settings</span>
-                          </li>
-                          <!-- download tatib.pdf  -->
-                        <li class="nav-small-cap">
                               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                               <span class="hide-menu">Tata tertib</span>
                           </li>
+                          <!-- download tatib.pdf  -->
                           <li class="sidebar-item">
+                              <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" target="_blank" class="badge bg-danger float-right" ><svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="15" height="15" fill="currentColor" class="bi bi-file-earmark-pdf" viewBox="0 0 16 16" download>
+  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+  <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"/>
+</svg>Download TATIB</a>
+                          </li>
+                         
+                        <li class="nav-small-cap">
+                              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                              <span class="hide-menu">More</span>
+                          </li>
+
+                          <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= BASEURL; ?>/DpaControllers/about" aria-expanded="false">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 15 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                        <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
+                                    </svg>
+                                </span>
+                                <span class="hide-menu">About</span>
+                            </a>
+                        </li>
+                          <!-- <li class="sidebar-item">
                               <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" target="_blank" class="badge bg-danger float-right" ><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-file-earmark-pdf" viewBox="0 0 16 16" download>
   <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
   <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"/>
-</svg> Download .pdf</a>
-                          </li>
+</svg>Download TATIB</a>
+                          </li> -->
 
                     <?php endif; ?>
                 </ul>

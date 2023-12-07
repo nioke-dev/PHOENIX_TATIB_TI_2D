@@ -22,29 +22,19 @@
         </thead>
         <tbody>
             <?php $no = 1;
-            if (empty($data['mhs_melanggar'])) : ?>
+            foreach ($data['mhs_melanggar'] as $mhs_melanggar) : ?>
                 <tr>
+                    <th><?= $no++; ?></th>
+                    <td><?= $mhs_melanggar['nim_mahasiswa']; ?></td>
+                    <td><?= $mhs_melanggar['nama_mahasiswa']; ?></td>
+                    <td><?= $mhs_melanggar['kelas_mahasiswa']; ?></td>
+                    <td><?= $mhs_melanggar['status_sanksi']; ?></td>
+                    <td><?= $mhs_melanggar['tingkat_sanksi']; ?></td>
                     <td>
-                        <div class="alert alert-danger" role="alert">
-                            Tidak ada data terkait.
-                        </div>
+                        <a href="<?= BASEURL; ?>/DpaControllers/mahasiswaMelanggar/detail/<?= $mhs_melanggar['nim_mahasiswa']; ?>" class="badge bg-primary float-right tampilModalDetailMahasiswaMelanggar" data-bs-toggle="modal" data-bs-target="#detailModalMahasiswaMelanggar" data-nim_mahasiswa="<?= $mhs_melanggar['nim_mahasiswa']; ?>">Detail</a>
                     </td>
                 </tr>
-                <?php else :
-                foreach ($data['mhs_melanggar'] as $mhs_melanggar) : ?>
-                    <tr>
-                        <th><?= $no++; ?></th>
-                        <td><?= $mhs_melanggar['nim_mahasiswa']; ?></td>
-                        <td><?= $mhs_melanggar['nama_mahasiswa']; ?></td>
-                        <td><?= $mhs_melanggar['kelas_mahasiswa']; ?></td>
-                        <td><?= $mhs_melanggar['status_sanksi']; ?></td>
-                        <td><?= $mhs_melanggar['tingkat_sanksi']; ?></td>
-                        <td>
-                            <a href="<?= BASEURL; ?>/DpaControllers/mahasiswaMelanggar/detail/<?= $mhs_melanggar['nim_mahasiswa']; ?>" class="badge bg-primary float-right tampilModalDetailMahasiswaMelanggar" data-bs-toggle="modal" data-bs-target="#detailModalMahasiswaMelanggar" data-nim_mahasiswa="<?= $mhs_melanggar['nim_mahasiswa']; ?>">Detail</a>
-                        </td>
-                    </tr>
-            <?php endforeach;
-            endif; ?>
+            <?php endforeach; ?>
         </tbody>
     </table>
 </div>

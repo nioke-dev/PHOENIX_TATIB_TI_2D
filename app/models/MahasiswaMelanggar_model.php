@@ -27,7 +27,9 @@ class MahasiswaMelanggar_model
         $this->db->query('SELECT mahasiswa.*, status_sanksi, tingkat_sanksi FROM ' . $this->table . ' 
             INNER JOIN mahasiswa ON mahasiswaMelanggar.nim_mahasiswa = mahasiswa.nim_mahasiswa
             INNER JOIN statusSanksi ON mahasiswaMelanggar.id_statusSanksi = statusSanksi.id_statusSanksi
-            INNER JOIN tingkatSanksi ON mahasiswaMelanggar.id_tingkatSanksi = tingkatSanksi.id_tingkatSanksi');
+            INNER JOIN tingkatSanksi ON mahasiswaMelanggar.id_tingkatSanksi = tingkatSanksi.id_tingkatSanksi
+            WHERE mahasiswa.kelas_mahasiswa = :kelas_mahasiswa');
+        $this->db->bind('kelas_mahasiswa', $data);
 
 
         return $this->db->resultSet();

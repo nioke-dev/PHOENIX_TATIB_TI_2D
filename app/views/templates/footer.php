@@ -33,7 +33,11 @@
 <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        $('#example').DataTable({
+            "language": {
+                "emptyTable": "Tidak ada data yang tersedia"
+            }
+        });
     });
 </script>
 </body>

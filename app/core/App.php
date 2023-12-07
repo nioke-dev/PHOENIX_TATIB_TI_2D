@@ -1,7 +1,7 @@
 <?php
 class App
 {
-    protected $controller = 'Home';
+    protected $controller = 'Login';
     protected $wrapController = '';
     protected $method = 'index';
     protected $params = [];
@@ -16,6 +16,10 @@ class App
                 $this->logout();
                 return;
             }
+        }
+        if ($url[0] == '') {
+            $this->logout();
+            return;
         }
 
         // Check user session

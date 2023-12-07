@@ -361,35 +361,56 @@ $(function () {
     });
   });
 
-  // Banding Function
-  $(".tombolAjukanBanding").on("click", function () {
-    $("#formModalBandingLabel").html("Ajukan Banding");
-    $(".modal-footer button[type=submit]").html("Ajukan Banding");
-    $("#nim_mahasiswa").val("");
-    $("#nama_mahasiswa").val("");
-    $("#deskripsi").val("");
-  });
+  // Mahasiswa Melanggar Function
 
-  $(".tampilModalDetailBanding").on("click", function () {
-    $("#detailModalBandingLabel").html("Detail Data Banding");
+  $(".tampilModalDetailMahasiswaMelanggar").on("click", function () {
+    $("#detailModalMahasiswaMelanggarLabel").html(
+      "Detail Data Mahasiswa Melanggar"
+    );
 
-    const id_banding = $(this).data("id_banding");
-    console.log("id_banding:", id_banding);
+    const nim_mahasiswa = $(this).data("nim_mahasiswa");
+    console.log(nim_mahasiswa);
 
     $.ajax({
-      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/banding/detail",
-      data: { id_banding: id_banding },
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/mahasiswaMelanggar/detail",
+      data: { nim_mahasiswa: nim_mahasiswa },
       method: "post",
       dataType: "json",
       success: function (data) {
         console.log("Respons Server:", data);
-        $("#detailDeskripsi").text(data.deskripsi);
-        $("#detailNimMahasiswa").text(data.nim_mahasiswa);
-        $("#detailNipDesen").text(data.nip_dosen);
-
+        $("#detailNimMahasiswaMelanggar").text(data.nim_mahasiswa);
+        $("#detailNamaMahasiswaMelanggar").text(data.nama_mahasiswa);
+        $("#detailKelasMahasiswaMelanggar").text(data.kelas_mahasiswa);
+        $("#detailProdiMahasiswaMelanggar").text(data.prodi_mahasiswa);
+        $("#detailEmailMahasiswaMelanggar").text(data.email_mahasiswa);
+        $("#detailStatusSanksiMahasiswaMelanggar").text(data.status_sanksi);
+        $("#detailTingkatSanksiMahasiswaMelanggar").text(data.tingkat_sanksi);
       },
       error: function (xhr, status, error) {
         console.error("Error:", error);
+      },
+    });
+  });
+
+  $(".tampilModalUbahMahasiswa").on("click", function () {
+    $("#formModalMahasiswaLabel").html("Ubah Data Mahasiswa Melanggar");
+    $(".modal-footer button[type=submit]").html("Ubah Data");
+    $(".modal-body form").attr(
+      "action",
+      "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/mahasiswaMelanggar/ubah"
+    );
+
+    const nim_mahasiswa = $(this).data("nim_mahasiswa");
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/mahasiswaMelanggar/getubah",
+      data: { nim_mahasiswa: nim_mahasiswa },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#id_tingkatSanksi").val(data.id_tingkatSanksi);
+        $("#nim_mahasiswa").val(data.nim_mahasiswa);
       },
     });
   });

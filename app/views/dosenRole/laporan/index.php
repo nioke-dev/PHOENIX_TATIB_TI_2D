@@ -1,3 +1,10 @@
+<!-- Flash message -->
+<div class="row">
+    <div class="col-lg-6">
+        <?php Flasher::flash(); ?>
+    </div>
+</div>
+
 <!-- Tambah Data Laporan -->
 <div class="row mb-3">
     <div class="col-lg-6">
@@ -42,7 +49,6 @@
     </table>
 </div>
 
-</div>
 
 <!-- Modal Detail Laporan -->
 <div class="modal fade" id="detailModalLaporan" tabindex="-1" aria-labelledby="detailModalLaporanLabel" aria-hidden="true">
@@ -87,10 +93,8 @@
     </div>
 </div>
 
+
 <!-- Modal Tambah Laporan -->
-
-
-
 <div class="modal fade" id="formModalLaporan" aria-labelledby="formModalLaporanLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -110,6 +114,7 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
+
                     <div class="form-group">
                         <label for="tingkat_sanksi">Tingkat Pelanggaran</label>
                         <select class="form-control choices-single" id="id_tingkatSanksi" name="id_tingkatSanksi" autocomplete="off" required>
@@ -124,7 +129,8 @@
                     </div>
                     <div class="form-group">
                         <label for="deskripsi">Deskripsi</label>
-                        <textarea class="form-control" id="deskripsi" name="deskripsi" placeholder="Masukkan Deskripsi Laporan" autocomplete="off" required>
+                        <!-- <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="Masukkan Deskripsi Laporan" autocomplete="off" required> -->
+                        <textarea id="deskripsi" class="form-control" name="deskripsi" rows="4" cols="50"></textarea>
                     </div>
             </div>
             <div class="modal-footer justify-content-end">

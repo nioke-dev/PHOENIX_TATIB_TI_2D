@@ -27,7 +27,7 @@
                         <div class="card mb-0">
                             <div class="card-body">
                                 <a href="<?= BASEURL; ?>/login" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                                    <img src="<?= BASEURL; ?>/assets/images/logos/logos.png" width="180" alt="">
+                                    <img src="<?= BASEURL; ?>/assets/images/logos/new_logo.png" width="180" alt="">
                                 </a>
                                 <div class="alert alert-danger mb-3" id="alert-login" style="text-align:center;margin-bottom: 0;">
 			                    Masukkan Username dan Password <br> (Menggunakan NIM / NIP &amp; Password : rahasia)</div>

@@ -361,5 +361,38 @@ $(function () {
     });
   });
 
+  // Banding Function
+  $(".tombolAjukanBanding").on("click", function () {
+    $("#formModalBandingLabel").html("Ajukan Banding");
+    $(".modal-footer button[type=submit]").html("Ajukan Banding");
+    $("#nim_mahasiswa").val("");
+    $("#nama_mahasiswa").val("");
+    $("#deskripsi").val("");
+  });
+
+  $(".tampilModalDetailBanding").on("click", function () {
+    $("#detailModalBandingLabel").html("Detail Data Banding");
+
+    const id_banding = $(this).data("id_banding");
+    console.log("id_banding:", id_banding);
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/banding/detail",
+      data: { id_banding: id_banding },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#detailDeskripsi").text(data.deskripsi);
+        $("#detailNimMahasiswa").text(data.nim_mahasiswa);
+        $("#detailNipDesen").text(data.nip_dosen);
+
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      },
+    });
+  });
+
   // ... (fungsi-fungsi lainnya)
 });

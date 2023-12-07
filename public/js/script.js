@@ -415,5 +415,54 @@ $(function () {
     });
   });
 
+  // Laporan Dosen
+  // laporan Function
+  $(".tombolTambahDataLaporan").on("click", function () {
+    // Mengganti konten modal dan mereset nilai input
+    $("#formModalLaporanLabel").html("Tambah Data Laporan");
+    $(".modal-footer button[type=submit]").html("Tambah Data");
+    $("#nim_mahasiswa").val("");
+    $("#nama_mahasiswa").val("");
+    $("#kelas_mahasiswa").val("");
+    $("#tingkat_sanksi").val("");
+    $("#deskripsi").val("");
+  });
+
+  $(".tampilModalDetailLaporan").on("click", function () {
+    console.log("Clicked Detail"); // Pastikan event click terpanggil
+
+    $("#detailModalLaporanLabel").html("Detail Data Laporan");
+
+    const id_laporan = $(this).data("id_laporan");
+    console.log(id_laporan);
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/DosenControllers/laporan/detail",
+      data: { id_laporan: id_laporan },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+
+        // Pastikan ID elemen sesuai dengan elemen yang ada di HTML
+        $("#detailIdLaporan").text(data.id_laporan);
+        $("#detailNimMahasiswa").text(data.nim_mahasiswa);
+        $("#detailNamaMahasiswa").text(data.nama_mahasiswa);
+        $("#detailKelasMahasiswa").text(data.kelas_mahasiswa);
+        $("#detailNipDosen").text(data.nip_dosen);
+        $("#detailDeskripsi").text(data.deskripsi);
+        $("#detaiTingkatSaknsi").text(data.id_tingkatSanksi);
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      },
+    });
+  });
+
   // ... (fungsi-fungsi lainnya)
+});
+$("#formModalLaporan").on("shown.bs.modal", function () {
+  $(".select-mahasiswa-laporkan").select2({
+    dropdownParent: $("#formModalLaporan"),
+  });
 });

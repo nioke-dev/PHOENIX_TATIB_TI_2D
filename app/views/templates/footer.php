@@ -15,8 +15,8 @@
 <script src="<?= BASEURL; ?>/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
 <script src="<?= BASEURL; ?>/assets/libs/simplebar/dist/simplebar.js"></script>
 <script src="<?= BASEURL; ?>/assets/js/dashboard.js"></script>
-<script src="<?= BASEURL; ?>/js/script.js"></script>
 <!-- <script src="<?= BASEURL; ?>/sweetalert/sweetalert2.all.min.js"></script> -->
+
 <script>
     <?php if (isset($_SESSION['sweetalert'])) : ?>
         Swal.fire({
@@ -29,6 +29,13 @@
 </script>
 
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="<?= BASEURL; ?>/js/script.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+</script>
 <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 <script>

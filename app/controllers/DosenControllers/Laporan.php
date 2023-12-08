@@ -25,4 +25,19 @@ class Laporan extends Controller
     {
         echo json_encode($this->model('Laporan_model')->getLaporanById($_POST['id_laporan']));
     }
+
+    public function tambah()
+    {
+
+        if ($this->model('Laporan_model')->tambahDataLaporan($_POST) > 0) {
+            $this->showSweetAlert('success', 'Berhasil', 'Data Laporan berhasil ditambahkan');
+            header('Location: ' . BASEURL . '/DosenControllers/laporan');
+            exit;
+        } else {
+            $this->showSweetAlert('error', 'Ooops', 'Data Laporan Gagal ditambahkan');
+            header('Location: ' . BASEURL . '/DosenControllers/laporan');
+            exit;
+        }
+        $data['mahasiswa'] = $this->model('Mahasiswa_model')->getAllMahasiswa();
+    }
 }

@@ -38,20 +38,22 @@ class Laporan_model
     // Function to add Laporan data
     public function tambahDataLaporan($data)
     {
+        $dateTimeNow = date("Y-m-d H:i:s");
         // SQL query to add Laporan data
         $query = "INSERT INTO laporan (tgl_laporan, nim_mahasiswa, nip_dosen, deskripsi, id_tingkatSanksi, id_statusSanksi)
-                    VALUES
-                  (:tgl_laporan :nim_mahasiswa, :nip_dosen, :deskripsi, :tingkat_sanksi, :status_sanksi)";
+            VALUES
+            (:tgl_laporan, :nim_mahasiswa, :nip_dosen, :deskripsi, :tingkat_sanksi, :status_sanksi)";
+
 
         // Execute the query
         $this->db->query($query);
-        $dateTimeNow = date("Y-m-d H:i:s");
         $this->db->bind('tgl_laporan', $dateTimeNow);
         $this->db->bind('nim_mahasiswa', $data['nim_mahasiswa']);
         $this->db->bind('nip_dosen', $_SESSION['username']);
-        $this->db->bind('tingkat_sanksi', $data['tingkat_sanksi']);
-        $this->db->bind('status_sanksi', '1');
         $this->db->bind('deskripsi', $data['deskripsi']);
+        $this->db->bind('tingkat_sanksi', $data['id_tingkatSanksi']);
+        $this->db->bind('status_sanksi', '1');
+
         $this->db->execute();
 
         // Return the number of affected rows by the query operation

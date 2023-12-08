@@ -451,7 +451,7 @@ $(function () {
         $("#detailKelasMahasiswa").text(data.kelas_mahasiswa);
         $("#detailNipDosen").text(data.nip_dosen);
         $("#detailDeskripsi").text(data.deskripsi);
-        $("#detaiTingkatSaknsi").text(data.id_tingkatSanksi);
+        $("#detaiTingkatSaknsi").text(data.tingkat_sanksi);
       },
       error: function (xhr, status, error) {
         console.error("Error:", error);

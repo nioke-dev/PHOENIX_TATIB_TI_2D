@@ -26,6 +26,7 @@
                 <th>NIM Mahasiswa</th>
                 <th>Nama Mahasiswa</th>
                 <th>Kelas</th>
+                <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -39,9 +40,11 @@
                     <td><?= $laporan['nim_mahasiswa']; ?></td>
                     <td><?= $laporan['nama_mahasiswa']; ?></td>
                     <td><?= $laporan['kelas_mahasiswa']; ?></td>
+                    <?php if ($laporan['status_sanksi'] == 'Terkirim') : ?>
+                        <td><span class="badge bg-success"><?= $laporan['status_sanksi']; ?></span></td>
+                    <?php endif; ?>
                     <td>
                         <a href="<?= BASEURL; ?>/AdminControllers/laporan/detail/<?= $laporan['id_laporan']; ?>" class="badge bg-primary tampilModalDetailLaporan" data-bs-toggle="modal" data-bs-target="#detailModalLaporan" data-id_laporan="<?= $laporan['id_laporan']; ?>">Detail</a>
-                        <a href="<?= BASEURL; ?>/AdminControllers/laporan/status/<?= $laporan['id_laporan']; ?>" class="badge bg-success tampilModalStatusLaporan" data-bs-toggle="modal" data-bs-target="#statusModalLaporan" data-id_laporan="<?= $laporan['id_laporan']; ?>">Status</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

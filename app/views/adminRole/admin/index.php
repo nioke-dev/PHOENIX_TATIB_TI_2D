@@ -14,17 +14,6 @@
     </div>
   </div>
 
-  <!-- <div class="row mb-3">
-    <div class="col-lg-6">
-      <form action="<?= BASEURL; ?>/AdminControllers/admin/cari" method="post">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Cari admin.." name="keyword" id="keyword" autocomplete="off">
-          <button class="btn btn-primary" type="submit" id="tombolCari">Cari</button>
-        </div>
-      </form>
-    </div>
-  </div> -->
-
   <div class="row">
     <h3>Daftar Admin</h3>
     <table id="example" class="table table-striped" style="width:100%">
@@ -100,9 +89,6 @@
     </div>
   </div>
 </div>
-
-
-
 
 <!-- Modal Add and Edit -->
 <div class="modal fade" id="formModalAdmin" tabindex="-1" aria-labelledby="formModalAdminLabel" aria-hidden="true">

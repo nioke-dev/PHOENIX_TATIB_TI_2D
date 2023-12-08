@@ -11,7 +11,7 @@ class Pelanggaran extends Controller
     public function index()
     {
         $data['judul'] = 'Daftar Pelanggaran';
-        $data['pelanggaran'] = $this->model('Laporan_model')->getAllLaporan();
+        $data['pelanggaran'] = $this->model('Laporan_model')->getAllLaporanByNim();
         $data['nama'] = $this->model('User_model')->getUser();
 
         $this->view('templates/header', $data);

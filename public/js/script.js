@@ -459,6 +459,34 @@ $(function () {
     });
   });
 
+  // Mahasiswa -> laporan -> Detail
+  $(".tampilModalDetailPelanggaran").on("click", function () {
+    console.log("Clicked Detail"); // Pastikan event click terpanggil
+
+    $("#detailModalPelanggaranLabel").html("Detail Data Laporan Pelanggaran");
+
+    const id_laporan = $(this).data("id_laporan");
+    console.log(id_laporan);
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/MahasiswaControllers/pelanggaran/detail",
+      data: { id_laporan: id_laporan },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+
+        // Pastikan ID elemen sesuai dengan elemen yang ada di HTML
+        $("#detailNIPDosenMahasiswaMelanggar").text(data.nip_dosen);
+        $("#detailDeskripsiMahasiswaMelanggar").text(data.deskripsi);
+        $("#detailTingkatSanksiMahasiswaMelanggar").text(data.tingkat_sanksi);
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      },
+    });
+  });
+
   // ... (fungsi-fungsi lainnya)
 });
 $("#formModalLaporan").on("shown.bs.modal", function () {

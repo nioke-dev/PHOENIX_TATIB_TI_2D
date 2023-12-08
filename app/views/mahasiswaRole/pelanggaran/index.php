@@ -33,7 +33,7 @@
                     <td><?= $pelanggaran['status_sanksi']; ?></td>
                     <td><?= $pelanggaran['tingkat_sanksi']; ?></td>
                     <td>
-                        <a href="<?= BASEURL; ?>/DpaControllers/mahasiswaMelanggar/detail/<?= $pelanggaran['nim_mahasiswa']; ?>" class="badge bg-primary float-right tampilModalDetailMahasiswaMelanggar" data-bs-toggle="modal" data-bs-target="#detailModalMahasiswaMelanggar" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Detail</a>
+                        <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/detail/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-primary float-right tampilModalDetailPelanggaran" data-bs-toggle="modal" data-bs-target="#detailModalPelanggaran" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Detail</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -44,31 +44,19 @@
 </div>
 
 <!-- Modal Detail Mahasiswa -->
-<div class="modal fade" id="detailModalMahasiswaMelanggar" tabindex="-1" aria-labelledby="detailModalMahasiswaMelanggarLabel" aria-hidden="true">
+<div class="modal fade" id="detailModalPelanggaran" tabindex="-1" aria-labelledby="detailModalPelanggaranLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="detailModalMahasiswaMelanggarLabel">Detail Data Mahasiswa</h5>
+                <h5 class="modal-title" id="detailModalPelanggaranLabel">Detail Data Pelanggaran</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <p><strong>NIM Mahasiswa:</strong> <span id="detailNimMahasiswaMelanggar"></span></p>
+                    <p><strong>NIP Dosen:</strong> <span id="detailNIPDosenMahasiswaMelanggar"></span></p>
                 </div>
                 <div class="form-group">
-                    <p><strong>Nama Mahasiswa:</strong> <span id="detailNamaMahasiswaMelanggar"></span></p>
-                </div>
-                <div class="form-group">
-                    <p><strong>Kelas Mahasiswa:</strong> <span id="detailKelasMahasiswaMelanggar"></span></p>
-                </div>
-                <div class="form-group">
-                    <p><strong>Program Studi Mahasiswa:</strong> <span id="detailProdiMahasiswaMelanggar"></span></p>
-                </div>
-                <div class="form-group">
-                    <p><strong>Email Mahasiswa:</strong> <span id="detailEmailMahasiswaMelanggar"></span></p>
-                </div>
-                <div class="form-group">
-                    <p><strong>Status Sanksi Mahasiswa:</strong> <span id="detailStatusSanksiMahasiswaMelanggar"></span></p>
+                    <p><strong>Deskripsi:</strong> <span id="detailDeskripsiMahasiswaMelanggar"></span></p>
                 </div>
                 <div class="form-group">
                     <p><strong>Tingkat Sanksi Mahasiswa:</strong> <span id="detailTingkatSanksiMahasiswaMelanggar"></span></p>

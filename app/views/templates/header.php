@@ -12,9 +12,6 @@
 
   <link rel="stylesheet" href="<?= BASEURL; ?>/assets/css/styles.min.css" />
 
-  <!-- <script src="<?= BASEURL; ?>/sweetalert/sweetalert2.min.js"></script>
-  <link rel="stylesheet" href="<?= BASEURL; ?>/sweetalert/sweetalert2.min.css"> -->
-
   <!-- SweetAlert2 CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
 

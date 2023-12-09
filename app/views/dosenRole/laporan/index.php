@@ -40,7 +40,7 @@
                     <td><?= $laporan['nim_mahasiswa']; ?></td>
                     <td><?= $laporan['nama_mahasiswa']; ?></td>
                     <td><?= $laporan['kelas_mahasiswa']; ?></td>
-                    <?php if ($laporan['status_sanksi'] == 'Terkirim') : ?>
+                    <?php if ($laporan['status_sanksi'] == 'Baru') : ?>
                         <td><span class="badge bg-success"><?= $laporan['status_sanksi']; ?></span></td>
                     <?php endif; ?>
                     <td>

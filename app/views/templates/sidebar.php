@@ -67,14 +67,6 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="<?= BASEURL; ?>/AdminControllers/matkul" aria-expanded="false">
-                                <span>
-                                    <i class="bi bi-card-list"></i>
-                                </span>
-                                <span class="hide-menu">Matkul Dosen</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= BASEURL; ?>/AdminControllers/tatib" aria-expanded="false">
                                 <span>
                                     <i class="bi bi-list-task"></i>

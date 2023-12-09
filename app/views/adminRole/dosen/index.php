@@ -94,10 +94,6 @@
           <p><strong>Username:</strong> <span id="detailUsername"></span></p>
         </div>
 
-        <div class="form-group">
-          <p><strong>Matkul:</strong> <span id="detailMatkul"></span></p>
-        </div>
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

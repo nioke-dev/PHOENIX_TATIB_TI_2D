@@ -51,7 +51,6 @@ class Dosen extends Controller
 
     public function hapus($id)
     {
-        echo "Nilai parameter id: " . $id;
         if ($this->model('Dosen_model')->hapusDataDosen($id) > 0) {
             $this->showSweetAlert('success', 'Berhasil', 'Data Dosen berhasil Dihapus' . $id);
             header('Location: ' . BASEURL . '/AdminControllers/dosen');

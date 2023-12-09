@@ -138,7 +138,7 @@ $(function () {
   });
 
   $(".tampilModalUbahMahasiswa").on("click", function () {
-    $("#formModalMahasiswaLabel").html("Ubah Data Mahasiswaaaa");
+    $("#formModalMahasiswaLabel").html("Ubah Data Mahasiswa");
     $(".modal-footer button[type=submit]").html("Ubah Data");
     $(".modal-body form").attr(
       "action",
@@ -392,7 +392,7 @@ $(function () {
     });
   });
 
-  $(".tampilModalUbahMahasiswa").on("click", function () {
+  $(".tampilModalUbahMahasiswaMelanggar").on("click", function () {
     $("#formModalMahasiswaLabel").html("Ubah Data Mahasiswa Melanggar");
     $(".modal-footer button[type=submit]").html("Ubah Data");
     $(".modal-body form").attr(

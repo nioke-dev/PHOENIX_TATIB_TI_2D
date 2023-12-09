@@ -82,6 +82,14 @@
                                 <span class="hide-menu">Mahasiswa Melanggar</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= BASEURL; ?>/AdminControllers/banding" aria-expanded="false">
+                                <span>
+                                    <i class="bi bi-exclamation-triangle"></i>
+                                </span>
+                                <span class="hide-menu">Banding</span>
+                            </a>
+                        </li>
                         <!-- download tatib.pdf  -->
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -131,7 +139,15 @@
                                 </span>
                                 <span class="hide-menu">Pelanggaran</span>
                             </a>
-                        
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= BASEURL; ?>/MahasiswaControllers/banding" aria-expanded="false">
+                                <span>
+                                    <i class="bi bi-exclamation-triangle"></i>
+                                </span>
+                                <span class="hide-menu">Banding</span>
+                            </a>
+                        </li>
 
                         <!-- download tatib.pdf  -->
                         <li class="nav-small-cap">
@@ -182,6 +198,14 @@
                                 <span class="hide-menu">Laporkan Mahasiswa</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= BASEURL; ?>/DosenControllers/banding" aria-expanded="false">
+                                <span>
+                                    <i class="bi bi-exclamation-triangle"></i>
+                                </span>
+                                <span class="hide-menu">Banding</span>
+                            </a>
+                        </li>
                         <!-- download tatib.pdf  -->
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -229,6 +253,14 @@
                                 <span class="hide-menu">Mahasiswa Melanggar</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= BASEURL; ?>/DpaControllers/banding" aria-expanded="false">
+                                <span>
+                                    <i class="bi bi-exclamation-triangle"></i>
+                                </span>
+                                <span class="hide-menu">Banding</span>
+                            </a>
+                        </li>
 
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -250,7 +282,7 @@
                                 <span class="hide-menu">About</span>
                             </a>
                         </li>
-                        
+
                     <?php endif; ?>
                 </ul>
                 <br><br><br><br>

@@ -450,6 +450,7 @@ $(function () {
   });
 
   //function banding
+
   // $(".tombolTambahDataBanding").on("click", function () {
   //   $("#formModalBandingLabel").html("Ajukan Banding");
   //   $(".modal-footer button[type=submit]").html("Ajukan Banding");

@@ -12,8 +12,10 @@ class Banding extends Controller
     {
 
         $data['judul'] = 'Daftar Banding';
-        $data['nip_dpa'] = $_SESSION['username'];
-        $data['bd'] = $this->model('Banding_model')->getAllBandingByDpa($data);
+        $getKelasDpa = $this->model('Banding_model')->getDpaKelas($_SESSION['username']);
+        $data['kelas_dpa'] = $this->model('Banding_model')->getAllBandingByDpa($getKelasDpa);
+        // $data['nip_dpa'] = $_SESSION['username'];
+        // $data['bd'] = $this->model('Banding_model')->getAllBandingByDpa($data);
         $data['nama'] = $this->model('User_model')->getUser();
 
         $this->view('templates/header', $data);
@@ -58,16 +60,16 @@ class Banding extends Controller
     // }
 
     // Fungsi untuk mencari banding berdasarkan keyword
-    public function cari()
-    {
-        $data['judul'] = 'Daftar Banding';
-        $data['bd'] = $this->model('Banding_model')->cariDataBanding();
-        $data['nama'] = $this->model('User_model')->getUser();
+    // public function cari()
+    // {
+    //     $data['judul'] = 'Daftar Banding';
+    //     $data['bd'] = $this->model('Banding_model')->cariDataBanding();
+    //     $data['nama'] = $this->model('User_model')->getUser();
 
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('templates/headerNav', $data);
-        $this->view('dpaRole/banding/index', $data);
-        $this->view('templates/footer', $data);
-    }
+    //     $this->view('templates/header', $data);
+    //     $this->view('templates/sidebar', $data);
+    //     $this->view('templates/headerNav', $data);
+    //     $this->view('dpaRole/banding/index', $data);
+    //     $this->view('templates/footer', $data);
+    // }
 }

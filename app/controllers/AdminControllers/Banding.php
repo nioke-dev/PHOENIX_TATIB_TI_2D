@@ -57,16 +57,16 @@ class Banding extends Controller
     // }
 
     // Fungsi untuk mencari banding berdasarkan keyword
-    public function cari()
-    {
-        $data['judul'] = 'Daftar Banding';
-        $data['bd'] = $this->model('Banding_model')->cariDataBanding();
-        $data['nama'] = $this->model('User_model')->getUser();
+    // public function cari()
+    // {
+    //     $data['judul'] = 'Daftar Banding';
+    //     $data['bd'] = $this->model('Banding_model')->cariDataBanding();
+    //     $data['nama'] = $this->model('User_model')->getUser();
 
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('templates/headerNav', $data);
-        $this->view('adminRole/banding/index', $data);
-        $this->view('templates/footer', $data);
-    }
+    //     $this->view('templates/header', $data);
+    //     $this->view('templates/sidebar', $data);
+    //     $this->view('templates/headerNav', $data);
+    //     $this->view('adminRole/banding/index', $data);
+    //     $this->view('templates/footer', $data);
+    // }
 }

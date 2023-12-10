@@ -124,7 +124,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="tingkat_sanksi" class="form-label">Tingkat Sanksi</label>
+                        <label for="tingkat_sanksi" class="form-label">Pelanggaran</label>
                         <select class="form-control choices-single select-tatib-tingkatSanksi" id="id_tingkatSanksi" name="id_tingkatSanksi" autocomplete="off" required>
                             <option></option>
                             <?php
@@ -134,7 +134,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="deskripsi" class="form-label">Deskripsi</label>
+                        <label for="deskripsi" class="form-label">Keterangan</label>
                         <textarea id="deskripsi" class="form-control" name="deskripsi" rows="4" cols="50" required></textarea>
                     </div>
                     <div class="form-group">
@@ -143,8 +143,8 @@
                     </div>
             </div>
             <div class="modal-footer justify-content-end">
-                <button type="submit" class="btn btn-success">Kirim</button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-success">Kirim</button>
             </div>
             </form>
         </div>

@@ -88,6 +88,11 @@
                 <div class="form-group">
                     <p><strong>Tingkat Sanksi:</strong> <span id="detaiTingkatSaknsi"></span></p>
                 </div>
+
+                <div class="form-group">
+                    <p><strong>Bukti Laporan:</strong></p>
+                    <img id="detailBuktiLaporan" alt="Bukti Laporan" style="max-width: 100%;" />
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -99,17 +104,17 @@
 
 <!-- Modal Tambah Laporan -->
 <div class="modal fade" id="formModalLaporan" aria-labelledby="formModalLaporanLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header text-center">
                 <h5 class="modal-title" id="formModalLaporanLabel">Tambah Data Laporan</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="<?= BASEURL; ?>/DosenControllers/laporan/tambah" method="post">
+                <form action="<?= BASEURL; ?>/DosenControllers/laporan/tambah" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id_user" id="id_user">
                     <div class="form-group">
-                        <label for="nim_ahasiswa">Mahasiswa</label>
+                        <label for="nim_ahasiswa" class="form-label">Mahasiswa</label>
                         <select class="form-select select-mahasiswa-laporkan" id="nim_mahasiswa" name="nim_mahasiswa" autocomplete="off" required>
                             <?php
                             foreach ($data['mahasiswa'] as $mahasiswa) : ?>
@@ -119,21 +124,22 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="tingkat_sanksi">Tingkat Pelanggaran</label>
-                        <select class="form-control choices-single" id="id_tingkatSanksi" name="id_tingkatSanksi" autocomplete="off" required>
+                        <label for="tingkat_sanksi" class="form-label">Tingkat Pelanggaran</label>
+                        <select class="form-control choices-single select-tatib-tingkatSanksi" id="id_tingkatSanksi" name="id_tingkatSanksi" autocomplete="off" required>
                             <option></option>
-                            <option value="6">V</option>
-                            <option value="5">IV</option>
-                            <option value="4">III</option>
-                            <option value="3">II</option>
-                            <option value="2">I/II</option>
-                            <option value="1">I</option>
+                            <?php
+                            foreach ($data['tatib'] as $tatib) : ?>
+                                <option value="<?= $tatib['id_tingkatSanksi']; ?>"><?= $tatib['deskripsi']; ?> - <?= $tatib['tingkat_sanksi']; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="deskripsi">Deskripsi</label>
-                        <!-- <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="Masukkan Deskripsi Laporan" autocomplete="off" required> -->
-                        <textarea id="deskripsi" class="form-control" name="deskripsi" rows="4" cols="50"></textarea>
+                        <label for="deskripsi" class="form-label">Deskripsi</label>
+                        <textarea id="deskripsi" class="form-control" name="deskripsi" rows="4" cols="50" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="file_bukti" class="form-label">Upload Bukti Pelanggaran</label>
+                        <input type="file" class="form-control" name="file_bukti" id="file_bukti" required>
                     </div>
             </div>
             <div class="modal-footer justify-content-end">
@@ -141,27 +147,6 @@
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
             </div>
             </form>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal Status Laporan -->
-<div class="modal fade" id="statusModalLaporan" tabindex="-1" aria-labelledby="statusModalLaporanLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="statusModalLaporanLabel">Status Laporan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <p><strong>Status Sanksi :</strong> <span id="statusModalLaporanLabel"></span></p>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-            </div>
         </div>
     </div>
 </div>

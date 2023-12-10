@@ -1,3 +1,4 @@
+const baseurl = "http://localhost/PHOENIX_TATIB_TI_2D/public";
 $(function () {
   // Dosen Function
   $(".tombolTambahDataDosen").on("click", function () {
@@ -404,6 +405,10 @@ $(function () {
         $("#detailNipDosen").text(data.nip_dosen);
         $("#detailDeskripsi").text(data.deskripsi);
         $("#detaiTingkatSaknsi").text(data.tingkat_sanksi);
+        $("#detailBuktiLaporan").attr(
+          "src",
+          baseurl + "/img/bukti_laporan/" + data.file_bukti
+        );
       },
       error: function (xhr, status, error) {
         console.error("Error:", error);
@@ -476,6 +481,9 @@ $(function () {
 });
 $("#formModalLaporan").on("shown.bs.modal", function () {
   $(".select-mahasiswa-laporkan").select2({
+    dropdownParent: $("#formModalLaporan"),
+  });
+  $(".select-tatib-tingkatSanksi").select2({
     dropdownParent: $("#formModalLaporan"),
   });
 });

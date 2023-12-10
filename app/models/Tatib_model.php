@@ -13,7 +13,7 @@ class Tatib_model
     public function getAllTatib()
     {
         $this->db->query('
-            SELECT tt.id_tatib, tt.deskripsi, ts.tingkat_sanksi
+            SELECT tt.id_tatib, tt.deskripsi, ts.tingkat_sanksi, tt.id_tingkatSanksi
             FROM ' . $this->table . ' tt
             INNER JOIN tingkatSanksi ts ON tt.id_tingkatSanksi = ts.id_tingkatSanksi            
             ORDER BY tt.id_tingkatSanksi DESC, tt.id_tatib ASC
@@ -77,16 +77,16 @@ class Tatib_model
 
     public function cariDataTatib()
     {
-    $keyword = $_POST['keyword'];
-    $query = "
+        $keyword = $_POST['keyword'];
+        $query = "
         SELECT t.*, ts.tingkat_sanksi
         FROM tatib t
         INNER JOIN tingkatSanksi ts ON t.id_tingkatSanksi = ts.id_tingkatSanksi
         WHERE t.deskripsi LIKE :keyword
     ";
-    $this->db->query($query);
-    $this->db->bind('keyword', "%$keyword%");
-    return $this->db->resultSet();
+        $this->db->query($query);
+        $this->db->bind('keyword', "%$keyword%");
+        return $this->db->resultSet();
     }
 
     public function hapusDataTatib($id)

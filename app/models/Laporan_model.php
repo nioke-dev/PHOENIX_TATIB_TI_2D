@@ -46,14 +46,14 @@ class Laporan_model
 
 
     // Function to add Laporan data
-    public function tambahDataLaporan($data)
+    public function tambahDataLaporan($data, $filename, $filesize, $filetype)
     {
-        $dateTimeNow = date("Y-m-d H:i:s");
-        // SQL query to add Laporan data
-        $query = "INSERT INTO laporan (tgl_laporan, nim_mahasiswa, nip_dosen, deskripsi, id_tingkatSanksi, id_statusSanksi)
-            VALUES
-            (:tgl_laporan, :nim_mahasiswa, :nip_dosen, :deskripsi, :tingkat_sanksi, :status_sanksi)";
+        $dateTimeNow = date("Y-m-d");
 
+        // SQL query to add Laporan data
+        $query = "INSERT INTO laporan (tgl_laporan, nim_mahasiswa, nip_dosen, deskripsi, id_tingkatSanksi, id_statusSanksi, file_bukti)
+        VALUES
+        (:tgl_laporan, :nim_mahasiswa, :nip_dosen, :deskripsi, :tingkat_sanksi, :status_sanksi, :file_bukti)";
 
         // Execute the query
         $this->db->query($query);
@@ -63,12 +63,14 @@ class Laporan_model
         $this->db->bind('deskripsi', $data['deskripsi']);
         $this->db->bind('tingkat_sanksi', $data['id_tingkatSanksi']);
         $this->db->bind('status_sanksi', '1');
+        $this->db->bind('file_bukti', $filename);
 
         $this->db->execute();
 
         // Return the number of affected rows by the query operation
         return $this->db->rowCount();
     }
+
 
     // Function to delete Laporan data by ID
     public function hapusDataLaporan($id_laporan)

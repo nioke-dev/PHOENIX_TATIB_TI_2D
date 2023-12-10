@@ -124,7 +124,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="tingkat_sanksi" class="form-label">Tingkat Pelanggaran</label>
+                        <label for="tingkat_sanksi" class="form-label">Tingkat Sanksi</label>
                         <select class="form-control choices-single select-tatib-tingkatSanksi" id="id_tingkatSanksi" name="id_tingkatSanksi" autocomplete="off" required>
                             <option></option>
                             <?php

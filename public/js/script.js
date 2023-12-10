@@ -491,4 +491,12 @@ $("#formModalLaporan").on("shown.bs.modal", function () {
   $(".select-tatib-tingkatSanksi").select2({
     dropdownParent: $("#formModalLaporan"),
   });
+  $(".select-dosen-adminRole").select2({
+    dropdownParent: $("#formModalLaporan"),
+  });
+});
+$("#formModalDpa").on("shown.bs.modal", function () {  
+  $(".select-dosen-adminRole").select2({
+    dropdownParent: $("#formModalDpa"),
+  });
 });

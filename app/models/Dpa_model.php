@@ -30,7 +30,7 @@ class Dpa_model
     {
         $this->db->query('
         SELECT d.*, u.*
-        FROM ' . $this->table . ' d
+        FROM dosen d
         LEFT JOIN user u ON d.nip_dosen = u.username
         WHERE d.nip_dosen=:nip_dosen
         GROUP BY d.nip_dosen
@@ -52,9 +52,9 @@ class Dpa_model
         $this->db->query($query);
         $this->db->bind('nip_dpa', $data['nip_dpa']);
         $this->db->bind('id_user', $id_user['userDpaId']['id_user']);
-        $this->db->bind('nama_dpa', $data['nama_dpa']);
+        $this->db->bind('nama_dpa', $dataDosen['dataDosen']['nama_dosen']);
         $this->db->bind('kelas_dpa', $data['kelas_dpa']);
-        $this->db->bind('email_dpa', $data['email_dpa']);
+        $this->db->bind('email_dpa', $dataDosen['dataDosen']['email_dosen']);
         $this->db->execute();
 
         // Mengembalikan jumlah baris yang terpengaruh oleh operasi query

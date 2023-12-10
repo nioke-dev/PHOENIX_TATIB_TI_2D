@@ -6,7 +6,6 @@ $(function () {
     $("#nip").val("");
     $("#nama").val("");
     $("#email").val("");
-    $("#matkul").val("");
   });
 
   $(".tampilModalUbahDosen").on("click", function () {
@@ -53,50 +52,9 @@ $(function () {
         $("#detailNama").text(data.nama_dosen);
         $("#detailEmail").text(data.email_dosen);
         $("#detailUsername").text(data.username);
-        // Menangani hasil yang mungkin merupakan kumpulan matkul
-        if (data.matkul) {
-          $("#detailMatkul").text(data.matkul);
-        } else {
-          $("#detailMatkul").text("Tidak ada matkul");
-        }
       },
       error: function (xhr, status, error) {
         console.error("Error:", error);
-      },
-    });
-  });
-
-  // Matkul Function
-
-  $(".tombolTambahDataMatkulDosen").on("click", function () {
-    $("#formModalMatkulDosenLabel").html("Tambah Data Matkul Dosen");
-    $(".modal-footer button[type=submit]").html("Tambah Data");
-    $("#nip_dosen").val("");
-    $("#matkul").val("");
-  });
-
-  $(".tampilModalUbahMatkul").on("click", function () {
-    $("#formModalMatkulDosenLabel").html("Ubah Data Matkul Dosen");
-    $(".modal-footer button[type=submit]").html("Ubah Data");
-    $(".modal-body form").attr(
-      "action",
-      "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/matkul/ubah"
-    );
-
-    const id_matkul = $(this).data("id_matkul");
-
-    $.ajax({
-      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/matkul/getubah",
-      data: { id_matkul: id_matkul },
-      method: "post",
-      dataType: "json",
-      success: function (data) {
-        console.log("Respons Server:", data);
-        $("#nip_dosen").val(data.nip_dosen);
-        $("#matkul").val(data.matkul);
-        $("#nip_dosen_lama").val(data.nip_dosen);
-        $("#matkul_lama").val(data.matkul);
-        $("#id_matkul").val(data.id_matkul);
       },
     });
   });
@@ -222,12 +180,6 @@ $(function () {
         $("#detailNamaAdmin").text(data.nama_admin);
         $("#detailEmailAdmin").text(data.email_admin);
         $("#detailUsernameAdmin").text(data.username);
-        // Menangani hasil yang mungkin merupakan kumpulan matkul
-        // if (data.matkul) {
-        //   $("#detailMatkul").text(data.matkul);
-        // } else {
-        //   $("#detailMatkul").text("Tidak ada matkul");
-        // }
       },
       error: function (xhr, status, error) {
         console.error("Error:", error);
@@ -492,5 +444,40 @@ $(function () {
 $("#formModalLaporan").on("shown.bs.modal", function () {
   $(".select-mahasiswa-laporkan").select2({
     dropdownParent: $("#formModalLaporan"),
+  });
+
+  //function banding
+  // $(".tombolTambahDataBanding").on("click", function () {
+  //   $("#formModalBandingLabel").html("Ajukan Banding");
+  //   $(".modal-footer button[type=submit]").html("Ajukan Banding");
+  //   $("#deskripsi").val("");
+  //   $("#id_banding").val("");
+  //   $("#banding").val("");
+  // });
+
+  $(".tampilModalDetailBanding").on("click", function () {
+    console.log("Clicked Detail");
+
+    $("#detailModalBandingLabel").html("Detail Data Banding");
+
+    const id_banding = $(this).data("id_banding");
+    console.log(id_banding);
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/MahasiswaControllers/banding/detail",
+      data: { id_banding: id_banding },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#detailDeskripsi").text(data.deskripsi);
+        $("#detailNimMahasiswa").text(data.nim_mahasiswa);
+        $("#detailNipDosen").text(data.nip_dosen);
+
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      },
+    });
   });
 });

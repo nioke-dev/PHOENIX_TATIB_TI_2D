@@ -439,13 +439,6 @@ $(function () {
     });
   });
 
-  // ... (fungsi-fungsi lainnya)
-});
-$("#formModalLaporan").on("shown.bs.modal", function () {
-  $(".select-mahasiswa-laporkan").select2({
-    dropdownParent: $("#formModalLaporan"),
-  });
-
   //function banding
   // $(".tombolTambahDataBanding").on("click", function () {
   //   $("#formModalBandingLabel").html("Ajukan Banding");
@@ -473,11 +466,16 @@ $("#formModalLaporan").on("shown.bs.modal", function () {
         $("#detailDeskripsi").text(data.deskripsi);
         $("#detailNimMahasiswa").text(data.nim_mahasiswa);
         $("#detailNipDosen").text(data.nip_dosen);
-
       },
       error: function (xhr, status, error) {
         console.error("Error:", error);
       },
     });
+  });
+  // ... (fungsi-fungsi lainnya)
+});
+$("#formModalLaporan").on("shown.bs.modal", function () {
+  $(".select-mahasiswa-laporkan").select2({
+    dropdownParent: $("#formModalLaporan"),
   });
 });

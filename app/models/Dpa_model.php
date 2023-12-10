@@ -40,6 +40,21 @@ class Dpa_model
         return $this->db->single();
     }
 
+    public function ubahuserTypeUserDpa($data)
+    {
+        $query = "UPDATE user SET
+                    user_type = :user_type                  
+                  WHERE id_user = :id_user";
+
+        $this->db->query($query);
+        $this->db->bind('user_type', 'dpa');
+        $this->db->bind('id_user', $data['userDpaId']['id_user']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
     // Fungsi untuk menambahkan data dpa
     public function tambahDataDpa($data, $id_user, $dataDosen)
     {

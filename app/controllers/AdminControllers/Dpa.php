@@ -32,6 +32,7 @@ class Dpa extends Controller
     {
         if ($this->model('Dpa_model')->tambahUserDpa($_POST) > 0) {
             $dataUser['userDpaId'] = $this->model('Dpa_model')->getUserDpaByNip($_POST);
+            $this->model('Dpa_model')->ubahuserTypeUserDpa($dataUser);
             $dataDosen['dataDosen'] = $this->model('Dpa_model')->getDosenByNip($_POST['nip_dpa']);
             if ($this->model('Dpa_model')->tambahDataDpa($_POST, $dataUser, $dataDosen) > 0) {
                 $this->showSweetAlert('success', 'Berhasil', 'Data DPA Berhasil Ditambahkan');

@@ -14,17 +14,6 @@
     </div>
   </div>
 
-  <!-- <div class="row mb-3">
-    <div class="col-lg-6">
-      <form action="<?= BASEURL; ?>/AdminControllers/dosen/cari" method="post">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Cari dosen.." name="keyword" id="keyword" autocomplete="off">
-          <button class="btn btn-primary" type="submit" id="tombolCari">Cari</button>
-        </div>
-      </form>
-    </div>
-  </div> -->
-
   <div class="row">
     <h3>Daftar Dosen</h3>
     <table id="example" class="table table-striped" style="width:100%">
@@ -57,7 +46,28 @@
               <td>
                 <a href="<?= BASEURL; ?>/AdminControllers/dosen/detail/<?= $dsn['nip_dosen']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">Detail</a>
                 <a href="<?= BASEURL; ?>/AdminControllers/dosen/ubah/<?= $dsn['nip_dosen']; ?>" class="badge bg-success float-right tampilModalUbahDosen" data-bs-toggle="modal" data-bs-target="#formModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">ubah</a>
-                <a href="<?= BASEURL; ?>/AdminControllers/dosen/hapus/<?= $dsn['nip_dosen']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Dosen berikut?');">hapus</a>
+                <a href="<?= BASEURL; ?>/AdminControllers/dosen/hapus/<?= $dsn['nip_dosen']; ?>" class="badge bg-danger float-right" onclick="return confirmAction()">hapus</a>
+                <script>
+                  function confirmAction() {
+                    Swal.fire({
+                      title: "Apakah Kamu Yakin?",
+                      text: "Kamu Tidak Bisa Mengembalikan Data Ini!",
+                      icon: "warning",
+                      showCancelButton: true,
+                      confirmButtonColor: "#3085d6",
+                      cancelButtonColor: "#d33",
+                      confirmButtonText: "Yes, delete it!"
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        // Redirect to the delete URL if the user confirms
+                        window.location.href = "<?= BASEURL; ?>/AdminControllers/dosen/hapus/<?= $dsn['nip_dosen']; ?>";
+                      }
+                    });
+
+                    // Prevent the default behavior of the anchor tag
+                    return false;
+                  }
+                </script>
               </td>
             </tr>
         <?php endforeach;

@@ -14,17 +14,6 @@
         </div>
     </div>
 
-    <!-- <div class="row mb-3">
-        <div class="col-lg-6">
-            <form action="<?= BASEURL; ?>/AdminControllers/tatib/cari" method="post">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Cari Tatib.." name="keyword" id="keyword" autocomplete="off">
-                    <button class="btn btn-primary" type="submit" id="tombolCari">Cari</button>
-                </div>
-            </form>
-        </div>
-    </div> -->
-
     <div class="row">
         <h3>Daftar Tata Tertib</h3>
         <table id="example" class="table table-striped" style="width:100%">
@@ -55,7 +44,28 @@
                             <td>
                                 <a href="<?= BASEURL; ?>/AdminControllers/tatib/detail/<?= $tatib['id_tatib']; ?>" class="badge bg-primary float-right tampilModalDetailTatib" data-bs-toggle="modal" data-bs-target="#detailModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Detail</a>
                                 <a href="<?= BASEURL; ?>/AdminControllers/tatib/ubah/<?= $tatib['id_tatib']; ?>" class="badge bg-success float-right tampilModalUbahTatib" data-bs-toggle="modal" data-bs-target="#formModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Ubah</a>
-                                <a href="<?= BASEURL; ?>/AdminControllers/tatib/hapus/<?= $tatib['id_tatib']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Tata tertib berikut?');">Hapus</a>
+                                <a href="<?= BASEURL; ?>/AdminControllers/tatib/hapus/<?= $tatib['id_tatib']; ?>" class="badge bg-danger float-right" onclick="return confirmAction()">Hapus</a>
+                                <script>
+                                    function confirmAction() {
+                                        Swal.fire({
+                                            title: "Apakah Kamu Yakin?",
+                                            text: "Kamu Tidak Bisa Mengembalikan Data Ini!",
+                                            icon: "warning",
+                                            showCancelButton: true,
+                                            confirmButtonColor: "#3085d6",
+                                            cancelButtonColor: "#d33",
+                                            confirmButtonText: "Yes, delete it!"
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                // Redirect to the delete URL if the user confirms
+                                                window.location.href = "<?= BASEURL; ?>/AdminControllers/tatib/hapus/<?= $tatib['id_tatib']; ?>";
+                                            }
+                                        });
+
+                                        // Prevent the default behavior of the anchor tag
+                                        return false;
+                                    }
+                                </script>
                             </td>
                         </tr>
                 <?php endforeach;

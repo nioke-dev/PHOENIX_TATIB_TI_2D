@@ -66,10 +66,17 @@
                     <p><strong>Email Mahasiswa:</strong> <span id="detailEmailMahasiswaMelanggar"></span></p>
                 </div>
                 <div class="form-group">
+                    <p><strong>Keterangan:</strong> <span id="detailDeskripsi"></span></p>
+                </div>
+                <div class="form-group">
                     <p><strong>Status Sanksi Mahasiswa:</strong> <span id="detailStatusSanksiMahasiswaMelanggar"></span></p>
                 </div>
                 <div class="form-group">
                     <p><strong>Tingkat Sanksi Mahasiswa:</strong> <span id="detailTingkatSanksiMahasiswaMelanggar"></span></p>
+                </div>
+                <div class="form-group">
+                    <p><strong>Bukti Laporan:</strong></p>
+                    <img id="detailBuktiLaporan" alt="Bukti Laporan" style="max-width: 100%;" />
                 </div>
             </div>
             <div class="modal-footer">

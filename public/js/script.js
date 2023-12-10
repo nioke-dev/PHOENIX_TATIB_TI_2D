@@ -336,8 +336,13 @@ $(function () {
         $("#detailKelasMahasiswaMelanggar").text(data.kelas_mahasiswa);
         $("#detailProdiMahasiswaMelanggar").text(data.prodi_mahasiswa);
         $("#detailEmailMahasiswaMelanggar").text(data.email_mahasiswa);
+        $("#detailDeskripsi").text(data.deskripsi);
         $("#detailStatusSanksiMahasiswaMelanggar").text(data.status_sanksi);
         $("#detailTingkatSanksiMahasiswaMelanggar").text(data.tingkat_sanksi);
+        $("#detailBuktiLaporan").attr(
+          "src",
+          baseurl + "/img/bukti_laporan/" + data.file_bukti
+        );
       },
       error: function (xhr, status, error) {
         console.error("Error:", error);

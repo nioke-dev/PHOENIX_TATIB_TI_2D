@@ -26,8 +26,22 @@ class Dpa_model
         return $this->db->single();
     }
 
+    public function getDosenByNip($nip_dosen)
+    {
+        $this->db->query('
+        SELECT d.*, u.*
+        FROM ' . $this->table . ' d
+        LEFT JOIN user u ON d.nip_dosen = u.username
+        WHERE d.nip_dosen=:nip_dosen
+        GROUP BY d.nip_dosen
+    ');
+
+        $this->db->bind('nip_dosen', $nip_dosen);
+        return $this->db->single();
+    }
+
     // Fungsi untuk menambahkan data dpa
-    public function tambahDataDpa($data, $id_user)
+    public function tambahDataDpa($data, $id_user, $dataDosen)
     {
         // Query SQL untuk menambahkan data dpa
         $query = "INSERT INTO dpa (nip_dpa, id_user, nama_dpa, kelas_dpa, email_dpa)

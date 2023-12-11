@@ -71,4 +71,20 @@ class Laporan extends Controller
         }
         $data['mahasiswa'] = $this->model('Mahasiswa_model')->getAllMahasiswa();
     }
+
+
+
+    // Fungsi untuk menghapus data laporan
+    public function hapus($id_laporan)
+    {
+        if ($this->model('Laporan_model')->hapusDataLaporan($id_laporan) > 0) {
+            $this->showSweetAlert('success', 'Berhasil', 'Data Laporan berhasil dihapus');
+            header('Location: ' . BASEURL . '/DosenControllers/laporan');
+            exit;
+        } else {
+            $this->showSweetAlert('error', 'Ooops', 'Data Laporan Gagal dihapus');
+            header('Location: ' . BASEURL . '/DosenControllers/laporan');
+            exit;
+        }
+    }
 }

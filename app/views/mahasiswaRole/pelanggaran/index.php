@@ -56,7 +56,7 @@
                     <p><strong>NIP Dosen:</strong> <span id="detailNIPDosenMahasiswaMelanggar"></span></p>
                 </div>
                 <div class="form-group">
-                    <p><strong>Deskripsi:</strong> <span id="detailDeskripsiMahasiswaMelanggar"></span></p>
+                    <p><strong>Keterangan:</strong> <span id="detailDeskripsiMahasiswaMelanggar"></span></p>
                 </div>
                 <div class="form-group">
                     <p><strong>Tingkat Sanksi Mahasiswa:</strong> <span id="detailTingkatSanksiMahasiswaMelanggar"></span></p>

@@ -45,6 +45,7 @@
                     <?php endif; ?>
                     <td>
                         <a href="<?= BASEURL; ?>/AdminControllers/laporan/detail/<?= $laporan['id_laporan']; ?>" class="badge bg-primary tampilModalDetailLaporan" data-bs-toggle="modal" data-bs-target="#detailModalLaporan" data-id_laporan="<?= $laporan['id_laporan']; ?>">Detail</a>
+                        <a href="<?= BASEURL; ?>/DosenControllers/laporan/hapus/<?= $laporan['id_laporan']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Laporan berikut?');">hapus</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

@@ -61,7 +61,44 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="form-group">
+                <table class="table">
+                    <tr>
+                        <td><strong>NIM Mahasiswa</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailNimMahasiswaMelanggar"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nama Mahasiswa</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailNamaMahasiswaMelanggar"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kelas Mahasiswa</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailKelasMahasiswaMelanggar"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Program Studi Mahasiswa</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailProdiMahasiswaMelanggar"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Email Mahasiswa</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailEmailMahasiswaMelanggar"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Status Sanksi Mahasiswa</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailStatusSanksiMahasiswaMelanggar"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tingkat Sanksi Mahasiswa</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailTingkatSanksiMahasiswaMelanggar"></span></td>
+                    </tr>
+                </table>
+                <!-- <div class="form-group">
                     <p><strong>NIM Mahasiswa:</strong> <span id="detailNimMahasiswaMelanggar"></span></p>
                 </div>
                 <div class="form-group">
@@ -81,7 +118,7 @@
                 </div>
                 <div class="form-group">
                     <p><strong>Tingkat Sanksi Mahasiswa:</strong> <span id="detailTingkatSanksiMahasiswaMelanggar"></span></p>
-                </div>
+                </div> -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

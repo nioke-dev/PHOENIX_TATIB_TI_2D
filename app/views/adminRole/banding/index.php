@@ -79,8 +79,25 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <table class="table">
+                    <tr>
+                        <td><strong>NIP Dosen</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailNipDosen"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>NIM Mahasiswa</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailNimMahasiswa"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Deskripsi</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailDeskripsi"></span></td>
+                    </tr>
+                </table>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <p><strong>NIP Dosen :</strong> <span id="detailNipDosen"></span></p>
                 </div>
 
@@ -95,7 +112,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

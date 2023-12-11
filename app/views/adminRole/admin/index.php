@@ -86,8 +86,30 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        <table class="table">
+          <tr>
+            <td><strong>NIP</strong></td>
+            <td><strong>:</strong></td>
+            <td><span id="detailNipAdmin"></span></td>
+          </tr>
+          <tr>
+            <td><strong>Nama</strong></td>
+            <td><strong>:</strong></td>
+            <td><span id="detailNamaAdmin"></span></td>
+          </tr>
+          <tr>
+            <td><strong>Email</strong></td>
+            <td><strong>:</strong></td>
+            <td><span id="detailEmailAdmin"></span></td>
+          </tr>
+          <tr>
+            <td><strong>Username</strong></td>
+            <td><strong>:</strong></td>
+            <td><span id="detailUsernameAdmin"></span></td>
+          </tr>
+        </table>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
           <p><strong>NIP:</strong> <span id="detailNipAdmin"></span></p>
         </div>
 
@@ -101,7 +123,7 @@
 
         <div class="form-group">
           <p><strong>Username:</strong> <span id="detailUsernameAdmin"></span></p>
-        </div>
+        </div> -->
 
       </div>
       <div class="modal-footer">

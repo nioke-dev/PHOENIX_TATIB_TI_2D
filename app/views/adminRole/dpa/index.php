@@ -83,7 +83,29 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="form-group">
+        <table class="table">
+          <tr>
+            <td><strong>NIP</strong></td>
+            <td><strong>:</strong></td>
+            <td><span id="detailNipDpa"></span></td>
+          </tr>
+          <tr>
+            <td><strong>Nama</strong></td>
+            <td><strong>:</strong></td>
+            <td><span id="detailNamaDpa"></span></td>
+          </tr>
+          <tr>
+            <td><strong>Kelas</strong></td>
+            <td><strong>:</strong></td>
+            <td><span id="detailKelasDpa"></span></td>
+          </tr>
+          <tr>
+            <td><strong>Email</strong></td>
+            <td><strong>:</strong></td>
+            <td><span id="detailEmailDpa"></span></td>
+          </tr>
+        </table>
+        <!-- <div class="form-group">
           <p><strong>NIP:</strong> <span id="detailNipDpa"></span></p>
         </div>
         <div class="form-group">
@@ -94,7 +116,7 @@
         </div>
         <div class="form-group">
           <p><strong>Email:</strong> <span id="detailEmailDpa"></span></p>
-        </div>
+        </div> -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

@@ -85,7 +85,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= BASEURL; ?>/AdminControllers/banding" aria-expanded="false">
                                 <span>
-                                    <i class="bi bi-exclamation-triangle"></i>
+                                <i class="bi bi-chat-left-text"></i>
                                 </span>
                                 <span class="hide-menu">Banding</span>
                             </a>
@@ -143,7 +143,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= BASEURL; ?>/MahasiswaControllers/banding" aria-expanded="false">
                                 <span>
-                                    <i class="bi bi-exclamation-triangle"></i>
+                                <i class="bi bi-chat-left-text"></i>
                                 </span>
                                 <span class="hide-menu">Banding</span>
                             </a>
@@ -201,7 +201,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= BASEURL; ?>/DosenControllers/banding" aria-expanded="false">
                                 <span>
-                                    <i class="bi bi-exclamation-triangle"></i>
+                                <i class="bi bi-chat-left-text"></i>
                                 </span>
                                 <span class="hide-menu">Banding</span>
                             </a>
@@ -256,7 +256,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= BASEURL; ?>/DpaControllers/banding" aria-expanded="false">
                                 <span>
-                                    <i class="bi bi-exclamation-triangle"></i>
+                                <i class="bi bi-chat-left-text"></i>
                                 </span>
                                 <span class="hide-menu">Banding</span>
                             </a>

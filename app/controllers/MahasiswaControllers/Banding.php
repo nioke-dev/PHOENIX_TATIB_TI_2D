@@ -44,18 +44,18 @@ class Banding extends Controller
     }
 
     // Fungsi untuk mengajukan banding 
-    // public function tambah()
-    // {
-    //     if ($this->model('Banding_model')->ajukanBandingMhs($_POST) > 0) {
-    //         $this->showSweetAlert('success', 'Berhasil', 'Banding Berhasil Diajukan');
-    //         header('Location: ' . BASEURL . '/MahasiswaControllers/banding');
-    //         exit;
-    //     } else {
-    //         $this->showSweetAlert('error', 'Ooops', 'Banding Gagal Diajukan');
-    //         header('Location: ' . BASEURL . '/MahasiswaControllers/banding');
-    //         exit;
-    //     }
-    // }
+    public function tambah()
+    {
+        if ($this->model('Banding_model')->ajukanBandingMhs($_POST) > 0) {
+            $this->showSweetAlert('success', 'Berhasil', 'Banding Berhasil Diajukan');
+            header('Location: ' . BASEURL . '/MahasiswaControllers/banding');
+            exit;
+        } else {
+            $this->showSweetAlert('error', 'Ooops', 'Banding Gagal Diajukan');
+            header('Location: ' . BASEURL . '/MahasiswaControllers/banding');
+            exit;
+        }
+    }
 
     // Fungsi untuk mencari banding berdasarkan keyword
     // public function cari()

@@ -34,6 +34,7 @@
                     <td><?= $pelanggaran['tingkat_sanksi']; ?></td>
                     <td>
                         <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/detail/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-primary float-right tampilModalDetailPelanggaran" data-bs-toggle="modal" data-bs-target="#detailModalPelanggaran" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Detail</a>
+                        <a href="<?= BASEURL; ?>/MahasiswaControllers/banding/ajukanBanding/<?= $banding['id_banding']; ?>" class="badge bg-danger float-right tampilTambahDataBanding" data-bs-toggle="modal" data-bs-target="#formModalAjukanBanding" data-id_banding="<?= $banding['id_banding']; ?>">Banding</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -64,6 +65,32 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Add and Edit -->
+<div class="modal fade" id="formModalAjukanBanding" tabindex="-1" aria-labelledby="formModalBandingLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formModalBandingLabel">Ajukan Banding</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?= BASEURL; ?>/banding/tambah" method="post">
+                    <input type="hidden" name="id_banding" id="id_banding">
+                    <div class="form-group">
+                        <label for="deskripsi">Alasan Banding</label>
+                        <input type="text" class="form-control" id="deskripsi" name="deskripsi" autocomplete="off" required>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Ajukan Banding</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                </form>
             </div>
         </div>
     </div>

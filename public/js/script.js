@@ -451,13 +451,13 @@ $(function () {
 
   //function banding
 
-  // $(".tombolTambahDataBanding").on("click", function () {
-  //   $("#formModalBandingLabel").html("Ajukan Banding");
-  //   $(".modal-footer button[type=submit]").html("Ajukan Banding");
-  //   $("#deskripsi").val("");
-  //   $("#id_banding").val("");
-  //   $("#banding").val("");
-  // });
+  $(".tombolTambahDataBanding").on("click", function () {
+    $("#formModalBandingLabel").html("Ajukan Banding");
+    $(".modal-footer button[type=submit]").html("Ajukan Banding");
+    $("#deskripsi").val("");
+    $("#id_banding").val("");
+    $("#banding").val("");
+  });
 
   $(".tampilModalDetailBanding").on("click", function () {
     console.log("Clicked Detail");

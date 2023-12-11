@@ -105,21 +105,21 @@ class Banding_model
     }
 
     // Fungsi untuk mengajukan banding
-    // public function ajukanBandingMhs($data)
-    // {
-    //     $query = "INSERT INTO banding (nim_mahasiswa, id_laporan, nip_dosen, deskripsi)
-    //                 VALUES
-    //               (:nim_mahasiswa, :id_laporan, :nip_dosen, :deskripsi)";
-    //     $this->db->query($query);
-    //     $this->db->bind('nim_mahasiswa', $_SESSION['user_id']);
-    //     $this->db->bind('id_laporan', $data['id_laporan']);
-    //     $this->db->bind('nip_dosen', $data['nip_dosen']);
-    //     $this->db->bind('deskripsi', $data['deskripsi']);
+    public function ajukanBandingMhs($data)
+    {
+        $query = "INSERT INTO banding (nim_mahasiswa, id_laporan, nip_dosen, deskripsi)
+                    VALUES
+                  (:nim_mahasiswa, :id_laporan, :nip_dosen, :deskripsi)";
+        $this->db->query($query);
+        $this->db->bind('nim_mahasiswa', $_SESSION['user_id']);
+        $this->db->bind('id_laporan', $data['id_laporan']);
+        $this->db->bind('nip_dosen', $data['nip_dosen']);
+        $this->db->bind('deskripsi', $data['deskripsi']);
 
-    //     $this->db->execute();
+        $this->db->execute();
 
-    //     return $this->db->rowCount();
-    // }
+        return $this->db->rowCount();
+    }
 
     public function getBandingById($id_banding)
     {

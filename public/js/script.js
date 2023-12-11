@@ -451,12 +451,30 @@ $(function () {
 
   //function banding
 
-  $(".tombolTambahDataBanding").on("click", function () {
+  // $(".tombolTambahDataBanding").on("click", function () {
+  //   $("#formModalBandingLabel").html("Ajukan Banding");
+  //   $(".modal-footer button[type=submit]").html("Ajukan Banding");
+  //   $("#deskripsi").val("");
+  //   $("#id_banding").val("");
+  //   $("#banding").val("");
+  // });
+
+  $(".tampilTambahDataBanding").on("click", function () {
     $("#formModalBandingLabel").html("Ajukan Banding");
     $(".modal-footer button[type=submit]").html("Ajukan Banding");
-    $("#deskripsi").val("");
-    $("#id_banding").val("");
-    $("#banding").val("");
+
+    const id_laporan = $(this).data("id_laporan");
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/MahasiswaControllers/banding/getTambahBanding",
+      data: { id_laporan: id_laporan },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#id_laporan").val(data.id_laporan);
+      },
+    });
   });
 
   $(".tampilModalDetailBanding").on("click", function () {
@@ -496,7 +514,7 @@ $("#formModalLaporan").on("shown.bs.modal", function () {
     dropdownParent: $("#formModalLaporan"),
   });
 });
-$("#formModalDpa").on("shown.bs.modal", function () {  
+$("#formModalDpa").on("shown.bs.modal", function () {
   $(".select-dosen-adminRole").select2({
     dropdownParent: $("#formModalDpa"),
   });

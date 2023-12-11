@@ -34,7 +34,7 @@
                     <td><?= $pelanggaran['tingkat_sanksi']; ?></td>
                     <td>
                         <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/detail/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-primary float-right tampilModalDetailPelanggaran" data-bs-toggle="modal" data-bs-target="#detailModalPelanggaran" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Detail</a>
-                        <a href="<?= BASEURL; ?>/MahasiswaControllers/banding/ajukanBanding/<?= $banding['id_banding']; ?>" class="badge bg-danger float-right tampilTambahDataBanding" data-bs-toggle="modal" data-bs-target="#formModalAjukanBanding" data-id_banding="<?= $banding['id_banding']; ?>">Banding</a>
+                        <a href="<?= BASEURL; ?>/MahasiswaControllers/banding/tambah/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-danger float-right tampilTambahDataBanding" data-bs-toggle="modal" data-bs-target="#formModalAjukanBanding" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Banding</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -97,11 +97,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= BASEURL; ?>/banding/tambah" method="post">
-                    <input type="hidden" name="id_banding" id="id_banding">
+                <form action="<?= BASEURL; ?>/MahasiswaControllers/banding/tambah" method="post">
+                    <input type="hidden" name="id_laporan" id="id_laporan">
                     <div class="form-group">
-                        <label for="deskripsi">Alasan Banding</label>
-                        <input type="text" class="form-control" id="deskripsi" name="deskripsi" autocomplete="off" required>
+                        <label for="alasan_banding">Alasan Banding</label>
+                        <input type="text" class="form-control" id="alasan_banding" name="alasan_banding" autocomplete="off" required>
                     </div>
             </div>
             <div class="modal-footer">

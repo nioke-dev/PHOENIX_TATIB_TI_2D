@@ -46,7 +46,8 @@ class Banding extends Controller
     // Fungsi untuk mengajukan banding 
     public function tambah()
     {
-        if ($this->model('Banding_model')->ajukanBandingMhs($_POST) > 0) {
+        $dataLaporan['dataLaporan'] = $this->model('Laporan_model')->getLaporanById($_POST['id_laporan']);
+        if ($this->model('Banding_model')->ajukanBandingMhs($_POST, $dataLaporan) > 0) {
             $this->showSweetAlert('success', 'Berhasil', 'Banding Berhasil Diajukan');
             header('Location: ' . BASEURL . '/MahasiswaControllers/banding');
             exit;
@@ -55,6 +56,11 @@ class Banding extends Controller
             header('Location: ' . BASEURL . '/MahasiswaControllers/banding');
             exit;
         }
+    }
+
+    public function getTambahBanding()
+    {
+        echo json_encode($this->model('Laporan_model')->getLaporanById($_POST['id_laporan']));
     }
 
     // Fungsi untuk mencari banding berdasarkan keyword

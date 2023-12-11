@@ -18,22 +18,6 @@ class Banding_model
         return $this->db->resultSet();
     }
 
-    // public function getAllBandingByDosen($data)
-    // {
-    //     // $this->db->query('SELECT b.*, s.status_sanksi, d.nip_dosen FROM banding b
-    //     // INNER JOIN statusSanksi s ON b.id_statusSanksi = s.id_statusSanksi
-    //     // INNER JOIN dosen d ON b.nip_dosen = d.nip_dosen');
-    //     // return $this->db->resultSet();
-
-    //     $this->db->query('SELECT b.*, s.status_sanksi, d.nip_dosen, l.id_laporan FROM banding b
-    //     INNER JOIN statusSanksi s ON b.id_statusSanksi = s.id_statusSanksi
-    //     INNER JOIN dosen d ON b.nip_dosen = d.nip_dosen
-    //     INNER JOIN laporan l on b.id_laporan = l.id_laporan
-    //     WHERE d.nip_dosen = :nip_dosen');
-    //     $this->db->bind('nip_dosen', $data['nip_dosen']);
-    //     return $this->db->resultSet();
-    // }
-
     public function getAllBandingByDosen($data)
     {
         // if (isset($data['nip_dosen'])) {
@@ -105,16 +89,17 @@ class Banding_model
     }
 
     // Fungsi untuk mengajukan banding
-    public function ajukanBandingMhs($data)
+    public function ajukanBandingMhs($data, $dataLaporan)
     {
-        $query = "INSERT INTO banding (nim_mahasiswa, id_laporan, nip_dosen, deskripsi)
+        $query = "INSERT INTO banding (nim_mahasiswa, id_laporan, nip_dosen, deskripsi, id_statusSanksi)
                     VALUES
-                  (:nim_mahasiswa, :id_laporan, :nip_dosen, :deskripsi)";
+                  (:nim_mahasiswa, :id_laporan, :nip_dosen, :deskripsi, :id_statusSanksi)";
         $this->db->query($query);
-        $this->db->bind('nim_mahasiswa', $_SESSION['user_id']);
-        $this->db->bind('id_laporan', $data['id_laporan']);
-        $this->db->bind('nip_dosen', $data['nip_dosen']);
-        $this->db->bind('deskripsi', $data['deskripsi']);
+        $this->db->bind('nim_mahasiswa', $_SESSION['username']);
+        $this->db->bind('id_laporan', $dataLaporan['dataLaporan']['id_laporan']);
+        $this->db->bind('nip_dosen', $dataLaporan['dataLaporan']['nip_dosen']);
+        $this->db->bind('deskripsi', $data['alasan_banding']);
+        $this->db->bind('id_statusSanksi', '1');
 
         $this->db->execute();
 

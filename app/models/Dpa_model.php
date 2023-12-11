@@ -26,8 +26,37 @@ class Dpa_model
         return $this->db->single();
     }
 
+    public function getDosenByNip($nip_dosen)
+    {
+        $this->db->query('
+        SELECT d.*, u.*
+        FROM dosen d
+        LEFT JOIN user u ON d.nip_dosen = u.username
+        WHERE d.nip_dosen=:nip_dosen
+        GROUP BY d.nip_dosen
+    ');
+
+        $this->db->bind('nip_dosen', $nip_dosen);
+        return $this->db->single();
+    }
+
+    public function ubahuserTypeUserDpa($data)
+    {
+        $query = "UPDATE user SET
+                    user_type = :user_type                  
+                  WHERE id_user = :id_user";
+
+        $this->db->query($query);
+        $this->db->bind('user_type', 'dpa');
+        $this->db->bind('id_user', $data['userDpaId']['id_user']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
     // Fungsi untuk menambahkan data dpa
-    public function tambahDataDpa($data, $id_user)
+    public function tambahDataDpa($data, $id_user, $dataDosen)
     {
         // Query SQL untuk menambahkan data dpa
         $query = "INSERT INTO dpa (nip_dpa, id_user, nama_dpa, kelas_dpa, email_dpa)
@@ -38,9 +67,9 @@ class Dpa_model
         $this->db->query($query);
         $this->db->bind('nip_dpa', $data['nip_dpa']);
         $this->db->bind('id_user', $id_user['userDpaId']['id_user']);
-        $this->db->bind('nama_dpa', $data['nama_dpa']);
+        $this->db->bind('nama_dpa', $dataDosen['dataDosen']['nama_dosen']);
         $this->db->bind('kelas_dpa', $data['kelas_dpa']);
-        $this->db->bind('email_dpa', $data['email_dpa']);
+        $this->db->bind('email_dpa', $dataDosen['dataDosen']['email_dosen']);
         $this->db->execute();
 
         // Mengembalikan jumlah baris yang terpengaruh oleh operasi query

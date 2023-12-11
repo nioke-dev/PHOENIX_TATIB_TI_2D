@@ -117,23 +117,19 @@
           <input type="hidden" name="id_user" id="id_user">
           <div class="form-group">
             <label for="nip_dpa">NIP</label>
-            <input type="number" class="form-control" id="nip_dpa" name="nip_dpa" autocomplete="off">
+            <select class="form-control choices-single select-dosen-adminRole" id="nip_dpa" name="nip_dpa" autocomplete="off" required>
+              <option></option>
+              <?php
+              foreach ($data['dsn'] as $dosen) : ?>
+                <option value="<?= $dosen['nip_dosen']; ?>"><?= $dosen['nip_dosen']; ?> - <?= $dosen['nama_dosen']; ?></option>
+              <?php endforeach; ?>
+            </select>
             <input type="hidden" class="form-control" id="nip_dpa_lama" name="nip_dpa_lama" autocomplete="off">
-          </div>
-          <div class="form-group">
-            <label for="nama_dpa">Nama</label>
-            <input type="text" class="form-control" id="nama_dpa" name="nama_dpa" autocomplete="off" required>
-            <input type="hidden" class="form-control" id="nama_dpa_lama" name="nama_dpa_lama" autocomplete="off" required>
           </div>
           <div class="form-group">
             <label for="kelas_dpa">Kelas</label>
             <input type="text" class="form-control" id="kelas_dpa" name="kelas_dpa" autocomplete="off" required>
             <input type="hidden" class="form-control" id="kelas_dpa_lama" name="kelas_dpa_lama" autocomplete="off" required>
-          </div>
-          <div class="form-group">
-            <label for="email_dpa">Email</label>
-            <input type="email" class="form-control" id="email_dpa" name="email_dpa" autocomplete="off" required>
-            <input type="hidden" class="form-control" id="email_dpa_lama" name="email_dpa_lama" autocomplete="off" required>
           </div>
 
       </div>

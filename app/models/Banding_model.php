@@ -52,8 +52,22 @@ class Banding_model
         return $this->db->resultSet();
     }
 
-    // public function getAllBandingByDpa($data)
-    // {
+    public function getAllBandingByDpa($data)
+    {
+        $this->db->query('SELECT b.*, s.status_sanksi, m.nim_mahasiswa FROM banding b
+        INNER JOIN statusSanksi s ON b.id_statusSanksi = s.id_statusSanksi
+        INNER JOIN mahasiswa m ON b.nim_mahasiswa = m.nim_mahasiswa
+        WHERE m.kelas_mahasiswa = :kelas_dpa');
+        $this->db->bind('kelas_dpa', $data['kelas_dpa']);
+        return $this->db->resultSet();
+    }
+
+    public function getDpaKelas($nip_dpa)
+    {
+        $this->db->query('SELECT * FROM dpa WHERE nip_dpa=:nip_dpa');
+        $this->db->bind('nip_dpa', $nip_dpa);
+        return $this->db->single();
+    }
 
 
 
@@ -107,19 +121,19 @@ class Banding_model
     //     return $this->db->rowCount();
     // }
 
-    public function getBandingById($data)
+    public function getBandingById($id_banding)
     {
         $this->db->query('SELECT * FROM banding WHERE id_banding=:id_banding');
-        $this->db->bind('id_banding', $data['id_banding']);
+        $this->db->bind('id_banding', $id_banding);
         return $this->db->single();
     }
 
-    public function cariDataBanding()
-    {
-        $keyword = $_POST['keyword'];
-        $query = "SELECT * FROM banding WHERE id_laporan LIKE :keyword OR nip_dosen LIKE :keyword";
-        $this->db->query($query);
-        $this->db->bind('keyword', "%$keyword%");
-        return $this->db->resultSet();
-    }
+    // public function cariDataBanding()
+    // {
+    //     $keyword = $_POST['keyword'];
+    //     $query = "SELECT * FROM banding WHERE id_laporan LIKE :keyword OR nip_dosen LIKE :keyword";
+    //     $this->db->query($query);
+    //     $this->db->bind('keyword', "%$keyword%");
+    //     return $this->db->resultSet();
+    // }
 }

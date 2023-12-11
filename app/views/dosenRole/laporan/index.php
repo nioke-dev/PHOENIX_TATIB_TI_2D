@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="form-group">
-                    <p><strong>Deskripsi:</strong> <span id="detailDeskripsi"></span></p>
+                    <p><strong>Keterangan:</strong> <span id="detailDeskripsi"></span></p>
                 </div>
 
                 <div class="form-group">

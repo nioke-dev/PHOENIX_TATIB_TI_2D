@@ -13,6 +13,7 @@ class Dpa extends Controller
         $data['judul'] = 'Daftar DPA';
         $data['dp'] = $this->model('Dpa_model')->getAllDpa();
         $data['nama'] = $this->model('User_model')->getUser();
+        $data['dsn'] = $this->model('Dosen_model')->getAllDosen();
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);
@@ -31,7 +32,9 @@ class Dpa extends Controller
     {
         if ($this->model('Dpa_model')->tambahUserDpa($_POST) > 0) {
             $dataUser['userDpaId'] = $this->model('Dpa_model')->getUserDpaByNip($_POST);
-            if ($this->model('Dpa_model')->tambahDataDpa($_POST, $dataUser) > 0) {
+            $this->model('Dpa_model')->ubahuserTypeUserDpa($dataUser);
+            $dataDosen['dataDosen'] = $this->model('Dpa_model')->getDosenByNip($_POST['nip_dpa']);
+            if ($this->model('Dpa_model')->tambahDataDpa($_POST, $dataUser, $dataDosen) > 0) {
                 $this->showSweetAlert('success', 'Berhasil', 'Data DPA Berhasil Ditambahkan');
                 header('Location: ' . BASEURL . '/AdminControllers/dpa');
                 exit;

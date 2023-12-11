@@ -45,6 +45,7 @@
                     <?php endif; ?>
                     <td>
                         <a href="<?= BASEURL; ?>/AdminControllers/laporan/detail/<?= $laporan['id_laporan']; ?>" class="badge bg-primary tampilModalDetailLaporan" data-bs-toggle="modal" data-bs-target="#detailModalLaporan" data-id_laporan="<?= $laporan['id_laporan']; ?>">Detail</a>
+                        <a href="<?= BASEURL; ?>/DosenControllers/laporan/hapus/<?= $laporan['id_laporan']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Laporan berikut?');">hapus</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -62,7 +63,49 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="form-group">
+                <table class="table">
+                    <tr>
+                        <td><strong>ID Laporan</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailIdLaporan"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>NIM Mahasiswa</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailNimMahasiswa"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nama</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailNamaMahasiswa"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kelas</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailKelasMahasiswa"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>NIP Dosen</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailNipDosen"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Deskripsi</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailDeskripsi"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tingkat Sanksi</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detaiTingkatSaknsi"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bukti Laporan</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><img id="detailBuktiLaporan" alt="Bukti Laporan" style="max-width: 100%;" /></td>
+                    </tr>
+                </table>
+                <!-- <div class="form-group">
                     <p><strong>ID Laporan:</strong> <span id="detailIdLaporan"></span></p>
                 </div>
                 <div class="form-group">
@@ -92,7 +135,7 @@
                 <div class="form-group">
                     <p><strong>Bukti Laporan:</strong></p>
                     <img id="detailBuktiLaporan" alt="Bukti Laporan" style="max-width: 100%;" />
-                </div>
+                </div> -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

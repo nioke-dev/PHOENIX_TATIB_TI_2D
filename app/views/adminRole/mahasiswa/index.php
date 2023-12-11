@@ -106,7 +106,34 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="form-group">
+        <table class="table">
+          <tr>
+            <td><strong>NIM</strong></td>
+            <td><strong>:</strong></td>
+            <td><span id="detailNimMahasiswa"></span></td>
+          </tr>
+          <tr>
+            <td><strong>Nama</strong></td>
+            <td><strong>:</strong></td>
+            <td><span id="detailNamaMahasiswa"></span></td>
+          </tr>
+          <tr>
+            <td><strong>Kelas</strong></td>
+            <td><strong>:</strong></td>
+            <td><span id="detailKelasMahasiswa"></span></td>
+          </tr>
+          <tr>
+            <td><strong>Program Studi</strong></td>
+            <td><strong>:</strong></td>
+            <td><span id="detailProdiMahasiswa"></span></td>
+          </tr>
+          <tr>
+            <td><strong>Email</strong></td>
+            <td><strong>:</strong></td>
+            <td><span id="detailEmailMahasiswa"></span></td>
+          </tr>
+        </table>
+        <!-- <div class="form-group">
           <p><strong>NIM:</strong> <span id="detailNimMahasiswa"></span></p>
         </div>
         <div class="form-group">
@@ -120,7 +147,7 @@
         </div>
         <div class="form-group">
           <p><strong>Email:</strong> <span id="detailEmailMahasiswa"></span></p>
-        </div>
+        </div> -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

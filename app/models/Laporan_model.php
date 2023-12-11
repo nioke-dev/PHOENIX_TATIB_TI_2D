@@ -12,6 +12,15 @@ class Laporan_model
     }
 
     // Function to get all Laporan data
+    public function getAllLaporanInAdminRole()
+    {
+        $this->db->query('SELECT laporan.*, mahasiswa.*, tingkatSanksi.*, statusSanksi.* FROM ' . $this->table . ' 
+        INNER JOIN mahasiswa ON laporan.nim_mahasiswa = mahasiswa.nim_mahasiswa
+        INNER JOIN tingkatSanksi ON laporan.id_tingkatSanksi = tingkatSanksi.id_tingkatSanksi
+        INNER JOIN statusSanksi ON laporan.id_statusSanksi = statusSanksi.id_statusSanksi');
+        return $this->db->resultSet();
+    }
+    
     public function getAllLaporan()
     {
         $this->db->query('SELECT laporan.*, mahasiswa.*, tingkatSanksi.*, statusSanksi.* FROM ' . $this->table . ' 

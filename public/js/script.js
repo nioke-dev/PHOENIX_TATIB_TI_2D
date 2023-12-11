@@ -442,6 +442,10 @@ $(function () {
         $("#detailNIPDosenMahasiswaMelanggar").text(data.nip_dosen);
         $("#detailDeskripsiMahasiswaMelanggar").text(data.deskripsi);
         $("#detailTingkatSanksiMahasiswaMelanggar").text(data.tingkat_sanksi);
+        $("#detailBuktiLaporan").attr(
+          "src",
+          baseurl + "/img/bukti_laporan/" + data.file_bukti
+        );
       },
       error: function (xhr, status, error) {
         console.error("Error:", error);
@@ -495,6 +499,10 @@ $(function () {
         $("#detailDeskripsi").text(data.deskripsi);
         $("#detailNimMahasiswa").text(data.nim_mahasiswa);
         $("#detailNipDosen").text(data.nip_dosen);
+        $("#detailBuktiBanding").attr(
+          "src",
+          baseurl + "/img/bukti_banding/" + data.file_bukti
+        );
       },
       error: function (xhr, status, error) {
         console.error("Error:", error);

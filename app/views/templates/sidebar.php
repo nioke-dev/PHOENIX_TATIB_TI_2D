@@ -85,9 +85,17 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= BASEURL; ?>/AdminControllers/banding" aria-expanded="false">
                                 <span>
-                                <i class="bi bi-chat-left-text"></i>
+                                    <i class="bi bi-chat-left-text"></i>
                                 </span>
                                 <span class="hide-menu">Banding</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= BASEURL; ?>/AdminControllers/laporan" aria-expanded="false">
+                                <span>
+                                    <i class="bi bi-exclamation-triangle"></i>
+                                </span>
+                                <span class="hide-menu">Daftar Laporan</span>
                             </a>
                         </li>
                         <!-- download tatib.pdf  -->
@@ -143,7 +151,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= BASEURL; ?>/MahasiswaControllers/banding" aria-expanded="false">
                                 <span>
-                                <i class="bi bi-chat-left-text"></i>
+                                    <i class="bi bi-chat-left-text"></i>
                                 </span>
                                 <span class="hide-menu">Banding</span>
                             </a>
@@ -201,7 +209,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= BASEURL; ?>/DosenControllers/banding" aria-expanded="false">
                                 <span>
-                                <i class="bi bi-chat-left-text"></i>
+                                    <i class="bi bi-chat-left-text"></i>
                                 </span>
                                 <span class="hide-menu">Banding</span>
                             </a>
@@ -256,7 +264,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= BASEURL; ?>/DpaControllers/banding" aria-expanded="false">
                                 <span>
-                                <i class="bi bi-chat-left-text"></i>
+                                    <i class="bi bi-chat-left-text"></i>
                                 </span>
                                 <span class="hide-menu">Banding</span>
                             </a>

@@ -16,13 +16,13 @@
 
     <div class="row">
         <h3>Daftar Tata Tertib</h3>
-        <table id="example" class="table table-striped" style="width:100%">
+        <table id="example" class="table table-striped" style="width:100%; table-layout: auto;">
             <thead>
                 <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Deskripsi Tata Tertib</th>
-                    <th scope="col">Tingkat Sanksi</th>
-                    <th scope="col">Action</th>
+                    <th>No</th>
+                    <th style="width: 65%;">Deskripsi Tata Tertib</th>
+                    <th>Tingkat Sanksi</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,7 +38,7 @@
                     <?php else :
                     foreach ($data['tatib'] as $tatib) : ?>
                         <tr>
-                            <th scope="row"><?= $no++; ?></th>
+                            <th><?= $no++; ?></th>
                             <td><?= $tatib['deskripsi']; ?></td>
                             <td><?= $tatib['tingkat_sanksi']; ?></td>
                             <td>
@@ -78,7 +78,7 @@
 
 <!-- Modal Detail -->
 <div class="modal fade" id="detailModalTatib" tabindex="-1" aria-labelledby="detailModalTatibLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="detailModalTatibLabel">Detail Data Tata Tertib</h5>
@@ -97,7 +97,7 @@
                         <td><span id="detailTingkatSanksi"></span></td>
                     </tr>
                 </table>
-                
+
                 <!-- <div class="form-group">
                     <p><strong>Deskripsi Tata Tertib :</strong> <br> <span id="detailDeskripsi"></span></p>
                 </div>
@@ -125,7 +125,7 @@
                     <input type="hidden" name="id_tatib" id="id_tatib">
                     <div class="form-group">
                         <label for="deskripsi">Deskripsi Tata Tertib</label>
-                        <input type="text" class="form-control" id="deskripsi" name="deskripsi" autocomplete="off" required>
+                        <textarea name="deskripsi" class="form-control" id="deskripsi" autocomplete="off" cols="30" rows="10" required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="id_tingkatSanksi">Tingkat Sanksi</label>

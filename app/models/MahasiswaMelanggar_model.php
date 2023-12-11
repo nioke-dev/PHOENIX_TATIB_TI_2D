@@ -44,7 +44,7 @@ class MahasiswaMelanggar_model
     // Fungsi untuk mendapatkan data mahasiswa berdasarkan NIM
     public function getMahasiswaMelanggarByNim($nim_mahasiswa)
     {
-        $this->db->query('SELECT mahasiswa.*, laporan.*, status_sanksi, tingkatSanksi.* FROM mahasiswaMelanggar 
+        $this->db->query('SELECT mahasiswa.*, laporan.*, status_sanksi, tingkatSanksi.*, laporan.file_bukti AS file_bukti FROM mahasiswaMelanggar 
         INNER JOIN mahasiswa ON mahasiswaMelanggar.nim_mahasiswa = mahasiswa.nim_mahasiswa
         INNER JOIN statusSanksi ON mahasiswaMelanggar.id_statusSanksi = statusSanksi.id_statusSanksi
         INNER JOIN tingkatSanksi ON mahasiswaMelanggar.id_tingkatSanksi = tingkatSanksi.id_tingkatSanksi

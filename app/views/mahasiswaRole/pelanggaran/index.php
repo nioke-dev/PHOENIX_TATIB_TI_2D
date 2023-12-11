@@ -44,9 +44,9 @@
 
 </div>
 
-<!-- Modal Detail Mahasiswa -->
+<!-- Modal Detail Mahasiswa Pelanggaran -->
 <div class="modal fade" id="detailModalPelanggaran" tabindex="-1" aria-labelledby="detailModalPelanggaranLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="detailModalPelanggaranLabel">Detail Data Pelanggaran</h5>
@@ -68,6 +68,11 @@
                         <td><strong>Tingkat Sanksi Mahasiswa</strong></td>
                         <td><strong>:</strong></td>
                         <td><span id="detailTingkatSanksiMahasiswaMelanggar"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bukti Pelanggaran</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><img id="detailBuktiLaporan" alt="Bukti Laporan" style="max-width: 100%;" /></td>
                     </tr>
                 </table>
                 <!-- <div class="form-group">
@@ -97,11 +102,15 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= BASEURL; ?>/MahasiswaControllers/banding/tambah" method="post">
+                <form action="<?= BASEURL; ?>/MahasiswaControllers/banding/tambah" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id_laporan" id="id_laporan">
                     <div class="form-group">
-                        <label for="alasan_banding">Alasan Banding</label>
-                        <input type="text" class="form-control" id="alasan_banding" name="alasan_banding" autocomplete="off" required>
+                        <label for="alasan_banding" class="form-label">Alasan Banding</label>
+                        <textarea name="alasan_banding" class="form-control" id="alasan_banding" cols="30" rows="10" autocomplete="off" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="file_bukti" class="form-label">Upload Bukti Banding</label>
+                        <input type="file" class="form-control" name="file_bukti" id="file_bukti" required>
                     </div>
             </div>
             <div class="modal-footer">

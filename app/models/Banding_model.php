@@ -89,17 +89,18 @@ class Banding_model
     }
 
     // Fungsi untuk mengajukan banding
-    public function ajukanBandingMhs($data, $dataLaporan)
+    public function ajukanBandingMhs($data, $dataLaporan, $filename, $filesize, $filetype)
     {
-        $query = "INSERT INTO banding (nim_mahasiswa, id_laporan, nip_dosen, deskripsi, id_statusSanksi)
+        $query = "INSERT INTO banding (nim_mahasiswa, id_laporan, nip_dosen, deskripsi, id_statusSanksi, file_bukti)
                     VALUES
-                  (:nim_mahasiswa, :id_laporan, :nip_dosen, :deskripsi, :id_statusSanksi)";
+                  (:nim_mahasiswa, :id_laporan, :nip_dosen, :deskripsi, :id_statusSanksi, :file_bukti)";
         $this->db->query($query);
         $this->db->bind('nim_mahasiswa', $_SESSION['username']);
         $this->db->bind('id_laporan', $dataLaporan['dataLaporan']['id_laporan']);
         $this->db->bind('nip_dosen', $dataLaporan['dataLaporan']['nip_dosen']);
         $this->db->bind('deskripsi', $data['alasan_banding']);
         $this->db->bind('id_statusSanksi', '1');
+        $this->db->bind('file_bukti', $filename);
 
         $this->db->execute();
 

@@ -1,6 +1,6 @@
 </div>
 <div class="py-6 px-6 text-center bg-light fixed-bottom">
-    <p class="mb-0 fs-4"><a href="https://jti.polinema.ac.id/" target="_blank" class="pe-1 text-primary text-decoration-underline">POLITEKNIK NEGERI MALANG</a>TEKNOLOGI INFORMASI <a href="https://github.com/nioke-dev/PHOENIX_TATIB_TI_2D">Phoenix Team</a></p>
+    <p class="mb-0 fs-4">JTI <a href="https://jti.polinema.ac.id/" target="_blank" class="pe-1 text-primary text-decoration-underline">POLITEKNIK NEGERI MALANG</a>Didistribusikan oleh <a href="https://github.com/nioke-dev/PHOENIX_TATIB_TI_2D" target="_blank" class="pe-1 text-primary text-decoration-underline">Phoenix Team </a></p>
 </div>
 </div>
 </div>

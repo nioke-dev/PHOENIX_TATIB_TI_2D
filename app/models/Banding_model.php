@@ -26,7 +26,7 @@ class Banding_model
             INNER JOIN dosen d ON b.nip_dosen = d.nip_dosen
             INNER JOIN laporan l on b.id_laporan = l.id_laporan
             WHERE d.nip_dosen = :nip_dosen');
-        $this->db->bind('nip_dosen', $data['nip_dosen']);
+        $this->db->bind('nip_dosen', $_SESSION['username']);
         // } else {
         //     $this->db->query('SELECT b.*, s.status_sanksi, d.nip_dosen, l.id_laporan FROM banding b
         //     INNER JOIN statusSanksi s ON b.id_statusSanksi = s.id_statusSanksi

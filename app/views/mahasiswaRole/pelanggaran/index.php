@@ -8,40 +8,74 @@
 <!-- Daftar Pelanggaran -->
 <div class="row">
     <h3>Daftar Pelanggaran</h3>
-    <table id="example" class="table table-striped" style="width:100%">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>ID Laporan</th>
-                <th>Nim Mahasiswa</th>
-                <th>Nama</th>
-                <th>Kelas</th>
-                <th>Status Sanksi</th>
-                <th>Tingkat Sanksi</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $no = 1;
-            foreach ($data['pelanggaran'] as $pelanggaran) : ?>
+    <div class="table-responsive">
+        <table id="example" class="table table-striped table-auto">
+            <thead>
                 <tr>
-                    <th><?= $no++; ?></th>
-                    <td><?= $pelanggaran['id_laporan']; ?></td>
-                    <td><?= $pelanggaran['nim_mahasiswa']; ?></td>
-                    <td><?= $pelanggaran['nama_mahasiswa']; ?></td>
-                    <td><?= $pelanggaran['kelas_mahasiswa']; ?></td>
-                    <td><?= $pelanggaran['status_sanksi']; ?></td>
-                    <td><?= $pelanggaran['tingkat_sanksi']; ?></td>
-                    <td>
-                        <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/detail/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-primary float-right tampilModalDetailPelanggaran" data-bs-toggle="modal" data-bs-target="#detailModalPelanggaran" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Detail</a>
-                        <a href="<?= BASEURL; ?>/MahasiswaControllers/banding/tambah/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-danger float-right tampilTambahDataBanding" data-bs-toggle="modal" data-bs-target="#formModalAjukanBanding" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Banding</a>
-                    </td>
+                    <th scope="col" scope="col">No</th>
+                    <th scope="col">ID Laporan</th>
+                    <th scope="col">Nim Mahasiswa</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Kelas</th>
+                    <th scope="col">Status Sanksi</th>
+                    <th scope="col">Tingkat Sanksi</th>
+                    <th scope="col">Action</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php $no = 1;
+                foreach ($data['pelanggaran'] as $pelanggaran) : ?>
+                    <tr>
+                        <th scope="row"><?= $no++; ?></th>
+                        <td><?= $pelanggaran['id_laporan']; ?></td>
+                        <td><?= $pelanggaran['nim_mahasiswa']; ?></td>
+                        <td><?= $pelanggaran['nama_mahasiswa']; ?></td>
+                        <td><?= $pelanggaran['kelas_mahasiswa']; ?></td>
+                        <td>
+                            <span class="badge text-bg-primary"><?= $pelanggaran['status_sanksi']; ?></span>
+                        </td>
+                        <td><?= $pelanggaran['tingkat_sanksi']; ?></td>
+                        <td>
+                            <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/detail/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-primary float-right tampilModalDetailPelanggaran" data-bs-toggle="modal" data-bs-target="#detailModalPelanggaran" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Detail</a>
+                            <a href="<?= BASEURL; ?>/MahasiswaControllers/banding/kerjakan/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-info float-right" data-bs-toggle="modal" data-bs-target="#detailModalKerjakanSanksi" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Kerjakan</a>
+                            <a href="<?= BASEURL; ?>/MahasiswaControllers/banding/tambah/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-danger float-right tampilTambahDataBanding" data-bs-toggle="modal" data-bs-target="#formModalAjukanBanding" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Banding</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 
+</div>
+
+<!-- Modal Kerjakan Sanksi Mahasiswa -->
+<div class="modal fade" id="detailModalKerjakanSanksi" tabindex="-1" aria-labelledby="detailModalKerjakanSanksiLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailModalKerjakanSanksiLabel">Detail Pengerjaan Sanksi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Silahkan Download Template Dibawah Ini lalu Upload Pada Pada Form Dibawah, Proses 1x4 jam hari kerja untuk update status</p>
+
+                <button class="btn btn-primary mb-5"><a href="<?= BASEURL; ?>/assets/file/Surat_Peringatan.doc" style="color: white;">Download Template</a></button>
+                <form action="<?= BASEURL; ?>/MahasiswaControllers/banding/tambah" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id_laporan" id="id_laporan">
+                    <div class="form-group">
+                        <label for="file_bukti" class="form-label">Upload Surat Pelanggaran</label>
+                        <input type="file" class="form-control" name="file_bukti" id="file_bukti" required>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Upload Surat Pelanggaran</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
 <!-- Modal Detail Mahasiswa Pelanggaran -->

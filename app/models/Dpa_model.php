@@ -54,6 +54,20 @@ class Dpa_model
 
         return $this->db->rowCount();
     }
+    public function ubahuserTypeUserDpaForDelete($data)
+    {
+        $query = "UPDATE user SET
+                    user_type = :user_type                  
+                  WHERE id_user = :id_user";
+
+        $this->db->query($query);
+        $this->db->bind('user_type', 'dosen');
+        $this->db->bind('id_user', $data['userDpaId']['id_user']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
 
     // Fungsi untuk menambahkan data dpa
     public function tambahDataDpa($data, $id_user, $dataDosen)
@@ -80,6 +94,12 @@ class Dpa_model
     {
         $this->db->query('SELECT * FROM user WHERE username=:nip_dpa');
         $this->db->bind('nip_dpa', $data['nip_dpa']);
+        return $this->db->single();
+    }
+    public function getUserDpaByNipForDelete($data)
+    {
+        $this->db->query('SELECT * FROM user WHERE username=:nip_dpa');
+        $this->db->bind('nip_dpa', $data);
         return $this->db->single();
     }
 

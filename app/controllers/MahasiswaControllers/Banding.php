@@ -91,19 +91,5 @@ class Banding extends Controller
     public function getTambahBanding()
     {
         echo json_encode($this->model('Laporan_model')->getLaporanById($_POST['id_laporan']));
-    }
-
-    // Fungsi untuk mencari banding berdasarkan keyword
-    // public function cari()
-    // {
-    //     $data['judul'] = 'Daftar Banding';
-    //     $data['bd'] = $this->model('Banding_model')->cariDataBanding();
-    //     $data['nama'] = $this->model('User_model')->getUser();
-
-    //     $this->view('templates/header', $data);
-    //     $this->view('templates/sidebar', $data);
-    //     $this->view('templates/headerNav', $data);
-    //     $this->view('mahasiswaRole/banding/index', $data);
-    //     $this->view('templates/footer', $data);
-    // }
+    }    
 }

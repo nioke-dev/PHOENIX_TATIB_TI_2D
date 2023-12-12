@@ -62,7 +62,6 @@
 
                 <button class="btn btn-primary mb-5"><a href="<?= BASEURL; ?>/assets/file/Surat_Peringatan.doc" style="color: white;">Download Template</a></button>
                 <form action="<?= BASEURL; ?>/MahasiswaControllers/banding/tambah" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="id_laporan" id="id_laporan">
                     <div class="form-group">
                         <label for="file_bukti" class="form-label">Upload Surat Pelanggaran</label>
                         <input type="file" class="form-control" name="file_bukti" id="file_bukti" required>

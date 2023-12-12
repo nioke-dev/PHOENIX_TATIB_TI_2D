@@ -115,12 +115,20 @@ class Banding_model
         return $this->db->single();
     }
 
-    // public function cariDataBanding()
-    // {
-    //     $keyword = $_POST['keyword'];
-    //     $query = "SELECT * FROM banding WHERE id_laporan LIKE :keyword OR nip_dosen LIKE :keyword";
-    //     $this->db->query($query);
-    //     $this->db->bind('keyword', "%$keyword%");
-    //     return $this->db->resultSet();
-    // }
+    public function setujuBanding($id_banding)
+    {
+        $this->db->query('UPDATE banding SET id_statusSanksi = :id_statusSanksi WHERE id_banding = :id_banding');
+        $this->db->bind('id_statusSanksi', '2');
+        $this->db->bind('id_banding', $id_banding);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+    public function tolakBanding($id_banding)
+    {
+        $this->db->query('UPDATE banding SET id_statusSanksi = :id_statusSanksi WHERE id_banding = :id_banding');
+        $this->db->bind('id_statusSanksi', '4');
+        $this->db->bind('id_banding', $id_banding);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
 }

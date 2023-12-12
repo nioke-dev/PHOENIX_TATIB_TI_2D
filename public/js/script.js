@@ -1,4 +1,4 @@
-                    const baseurl = "http://localhost/PHOENIX_TATIB_TI_2D/public";
+const baseurl = "http://localhost/PHOENIX_TATIB_TI_2D/public";
 $(function () {
   // Dosen Function
   $(".tombolTambahDataDosen").on("click", function () {
@@ -455,16 +455,8 @@ $(function () {
 
   //function banding
 
-  // $(".tombolTambahDataBanding").on("click", function () {
-  //   $("#formModalBandingLabel").html("Ajukan Banding");
-  //   $(".modal-footer button[type=submit]").html("Ajukan Banding");
-  //   $("#deskripsi").val("");
-  //   $("#id_banding").val("");
-  //   $("#banding").val("");
-  // });
-
   $(".tampilTambahDataBanding").on("click", function () {
-    $("#formModalBandingLabel").html("Ajukan Banding");
+    $("#formModalBandingLabel").html("Ajukan Bandinggggg");
     $(".modal-footer button[type=submit]").html("Ajukan Banding");
 
     const id_laporan = $(this).data("id_laporan");

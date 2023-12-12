@@ -53,6 +53,8 @@ class Dpa extends Controller
     // Fungsi untuk menghapus data dpa
     public function hapus($nip_dpa)
     {
+        $dataUser['userDpaId'] = $this->model('Dpa_model')->getUserDpaByNipForDelete($nip_dpa);
+        $this->model('Dpa_model')->ubahuserTypeUserDpaForDelete($dataUser);
         if ($this->model('Dpa_model')->hapusDataDpa($nip_dpa) > 0) {
             $this->showSweetAlert('success', 'Berhasil', 'Data DPA Berhasil Dihapus');
             header('Location: ' . BASEURL . '/AdminControllers/dpa');

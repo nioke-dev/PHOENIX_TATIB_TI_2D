@@ -29,7 +29,7 @@
                         <td><?= $banding['nip_dosen']; ?></td>
                         <td><?= $banding['nim_mahasiswa']; ?></td>
                         <td><?= $banding['nama_mahasiswa']; ?></td>
-                        <?php if ($banding['status_sanksi'] == 'Diterima') : ?>
+                        <?php if ($banding['status_sanksi'] == 'Disetujui') : ?>
                             <td><span class="badge text-bg-success"><?= $banding['status_sanksi']; ?></span></td>
                         <?php elseif ($banding['status_sanksi'] == 'Ditolak') : ?>
                             <td><span class="badge text-bg-danger"><?= $banding['status_sanksi']; ?></span></td>
@@ -42,8 +42,10 @@
                         <?php endif; ?>
                         <td>
                             <a href="<?= BASEURL; ?>/DosenControllers/banding/detail/<?= $banding['id_banding']; ?>" class="badge bg-primary float-right tampilModalDetailBanding" data-bs-toggle="modal" data-bs-target="#detailModalBanding" data-id_banding="<?= $banding['id_banding']; ?>">detail</a>
-                            <a href="<?= BASEURL; ?>/DosenControllers/banding/setujuBanding/<?= $banding['id_banding']; ?>" class="badge bg-success float-right" onclick="return confirmActionSetuju()">Setuju</a>
-                            <a href="<?= BASEURL; ?>/DosenControllers/banding/tolakBanding/<?= $banding['id_banding']; ?>" class="badge bg-danger float-right" onclick="return confirmActionTolak()">Tolak</a>
+                            <?php if ($banding['status_sanksi'] !== 'Disetujui' && $banding['status_sanksi'] !== 'Ditolak') : ?>
+                                <a href="<?= BASEURL; ?>/DosenControllers/banding/setujuBanding/<?= $banding['id_banding']; ?>" class="badge bg-success float-right" onclick="return confirmActionSetuju()">Setuju</a>
+                                <a href="<?= BASEURL; ?>/DosenControllers/banding/tolakBanding/<?= $banding['id_banding']; ?>" class="badge bg-danger float-right" onclick="return confirmActionTolak()">Tolak</a>
+                            <?php endif; ?>
 
                             <script>
                                 function confirmActionSetuju() {

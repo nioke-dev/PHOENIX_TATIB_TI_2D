@@ -42,6 +42,32 @@ class Banding extends Controller
         }
     }
 
+    public function setujuBanding($id_banding)
+    {
+        if ($this->model('Banding_model')->setujuBanding($id_banding) > 0) {
+            $this->showSweetAlert('success', 'Berhasil', 'Banding berhasil Di Setujui');
+            header('Location: ' . BASEURL . '/DosenControllers/banding');
+            exit;
+        } else {
+            $this->showSweetAlert('error', 'Ooops', 'Banding Gagal Disetujui');
+            header('Location: ' . BASEURL . '/DosenControllers/banding');
+            exit;
+        }
+    }
+
+    public function tolakBanding($id_banding)
+    {
+        if ($this->model('Banding_model')->tolakBanding($id_banding) > 0) {
+            $this->showSweetAlert('success', 'Berhasil', 'Banding berhasil Di Tolak');
+            header('Location: ' . BASEURL . '/DosenControllers/banding');
+            exit;
+        } else {
+            $this->showSweetAlert('error', 'Ooops', 'Banding Gagal Ditolak');
+            header('Location: ' . BASEURL . '/DosenControllers/banding');
+            exit;
+        }
+    }
+
     // Fungsi untuk mengajukan banding 
     // public function tambah()
     // {

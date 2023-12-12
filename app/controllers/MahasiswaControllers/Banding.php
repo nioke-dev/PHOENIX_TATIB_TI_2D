@@ -56,7 +56,7 @@ class Banding extends Controller
                 $filename = "file_" . time() . "." . $file_extension;
                 $target_file = $target_dir . $filename;
 
-                $allowed_types = array("jpg", "jpeg", "png", "gif", "pdf");
+                $allowed_types = array("jpg", "jpeg", "png");
                 if (!in_array($file_extension, $allowed_types)) {
                     echo "Sorry, only JPG, JPEG, PNG, GIF, and PDF files are allowed.";
                     exit;
@@ -91,5 +91,5 @@ class Banding extends Controller
     public function getTambahBanding()
     {
         echo json_encode($this->model('Laporan_model')->getLaporanById($_POST['id_laporan']));
-    }    
+    }
 }

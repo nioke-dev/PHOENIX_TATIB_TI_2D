@@ -90,7 +90,7 @@
                         <td><span id="detailNimMahasiswa"></span></td>
                     </tr>
                     <tr>
-                        <td><strong>Deskripsi</strong></td>
+                        <td><strong>Detail</strong></td>
                         <td><strong>:</strong></td>
                         <td><span id="detailDeskripsi"></span></td>
                     </tr>

@@ -20,7 +20,6 @@ class Banding_model
 
     public function getAllBandingByDosen($data)
     {
-        // if (isset($data['nip_dosen'])) {
         $this->db->query('SELECT b.*, s.status_sanksi, d.nip_dosen, l.id_laporan, m.nama_mahasiswa AS nama_mahasiswa FROM banding b
             INNER JOIN statusSanksi s ON b.id_statusSanksi = s.id_statusSanksi
             INNER JOIN dosen d ON b.nip_dosen = d.nip_dosen
@@ -28,12 +27,6 @@ class Banding_model
             INNER JOIN laporan l on b.id_laporan = l.id_laporan
             WHERE d.nip_dosen = :nip_dosen');
         $this->db->bind('nip_dosen', $_SESSION['username']);
-        // } else {
-        //     $this->db->query('SELECT b.*, s.status_sanksi, d.nip_dosen, l.id_laporan FROM banding b
-        //     INNER JOIN statusSanksi s ON b.id_statusSanksi = s.id_statusSanksi
-        //     INNER JOIN dosen d ON b.nip_dosen = d.nip_dosen
-        //     INNER JOIN laporan l on b.id_laporan = l.id_laporan');
-        // }
         return $this->db->resultSet();
     }
 
@@ -54,25 +47,15 @@ class Banding_model
         return $this->db->single();
     }
 
-
-
-    // }
-
     public function getAllBandingByMahasiswa($data)
     {
-        // if (isset($data['nim_mahasiswa'])) {
-        $this->db->query('SELECT b.*, s.status_sanksi, m.nim_mahasiswa, l.id_laporan FROM banding b
+        $this->db->query('SELECT b.*, s.status_sanksi, d.nama_dosen, m.nim_mahasiswa, l.id_laporan FROM banding b
             INNER JOIN statusSanksi s ON b.id_statusSanksi = s.id_statusSanksi
             INNER JOIN mahasiswa m ON b.nim_mahasiswa = m.nim_mahasiswa
+            INNER JOIN dosen d ON d.nip_dosen = b.nip_dosen
             INNER JOIN laporan l on b.id_laporan = l.id_laporan
             WHERE m.nim_mahasiswa = :nim_mahasiswa');
         $this->db->bind('nim_mahasiswa', $data['nim_mahasiswa']);
-        // } else {
-        //     $this->db->query('SELECT b.*, s.status_sanksi, m.nim_mahasiswa, l.id_laporan FROM banding b
-        //     INNER JOIN statusSanksi s ON b.id_statusSanksi = s.id_statusSanksi
-        //     INNER JOIN mahasiswa m ON b.nim_mahasiswa = m.nim_mahasiswa
-        //     INNER JOIN laporan l on b.id_laporan = l.id_laporan');
-        // }
         return $this->db->resultSet();
     }
 

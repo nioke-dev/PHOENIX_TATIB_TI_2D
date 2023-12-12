@@ -489,9 +489,6 @@ $(function () {
       success: function (data) {
         console.log("Respons Server:", data);
         $("#detailDeskripsi").text(data.deskripsi);
-        $("#detailNimMahasiswa").text(data.nim_mahasiswa);
-        $("#detailNamaMahasiswa").text(data.nama_mahasiswa);
-        $("#detailNipDosen").text(data.nip_dosen);
         $("#detailBuktiBanding").attr(
           "src",
           baseurl + "/img/bukti_banding/" + data.file_bukti

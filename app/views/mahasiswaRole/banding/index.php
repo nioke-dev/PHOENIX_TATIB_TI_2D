@@ -14,7 +14,7 @@
                     <th scope="col">No</th>
                     <th scope="col">Id Laporan</th>
                     <th scope="col">NIP Dosen</th>
-                    <!-- <th scope="col">NIM Mahasiswa</th> -->
+                    <th scope="col">Nama Dosen</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -26,6 +26,7 @@
                         <th scope="row"><?= $no++; ?></th>
                         <td><?= $banding['id_laporan']; ?></td>
                         <td><?= $banding['nip_dosen']; ?></td>
+                        <td><?= $banding['nama_dosen']; ?></td>
                         <?php if ($banding['status_sanksi'] == 'Diterima') : ?>
                             <td><span class="badge text-bg-success"><?= $banding['status_sanksi']; ?></span></td>
                         <?php elseif ($banding['status_sanksi'] == 'Ditolak') : ?>
@@ -80,38 +81,16 @@
             <div class="modal-body">
                 <table class="table">
                     <tr>
-                        <td><strong>NIP Dosen</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailNipDosen"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>NIM Mahasiswa</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailNimMahasiswa"></span></td>
-                    </tr>
-                    <tr>
                         <td><strong>Keterangan</strong></td>
                         <td><strong>:</strong></td>
                         <td><span id="detailDeskripsi"></span></td>
                     </tr>
                     <tr>
-                        <td><strong>Bukti Pelanggaran</strong></td>
+                        <td><strong>Bukti Banding</strong></td>
                         <td><strong>:</strong></td>
                         <td><img id="detailBuktiBanding" alt="Bukti Banding" style="max-width: 100%;" /></td>
                     </tr>
                 </table>
-
-                <!-- <div class="form-group">
-                    <p><strong>NIP Dosen :</strong> <span id="detailNipDosen"></span></p>
-                </div>
-
-                <div class="form-group">
-                    <p><strong>NIM Mahasiswa :</strong> <span id="detailNimMahasiswa"></span></p>
-                </div>
-
-                <div class="form-group">
-                    <p><strong>Deskripsi :</strong> <span id="detailDeskripsi"></span></p>
-                </div> -->
 
             </div>
             <div class="modal-footer">

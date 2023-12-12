@@ -93,7 +93,7 @@
                         <td><span id="detailNIPDosenMahasiswaMelanggar"></span></td>
                     </tr>
                     <tr>
-                        <td><strong>Detail</strong></td>
+                        <td><strong>Keterangan</strong></td>
                         <td><strong>:</strong></td>
                         <td><span id="detailDeskripsiMahasiswaMelanggar"></span></td>
                     </tr>

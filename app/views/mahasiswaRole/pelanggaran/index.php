@@ -16,7 +16,6 @@
                     <th scope="col">ID Laporan</th>
                     <th scope="col">Nip Dosen</th>
                     <th scope="col">Nama Dosen</th>
-                    <th scope="col">Kelas</th>
                     <th scope="col">Status Sanksi</th>
                     <th scope="col">Tingkat Sanksi</th>
                     <th scope="col">Action</th>
@@ -30,7 +29,6 @@
                         <td><?= $pelanggaran['id_laporan']; ?></td>
                         <td><?= $pelanggaran['nip_dosen']; ?></td>
                         <td><?= $pelanggaran['nama_dosen']; ?></td>
-                        <td><?= $pelanggaran['kelas_mahasiswa']; ?></td>
                         <td>
                             <span class="badge text-bg-primary"><?= $pelanggaran['status_sanksi']; ?></span>
                         </td>
@@ -58,17 +56,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Silahkan Download Template Dibawah Ini lalu Upload Pada Pada Form Dibawah, Proses 1x4 jam hari kerja untuk update status</p>
+                <p>Silahkan Download Surat Sanksi Dibawah Ini Lalu Upload Pada Tempat Pengumpulan Dibawah, Proses 1x24 jam pada hari kerja untuk update status</p>
 
-                <button class="btn btn-primary mb-5"><a href="<?= BASEURL; ?>/assets/file/Surat_Peringatan.doc" style="color: white;">Download Template</a></button>
+                <button class="btn btn-primary mb-5"><a href="<?= BASEURL; ?>/assets/file/Surat_Peringatan.doc" style="color: white;">Download Surat Sanksi</a></button>
                 <form action="<?= BASEURL; ?>/MahasiswaControllers/banding/tambah" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="file_bukti" class="form-label">Upload Surat Pelanggaran</label>
+                        <label for="file_bukti" class="form-label">Upload Surat Sanksi</label>
                         <input type="file" class="form-control" name="file_bukti" id="file_bukti" required>
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Upload Surat Pelanggaran</button>
+                <button type="submit" class="btn btn-primary">Upload</button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
                 </form>
             </div>

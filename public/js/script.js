@@ -1,4 +1,4 @@
-const baseurl = "http://localhost/PHOENIX_TATIB_TI_2D/public";
+                    const baseurl = "http://localhost/PHOENIX_TATIB_TI_2D/public";
 $(function () {
   // Dosen Function
   $(".tombolTambahDataDosen").on("click", function () {
@@ -498,6 +498,7 @@ $(function () {
         console.log("Respons Server:", data);
         $("#detailDeskripsi").text(data.deskripsi);
         $("#detailNimMahasiswa").text(data.nim_mahasiswa);
+        $("#detailNamaMahasiswa").text(data.nama_mahasiswa);
         $("#detailNipDosen").text(data.nip_dosen);
         $("#detailBuktiBanding").attr(
           "src",

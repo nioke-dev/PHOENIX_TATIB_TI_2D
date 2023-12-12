@@ -16,18 +16,6 @@
     </div>
   </div>
 
-  <!-- Form Cari DPA -->
-  <!-- <div class="row mb-3">
-    <div class="col-lg-6">
-      <form action="<?= BASEURL; ?>/AdminControllers/AdminControllers/dpa/cari" method="post">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Cari dpa.." name="keyword" id="keyword" autocomplete="off">
-          <button class="btn btn-primary" type="submit" id="tombolCari">Cari</button>
-        </div>
-      </form>
-    </div>
-  </div> -->
-
   <!-- Daftar DPA -->
   <div class="row">
     <h3>Daftar DPA</h3>
@@ -44,30 +32,41 @@
       </thead>
       <tbody>
         <?php $no = 1;
-        if (empty($data['dp'])) : ?>
+        foreach ($data['dp'] as $dpa) : ?>
           <tr>
-            <td colspan="7">
-              <div class="alert alert-danger" role="alert">
-                Tidak ada data terkait.
-              </div>
+            <th scope="row"><?= $no++; ?></th>
+            <td><?= $dpa['nip_dpa']; ?></td>
+            <td><?= $dpa['nama_dpa']; ?></td>
+            <td><?= $dpa['kelas_dpa']; ?></td>
+            <td><?= $dpa['email_dpa']; ?></td>
+            <td>
+              <a href="<?= BASEURL; ?>/AdminControllers/dpa/detail/<?= $dpa['nip_dpa']; ?>" class="badge bg-primary float-right tampilModalDetailDpa" data-bs-toggle="modal" data-bs-target="#detailModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Detail</a>
+              <a href="<?= BASEURL; ?>/AdminControllers/dpa/ubah/<?= $dpa['nip_dpa']; ?>" class="badge bg-success float-right tampilModalUbahDpa" data-bs-toggle="modal" data-bs-target="#formModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Ubah</a>
+              <a href="<?= BASEURL; ?>/AdminControllers/dpa/hapus/<?= $dpa['nip_dpa']; ?>" class="badge bg-danger float-right" onclick="return confirmAction()">Hapus</a>
+              <script>
+                function confirmAction() {
+                  Swal.fire({
+                    title: "Apakah Kamu Yakin?",
+                    text: "Kamu Tidak Bisa Mengembalikan Data Ini!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      // Redirect to the delete URL if the user confirms
+                      window.location.href = "<?= BASEURL; ?>/AdminControllers/dpa/hapus/<?= $dpa['nip_dpa']; ?>";
+                    }
+                  });
+
+                  // Prevent the default behavior of the anchor tag
+                  return false;
+                }
+              </script>
             </td>
           </tr>
-          <?php else :
-          foreach ($data['dp'] as $dpa) : ?>
-            <tr>
-              <th scope="row"><?= $no++; ?></th>
-              <td><?= $dpa['nip_dpa']; ?></td>
-              <td><?= $dpa['nama_dpa']; ?></td>
-              <td><?= $dpa['kelas_dpa']; ?></td>
-              <td><?= $dpa['email_dpa']; ?></td>
-              <td>
-                <a href="<?= BASEURL; ?>/AdminControllers/dpa/detail/<?= $dpa['nip_dpa']; ?>" class="badge bg-primary float-right tampilModalDetailDpa" data-bs-toggle="modal" data-bs-target="#detailModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Detail</a>
-                <a href="<?= BASEURL; ?>/AdminControllers/dpa/ubah/<?= $dpa['nip_dpa']; ?>" class="badge bg-success float-right tampilModalUbahDpa" data-bs-toggle="modal" data-bs-target="#formModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Ubah</a>
-                <a href="<?= BASEURL; ?>/AdminControllers/dpa/hapus/<?= $dpa['nip_dpa']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data DPA berikut?');">Hapus</a>
-              </td>
-            </tr>
-        <?php endforeach;
-        endif; ?>
+        <?php endforeach; ?>
       </tbody>
     </table>
   </div>

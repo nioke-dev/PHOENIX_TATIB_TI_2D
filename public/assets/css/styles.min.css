@@ -16675,7 +16675,7 @@ fieldset:disabled .btn {
   position: relative;
 }
 /* old code */
-/* .body-wrapper > .container-fluid,
+.body-wrapper > .container-fluid,
 .body-wrapper > .container-lg,
 .body-wrapper > .container-md,
 .body-wrapper > .container-sm,
@@ -16686,8 +16686,8 @@ fieldset:disabled .btn {
   padding: 24px;
   -webkit-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
-} */
-.body-wrapper > .container-fluid,
+}
+/* .body-wrapper > .container-fluid,
 .body-wrapper > .container-lg,
 .body-wrapper > .container-md,
 .body-wrapper > .container-sm,
@@ -16698,7 +16698,7 @@ fieldset:disabled .btn {
   padding: 24px;
   -webkit-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
-}
+} */
 @media (max-width: 767.98px) {
   .body-wrapper > .container-fluid,
   .body-wrapper > .container-lg,

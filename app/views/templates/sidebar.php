@@ -69,7 +69,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= BASEURL; ?>/AdminControllers/tatib" aria-expanded="false">
                                 <span>
-                                    <i class="bi bi-list-task"></i>
+                                    <i class="bi bi-book"></i>
                                 </span>
                                 <span class="hide-menu">Tata Tertib</span>
                             </a>
@@ -93,7 +93,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= BASEURL; ?>/AdminControllers/laporan" aria-expanded="false">
                                 <span>
-                                    <i class="bi bi-exclamation-triangle"></i>
+                                    <i class="bi bi-list-task"></i>
                                 </span>
                                 <span class="hide-menu">Daftar Laporan</span>
                             </a>

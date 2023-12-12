@@ -14,16 +14,17 @@ class Banding_model
     // Fungsi untuk mendapatkan semua data laporan banding
     public function getAllBanding()
     {
-        $this->db->query('SELECT banding.*, status_sanksi FROM banding INNER JOIN statusSanksi ON banding.id_statusSanksi = statusSanksi.id_statusSanksi');
+        $this->db->query('SELECT banding.*, status_sanksi, mahasiswa.nama_mahasiswa AS nama_mahasiswa FROM banding INNER JOIN statusSanksi ON banding.id_statusSanksi = statusSanksi.id_statusSanksi INNER JOIN mahasiswa ON mahasiswa.nim_mahasiswa = banding.nim_mahasiswa');
         return $this->db->resultSet();
     }
 
     public function getAllBandingByDosen($data)
     {
         // if (isset($data['nip_dosen'])) {
-        $this->db->query('SELECT b.*, s.status_sanksi, d.nip_dosen, l.id_laporan FROM banding b
+        $this->db->query('SELECT b.*, s.status_sanksi, d.nip_dosen, l.id_laporan, m.nama_mahasiswa AS nama_mahasiswa FROM banding b
             INNER JOIN statusSanksi s ON b.id_statusSanksi = s.id_statusSanksi
             INNER JOIN dosen d ON b.nip_dosen = d.nip_dosen
+            INNER JOIN mahasiswa m ON m.nim_mahasiswa = b.nim_mahasiswa
             INNER JOIN laporan l on b.id_laporan = l.id_laporan
             WHERE d.nip_dosen = :nip_dosen');
         $this->db->bind('nip_dosen', $_SESSION['username']);
@@ -109,7 +110,7 @@ class Banding_model
 
     public function getBandingById($id_banding)
     {
-        $this->db->query('SELECT * FROM banding WHERE id_banding=:id_banding');
+        $this->db->query('SELECT banding.*, mahasiswa.nama_mahasiswa AS nama_mahasiswa FROM banding INNER JOIN mahasiswa ON mahasiswa.nim_mahasiswa = banding.nim_mahasiswa WHERE id_banding=:id_banding');
         $this->db->bind('id_banding', $id_banding);
         return $this->db->single();
     }

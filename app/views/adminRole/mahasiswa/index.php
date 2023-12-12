@@ -15,7 +15,7 @@
 </div>
 
 <!-- Form Cari Mahasiswa -->
-<div class="row mb-3">
+<!-- <div class="row mb-3">
   <div class="col-lg-6">
     <form action="<?= BASEURL; ?>/AdminControllers/mahasiswa/cari" method="post">
       <div class="input-group mb-3">
@@ -24,7 +24,7 @@
       </div>
     </form>
   </div>
-</div>
+</div> -->
 
 
 <!-- Daftar Mahasiswa -->

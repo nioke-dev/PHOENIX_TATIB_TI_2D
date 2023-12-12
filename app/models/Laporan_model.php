@@ -20,7 +20,7 @@ class Laporan_model
         INNER JOIN statusSanksi ON laporan.id_statusSanksi = statusSanksi.id_statusSanksi');
         return $this->db->resultSet();
     }
-    
+
     public function getAllLaporan()
     {
         $this->db->query('SELECT laporan.*, mahasiswa.*, tingkatSanksi.*, statusSanksi.* FROM ' . $this->table . ' 
@@ -32,9 +32,10 @@ class Laporan_model
     }
     public function getAllLaporanByNim()
     {
-        $this->db->query('SELECT laporan.*, mahasiswa.*, tingkatSanksi.*, statusSanksi.* FROM ' . $this->table . ' 
+        $this->db->query('SELECT laporan.*, mahasiswa.*, tingkatSanksi.*, dosen.nama_dosen, statusSanksi.* FROM ' . $this->table . ' 
         INNER JOIN mahasiswa ON laporan.nim_mahasiswa = mahasiswa.nim_mahasiswa
         INNER JOIN tingkatSanksi ON laporan.id_tingkatSanksi = tingkatSanksi.id_tingkatSanksi
+        INNER JOIN dosen ON dosen.nip_dosen = laporan.nip_dosen
         INNER JOIN statusSanksi ON laporan.id_statusSanksi = statusSanksi.id_statusSanksi WHERE mahasiswa.nim_mahasiswa = :nim_mahasiswa');
         $this->db->bind('nim_mahasiswa', $_SESSION['username']);
         return $this->db->resultSet();

@@ -14,8 +14,8 @@
                 <tr>
                     <th scope="col" scope="col">No</th>
                     <th scope="col">ID Laporan</th>
-                    <th scope="col">Nim Mahasiswa</th>
-                    <th scope="col">Nama</th>
+                    <th scope="col">Nip Dosen</th>
+                    <th scope="col">Nama Dosen</th>
                     <th scope="col">Kelas</th>
                     <th scope="col">Status Sanksi</th>
                     <th scope="col">Tingkat Sanksi</th>
@@ -28,8 +28,8 @@
                     <tr>
                         <th scope="row"><?= $no++; ?></th>
                         <td><?= $pelanggaran['id_laporan']; ?></td>
-                        <td><?= $pelanggaran['nim_mahasiswa']; ?></td>
-                        <td><?= $pelanggaran['nama_mahasiswa']; ?></td>
+                        <td><?= $pelanggaran['nip_dosen']; ?></td>
+                        <td><?= $pelanggaran['nama_dosen']; ?></td>
                         <td><?= $pelanggaran['kelas_mahasiswa']; ?></td>
                         <td>
                             <span class="badge text-bg-primary"><?= $pelanggaran['status_sanksi']; ?></span>
@@ -88,19 +88,9 @@
             <div class="modal-body">
                 <table class="table">
                     <tr>
-                        <td><strong>NIP Dosen</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailNIPDosenMahasiswaMelanggar"></span></td>
-                    </tr>
-                    <tr>
                         <td><strong>Keterangan</strong></td>
                         <td><strong>:</strong></td>
                         <td><span id="detailDeskripsiMahasiswaMelanggar"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Tingkat Sanksi Mahasiswa</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailTingkatSanksiMahasiswaMelanggar"></span></td>
                     </tr>
                     <tr>
                         <td><strong>Bukti Pelanggaran</strong></td>
@@ -108,15 +98,6 @@
                         <td><img id="detailBuktiLaporan" alt="Bukti Laporan" style="max-width: 100%;" /></td>
                     </tr>
                 </table>
-                <!-- <div class="form-group">
-                    <p><strong>NIP Dosen:</strong> <span id="detailNIPDosenMahasiswaMelanggar"></span></p>
-                </div>
-                <div class="form-group">
-                    <p><strong>Keterangan:</strong> <span id="detailDeskripsiMahasiswaMelanggar"></span></p>
-                </div>
-                <div class="form-group">
-                    <p><strong>Tingkat Sanksi Mahasiswa:</strong> <span id="detailTingkatSanksiMahasiswaMelanggar"></span></p>
-                </div> -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

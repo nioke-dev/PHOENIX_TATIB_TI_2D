@@ -439,9 +439,7 @@ $(function () {
         console.log("Respons Server:", data);
 
         // Pastikan ID elemen sesuai dengan elemen yang ada di HTML
-        $("#detailNIPDosenMahasiswaMelanggar").text(data.nip_dosen);
         $("#detailDeskripsiMahasiswaMelanggar").text(data.deskripsi);
-        $("#detailTingkatSanksiMahasiswaMelanggar").text(data.tingkat_sanksi);
         $("#detailBuktiLaporan").attr(
           "src",
           baseurl + "/img/bukti_laporan/" + data.file_bukti

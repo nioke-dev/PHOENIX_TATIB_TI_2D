@@ -16,7 +16,6 @@ class Login extends Controller
         $userData = $this->model('User_model')->getUserByUsernameAndPassword($username, $password);
 
         if ($userData) {
-
             $_SESSION['user_id'] = $userData['id_user'];
             $_SESSION['user_type'] = $userData['user_type'];
             $_SESSION['username'] = $userData['username'];

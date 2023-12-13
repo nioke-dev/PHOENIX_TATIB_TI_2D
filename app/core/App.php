@@ -22,6 +22,16 @@ class App
             return;
         }
 
+        // Check if the user is not logged in and trying to access other pages
+        if (!isset($_SESSION['user_id']) && !isset($_SESSION['user_type']) && $url[0] !== 'login') {
+            // Redirect to login page with a sweet alert message
+            $this->showSweetAlert('error', 'Gagal', 'Anda Belum Login, Silahkan Login Terlebih Dahulu');
+            header('Location: ' . BASEURL . '/login');
+            exit;
+        }
+
+
+
         // Check user session
         if (isset($_SESSION['user_type'])) {
             $userType = $_SESSION['user_type'];
@@ -92,19 +102,46 @@ class App
     {
         $controllerPath = '';
 
-        if ($userType == 'admin' || $userType == 'dosen' || $userType == 'mahasiswa' || $userType == 'dpa') {
+        // Tentukan folder kontroler berdasarkan jenis pengguna
+        $allowedUserTypes = ['admin', 'dosen', 'mahasiswa', 'dpa'];
+        $controllerFolder = '';
+
+        if (in_array($userType, $allowedUserTypes)) {
             $controllerFolder = ucfirst($userType) . 'Controllers';
             $this->wrapController = $userType;
+        } else {
+            // Jenis pengguna tidak valid, Anda dapat mengembalikan error atau melakukan sesuatu yang sesuai dengan kebutuhan Anda.
+            return $controllerPath;
+        }
 
-            if (isset($url[1]) && file_exists("../app/controllers/$controllerFolder/{$url[1]}.php")) {
-                $this->controller = $url[1];
-                unset($url[1]);
-                $controllerPath = "../app/controllers/$controllerFolder/{$this->controller}.php";
-            }
+        // Jika jenis pengguna mencoba mengakses file kontroler di luar folder yang sesuai, tampilkan pesan SweetAlert
+        $cek_folder = ucfirst($userType) . 'Controllers';
+        if ($url[0] !== $cek_folder) {
+            $this->showSweetAlert('error', 'Akses Ditolak', 'Anda tidak memiliki izin untuk mengakses halaman ini');
+            // Redirect atau lakukan tindakan sesuai kebijakan Anda
+            header('Location: ' . BASEURL . '/' . ucfirst($controllerFolder) . '/home'); // Gantilah dengan URL yang sesuai
+            exit;
+        }
+
+        if (!empty($url[1]) && !file_exists("../app/controllers/$controllerFolder/{$url[1]}.php")) {
+            $this->showSweetAlert('error', 'Akses Ditolak', 'Anda tidak memiliki izin untuk mengakses halaman ini');
+            // Redirect atau lakukan tindakan sesuai kebijakan Anda
+            header('Location: ' . BASEURL . '/' . ucfirst($controllerFolder) . '/home'); // Gantilah dengan URL yang sesuai
+            exit;
+        }
+
+        // Periksa apakah file kontroler yang diminta ada di dalam folder yang sesuai
+        if (isset($url[1])) {
+            $this->controller = $url[1];
+            unset($url[1]);
+            $controllerPath = "../app/controllers/$controllerFolder/{$this->controller}.php";
         }
 
         return $controllerPath;
     }
+
+
+
 
     protected function getDefaultController(&$url)
     {
@@ -117,5 +154,15 @@ class App
         }
 
         return $defaultController;
+    }
+
+    public function showSweetAlert($icon, $title, $text)
+    {
+        // Sesuaikan dengan session atau cara penyimpanan pesan flash di proyek Anda        
+        $_SESSION['sweetalert'] = [
+            'icon' => $icon,
+            'title' => $title,
+            'text' => $text,
+        ];
     }
 }

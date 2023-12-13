@@ -14,7 +14,6 @@
     <!-- SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-
 </head>
 
 <body>
@@ -30,7 +29,7 @@
                                     <img src="<?= BASEURL; ?>/assets/images/logos/new_logo.png" width="180" alt="">
                                 </a>
                                 <div class="alert alert-danger mb-3" id="alert-login" style="text-align:center;margin-bottom: 0;">
-			                    Masukkan Username dan Password <br> (Menggunakan NIM / NIP &amp; Password : rahasia)</div>
+                                    Masukkan Username dan Password <br> (Menggunakan NIM / NIP &amp; Password : rahasia)</div>
 
                                 <?php if (isset($data['error'])) : ?>
                                     <p style="color: red;"><?php echo $data['error']; ?></p>
@@ -58,6 +57,8 @@
     </div>
     <script src="<?= BASEURL; ?>/assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="<?= BASEURL; ?>/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Sweetalert Declaration -->
     <script>
         <?php if (isset($_SESSION['sweetalert'])) : ?>
             Swal.fire({

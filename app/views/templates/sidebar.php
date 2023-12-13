@@ -118,6 +118,14 @@
                                 <span class="hide-menu">About</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= BASEURL; ?>/AdminControllers/profile" aria-expanded="false">
+                                <span>
+                                    <i class="bi bi-gear"></i>
+                                </span>
+                                <span class="hide-menu">Profile</span>
+                            </a>
+                        </li>
 
 
                         <!-- side Bar Mahasiswa -->
@@ -178,6 +186,14 @@
                                 <span class="hide-menu">About</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= BASEURL; ?>/MahasiswaControllers/profile" aria-expanded="false">
+                                <span>
+                                    <i class="bi bi-gear"></i>
+                                </span>
+                                <span class="hide-menu">Profile</span>
+                            </a>
+                        </li>
 
 
                         <!-- side Bar Dosen -->
@@ -232,6 +248,15 @@
                                     <i class="bi bi-info-circle"></i>
                                 </span>
                                 <span class="hide-menu">About</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= BASEURL; ?>/DosenControllers/profile" aria-expanded="false">
+                                <span>
+                                    <i class="bi bi-gear"></i>
+                                </span>
+                                <span class="hide-menu">Profile</span>
                             </a>
                         </li>
 
@@ -308,6 +333,14 @@
                                     <i class="bi bi-info-circle"></i>
                                 </span>
                                 <span class="hide-menu">About</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= BASEURL; ?>/DpaControllers/profile" aria-expanded="false">
+                                <span>
+                                    <i class="bi bi-gear"></i>
+                                </span>
+                                <span class="hide-menu">Profile</span>
                             </a>
                         </li>
 

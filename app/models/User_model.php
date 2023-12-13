@@ -33,4 +33,19 @@ class User_model
 
         return $this->db->single();
     }
+
+    public function changePassword($data)
+    {
+        $query = "UPDATE user SET
+                    password = :password                 
+                  WHERE username = :username";
+
+        $this->db->query($query);
+        $this->db->bind('password', md5($data['password']));
+        $this->db->bind('username', $_SESSION['username']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
 }

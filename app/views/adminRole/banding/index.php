@@ -1,8 +1,6 @@
 <div class="container mt-3">
     <div class="card shadow-xl" style="width: 100%;">
         <div class="card-body">
-
-
             <div class="row">
                 <div class="col-lg-6">
                     <?php Flasher::flash(); ?>
@@ -106,29 +104,3 @@
         </div>
     </div>
 </div>
-
-<!-- Modal Add and Edit -->
-<!-- <div class="modal fade" id="formModalAjukanBanding" tabindex="-1" aria-labelledby="formModalBandingLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="formModalBandingLabel">Ajukan Banding</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="<?= BASEURL; ?>/banding/tambah" method="post">
-                    <input type="hidden" name="id_banding" id="id_banding">
-                    <div class="form-group">
-                        <label for="deskripsi">Alasan Banding</label>
-                        <input type="text" class="form-control" id="deskripsi" name="deskripsi" autocomplete="off" required>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Ajukan Banding</button>
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->

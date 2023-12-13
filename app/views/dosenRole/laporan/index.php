@@ -17,48 +17,50 @@
 <!-- Daftar Laporan -->
 <div class="row">
     <h3>Daftar Laporan</h3>
-    <table id="example" class="table table-striped" style="width:100%">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>ID Laporan</th>
-                <th>Tanggal</th>
-                <th>NIM Mahasiswa</th>
-                <th>Nama Mahasiswa</th>
-                <th>Kelas</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $no = 1;
-            foreach ($data['laporan'] as $laporan) : ?>
+    <div class="table-responsive">
+        <table id="example" class="table table-striped table-auto" style="width:100%">
+            <thead>
                 <tr>
-                    <th><?= $no++; ?></th>
-                    <td><?= $laporan['id_laporan']; ?></td>
-                    <td><?= $laporan['tgl_laporan']; ?></td>
-                    <td><?= $laporan['nim_mahasiswa']; ?></td>
-                    <td><?= $laporan['nama_mahasiswa']; ?></td>
-                    <td><?= $laporan['kelas_mahasiswa']; ?></td>
-                    <?php if ($laporan['status_sanksi'] == 'Disetujui') : ?>
-                        <td><span class="badge text-bg-success"><?= $laporan['status_sanksi']; ?></span></td>
-                    <?php elseif ($laporan['status_sanksi'] == 'Ditolak') : ?>
-                        <td><span class="badge text-bg-danger"><?= $laporan['status_sanksi']; ?></span></td>
-                    <?php elseif ($laporan['status_sanksi'] == 'Dikerjakan') : ?>
-                        <td><span class="badge text-bg-secondary"><?= $laporan['status_sanksi']; ?></span></td>
-                    <?php elseif ($laporan['status_sanksi'] == 'Selesai') : ?>
-                        <td><span class="badge text-bg-dark"><?= $laporan['status_sanksi']; ?></span></td>
-                    <?php elseif ($laporan['status_sanksi'] == 'Baru') : ?>
-                        <td><span class="badge text-bg-info"><?= $laporan['status_sanksi']; ?></span></td>
-                    <?php endif; ?>
-                    <td>
-                        <a href="<?= BASEURL; ?>/AdminControllers/laporan/detail/<?= $laporan['id_laporan']; ?>" class="badge bg-primary tampilModalDetailLaporan" data-bs-toggle="modal" data-bs-target="#detailModalLaporan" data-id_laporan="<?= $laporan['id_laporan']; ?>">Detail</a>
-                        <a href="<?= BASEURL; ?>/DosenControllers/laporan/hapus/<?= $laporan['id_laporan']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Laporan berikut?');">hapus</a>
-                    </td>
+                    <th>No</th>
+                    <th>ID Laporan</th>
+                    <th>Tanggal</th>
+                    <th>NIM Mahasiswa</th>
+                    <th>Nama Mahasiswa</th>
+                    <th>Kelas</th>
+                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php $no = 1;
+                foreach ($data['laporan'] as $laporan) : ?>
+                    <tr>
+                        <th><?= $no++; ?></th>
+                        <td><?= $laporan['id_laporan']; ?></td>
+                        <td><?= $laporan['tgl_laporan']; ?></td>
+                        <td><?= $laporan['nim_mahasiswa']; ?></td>
+                        <td><?= $laporan['nama_mahasiswa']; ?></td>
+                        <td><?= $laporan['kelas_mahasiswa']; ?></td>
+                        <?php if ($laporan['status_sanksi'] == 'Disetujui') : ?>
+                            <td><span class="badge text-bg-success"><?= $laporan['status_sanksi']; ?></span></td>
+                        <?php elseif ($laporan['status_sanksi'] == 'Ditolak') : ?>
+                            <td><span class="badge text-bg-danger"><?= $laporan['status_sanksi']; ?></span></td>
+                        <?php elseif ($laporan['status_sanksi'] == 'Dikerjakan') : ?>
+                            <td><span class="badge text-bg-secondary"><?= $laporan['status_sanksi']; ?></span></td>
+                        <?php elseif ($laporan['status_sanksi'] == 'Selesai') : ?>
+                            <td><span class="badge text-bg-dark"><?= $laporan['status_sanksi']; ?></span></td>
+                        <?php elseif ($laporan['status_sanksi'] == 'Baru') : ?>
+                            <td><span class="badge text-bg-info"><?= $laporan['status_sanksi']; ?></span></td>
+                        <?php endif; ?>
+                        <td>
+                            <a href="<?= BASEURL; ?>/AdminControllers/laporan/detail/<?= $laporan['id_laporan']; ?>" class="badge bg-primary tampilModalDetailLaporan" data-bs-toggle="modal" data-bs-target="#detailModalLaporan" data-id_laporan="<?= $laporan['id_laporan']; ?>">Detail</a>
+                            <a href="<?= BASEURL; ?>/DosenControllers/laporan/hapus/<?= $laporan['id_laporan']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Laporan berikut?');">hapus</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 

@@ -30,68 +30,70 @@
 <!-- Daftar Mahasiswa -->
 <div class="row">
   <h3>Daftar Mahasiswa</h3>
-  <table id="example" class="table table-striped" style="width:100%">
-    <thead>
-      <tr>
-        <th>No</th>
-        <th>NIM</th>
-        <th>Nama</th>
-        <th>Kelas</th>
-        <th>Prodi</th>
-        <th>Email</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php $no = 1;
-      if (empty($data['mhs'])) : ?>
+  <div class="table-responsive">
+    <table id="example" class="table table-striped table-auto" style="width:100%">
+      <thead>
         <tr>
-          <td>
-            <div class="alert alert-danger" role="alert">
-              Tidak ada data terkait.
-            </div>
-          </td>
+          <th>No</th>
+          <th>NIM</th>
+          <th>Nama</th>
+          <th>Kelas</th>
+          <th>Prodi</th>
+          <th>Email</th>
+          <th>Action</th>
         </tr>
-        <?php else :
-        foreach ($data['mhs'] as $mhs) : ?>
+      </thead>
+      <tbody>
+        <?php $no = 1;
+        if (empty($data['mhs'])) : ?>
           <tr>
-            <th><?= $no++; ?></th>
-            <td><?= $mhs['nim_mahasiswa']; ?></td>
-            <td><?= $mhs['nama_mahasiswa']; ?></td>
-            <td><?= $mhs['kelas_mahasiswa']; ?></td>
-            <td><?= $mhs['prodi_mahasiswa']; ?></td>
-            <td><?= $mhs['email_mahasiswa']; ?></td>
             <td>
-              <a href="<?= BASEURL; ?>/AdminControllers/mahasiswa/detail/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-primary float-right tampilModalDetailMahasiswa" data-bs-toggle="modal" data-bs-target="#detailModalMahasiswa" data-nim_mahasiswa="<?= $mhs['nim_mahasiswa']; ?>">Detail</a>
-              <a href="<?= BASEURL; ?>/AdminControllers/mahasiswa/ubah/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-success float-right tampilModalUbahMahasiswa" data-bs-toggle="modal" data-bs-target="#formModalMahasiswa" data-nim_mahasiswa="<?= $mhs['nim_mahasiswa']; ?>">ubah</a>
-              <a href="<?= BASEURL; ?>/AdminControllers/mahasiswa/hapus/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-danger float-right" onclick="return confirmAction()">hapus</a>
-              <script>
-                function confirmAction() {
-                  Swal.fire({
-                    title: "Apakah Kamu Yakin?",
-                    text: "Kamu Tidak Bisa Mengembalikan Data Ini!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!"
-                  }).then((result) => {
-                    if (result.isConfirmed) {
-                      // Redirect to the delete URL if the user confirms
-                      window.location.href = "<?= BASEURL; ?>/AdminControllers/mahasiswa/hapus/<?= $mhs['nim_mahasiswa']; ?>";
-                    }
-                  });
-
-                  // Prevent the default behavior of the anchor tag
-                  return false;
-                }
-              </script>
+              <div class="alert alert-danger" role="alert">
+                Tidak ada data terkait.
+              </div>
             </td>
           </tr>
-      <?php endforeach;
-      endif; ?>
-    </tbody>
-  </table>
+          <?php else :
+          foreach ($data['mhs'] as $mhs) : ?>
+            <tr>
+              <th><?= $no++; ?></th>
+              <td><?= $mhs['nim_mahasiswa']; ?></td>
+              <td><?= $mhs['nama_mahasiswa']; ?></td>
+              <td><?= $mhs['kelas_mahasiswa']; ?></td>
+              <td><?= $mhs['prodi_mahasiswa']; ?></td>
+              <td><?= $mhs['email_mahasiswa']; ?></td>
+              <td>
+                <a href="<?= BASEURL; ?>/AdminControllers/mahasiswa/detail/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-primary float-right tampilModalDetailMahasiswa" data-bs-toggle="modal" data-bs-target="#detailModalMahasiswa" data-nim_mahasiswa="<?= $mhs['nim_mahasiswa']; ?>">Detail</a>
+                <a href="<?= BASEURL; ?>/AdminControllers/mahasiswa/ubah/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-success float-right tampilModalUbahMahasiswa" data-bs-toggle="modal" data-bs-target="#formModalMahasiswa" data-nim_mahasiswa="<?= $mhs['nim_mahasiswa']; ?>">ubah</a>
+                <a href="<?= BASEURL; ?>/AdminControllers/mahasiswa/hapus/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-danger float-right" onclick="return confirmAction()">hapus</a>
+                <script>
+                  function confirmAction() {
+                    Swal.fire({
+                      title: "Apakah Kamu Yakin?",
+                      text: "Kamu Tidak Bisa Mengembalikan Data Ini!",
+                      icon: "warning",
+                      showCancelButton: true,
+                      confirmButtonColor: "#3085d6",
+                      cancelButtonColor: "#d33",
+                      confirmButtonText: "Yes, delete it!"
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        // Redirect to the delete URL if the user confirms
+                        window.location.href = "<?= BASEURL; ?>/AdminControllers/mahasiswa/hapus/<?= $mhs['nim_mahasiswa']; ?>";
+                      }
+                    });
+
+                    // Prevent the default behavior of the anchor tag
+                    return false;
+                  }
+                </script>
+              </td>
+            </tr>
+        <?php endforeach;
+        endif; ?>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 </div>

@@ -19,56 +19,58 @@
   <!-- Daftar DPA -->
   <div class="row">
     <h3>Daftar DPA</h3>
-    <table id="example" class="table table-striped" style="width:100%">
-      <thead>
-        <tr>
-          <th scope="col">No</th>
-          <th scope="col">NIP</th>
-          <th scope="col">Nama</th>
-          <th scope="col">Kelas</th>
-          <th scope="col">Email</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php $no = 1;
-        foreach ($data['dp'] as $dpa) : ?>
+    <div class="table-responsive">
+      <table id="example" class="table table-striped table-auto" style="width:100%">
+        <thead>
           <tr>
-            <th scope="row"><?= $no++; ?></th>
-            <td><?= $dpa['nip_dpa']; ?></td>
-            <td><?= $dpa['nama_dpa']; ?></td>
-            <td><?= $dpa['kelas_dpa']; ?></td>
-            <td><?= $dpa['email_dpa']; ?></td>
-            <td>
-              <a href="<?= BASEURL; ?>/AdminControllers/dpa/detail/<?= $dpa['nip_dpa']; ?>" class="badge bg-primary float-right tampilModalDetailDpa" data-bs-toggle="modal" data-bs-target="#detailModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Detail</a>
-              <a href="<?= BASEURL; ?>/AdminControllers/dpa/ubah/<?= $dpa['nip_dpa']; ?>" class="badge bg-success float-right tampilModalUbahDpa" data-bs-toggle="modal" data-bs-target="#formModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Ubah</a>
-              <a href="<?= BASEURL; ?>/AdminControllers/dpa/hapus/<?= $dpa['nip_dpa']; ?>" class="badge bg-danger float-right" onclick="return confirmAction()">Hapus</a>
-              <script>
-                function confirmAction() {
-                  Swal.fire({
-                    title: "Apakah Kamu Yakin?",
-                    text: "Kamu Tidak Bisa Mengembalikan Data Ini!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!"
-                  }).then((result) => {
-                    if (result.isConfirmed) {
-                      // Redirect to the delete URL if the user confirms
-                      window.location.href = "<?= BASEURL; ?>/AdminControllers/dpa/hapus/<?= $dpa['nip_dpa']; ?>";
-                    }
-                  });
-
-                  // Prevent the default behavior of the anchor tag
-                  return false;
-                }
-              </script>
-            </td>
+            <th scope="col">No</th>
+            <th scope="col">NIP</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Kelas</th>
+            <th scope="col">Email</th>
+            <th scope="col">Action</th>
           </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <?php $no = 1;
+          foreach ($data['dp'] as $dpa) : ?>
+            <tr>
+              <th scope="row"><?= $no++; ?></th>
+              <td><?= $dpa['nip_dpa']; ?></td>
+              <td><?= $dpa['nama_dpa']; ?></td>
+              <td><?= $dpa['kelas_dpa']; ?></td>
+              <td><?= $dpa['email_dpa']; ?></td>
+              <td>
+                <a href="<?= BASEURL; ?>/AdminControllers/dpa/detail/<?= $dpa['nip_dpa']; ?>" class="badge bg-primary float-right tampilModalDetailDpa" data-bs-toggle="modal" data-bs-target="#detailModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Detail</a>
+                <a href="<?= BASEURL; ?>/AdminControllers/dpa/ubah/<?= $dpa['nip_dpa']; ?>" class="badge bg-success float-right tampilModalUbahDpa" data-bs-toggle="modal" data-bs-target="#formModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Ubah</a>
+                <a href="<?= BASEURL; ?>/AdminControllers/dpa/hapus/<?= $dpa['nip_dpa']; ?>" class="badge bg-danger float-right" onclick="return confirmAction()">Hapus</a>
+                <script>
+                  function confirmAction() {
+                    Swal.fire({
+                      title: "Apakah Kamu Yakin?",
+                      text: "Kamu Tidak Bisa Mengembalikan Data Ini!",
+                      icon: "warning",
+                      showCancelButton: true,
+                      confirmButtonColor: "#3085d6",
+                      cancelButtonColor: "#d33",
+                      confirmButtonText: "Yes, delete it!"
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        // Redirect to the delete URL if the user confirms
+                        window.location.href = "<?= BASEURL; ?>/AdminControllers/dpa/hapus/<?= $dpa['nip_dpa']; ?>";
+                      }
+                    });
+
+                    // Prevent the default behavior of the anchor tag
+                    return false;
+                  }
+                </script>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
   </div>
 
 </div>

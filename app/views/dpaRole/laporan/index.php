@@ -17,7 +17,8 @@
 <!-- Daftar Laporan -->
 <div class="row">
     <h3>Daftar Laporan</h3>
-    <table id="example" class="table table-striped" style="width:100%">
+    <div class="table-responsive">
+    <table id="example" class="table table-striped table-auto" style="width:100%">
         <thead>
             <tr>
                 <th>No</th>
@@ -51,6 +52,7 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+    </div>
 </div>
 
 

@@ -8,35 +8,37 @@
 <!-- Daftar Mahasiswa -->
 <div class="row">
     <h3>Daftar Mahasiswa Melanggar</h3>
-    <table id="example" class="table table-striped" style="width:100%">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nim Mahasiswa</th>
-                <th>Nama</th>
-                <th>Kelas</th>
-                <th>Status Sanksi</th>
-                <th>Tingkat Sanksi</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $no = 1;
-            foreach ($data['mhs_melanggar'] as $mhs_melanggar) : ?>
+    <div class="table-responsive">
+        <table id="example" class="table table-striped table-auto" style="width:100%">
+            <thead>
                 <tr>
-                    <th><?= $no++; ?></th>
-                    <td><?= $mhs_melanggar['nim_mahasiswa']; ?></td>
-                    <td><?= $mhs_melanggar['nama_mahasiswa']; ?></td>
-                    <td><?= $mhs_melanggar['kelas_mahasiswa']; ?></td>
-                    <td><?= $mhs_melanggar['status_sanksi']; ?></td>
-                    <td><?= $mhs_melanggar['tingkat_sanksi']; ?></td>
-                    <td>
-                        <a href="<?= BASEURL; ?>/DpaControllers/mahasiswaMelanggar/detail/<?= $mhs_melanggar['nim_mahasiswa']; ?>" class="badge bg-primary float-right tampilModalDetailMahasiswaMelanggar" data-bs-toggle="modal" data-bs-target="#detailModalMahasiswaMelanggar" data-nim_mahasiswa="<?= $mhs_melanggar['nim_mahasiswa']; ?>">Detail</a>
-                    </td>
+                    <th>No</th>
+                    <th>Nim Mahasiswa</th>
+                    <th>Nama</th>
+                    <th>Kelas</th>
+                    <th>Status Sanksi</th>
+                    <th>Tingkat Sanksi</th>
+                    <th>Action</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php $no = 1;
+                foreach ($data['mhs_melanggar'] as $mhs_melanggar) : ?>
+                    <tr>
+                        <th><?= $no++; ?></th>
+                        <td><?= $mhs_melanggar['nim_mahasiswa']; ?></td>
+                        <td><?= $mhs_melanggar['nama_mahasiswa']; ?></td>
+                        <td><?= $mhs_melanggar['kelas_mahasiswa']; ?></td>
+                        <td><?= $mhs_melanggar['status_sanksi']; ?></td>
+                        <td><?= $mhs_melanggar['tingkat_sanksi']; ?></td>
+                        <td>
+                            <a href="<?= BASEURL; ?>/DpaControllers/mahasiswaMelanggar/detail/<?= $mhs_melanggar['nim_mahasiswa']; ?>" class="badge bg-primary float-right tampilModalDetailMahasiswaMelanggar" data-bs-toggle="modal" data-bs-target="#detailModalMahasiswaMelanggar" data-nim_mahasiswa="<?= $mhs_melanggar['nim_mahasiswa']; ?>">Detail</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 </div>

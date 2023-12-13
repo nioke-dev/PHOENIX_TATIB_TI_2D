@@ -16,66 +16,67 @@
 
   <div class="row">
     <h3>Daftar Dosen</h3>
-    <table id="example" class="table table-striped" style="width:100%">
-      <thead>
-        <tr>
-          <th scope="col">No</th>
-          <th scope="col">NIP</th>
-          <th scope="col">Nama</th>
-          <th scope="col">Email</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php $no = 1;
-        if (empty($data['dsn'])) : ?>
+    <div class="table-responsive">
+      <table id="example" class="table table-striped table-auto" style="width:100%">
+        <thead>
           <tr>
-            <td colspan="7">
-              <div class="alert alert-danger" role="alert">
-                Tidak ada data terkait.
-              </div>
-            </td>
+            <th scope="col">No</th>
+            <th scope="col">NIP</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Email</th>
+            <th scope="col">Action</th>
           </tr>
-          <?php else :
-          foreach ($data['dsn'] as $dsn) : ?>
+        </thead>
+        <tbody>
+          <?php $no = 1;
+          if (empty($data['dsn'])) : ?>
             <tr>
-              <th scope="row"><?= $no++; ?></th>
-              <td><?= $dsn['nip_dosen']; ?></td>
-              <td><?= $dsn['nama_dosen']; ?></td>
-              <td><?= $dsn['email_dosen']; ?></td>
-              <td>
-                <a href="<?= BASEURL; ?>/AdminControllers/dosen/detail/<?= $dsn['nip_dosen']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">Detail</a>
-                <a href="<?= BASEURL; ?>/AdminControllers/dosen/ubah/<?= $dsn['nip_dosen']; ?>" class="badge bg-success float-right tampilModalUbahDosen" data-bs-toggle="modal" data-bs-target="#formModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">ubah</a>
-                <a href="<?= BASEURL; ?>/AdminControllers/dosen/hapus/<?= $dsn['nip_dosen']; ?>" class="badge bg-danger float-right" onclick="return confirmAction()">hapus</a>
-                <script>
-                  function confirmAction() {
-                    Swal.fire({
-                      title: "Apakah Kamu Yakin?",
-                      text: "Kamu Tidak Bisa Mengembalikan Data Ini!",
-                      icon: "warning",
-                      showCancelButton: true,
-                      confirmButtonColor: "#3085d6",
-                      cancelButtonColor: "#d33",
-                      confirmButtonText: "Yes, delete it!"
-                    }).then((result) => {
-                      if (result.isConfirmed) {
-                        // Redirect to the delete URL if the user confirms
-                        window.location.href = "<?= BASEURL; ?>/AdminControllers/dosen/hapus/<?= $dsn['nip_dosen']; ?>";
-                      }
-                    });
-
-                    // Prevent the default behavior of the anchor tag
-                    return false;
-                  }
-                </script>
+              <td colspan="7">
+                <div class="alert alert-danger" role="alert">
+                  Tidak ada data terkait.
+                </div>
               </td>
             </tr>
-        <?php endforeach;
-        endif; ?>
-      </tbody>
-    </table>
-  </div>
+            <?php else :
+            foreach ($data['dsn'] as $dsn) : ?>
+              <tr>
+                <th scope="row"><?= $no++; ?></th>
+                <td><?= $dsn['nip_dosen']; ?></td>
+                <td><?= $dsn['nama_dosen']; ?></td>
+                <td><?= $dsn['email_dosen']; ?></td>
+                <td>
+                  <a href="<?= BASEURL; ?>/AdminControllers/dosen/detail/<?= $dsn['nip_dosen']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">Detail</a>
+                  <a href="<?= BASEURL; ?>/AdminControllers/dosen/ubah/<?= $dsn['nip_dosen']; ?>" class="badge bg-success float-right tampilModalUbahDosen" data-bs-toggle="modal" data-bs-target="#formModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">ubah</a>
+                  <a href="<?= BASEURL; ?>/AdminControllers/dosen/hapus/<?= $dsn['nip_dosen']; ?>" class="badge bg-danger float-right" onclick="return confirmAction()">hapus</a>
+                  <script>
+                    function confirmAction() {
+                      Swal.fire({
+                        title: "Apakah Kamu Yakin?",
+                        text: "Kamu Tidak Bisa Mengembalikan Data Ini!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Yes, delete it!"
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          // Redirect to the delete URL if the user confirms
+                          window.location.href = "<?= BASEURL; ?>/AdminControllers/dosen/hapus/<?= $dsn['nip_dosen']; ?>";
+                        }
+                      });
 
+                      // Prevent the default behavior of the anchor tag
+                      return false;
+                    }
+                  </script>
+                </td>
+              </tr>
+          <?php endforeach;
+          endif; ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
 <!-- Modal Detail -->

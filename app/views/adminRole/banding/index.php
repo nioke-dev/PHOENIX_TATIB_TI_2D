@@ -80,7 +80,7 @@
 
 <!-- Modal Detail -->
 <div class="modal fade" id="detailModalBanding" tabindex="-1" aria-labelledby="detailModalBandingLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="detailModalBandingLabel"></h5>
@@ -89,44 +89,26 @@
             <div class="modal-body">
                 <table class="table">
                     <tr>
-                        <td><strong>NIP Dosen</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailNipDosen"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>NIM Mahasiswa</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailNimMahasiswa"></span></td>
-                    </tr>
-                    <tr>
                         <td><strong>Deskripsi</strong></td>
                         <td><strong>:</strong></td>
                         <td><span id="detailDeskripsi"></span></td>
                     </tr>
+                    <tr>
+                        <td><strong>Bukti Pelanggaran</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><img id="detailBuktiBanding" alt="Bukti Banding" style="max-width: 100%;" /></td>
+                    </tr>
                 </table>
-
-                <!-- <div class="form-group">
-                    <p><strong>NIP Dosen :</strong> <span id="detailNipDosen"></span></p>
-                </div>
-                
-                <div class="form-group">
-                    <p><strong>NIM Mahasiswa :</strong> <span id="detailNimMahasiswa"></span></p>
-                </div>
-
-                <div class="form-group">
-                    <p><strong>Deskripsi :</strong> <span id="detailDeskripsi"></span></p>
-                </div>
-                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-            </div> -->
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Modal Add and Edit -->
-    <!-- <div class="modal fade" id="formModalAjukanBanding" tabindex="-1" aria-labelledby="formModalBandingLabel" aria-hidden="true">
+<!-- Modal Add and Edit -->
+<!-- <div class="modal fade" id="formModalAjukanBanding" tabindex="-1" aria-labelledby="formModalBandingLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

@@ -73,32 +73,12 @@
             <div class="modal-body">
                 <table class="table">
                     <tr>
-                        <td><strong>ID Laporan</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailIdLaporan"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>NIM Mahasiswa</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailNimMahasiswa"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Nama</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailNamaMahasiswa"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Kelas</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailKelasMahasiswa"></span></td>
-                    </tr>
-                    <tr>
                         <td><strong>NIP Dosen</strong></td>
                         <td><strong>:</strong></td>
                         <td><span id="detailNipDosen"></span></td>
                     </tr>
                     <tr>
-                        <td><strong>Deskripsi</strong></td>
+                        <td><strong>Keterangan</strong></td>
                         <td><strong>:</strong></td>
                         <td><span id="detailDeskripsi"></span></td>
                     </tr>

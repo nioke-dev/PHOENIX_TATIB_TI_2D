@@ -58,18 +58,17 @@
                             <td><span class="badge text-bg-info"><?= $banding['status_sanksi']; ?></span></td>
                         <?php endif; ?>
                         <td>
-                            <a href="<?= BASEURL; ?>/DpaControllers/banding/detail/<?= $banding['id_banding']; ?>" class="badge bg-success float-right tampilModalDetailBanding" data-bs-toggle="modal" data-bs-target="#detailModalBanding" data-id_banding="<?= $banding['id_banding']; ?>">detail</a>
-                            <a href="<?= BASEURL; ?>/DpaControllers/banding/hapus/<?= $banding['id_banding']; ?>" class="badge bg-danger float-right" onclick="return confirmAction()">hapus</a>
+                            <a href="<?= BASEURL; ?>/DpaControllers/banding/detail/<?= $banding['id_banding']; ?>" class="badge bg-success float-right tampilModalDetailBanding" data-bs-toggle="modal" data-bs-target="#detailModalBanding" data-id_banding="<?= $banding['id_banding']; ?>">Detail</a>
                             <script>
                                 function confirmAction() {
                                     Swal.fire({
-                                        title: "Apakah Kamu Yakin?",
-                                        text: "Kamu Tidak Bisa Mengembalikan Data Ini!",
+                                        title: "Apakah Anda Yakin?",
+                                        text: "Anda Tidak Bisa Mengembalikan Data Ini!",
                                         icon: "warning",
                                         showCancelButton: true,
                                         confirmButtonColor: "#3085d6",
                                         cancelButtonColor: "#d33",
-                                        confirmButtonText: "Yes, delete it!"
+                                        confirmButtonText: "Ya"
                                     }).then((result) => {
                                         if (result.isConfirmed) {
                                             // Redirect to the delete URL if the user confirms
@@ -100,19 +99,14 @@
             <div class="modal-body">
                 <table class="table">
                     <tr>
-                        <td><strong>NIP Dosen</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailNipDosen"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>NIM Mahasiswa</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailNimMahasiswa"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Deskripsi</strong></td>
+                        <td><strong>Keterangan</strong></td>
                         <td><strong>:</strong></td>
                         <td><span id="detailDeskripsi"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bukti Banding</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><img id="detailBuktiBanding" alt="Bukti Banding" style="max-width: 100%;" /></td>
                     </tr>
                 </table>
 

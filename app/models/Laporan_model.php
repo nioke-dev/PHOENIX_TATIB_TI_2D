@@ -83,11 +83,12 @@ class Laporan_model
 
     public function uploadSuratSanksi($data, $filename, $filesize, $filetype)
     {
-        $query = "UPDATE laporan SET file_kumpulSanksi = :file_kumpulSanksi WHERE id_laporan = :id_laporan";
+        $query = "UPDATE laporan SET file_kumpulSanksi = :file_kumpulSanksi, id_statusSanksi = :id_statusSanksi WHERE id_laporan = :id_laporan";
 
         $this->db->query($query);
         $this->db->bind('file_kumpulSanksi', $filename);
         $this->db->bind('id_laporan', $data['id_laporanKerjakanSanksi']);
+        $this->db->bind('id_statusSanksi', '5');
         $this->db->execute();
 
         // Return the number of affected rows by the query operation

@@ -52,39 +52,9 @@
             <div class="modal-body">
                 <table class="table">
                     <tr>
-                        <td><strong>NIM Mahasiswa</strong></td>
+                        <td><strong>Keterangan</strong></td>
                         <td><strong>:</strong></td>
-                        <td><span id="detailNimMahasiswaMelanggar"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Nama Mahasiswa</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailNamaMahasiswaMelanggar"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Kelas Mahasiswa</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailKelasMahasiswaMelanggar"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Program Studi Mahasiswa</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailProdiMahasiswaMelanggar"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Email Mahasiswa</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailEmailMahasiswaMelanggar"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Status Sanksi Mahasiswa</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailStatusSanksiMahasiswaMelanggar"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Tingkat Sanksi Mahasiswa</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailTingkatSanksiMahasiswaMelanggar"></span></td>
+                        <td><span id="detailDeskripsi"></span></td>
                     </tr>
                     <tr>
                         <td><strong>Bukti Laporan</strong></td>

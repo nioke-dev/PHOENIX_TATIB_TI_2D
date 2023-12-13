@@ -171,7 +171,7 @@
                             <span class="hide-menu">More</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="<?= BASEURL; ?>/DpaControllers/about" aria-expanded="false">
+                            <a class="sidebar-link" href="<?= BASEURL; ?>/MahasiswaControllers/about" aria-expanded="false">
                                 <span>
                                     <i class="bi bi-info-circle"></i>
                                 </span>
@@ -251,7 +251,7 @@
                         </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">Menu</span>
+                            <span class="hide-menu">DPA Menu</span>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= BASEURL; ?>/DpaControllers/mahasiswaMelanggar" aria-expanded="false">
@@ -270,6 +270,26 @@
                             </a>
                         </li>
 
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Dosen Menu</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= BASEURL; ?>/DpaControllers/laporan" aria-expanded="false">
+                                <span>
+                                    <i class="bi bi-exclamation-triangle"></i>
+                                </span>
+                                <span class="hide-menu">Laporkan Mahasiswa</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= BASEURL; ?>/DpaControllers/bandingDosen" aria-expanded="false">
+                                <span>
+                                    <i class="bi bi-chat-left-text"></i>
+                                </span>
+                                <span class="hide-menu">Banding</span>
+                            </a>
+                        </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">Tata tertib</span>

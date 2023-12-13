@@ -41,6 +41,50 @@ class Pelanggaran extends Controller
         }
     }
 
+    public function uploadSuratSanksi()
+    {
+        // Handle file upload
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_FILES["file_kumpulSanksi"]) && $_FILES["file_kumpulSanksi"]["error"] == 0) {
+                $target_dir = $_SERVER['DOCUMENT_ROOT'] . BASEPUBLIC . "/assets/file/suratSanksi/";
+                $file_extension = strtolower(pathinfo($_FILES["file_kumpulSanksi"]["name"], PATHINFO_EXTENSION));
+
+                // Generate a unique filename using timestamp
+                $filename = "file_" . time() . "." . $file_extension;
+                $target_file = $target_dir . $filename;
+
+                $allowed_types = array("pdf");
+                if (!in_array($file_extension, $allowed_types)) {
+                    $this->showSweetAlert('error', 'Gagal', 'Sorry, only PDF files are allowed.');
+                    header('Location: ' . BASEURL . '/MahasiswaControllers/pelanggaran');
+                    exit;
+                } else {
+                    if (move_uploaded_file($_FILES["file_kumpulSanksi"]["tmp_name"], $target_file)) {
+                        // File upload success
+                        $filesize = $_FILES["file_kumpulSanksi"]["size"];
+                        $filetype = $_FILES["file_kumpulSanksi"]["type"];
+                    } else {
+                        echo "Sorry, there was an error uploading your file.";
+                        exit;
+                    }
+                }
+            } else {
+                echo "No file was uploaded.";
+                exit;
+            }
+        }
+
+        if ($this->model('Laporan_model')->uploadSuratSanksi($_POST, $filename, $filesize, $filetype) > 0) {
+            $this->showSweetAlert('success', 'Berhasil', 'Surat Sanksi Berhasil Diupload');
+            header('Location: ' . BASEURL . '/MahasiswaControllers/pelanggaran');
+            exit;
+        } else {
+            $this->showSweetAlert('error', 'Ooops', 'Surat Sanksi Gagal Di Upload');
+            header('Location: ' . BASEURL . '/MahasiswaControllers/pelanggaran');
+            exit;
+        }
+    }
+
     // Fungsi untuk mencari banding berdasarkan keyword
     public function cari()
     {

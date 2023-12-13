@@ -81,6 +81,18 @@ class Laporan_model
         return $this->db->rowCount();
     }
 
+    public function uploadSuratSanksi($data, $filename, $filesize, $filetype)
+    {
+        $query = "UPDATE laporan SET file_kumpulSanksi = :file_kumpulSanksi WHERE id_laporan = :id_laporan";
+
+        $this->db->query($query);
+        $this->db->bind('file_kumpulSanksi', $filename);
+        $this->db->bind('id_laporan', $data['id_laporanKerjakanSanksi']);
+        $this->db->execute();
+
+        // Return the number of affected rows by the query operation
+        return $this->db->rowCount();
+    }
 
     // Function to delete Laporan data by ID
     public function hapusDataLaporan($id_laporan)

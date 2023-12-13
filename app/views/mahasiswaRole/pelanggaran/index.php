@@ -35,7 +35,7 @@
                         <td><?= $pelanggaran['tingkat_sanksi']; ?></td>
                         <td>
                             <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/detail/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-primary float-right tampilModalDetailPelanggaran" data-bs-toggle="modal" data-bs-target="#detailModalPelanggaran" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Detail</a>
-                            <a href="<?= BASEURL; ?>/MahasiswaControllers/banding/kerjakan/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-info float-right" data-bs-toggle="modal" data-bs-target="#detailModalKerjakanSanksi" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Kerjakan</a>
+                            <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/kerjakan/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-info float-right tampilModalUploadSuratSanksi" data-bs-toggle="modal" data-bs-target="#detailModalKerjakanSanksi" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Kerjakan</a>
                             <a href="<?= BASEURL; ?>/MahasiswaControllers/banding/tambah/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-danger float-right tampilTambahDataBanding" data-bs-toggle="modal" data-bs-target="#formModalAjukanBanding" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Banding</a>
                         </td>
                     </tr>
@@ -59,10 +59,11 @@
                 <p>Silahkan Download Surat Sanksi Dibawah Ini Lalu Upload Pada Tempat Pengumpulan Dibawah, Proses 1x24 jam pada hari kerja untuk update status</p>
 
                 <button class="btn btn-primary mb-5"><a href="<?= BASEURL; ?>/assets/file/Surat_Peringatan.doc" style="color: white;">Download Surat Sanksi</a></button>
-                <form action="<?= BASEURL; ?>/MahasiswaControllers/banding/tambah" method="post" enctype="multipart/form-data">
+                <form action="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/uploadSuratSanksi" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id_laporanKerjakanSanksi" id="id_laporanKerjakanSanksi">
                     <div class="form-group">
-                        <label for="file_bukti" class="form-label">Upload Surat Sanksi</label>
-                        <input type="file" class="form-control" name="file_bukti" id="file_bukti" required>
+                        <label for="file_kumpulSanksi" class="form-label">Upload Surat Sanksi</label>
+                        <input type="file" class="form-control" name="file_kumpulSanksi" id="file_kumpulSanksi" required>
                     </div>
             </div>
             <div class="modal-footer">

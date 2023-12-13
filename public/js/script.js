@@ -421,6 +421,26 @@ $(function () {
     });
   });
 
+  $(".tampilModalUploadSuratSanksi").on("click", function () {
+    $("#detailModalKerjakanSanksiLabel").html("Detail Data Laporan");
+    const id_laporan = $(this).data("id_laporan");
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/MahasiswaControllers/pelanggaran/detail",
+      data: { id_laporan: id_laporan },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Serverr:", data);
+        // Pastikan ID elemen sesuai dengan elemen yang ada di HTML
+        $("#id_laporanKerjakanSanksi").val(data.id_laporan);
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      },
+    });
+  });
+
   // Mahasiswa -> laporan -> Detail
   $(".tampilModalDetailPelanggaran").on("click", function () {
     console.log("Clicked Detail"); // Pastikan event click terpanggil

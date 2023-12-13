@@ -109,22 +109,6 @@
           </tr>
         </table>
 
-        <!-- <div class="form-group">
-          <p><strong>NIP:</strong> <span id="detailNipAdmin"></span></p>
-        </div>
-
-        <div class="form-group">
-          <p><strong>Nama:</strong> <span id="detailNamaAdmin"></span></p>
-        </div>
-
-        <div class="form-group">
-          <p><strong>Email:</strong> <span id="detailEmailAdmin"></span></p>
-        </div>
-
-        <div class="form-group">
-          <p><strong>Username:</strong> <span id="detailUsernameAdmin"></span></p>
-        </div> -->
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

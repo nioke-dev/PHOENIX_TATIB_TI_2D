@@ -8,46 +8,48 @@
 <!-- Daftar Mahasiswa -->
 <div class="row">
     <h3>Daftar Mahasiswa Melanggar</h3>
-    <table id="example" class="table table-striped" style="width:100%">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nim Mahasiswa</th>
-                <th>Nama</th>
-                <th>Kelas</th>
-                <th>Status Sanksi</th>
-                <th>Tingkat Sanksi</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $no = 1;
-            if (empty($data['mhs_melanggar'])) : ?>
+    <div class="table-responsive">
+        <table id="example" class="table table-striped table-auto" style="width:100%">
+            <thead>
                 <tr>
-                    <td>
-                        <div class="alert alert-danger" role="alert">
-                            Tidak ada data terkait.
-                        </div>
-                    </td>
+                    <th>No</th>
+                    <th>Nim Mahasiswa</th>
+                    <th>Nama</th>
+                    <th>Kelas</th>
+                    <th>Status Sanksi</th>
+                    <th>Tingkat Sanksi</th>
+                    <th>Action</th>
                 </tr>
-                <?php else :
-                foreach ($data['mhs_melanggar'] as $mhs_melanggar) : ?>
+            </thead>
+            <tbody>
+                <?php $no = 1;
+                if (empty($data['mhs_melanggar'])) : ?>
                     <tr>
-                        <th><?= $no++; ?></th>
-                        <td><?= $mhs_melanggar['nim_mahasiswa']; ?></td>
-                        <td><?= $mhs_melanggar['nama_mahasiswa']; ?></td>
-                        <td><?= $mhs_melanggar['kelas_mahasiswa']; ?></td>
-                        <td><?= $mhs_melanggar['status_sanksi']; ?></td>
-                        <td><?= $mhs_melanggar['tingkat_sanksi']; ?></td>
                         <td>
-                            <a href="<?= BASEURL; ?>/AdminControllers/mahasiswaMelanggar/detail/<?= $mhs_melanggar['nim_mahasiswa']; ?>" class="badge bg-primary float-right tampilModalDetailMahasiswaMelanggar" data-bs-toggle="modal" data-bs-target="#detailModalMahasiswaMelanggar" data-nim_mahasiswa="<?= $mhs_melanggar['nim_mahasiswa']; ?>">Detail</a>
-                            <a href="<?= BASEURL; ?>/AdminControllers/mahasiswaMelanggar/ubah/<?= $mhs_melanggar['nim_mahasiswa']; ?>" class="badge bg-success float-right tampilModalUbahMahasiswa" data-bs-toggle="modal" data-bs-target="#formModalMahasiswaMelanggar" data-nim_mahasiswa="<?= $mhs_melanggar['nim_mahasiswa']; ?>">ubah</a>
+                            <div class="alert alert-danger" role="alert">
+                                Tidak ada data terkait.
+                            </div>
                         </td>
                     </tr>
-            <?php endforeach;
-            endif; ?>
-        </tbody>
-    </table>
+                    <?php else :
+                    foreach ($data['mhs_melanggar'] as $mhs_melanggar) : ?>
+                        <tr>
+                            <th><?= $no++; ?></th>
+                            <td><?= $mhs_melanggar['nim_mahasiswa']; ?></td>
+                            <td><?= $mhs_melanggar['nama_mahasiswa']; ?></td>
+                            <td><?= $mhs_melanggar['kelas_mahasiswa']; ?></td>
+                            <td><?= $mhs_melanggar['status_sanksi']; ?></td>
+                            <td><?= $mhs_melanggar['tingkat_sanksi']; ?></td>
+                            <td>
+                                <a href="<?= BASEURL; ?>/AdminControllers/mahasiswaMelanggar/detail/<?= $mhs_melanggar['nim_mahasiswa']; ?>" class="badge bg-primary float-right tampilModalDetailMahasiswaMelanggar" data-bs-toggle="modal" data-bs-target="#detailModalMahasiswaMelanggar" data-nim_mahasiswa="<?= $mhs_melanggar['nim_mahasiswa']; ?>">Detail</a>
+                                <a href="<?= BASEURL; ?>/AdminControllers/mahasiswaMelanggar/ubah/<?= $mhs_melanggar['nim_mahasiswa']; ?>" class="badge bg-success float-right tampilModalUbahMahasiswa" data-bs-toggle="modal" data-bs-target="#formModalMahasiswaMelanggar" data-nim_mahasiswa="<?= $mhs_melanggar['nim_mahasiswa']; ?>">ubah</a>
+                            </td>
+                        </tr>
+                <?php endforeach;
+                endif; ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 </div>

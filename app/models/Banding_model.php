@@ -11,6 +11,14 @@ class Banding_model
         $this->db = new Database;
     }
 
+    public function getCount()
+    {
+        $this->db->query('SELECT COUNT(*) as total FROM banding where nim_mahasiswa = :nim_mahasiswa');
+        $this->db->bind('nim_mahasiswa', $_SESSION['username']);
+        $result = $this->db->single();
+        return $result['total'];
+    }
+
     // Fungsi untuk mendapatkan semua data laporan banding
     public function getAllBanding()
     {
@@ -98,11 +106,19 @@ class Banding_model
         return $this->db->single();
     }
 
-    public function setujuBanding($id_banding)
+    public function setujuBandingTableBanding($id_banding)
     {
         $this->db->query('UPDATE banding SET id_statusSanksi = :id_statusSanksi WHERE id_banding = :id_banding');
         $this->db->bind('id_statusSanksi', '2');
         $this->db->bind('id_banding', $id_banding);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+    public function setujuBandingTableLaporan($id_laporan)
+    {
+        $this->db->query('UPDATE laporan SET id_statusSanksi = :id_statusSanksi WHERE id_laporan = :id_laporan');
+        $this->db->bind('id_statusSanksi', '4');
+        $this->db->bind('id_laporan', $id_laporan);
         $this->db->execute();
         return $this->db->rowCount();
     }

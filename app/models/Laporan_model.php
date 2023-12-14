@@ -11,6 +11,14 @@ class Laporan_model
         $this->db = new Database;
     }
 
+    public function getCount()
+    {
+        $this->db->query('SELECT COUNT(*) as total FROM laporan WHERE nim_mahasiswa = :nim_mahasiswa');
+        $this->db->bind('nim_mahasiswa', $_SESSION['username']);
+        $result = $this->db->single();
+        return $result['total'];
+    }
+
     // Function to get all Laporan data
     public function getAllLaporanInAdminRole()
     {

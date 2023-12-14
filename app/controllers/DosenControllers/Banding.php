@@ -44,10 +44,13 @@ class Banding extends Controller
 
     public function setujuBanding($id_banding)
     {
-        if ($this->model('Banding_model')->setujuBanding($id_banding) > 0) {
-            $this->showSweetAlert('success', 'Berhasil', 'Banding berhasil Di Setujui');
-            header('Location: ' . BASEURL . '/DosenControllers/banding');
-            exit;
+        $getIdLaporan = $this->model('Banding_model')->getBandingById($id_banding);
+        if ($this->model('Banding_model')->setujuBandingTableBanding($id_banding) > 0) {
+            if ($this->model('Banding_model')->setujuBandingTableLaporan($getIdLaporan['id_laporan']) > 0) {
+                $this->showSweetAlert('success', 'Berhasil', 'Banding berhasil Di Setujui');
+                header('Location: ' . BASEURL . '/DosenControllers/banding');
+                exit;
+            }
         } else {
             $this->showSweetAlert('error', 'Ooops', 'Banding Gagal Disetujui');
             header('Location: ' . BASEURL . '/DosenControllers/banding');

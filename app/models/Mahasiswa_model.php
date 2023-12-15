@@ -29,24 +29,34 @@ class Mahasiswa_model
     // Fungsi untuk menambahkan data mahasiswa
     public function tambahDataMahasiswa($data, $id_user)
     {
-        // Query SQL untuk menambahkan data mahasiswa
-        $query = "INSERT INTO mahasiswa (nim_mahasiswa, id_user, nama_mahasiswa, kelas_mahasiswa, prodi_mahasiswa, email_mahasiswa)
+        try {
+            // Query SQL untuk menambahkan data mahasiswa
+            $query = "INSERT INTO mahasiswa (nim_mahasiswa, id_user, nama_mahasiswa, kelas_mahasiswa, prodi_mahasiswa, email_mahasiswa)
                     VALUES
                   (:nim_mahasiswa, :id_user, :nama_mahasiswa, :kelas_mahasiswa, :prodi_mahasiswa, :email_mahasiswa)";
 
-        // Eksekusi query
-        $this->db->query($query);
-        $this->db->bind('nim_mahasiswa', $data['nim_mahasiswa']);
-        $this->db->bind('id_user', $id_user['userMahasiswaId']['id_user']);
-        $this->db->bind('nama_mahasiswa', $data['nama_mahasiswa']);
-        $this->db->bind('kelas_mahasiswa', $data['kelas_mahasiswa']);
-        $this->db->bind('prodi_mahasiswa', $data['prodi_mahasiswa']);
-        $this->db->bind('email_mahasiswa', $data['email_mahasiswa']);
-        $this->db->execute();
+            // Eksekusi query
+            $this->db->query($query);
+            $this->db->bind('nim_mahasiswa', $data['nim_mahasiswa']);
+            $this->db->bind('id_user', $id_user['userMahasiswaId']['id_user']);
+            $this->db->bind('nama_mahasiswa', $data['nama_mahasiswa']);
+            $this->db->bind('kelas_mahasiswa', $data['kelas_mahasiswa']);
+            $this->db->bind('prodi_mahasiswa', $data['prodi_mahasiswa']);
+            $this->db->bind('email_mahasiswa', $data['email_mahasiswa']);
+            $this->db->execute();
 
-        // Mengembalikan jumlah baris yang terpengaruh oleh operasi query
-        return $this->db->rowCount();
+            // Mengembalikan jumlah baris yang terpengaruh oleh operasi query
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            // Duplicate entry handling
+            if ($e->getCode() == '23000') {
+                return -1; // Indicates a duplicate entry
+            } else {
+                throw $e; // Re-throw other exceptions
+            }
+        }
     }
+
 
     public function getUserMahasiswaByNim($data)
     {

@@ -29,50 +29,19 @@
         </thead>
         <tbody>
           <?php $no = 1;
-          if (empty($data['dsn'])) : ?>
+          foreach ($data['dsn'] as $dsn) : ?>
             <tr>
-              <td colspan="7">
-                <div class="alert alert-danger" role="alert">
-                  Tidak ada data terkait.
-                </div>
+              <th scope="row"><?= $no++; ?></th>
+              <td><?= $dsn['nip_dosen']; ?></td>
+              <td><?= $dsn['nama_dosen']; ?></td>
+              <td><?= $dsn['email_dosen']; ?></td>
+              <td>
+                <a href="<?= BASEURL; ?>/AdminControllers/dosen/detail/<?= $dsn['nip_dosen']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">Detail</a>
+                <a href="<?= BASEURL; ?>/AdminControllers/dosen/ubah/<?= $dsn['nip_dosen']; ?>" class="badge bg-success float-right tampilModalUbahDosen" data-bs-toggle="modal" data-bs-target="#formModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">ubah</a>
+                <a href="<?= BASEURL; ?>/AdminControllers/dosen/hapus/<?= $dsn['nip_dosen']; ?>" class="badge bg-danger float-right" onclick="return confirmAction('<?= BASEURL; ?>/AdminControllers/dosen/hapus/<?= $dsn['nip_dosen']; ?>')">hapus</a>
               </td>
             </tr>
-            <?php else :
-            foreach ($data['dsn'] as $dsn) : ?>
-              <tr>
-                <th scope="row"><?= $no++; ?></th>
-                <td><?= $dsn['nip_dosen']; ?></td>
-                <td><?= $dsn['nama_dosen']; ?></td>
-                <td><?= $dsn['email_dosen']; ?></td>
-                <td>
-                  <a href="<?= BASEURL; ?>/AdminControllers/dosen/detail/<?= $dsn['nip_dosen']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">Detail</a>
-                  <a href="<?= BASEURL; ?>/AdminControllers/dosen/ubah/<?= $dsn['nip_dosen']; ?>" class="badge bg-success float-right tampilModalUbahDosen" data-bs-toggle="modal" data-bs-target="#formModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">ubah</a>
-                  <a href="<?= BASEURL; ?>/AdminControllers/dosen/hapus/<?= $dsn['nip_dosen']; ?>" class="badge bg-danger float-right" onclick="return confirmAction()">hapus</a>
-                  <script>
-                    function confirmAction() {
-                      Swal.fire({
-                        title: "Apakah Kamu Yakin?",
-                        text: "Kamu Tidak Bisa Mengembalikan Data Ini!",
-                        icon: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#3085d6",
-                        cancelButtonColor: "#d33",
-                        confirmButtonText: "Yes, delete it!"
-                      }).then((result) => {
-                        if (result.isConfirmed) {
-                          // Redirect to the delete URL if the user confirms
-                          window.location.href = "<?= BASEURL; ?>/AdminControllers/dosen/hapus/<?= $dsn['nip_dosen']; ?>";
-                        }
-                      });
-
-                      // Prevent the default behavior of the anchor tag
-                      return false;
-                    }
-                  </script>
-                </td>
-              </tr>
-          <?php endforeach;
-          endif; ?>
+          <?php endforeach; ?>
         </tbody>
       </table>
     </div>
@@ -110,24 +79,6 @@
             <td><span id="detailUsername"></span></td>
           </tr>
         </table>
-
-
-        <!-- <div class="form-group">
-          <p><strong>NIP:</strong> <span id="detailNip"></span></p>
-        </div>
-
-        <div class="form-group">
-          <p><strong>Nama:</strong> <span id="detailNama"></span></p>
-        </div>
-
-        <div class="form-group">
-          <p><strong>Email:</strong> <span id="detailEmail"></span></p>
-        </div>
-
-        <div class="form-group">
-          <p><strong>Username:</strong> <span id="detailUsername"></span></p>
-        </div> -->
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

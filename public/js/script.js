@@ -239,6 +239,7 @@ $(function () {
       method: "post",
       dataType: "json",
       success: function (data) {
+        console.log("Respons Server:", data);
         $("#nip_dpa").val(data.nip_dpa);
         $("#nama_dpa").val(data.nama_dpa);
         $("#kelas_dpa").val(data.kelas_dpa);

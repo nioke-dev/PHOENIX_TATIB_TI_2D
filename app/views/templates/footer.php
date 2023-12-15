@@ -43,6 +43,28 @@
         });
     });
 </script>
+
+<script>
+    function confirmAction(id) {
+        Swal.fire({
+            title: "Apakah Kamu Yakin?",
+            text: "Kamu Tidak Bisa Mengembalikan Data Ini!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirect to the delete URL if the user confirms
+                window.location.href = id;
+            }
+        });
+
+        // Prevent the default behavior of the anchor tag
+        return false;
+    }
+</script>
 </body>
 
 </html>

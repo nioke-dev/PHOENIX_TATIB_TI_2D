@@ -115,7 +115,7 @@ class Dpa extends Controller
 
         // SweetAlert jika tidak ada perubahan di kedua entitas
         if (!$userChanged && !$dpaChanged) {
-            $this->showSweetAlert('Info', 'Tidak ada perubahan pada data User dan DPA', 'Info');
+            $this->showSweetAlert('info', 'Tidak ada perubahan pada data User dan DPA', 'Info');
             header('Location: ' . BASEURL . '/AdminControllers/dpa');
             exit;
         } else {

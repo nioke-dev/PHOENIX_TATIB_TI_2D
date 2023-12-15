@@ -1,62 +1,61 @@
-<div class="container mt-3">
-
-  <div class="row">
-    <div class="col-lg-6">
-      <?php Flasher::flash(); ?>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <div class="col-lg-6">
+<div class="card shadow mb-4">
+  <!-- Card Header - Dropdown -->
+  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <h4 class="m-0 font-weight-bold text-dark">Daftar Admin</h4>
+    <div class="row">
       <button type="button" class="btn btn-primary tombolTambahDataAdmin" data-bs-toggle="modal" data-bs-target="#formModalAdmin">
         Tambah Data Admin
       </button>
     </div>
   </div>
-
-  <div class="row">
-    <h3>Daftar Admin</h3>
-    <div class="table-responsive">
-      <table id="example" class="table table-striped table-auto" style="width:100%">
-        <thead>
-          <tr>
-            <th scope="col">No</th>
-            <th scope="col">NIP</th>
-            <th scope="col">Nama</th>
-            <th scope="col">Email</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php $no = 1;
-          if (empty($data['adm'])) : ?>
+  <!-- Card Body -->
+  <div class="card-body">
+    <div class="row">
+      <div class="table-responsive">
+        <table id="example" class="table table-striped table-auto" style="width:100%">
+          <thead>
             <tr>
-              <td colspan="7">
-                <div class="alert alert-danger" role="alert">
-                  Tidak ada data terkait.
-                </div>
-              </td>
+              <th scope="col">No</th>
+              <th scope="col">NIP</th>
+              <th scope="col">Nama</th>
+              <th scope="col">Email</th>
+              <th scope="col">Action</th>
             </tr>
-            <?php else :
-            foreach ($data['adm'] as $adm) : ?>
+          </thead>
+          <tbody>
+            <?php $no = 1;
+            if (empty($data['adm'])) : ?>
               <tr>
-                <th scope="row"><?= $no++; ?></th>
-                <td><?= $adm['nip_admin']; ?></td>
-                <td><?= $adm['nama_admin']; ?></td>
-                <td><?= $adm['email_admin']; ?></td>
-                <td>
-                  <a href="<?= BASEURL; ?>/AdminControllers/admin/detail/<?= $adm['nip_admin']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">Detail</a>
-                  <a href="<?= BASEURL; ?>/AdminControllers/admin/ubah/<?= $adm['nip_admin']; ?>" class="badge bg-success float-right tampilModalUbahAdmin" data-bs-toggle="modal" data-bs-target="#formModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">Ubah</a>
-                  <a href="<?= BASEURL; ?>/AdminControllers/admin/hapus/<?= $adm['nip_admin']; ?>" class="badge bg-danger float-right" onclick="return confirmAction('<?= BASEURL; ?>/AdminControllers/admin/hapus/<?= $adm['nip_admin']; ?>')">Hapus</a>
+                <td colspan="7">
+                  <div class="alert alert-danger" role="alert">
+                    Tidak ada data terkait.
+                  </div>
                 </td>
               </tr>
-          <?php endforeach;
-          endif; ?>
-        </tbody>
-      </table>
+              <?php else :
+              foreach ($data['adm'] as $adm) : ?>
+                <tr>
+                  <th scope="row"><?= $no++; ?></th>
+                  <td><?= $adm['nip_admin']; ?></td>
+                  <td><?= $adm['nama_admin']; ?></td>
+                  <td><?= $adm['email_admin']; ?></td>
+                  <td>
+                    <a href="<?= BASEURL; ?>/AdminControllers/admin/detail/<?= $adm['nip_admin']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">Detail</a>
+                    <a href="<?= BASEURL; ?>/AdminControllers/admin/ubah/<?= $adm['nip_admin']; ?>" class="badge bg-success float-right tampilModalUbahAdmin" data-bs-toggle="modal" data-bs-target="#formModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">Ubah</a>
+                    <a href="<?= BASEURL; ?>/AdminControllers/admin/hapus/<?= $adm['nip_admin']; ?>" class="badge bg-danger float-right" onclick="return confirmAction('<?= BASEURL; ?>/AdminControllers/admin/hapus/<?= $adm['nip_admin']; ?>')">Hapus</a>
+                  </td>
+                </tr>
+            <?php endforeach;
+            endif; ?>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
+
+
+
 
 <!-- Modal Detail -->
 <div class="modal fade" id="detailModalAdmin" tabindex="-1" aria-labelledby="detailModalAdminLabel" aria-hidden="true">

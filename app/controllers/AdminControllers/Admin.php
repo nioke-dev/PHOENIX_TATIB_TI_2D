@@ -117,17 +117,4 @@ class Admin extends Controller
             exit;
         }
     }
-
-    public function cari()
-    {
-        $data['judul'] = 'Daftar Admin';
-        $data['adm'] = $this->model('Admin_model')->cariDataAdmin();
-        $data['nama'] = $this->model('User_model')->getUser();
-
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('templates/headerNav', $data);
-        $this->view('adminRole/admin/index', $data);
-        $this->view('templates/footer', $data);
-    }
 }

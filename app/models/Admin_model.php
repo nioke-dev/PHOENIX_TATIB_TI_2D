@@ -39,12 +39,7 @@ class Admin_model
 
             return $this->db->rowCount();
         } catch (\PDOException $e) {
-            // Duplicate entry handling
-            if ($e->getCode() == '23000') {
-                return -1; // Indicates a duplicate entry
-            } else {
-                throw $e; // Re-throw other exceptions
-            }
+            return -1;
         }
     }
 
@@ -57,18 +52,22 @@ class Admin_model
 
     public function tambahUserAdmin($data)
     {
-        $query = "INSERT INTO user (username, password, user_type)
-                    VALUES
-                  (:username, :password, :user_type)";
+        try {
+            $query = "INSERT INTO user (username, password, user_type)
+                        VALUES
+                      (:username, :password, :user_type)";
 
-        $this->db->query($query);
-        $this->db->bind('username', $data['nip_admin']);
-        $this->db->bind('password', md5('rahasia'));
-        $this->db->bind('user_type', 'admin');
+            $this->db->query($query);
+            $this->db->bind('username', $data['nip_admin']);
+            $this->db->bind('password', md5('rahasia'));
+            $this->db->bind('user_type', 'admin');
 
-        $this->db->execute();
+            $this->db->execute();
 
-        return $this->db->rowCount();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
     public function hapusDataAdmin($id)
@@ -86,43 +85,41 @@ class Admin_model
 
     public function ubahDataAdmin($data)
     {
-        $query = "UPDATE admin SET
-                    nama_admin = :nama_admin,
-                    email_admin = :email_admin
-                  WHERE nip_admin = :nip_admin";
+        try {
+            $query = "UPDATE admin SET
+                        nama_admin = :nama_admin,
+                        email_admin = :email_admin
+                      WHERE nip_admin = :nip_admin";
 
-        $this->db->query($query);
-        $this->db->bind('nama_admin', $data['nama_admin']);
-        $this->db->bind('email_admin', $data['email_admin']);
-        $this->db->bind('nip_admin', $data['nip_admin']);
+            $this->db->query($query);
+            $this->db->bind('nama_admin', $data['nama_admin']);
+            $this->db->bind('email_admin', $data['email_admin']);
+            $this->db->bind('nip_admin', $data['nip_admin']);
 
-        $this->db->execute();
+            $this->db->execute();
 
-        return $this->db->rowCount();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
     public function ubahDataUser($data)
     {
-        $query = "UPDATE user SET
-                    username = :username                    
-                  WHERE id_user = :id_user";
+        try {
+            $query = "UPDATE user SET
+                        username = :username                    
+                      WHERE id_user = :id_user";
 
-        $this->db->query($query);
-        $this->db->bind('username', $data['nip_admin']);
-        $this->db->bind('id_user', $data['id_user']);
+            $this->db->query($query);
+            $this->db->bind('username', $data['nip_admin']);
+            $this->db->bind('id_user', $data['id_user']);
 
-        $this->db->execute();
+            $this->db->execute();
 
-        return $this->db->rowCount();
-    }
-
-
-    public function cariDataAdmin()
-    {
-        $keyword = $_POST['keyword'];
-        $query = "SELECT * FROM admin WHERE nama_admin LIKE :keyword OR nip_admin LIKE :keyword";
-        $this->db->query($query);
-        $this->db->bind('keyword', "%$keyword%");
-        return $this->db->resultSet();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 }

@@ -72,22 +72,31 @@ class Dpa_model
     // Fungsi untuk menambahkan data dpa
     public function tambahDataDpa($data, $id_user, $dataDosen)
     {
-        // Query SQL untuk menambahkan data dpa
-        $query = "INSERT INTO dpa (nip_dpa, id_user, nama_dpa, kelas_dpa, email_dpa)
-                    VALUES
-                  (:nip_dpa, :id_user, :nama_dpa, :kelas_dpa, :email_dpa)";
+        try {
+            // Query SQL untuk menambahkan data dpa
+            $query = "INSERT INTO dpa (nip_dpa, id_user, nama_dpa, kelas_dpa, email_dpa)
+                        VALUES
+                      (:nip_dpa, :id_user, :nama_dpa, :kelas_dpa, :email_dpa)";
 
-        // Eksekusi query
-        $this->db->query($query);
-        $this->db->bind('nip_dpa', $data['nip_dpa']);
-        $this->db->bind('id_user', $id_user['userDpaId']['id_user']);
-        $this->db->bind('nama_dpa', $dataDosen['dataDosen']['nama_dosen']);
-        $this->db->bind('kelas_dpa', $data['kelas_dpa']);
-        $this->db->bind('email_dpa', $dataDosen['dataDosen']['email_dosen']);
-        $this->db->execute();
+            // Eksekusi query
+            $this->db->query($query);
+            $this->db->bind('nip_dpa', $data['nip_dpa']);
+            $this->db->bind('id_user', $id_user['userDpaId']['id_user']);
+            $this->db->bind('nama_dpa', $dataDosen['dataDosen']['nama_dosen']);
+            $this->db->bind('kelas_dpa', $data['kelas_dpa']);
+            $this->db->bind('email_dpa', $dataDosen['dataDosen']['email_dosen']);
+            $this->db->execute();
 
-        // Mengembalikan jumlah baris yang terpengaruh oleh operasi query
-        return $this->db->rowCount();
+            // Mengembalikan jumlah baris yang terpengaruh oleh operasi query
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            // Duplicate entry handling
+            if ($e->getCode() == '23000') {
+                return -1; // Indicates a duplicate entry
+            } else {
+                throw $e; // Re-throw other exceptions
+            }
+        }
     }
 
     public function getUserDpaByNip($data)

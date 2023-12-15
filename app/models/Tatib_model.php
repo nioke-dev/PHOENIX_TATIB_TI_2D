@@ -23,17 +23,22 @@ class Tatib_model
 
     public function tambahDataTatib($data)
     {
-        $query = "INSERT INTO tatib (deskripsi, id_tingkatSanksi)
-                    VALUES
-                  (:deskripsi, :id_tingkatSanksi)";
 
-        $this->db->query($query);
-        $this->db->bind('deskripsi', $data['deskripsi']);
-        $this->db->bind('id_tingkatSanksi', $data['id_tingkatSanksi']);
+        try {
+            $query = "INSERT INTO tatib (deskripsi, id_tingkatSanksi)
+                        VALUES
+                      (:deskripsi, :id_tingkatSanksi)";
 
-        $this->db->execute();
+            $this->db->query($query);
+            $this->db->bind('deskripsi', $data['deskripsi']);
+            $this->db->bind('id_tingkatSanksi', $data['id_tingkatSanksi']);
 
-        return $this->db->rowCount();
+            $this->db->execute();
+
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
     public function getTatibById($data)
@@ -51,19 +56,23 @@ class Tatib_model
 
     public function ubahDataTatib($data)
     {
-        $query = "UPDATE tatib SET
-                    deskripsi = :deskripsi,
-                    id_tingkatSanksi = :id_tingkatSanksi       
-                  WHERE id_tatib = :id_tatib";
+        try {
+            $query = "UPDATE tatib SET
+                        deskripsi = :deskripsi,
+                        id_tingkatSanksi = :id_tingkatSanksi       
+                      WHERE id_tatib = :id_tatib";
 
-        $this->db->query($query);
-        $this->db->bind('deskripsi', $data['deskripsi']);
-        $this->db->bind('id_tingkatSanksi', $data['id_tingkatSanksi']);
-        $this->db->bind('id_tatib', $data['id_tatib']);
+            $this->db->query($query);
+            $this->db->bind('deskripsi', $data['deskripsi']);
+            $this->db->bind('id_tingkatSanksi', $data['id_tingkatSanksi']);
+            $this->db->bind('id_tatib', $data['id_tatib']);
 
-        $this->db->execute();
+            $this->db->execute();
 
-        return $this->db->rowCount();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
     // public function cariDataTatib()
@@ -91,13 +100,17 @@ class Tatib_model
 
     public function hapusDataTatib($id)
     {
-        $query = "DELETE FROM tatib WHERE id_tatib = :id";
+        try {
+            $query = "DELETE FROM tatib WHERE id_tatib = :id";
 
-        $this->db->query($query);
-        $this->db->bind('id', $id);
+            $this->db->query($query);
+            $this->db->bind('id', $id);
 
-        $this->db->execute();
+            $this->db->execute();
 
-        return $this->db->rowCount();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 }

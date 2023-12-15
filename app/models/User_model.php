@@ -36,16 +36,20 @@ class User_model
 
     public function changePassword($data)
     {
-        $query = "UPDATE user SET
-                    password = :password                 
-                  WHERE username = :username";
+        try {
+            $query = "UPDATE user SET
+                        password = :password                 
+                      WHERE username = :username";
 
-        $this->db->query($query);
-        $this->db->bind('password', md5($data['password']));
-        $this->db->bind('username', $_SESSION['username']);
+            $this->db->query($query);
+            $this->db->bind('password', md5($data['password']));
+            $this->db->bind('username', $_SESSION['username']);
 
-        $this->db->execute();
+            $this->db->execute();
 
-        return $this->db->rowCount();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 }

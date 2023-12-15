@@ -63,82 +63,85 @@ class MahasiswaMelanggar_model
 
     public function tambahUserMahasiswa($data)
     {
-        $query = "INSERT INTO user (username, password, user_type)
-                    VALUES
-                  (:username, :password, :user_type)";
 
-        $this->db->query($query);
-        $this->db->bind('username', $data['nim_mahasiswa']);
-        $this->db->bind('password', md5('rahasia'));
-        $this->db->bind('user_type', 'mahasiswa');
+        try {
+            $query = "INSERT INTO user (username, password, user_type)
+                        VALUES
+                      (:username, :password, :user_type)";
 
-        $this->db->execute();
+            $this->db->query($query);
+            $this->db->bind('username', $data['nim_mahasiswa']);
+            $this->db->bind('password', md5('rahasia'));
+            $this->db->bind('user_type', 'mahasiswa');
 
-        return $this->db->rowCount();
+            $this->db->execute();
+
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
     // Fungsi untuk menghapus data mahasiswa berdasarkan NIM
     public function hapusDataMahasiswa($nim_mahasiswa)
     {
-        // Query SQL untuk menghapus data mahasiswa
-        $query = "DELETE FROM mahasiswa WHERE nim_mahasiswa = :nim_mahasiswa";
 
-        // Eksekusi query
-        $this->db->query($query);
-        $this->db->bind('nim_mahasiswa', $nim_mahasiswa);
-        $this->db->execute();
+        try {
+            // Query SQL untuk menghapus data mahasiswa
+            $query = "DELETE FROM mahasiswa WHERE nim_mahasiswa = :nim_mahasiswa";
 
-        // Mengembalikan jumlah baris yang terpengaruh oleh operasi query
-        return $this->db->rowCount();
+            // Eksekusi query
+            $this->db->query($query);
+            $this->db->bind('nim_mahasiswa', $nim_mahasiswa);
+            $this->db->execute();
+
+            // Mengembalikan jumlah baris yang terpengaruh oleh operasi query
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
     // Fungsi untuk mengubah data mahasiswa
     public function ubahDataMahasiswaMelanggar($data)
     {
-        // Query SQL untuk mengubah data mahasiswa        
-        $query = "UPDATE mahasiswaMelanggar SET
-                    id_tingkatSanksi = :id_tingkatSanksi                  
-                  WHERE nim_mahasiswa = :nim_mahasiswa";
 
-        // Eksekusi query
-        $this->db->query($query);
-        $this->db->bind('id_tingkatSanksi', $data['id_tingkatSanksi']);
-        $this->db->bind('nim_mahasiswa', $data['nim_mahasiswa']);
-        $this->db->execute();
+        try {
+            // Query SQL untuk mengubah data mahasiswa        
+            $query = "UPDATE mahasiswaMelanggar SET
+                        id_tingkatSanksi = :id_tingkatSanksi                  
+                      WHERE nim_mahasiswa = :nim_mahasiswa";
 
-        // Mengembalikan jumlah baris yang terpengaruh oleh operasi query
-        return $this->db->rowCount();
+            // Eksekusi query
+            $this->db->query($query);
+            $this->db->bind('id_tingkatSanksi', $data['id_tingkatSanksi']);
+            $this->db->bind('nim_mahasiswa', $data['nim_mahasiswa']);
+            $this->db->execute();
+
+            // Mengembalikan jumlah baris yang terpengaruh oleh operasi query
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
     public function ubahDataUserMahasiswa($data)
     {
-        $query = "UPDATE user SET
-                    username = :username
-                  WHERE id_user = :id_user";
 
-        $this->db->query($query);
-        $this->db->bind('username', $data['nim_mahasiswa']);
-        $this->db->bind('id_user', $data['id_user']);
+        try {
+            $query = "UPDATE user SET
+                        username = :username
+                      WHERE id_user = :id_user";
 
-        $this->db->execute();
+            $this->db->query($query);
+            $this->db->bind('username', $data['nim_mahasiswa']);
+            $this->db->bind('id_user', $data['id_user']);
 
-        return $this->db->rowCount();
-    }
+            $this->db->execute();
 
-    // Fungsi untuk mencari data mahasiswa berdasarkan keyword
-    public function cariDataMahasiswa()
-    {
-        // Mendapatkan keyword dari form pencarian
-        $keyword = $_POST['keyword'];
-
-        // Query SQL untuk mencari data mahasiswa berdasarkan nama atau NIM
-        $query = "SELECT * FROM mahasiswa WHERE nama_mahasiswa LIKE :keyword OR nim_mahasiswa LIKE :keyword";
-
-        // Eksekusi query
-        $this->db->query($query);
-        $this->db->bind('keyword', "%$keyword%");
-
-        // Mengembalikan hasil query dalam bentuk array
-        return $this->db->resultSet();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 }

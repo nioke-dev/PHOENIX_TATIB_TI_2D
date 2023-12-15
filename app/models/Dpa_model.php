@@ -42,31 +42,39 @@ class Dpa_model
 
     public function ubahuserTypeUserDpa($data)
     {
-        $query = "UPDATE user SET
-                    user_type = :user_type                  
-                  WHERE id_user = :id_user";
+        try {
+            $query = "UPDATE user SET
+                        user_type = :user_type                  
+                      WHERE id_user = :id_user";
 
-        $this->db->query($query);
-        $this->db->bind('user_type', 'dpa');
-        $this->db->bind('id_user', $data['userDpaId']['id_user']);
+            $this->db->query($query);
+            $this->db->bind('user_type', 'dpa');
+            $this->db->bind('id_user', $data['userDpaId']['id_user']);
 
-        $this->db->execute();
+            $this->db->execute();
 
-        return $this->db->rowCount();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
     public function ubahuserTypeUserDpaForDelete($data)
     {
-        $query = "UPDATE user SET
-                    user_type = :user_type                  
-                  WHERE id_user = :id_user";
+        try {
+            $query = "UPDATE user SET
+                        user_type = :user_type                  
+                      WHERE id_user = :id_user";
 
-        $this->db->query($query);
-        $this->db->bind('user_type', 'dosen');
-        $this->db->bind('id_user', $data['userDpaId']['id_user']);
+            $this->db->query($query);
+            $this->db->bind('user_type', 'dosen');
+            $this->db->bind('id_user', $data['userDpaId']['id_user']);
 
-        $this->db->execute();
+            $this->db->execute();
 
-        return $this->db->rowCount();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
     // Fungsi untuk menambahkan data dpa
@@ -114,86 +122,85 @@ class Dpa_model
 
     public function tambahUserDpa($data)
     {
-        $query = "INSERT INTO user (username, password, user_type)
-                    VALUES
-                  (:username, :password, :user_type)";
+        try {
+            $query = "INSERT INTO user (username, password, user_type)
+                        VALUES
+                      (:username, :password, :user_type)";
 
-        $this->db->query($query);
+            $this->db->query($query);
 
-        $this->db->bind('username', $data['nip_dpa']);
-        $this->db->bind('password', md5('rahasia'));
-        $this->db->bind('user_type', 'dpa');
+            $this->db->bind('username', $data['nip_dpa']);
+            $this->db->bind('password', md5('rahasia'));
+            $this->db->bind('user_type', 'dpa');
 
-        $this->db->execute();
+            $this->db->execute();
 
-        return $this->db->rowCount();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
     // Fungsi untuk menghapus data dpa berdasarkan NIP
     public function hapusDataDpa($nip_dpa)
     {
-        // Query SQL untuk menghapus data dpa
-        $query = "DELETE FROM dpa WHERE nip_dpa = :nip_dpa";
+        try {
+            // Query SQL untuk menghapus data dpa
+            $query = "DELETE FROM dpa WHERE nip_dpa = :nip_dpa";
 
-        // Eksekusi query
-        $this->db->query($query);
-        $this->db->bind('nip_dpa', $nip_dpa);
-        $this->db->execute();
+            // Eksekusi query
+            $this->db->query($query);
+            $this->db->bind('nip_dpa', $nip_dpa);
+            $this->db->execute();
 
-        // Mengembalikan jumlah baris yang terpengaruh oleh operasi query
-        return $this->db->rowCount();
+            // Mengembalikan jumlah baris yang terpengaruh oleh operasi query
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
     // Fungsi untuk mengubah data dpa
     public function ubahDataDpa($data)
     {
-        // Query SQL untuk mengubah data dpa     
-        $query = "UPDATE dpa SET
-                    nama_dpa = :nama_dpa,
-                    kelas_dpa = :kelas_dpa,
-                    email_dpa = :email_dpa
-                  WHERE nip_dpa = :nip_dpa";
+        try {
+            // Query SQL untuk mengubah data dpa     
+            $query = "UPDATE dpa SET
+                        nama_dpa = :nama_dpa,
+                        kelas_dpa = :kelas_dpa,
+                        email_dpa = :email_dpa
+                      WHERE nip_dpa = :nip_dpa";
 
-        // Eksekusi query
-        $this->db->query($query);
-        $this->db->bind('nama_dpa', $data['nama_dpa']);
-        $this->db->bind('kelas_dpa', $data['kelas_dpa']);
-        $this->db->bind('email_dpa', $data['email_dpa']);
-        $this->db->bind('nip_dpa', $data['nip_dpa']);
-        $this->db->execute();
+            // Eksekusi query
+            $this->db->query($query);
+            $this->db->bind('nama_dpa', $data['nama_dpa']);
+            $this->db->bind('kelas_dpa', $data['kelas_dpa']);
+            $this->db->bind('email_dpa', $data['email_dpa']);
+            $this->db->bind('nip_dpa', $data['nip_dpa']);
+            $this->db->execute();
 
-        // Mengembalikan jumlah baris yang terpengaruh oleh operasi query
-        return $this->db->rowCount();
+            // Mengembalikan jumlah baris yang terpengaruh oleh operasi query
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
     public function ubahDataUserDpa($data)
     {
-        $query = "UPDATE user SET
-                    username = :username                  
-                  WHERE id_user = :id_user";
+        try {
+            $query = "UPDATE user SET
+                        username = :username                  
+                      WHERE id_user = :id_user";
 
-        $this->db->query($query);
-        $this->db->bind('username', $data['nip_dpa']);
-        $this->db->bind('id_user', $data['id_user']);
+            $this->db->query($query);
+            $this->db->bind('username', $data['nip_dpa']);
+            $this->db->bind('id_user', $data['id_user']);
 
-        $this->db->execute();
+            $this->db->execute();
 
-        return $this->db->rowCount();
-    }
-
-    // Fungsi untuk mencari data dpa berdasarkan keyword
-    public function cariDataDpa()
-    {
-        // Mendapatkan keyword dari form pencarian
-        $keyword = $_POST['keyword'];
-
-        // Query SQL untuk mencari data dpa berdasarkan nama atau NIP
-        $query = "SELECT * FROM dpa WHERE nama_dpa LIKE :keyword OR nip_dpa LIKE :keyword OR kelas_dpa LIKE :keyword OR email_dpa LIKE :keyword";
-
-        // Eksekusi query
-        $this->db->query($query);
-        $this->db->bind('keyword', "%$keyword%");
-
-        // Mengembalikan hasil query dalam bentuk array
-        return $this->db->resultSet();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 }

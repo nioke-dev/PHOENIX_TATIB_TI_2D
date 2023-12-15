@@ -75,94 +75,94 @@ class Laporan_model
     // Function to add Laporan data
     public function tambahDataLaporan($data, $filename, $filesize, $filetype)
     {
-        $dateTimeNow = date("Y-m-d");
+        try {
+            $dateTimeNow = date("Y-m-d");
 
-        // SQL query to add Laporan data
-        $query = "INSERT INTO laporan (tgl_laporan, nim_mahasiswa, nip_dosen, deskripsi, id_tingkatSanksi, id_statusSanksi, file_bukti)
-        VALUES
-        (:tgl_laporan, :nim_mahasiswa, :nip_dosen, :deskripsi, :tingkat_sanksi, :status_sanksi, :file_bukti)";
+            // SQL query to add Laporan data
+            $query = "INSERT INTO laporan (tgl_laporan, nim_mahasiswa, nip_dosen, deskripsi, id_tingkatSanksi, id_statusSanksi, file_bukti)
+            VALUES
+            (:tgl_laporan, :nim_mahasiswa, :nip_dosen, :deskripsi, :tingkat_sanksi, :status_sanksi, :file_bukti)";
 
-        // Execute the query
-        $this->db->query($query);
-        $this->db->bind('tgl_laporan', $dateTimeNow);
-        $this->db->bind('nim_mahasiswa', $data['nim_mahasiswa']);
-        $this->db->bind('nip_dosen', $_SESSION['username']);
-        $this->db->bind('deskripsi', $data['deskripsi']);
-        $this->db->bind('tingkat_sanksi', $data['id_tingkatSanksi']);
-        $this->db->bind('status_sanksi', '1');
-        $this->db->bind('file_bukti', $filename);
+            // Execute the query
+            $this->db->query($query);
+            $this->db->bind('tgl_laporan', $dateTimeNow);
+            $this->db->bind('nim_mahasiswa', $data['nim_mahasiswa']);
+            $this->db->bind('nip_dosen', $_SESSION['username']);
+            $this->db->bind('deskripsi', $data['deskripsi']);
+            $this->db->bind('tingkat_sanksi', $data['id_tingkatSanksi']);
+            $this->db->bind('status_sanksi', '1');
+            $this->db->bind('file_bukti', $filename);
 
-        $this->db->execute();
+            $this->db->execute();
 
-        // Return the number of affected rows by the query operation
-        return $this->db->rowCount();
+            // Return the number of affected rows by the query operation
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
     public function uploadSuratSanksi($data, $filename, $filesize, $filetype)
     {
-        $query = "UPDATE laporan SET file_kumpulSanksi = :file_kumpulSanksi, id_statusSanksi = :id_statusSanksi WHERE id_laporan = :id_laporan";
+        try {
+            $query = "UPDATE laporan SET file_kumpulSanksi = :file_kumpulSanksi, id_statusSanksi = :id_statusSanksi WHERE id_laporan = :id_laporan";
 
-        $this->db->query($query);
-        $this->db->bind('file_kumpulSanksi', $filename);
-        $this->db->bind('id_laporan', $data['id_laporanKerjakanSanksi']);
-        $this->db->bind('id_statusSanksi', '5');
-        $this->db->execute();
+            $this->db->query($query);
+            $this->db->bind('file_kumpulSanksi', $filename);
+            $this->db->bind('id_laporan', $data['id_laporanKerjakanSanksi']);
+            $this->db->bind('id_statusSanksi', '5');
+            $this->db->execute();
 
-        // Return the number of affected rows by the query operation
-        return $this->db->rowCount();
+            // Return the number of affected rows by the query operation
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
     // Function to delete Laporan data by ID
     public function hapusDataLaporan($id_laporan)
     {
-        // SQL query to delete Laporan data
-        $query = "DELETE FROM laporan WHERE id_laporan = :id_laporan";
 
-        // Execute the query
-        $this->db->query($query);
-        $this->db->bind('id_laporan', $id_laporan);
-        $this->db->execute();
+        try {
+            // SQL query to delete Laporan data
+            $query = "DELETE FROM laporan WHERE id_laporan = :id_laporan";
 
-        // Return the number of affected rows by the query operation
-        return $this->db->rowCount();
+            // Execute the query
+            $this->db->query($query);
+            $this->db->bind('id_laporan', $id_laporan);
+            $this->db->execute();
+
+            // Return the number of affected rows by the query operation
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
     // Function to update Laporan data
     public function ubahDataLaporan($data)
     {
-        // SQL query to update Laporan data        
-        $query = "UPDATE laporan SET
-                    nim_mahasiswa = :nim_mahasiswa,
-                    tingkat_pelanggaran = :tingkat_pelanggaran,
-                    detail = :detail
-                  WHERE id_laporan = :id_laporan";
+        try {
+            // SQL query to update Laporan data        
+            $query = "UPDATE laporan SET
+                        nim_mahasiswa = :nim_mahasiswa,
+                        tingkat_pelanggaran = :tingkat_pelanggaran,
+                        detail = :detail
+                      WHERE id_laporan = :id_laporan";
 
-        // Execute the query
-        $this->db->query($query);
-        $this->db->bind('nim_mahasiswa', $data['nim_mahasiswa']);
-        $this->db->bind('tingkat_pelanggaran', $data['tingkat_pelanggaran']);
-        $this->db->bind('detail', $data['detail']);
-        $this->db->bind('id_laporan', $data['id_laporan']);
-        $this->db->execute();
+            // Execute the query
+            $this->db->query($query);
+            $this->db->bind('nim_mahasiswa', $data['nim_mahasiswa']);
+            $this->db->bind('tingkat_pelanggaran', $data['tingkat_pelanggaran']);
+            $this->db->bind('detail', $data['detail']);
+            $this->db->bind('id_laporan', $data['id_laporan']);
+            $this->db->execute();
 
-        // Return the number of affected rows by the query operation
-        return $this->db->rowCount();
-    }
-
-    // Function to search Laporan data by keyword
-    public function cariDataLaporan()
-    {
-        // Get the keyword from the search form
-        $keyword = $_POST['keyword'];
-
-        // SQL query to search Laporan data by name or ID
-        $query = "SELECT * FROM laporan WHERE nim_mahasiswa LIKE :keyword OR id_laporan LIKE :keyword";
-
-        // Execute the query
-        $this->db->query($query);
-        $this->db->bind('keyword', "%$keyword%");
-
-        // Return the query results as an array
-        return $this->db->resultSet();
+            // Return the number of affected rows by the query operation
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 }

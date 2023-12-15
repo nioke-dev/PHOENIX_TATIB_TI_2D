@@ -1,49 +1,45 @@
-<div class="container mt-3">
-
-  <div class="row">
-    <div class="col-lg-6">
-      <?php Flasher::flash(); ?>
+<div class="card shadow mb-4">
+  <!-- Card Header - Dropdown -->
+  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <h4 class="m-0 font-weight-bold text-dark">Daftar Dosen</h4>
+    <div class="row" style="margin-right: 1px;">
+        <button type="button" class="btn btn-primary tombolTambahDataDosen" data-bs-toggle="modal" data-bs-target="#formModalDosen">
+          Tambah Data Dosen
+        </button>
     </div>
   </div>
-
-  <div class="row mb-3">
-    <div class="col-lg-6">
-      <button type="button" class="btn btn-primary tombolTambahDataDosen" data-bs-toggle="modal" data-bs-target="#formModalDosen">
-        Tambah Data Dosen
-      </button>
-    </div>
-  </div>
-
-  <div class="row">
-    <h3>Daftar Dosen</h3>
-    <div class="table-responsive">
-      <table id="example" class="table table-striped table-auto" style="width:100%">
-        <thead>
-          <tr>
-            <th scope="col">No</th>
-            <th scope="col">NIP</th>
-            <th scope="col">Nama</th>
-            <th scope="col">Email</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php $no = 1;
-          foreach ($data['dsn'] as $dsn) : ?>
+  <!-- Card Body -->
+  <div class="card-body">
+    <div class="row">
+      <div class="table-responsive">
+        <table id="example" class="table table-striped table-auto" style="width:100%">
+          <thead>
             <tr>
-              <th scope="row"><?= $no++; ?></th>
-              <td><?= $dsn['nip_dosen']; ?></td>
-              <td><?= $dsn['nama_dosen']; ?></td>
-              <td><?= $dsn['email_dosen']; ?></td>
-              <td>
-                <a href="<?= BASEURL; ?>/AdminControllers/dosen/detail/<?= $dsn['nip_dosen']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">Detail</a>
-                <a href="<?= BASEURL; ?>/AdminControllers/dosen/ubah/<?= $dsn['nip_dosen']; ?>" class="badge bg-success float-right tampilModalUbahDosen" data-bs-toggle="modal" data-bs-target="#formModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">ubah</a>
-                <a href="<?= BASEURL; ?>/AdminControllers/dosen/hapus/<?= $dsn['nip_dosen']; ?>" class="badge bg-danger float-right" onclick="return confirmAction('<?= BASEURL; ?>/AdminControllers/dosen/hapus/<?= $dsn['nip_dosen']; ?>')">hapus</a>
-              </td>
+              <th scope="col">No</th>
+              <th scope="col">NIP</th>
+              <th scope="col">Nama</th>
+              <th scope="col">Email</th>
+              <th scope="col">Action</th>
             </tr>
-          <?php endforeach; ?>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <?php $no = 1;
+            foreach ($data['dsn'] as $dsn) : ?>
+              <tr>
+                <th scope="row"><?= $no++; ?></th>
+                <td><?= $dsn['nip_dosen']; ?></td>
+                <td><?= $dsn['nama_dosen']; ?></td>
+                <td><?= $dsn['email_dosen']; ?></td>
+                <td>
+                  <a href="<?= BASEURL; ?>/AdminControllers/dosen/detail/<?= $dsn['nip_dosen']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">Detail</a>
+                  <a href="<?= BASEURL; ?>/AdminControllers/dosen/ubah/<?= $dsn['nip_dosen']; ?>" class="badge bg-success float-right tampilModalUbahDosen" data-bs-toggle="modal" data-bs-target="#formModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">ubah</a>
+                  <a href="<?= BASEURL; ?>/AdminControllers/dosen/hapus/<?= $dsn['nip_dosen']; ?>" class="badge bg-danger float-right" onclick="return confirmAction('<?= BASEURL; ?>/AdminControllers/dosen/hapus/<?= $dsn['nip_dosen']; ?>')">hapus</a>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

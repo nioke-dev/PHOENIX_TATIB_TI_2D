@@ -13,11 +13,15 @@ class Banding_model
 
     public function setLaporanStatusTertunda($data)
     {
-        $this->db->query('UPDATE laporan SET id_statusSanksi = :id_statusSanksi WHERE id_laporan = :id_laporan');
-        $this->db->bind('id_laporan', $data);
-        $this->db->bind('id_statusSanksi', '6');
-        $this->db->execute();
-        return $this->db->rowCount();
+        try {
+            $this->db->query('UPDATE laporan SET id_statusSanksi = :id_statusSanksi WHERE id_laporan = :id_laporan');
+            $this->db->bind('id_laporan', $data);
+            $this->db->bind('id_statusSanksi', '6');
+            $this->db->execute();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
     public function getCount()
@@ -79,33 +83,41 @@ class Banding_model
     // Fungsi untuk menghapus banding
     public function hapusDataBanding($id_banding)
     {
-        $query = "DELETE FROM banding WHERE id_banding = :id_banding";
+        try {
+            $query = "DELETE FROM banding WHERE id_banding = :id_banding";
 
-        $this->db->query($query);
-        $this->db->bind('id_banding', $id_banding);
+            $this->db->query($query);
+            $this->db->bind('id_banding', $id_banding);
 
-        $this->db->execute();
+            $this->db->execute();
 
-        return $this->db->rowCount();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
     // Fungsi untuk mengajukan banding
     public function ajukanBandingMhs($data, $dataLaporan, $filename, $filesize, $filetype)
     {
-        $query = "INSERT INTO banding (nim_mahasiswa, id_laporan, nip_dosen, deskripsi, id_statusSanksi, file_bukti)
-                    VALUES
-                  (:nim_mahasiswa, :id_laporan, :nip_dosen, :deskripsi, :id_statusSanksi, :file_bukti)";
-        $this->db->query($query);
-        $this->db->bind('nim_mahasiswa', $_SESSION['username']);
-        $this->db->bind('id_laporan', $dataLaporan['dataLaporan']['id_laporan']);
-        $this->db->bind('nip_dosen', $dataLaporan['dataLaporan']['nip_dosen']);
-        $this->db->bind('deskripsi', $data['alasan_banding']);
-        $this->db->bind('id_statusSanksi', '1');
-        $this->db->bind('file_bukti', $filename);
+        try {
+            $query = "INSERT INTO banding (nim_mahasiswa, id_laporan, nip_dosen, deskripsi, id_statusSanksi, file_bukti)
+                        VALUES
+                      (:nim_mahasiswa, :id_laporan, :nip_dosen, :deskripsi, :id_statusSanksi, :file_bukti)";
+            $this->db->query($query);
+            $this->db->bind('nim_mahasiswa', $_SESSION['username']);
+            $this->db->bind('id_laporan', $dataLaporan['dataLaporan']['id_laporan']);
+            $this->db->bind('nip_dosen', $dataLaporan['dataLaporan']['nip_dosen']);
+            $this->db->bind('deskripsi', $data['alasan_banding']);
+            $this->db->bind('id_statusSanksi', '1');
+            $this->db->bind('file_bukti', $filename);
 
-        $this->db->execute();
+            $this->db->execute();
 
-        return $this->db->rowCount();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
     public function getBandingById($id_banding)
@@ -117,26 +129,39 @@ class Banding_model
 
     public function setujuBandingTableBanding($id_banding)
     {
-        $this->db->query('UPDATE banding SET id_statusSanksi = :id_statusSanksi WHERE id_banding = :id_banding');
-        $this->db->bind('id_statusSanksi', '2');
-        $this->db->bind('id_banding', $id_banding);
-        $this->db->execute();
-        return $this->db->rowCount();
+
+        try {
+            $this->db->query('UPDATE banding SET id_statusSanksi = :id_statusSanksi WHERE id_banding = :id_banding');
+            $this->db->bind('id_statusSanksi', '2');
+            $this->db->bind('id_banding', $id_banding);
+            $this->db->execute();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
     public function setujuBandingTableLaporan($id_laporan)
     {
-        $this->db->query('UPDATE laporan SET id_statusSanksi = :id_statusSanksi WHERE id_laporan = :id_laporan');
-        $this->db->bind('id_statusSanksi', '4');
-        $this->db->bind('id_laporan', $id_laporan);
-        $this->db->execute();
-        return $this->db->rowCount();
+        try {
+            $this->db->query('UPDATE laporan SET id_statusSanksi = :id_statusSanksi WHERE id_laporan = :id_laporan');
+            $this->db->bind('id_statusSanksi', '4');
+            $this->db->bind('id_laporan', $id_laporan);
+            $this->db->execute();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
     public function tolakBanding($id_banding)
     {
-        $this->db->query('UPDATE banding SET id_statusSanksi = :id_statusSanksi WHERE id_banding = :id_banding');
-        $this->db->bind('id_statusSanksi', '4');
-        $this->db->bind('id_banding', $id_banding);
-        $this->db->execute();
-        return $this->db->rowCount();
+        try {
+            $this->db->query('UPDATE banding SET id_statusSanksi = :id_statusSanksi WHERE id_banding = :id_banding');
+            $this->db->bind('id_statusSanksi', '4');
+            $this->db->bind('id_banding', $id_banding);
+            $this->db->execute();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 }

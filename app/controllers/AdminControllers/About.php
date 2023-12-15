@@ -21,16 +21,4 @@ class About extends Controller
         $this->view('adminRole/about/index', $data);
         $this->view('templates/footer', $data);
     }
-
-    public function page()
-    {
-        $data['judul'] = 'Pages';
-
-
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('templates/headerNav', $data);
-        $this->view('adminRole/about/page', $data);
-        $this->view('templates/footer', $data);
-    }
 }

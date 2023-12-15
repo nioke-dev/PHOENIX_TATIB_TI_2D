@@ -1,48 +1,55 @@
-<!-- Daftar Laporan -->
-<div class="row">
-    <h3>Daftar Laporan</h3>
-    <div class="table-responsive">
-        <table id="example" class="table table-striped table-auto" style="width:100%">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>ID Laporan</th>
-                    <th>Tanggal</th>
-                    <th>NIM Mahasiswa</th>
-                    <th>Nama Mahasiswa</th>
-                    <th>Kelas</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php $no = 1;
-                foreach ($data['laporan'] as $laporan) : ?>
-                    <tr>
-                        <th><?= $no++; ?></th>
-                        <td><?= $laporan['id_laporan']; ?></td>
-                        <td><?= $laporan['tgl_laporan']; ?></td>
-                        <td><?= $laporan['nim_mahasiswa']; ?></td>
-                        <td><?= $laporan['nama_mahasiswa']; ?></td>
-                        <td><?= $laporan['kelas_mahasiswa']; ?></td>
-                        <?php if ($laporan['status_sanksi'] == 'Diterima') : ?>
-                            <td><span class="badge text-bg-success"><?= $laporan['status_sanksi']; ?></span></td>
-                        <?php elseif ($laporan['status_sanksi'] == 'Ditolak') : ?>
-                            <td><span class="badge text-bg-danger"><?= $laporan['status_sanksi']; ?></span></td>
-                        <?php elseif ($laporan['status_sanksi'] == 'Dikerjakan') : ?>
-                            <td><span class="badge text-bg-secondary"><?= $laporan['status_sanksi']; ?></span></td>
-                        <?php elseif ($laporan['status_sanksi'] == 'Selesai') : ?>
-                            <td><span class="badge text-bg-dark"><?= $laporan['status_sanksi']; ?></span></td>
-                        <?php elseif ($laporan['status_sanksi'] == 'Baru') : ?>
-                            <td><span class="badge text-bg-info"><?= $laporan['status_sanksi']; ?></span></td>
-                        <?php endif; ?>
-                        <td>
-                            <a href="<?= BASEURL; ?>/AdminControllers/laporan/detail/<?= $laporan['id_laporan']; ?>" class="badge bg-primary tampilModalDetailLaporan" data-bs-toggle="modal" data-bs-target="#detailModalLaporan" data-id_laporan="<?= $laporan['id_laporan']; ?>">Detail</a>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+<div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h4 class="m-0 font-weight-bold text-dark">Daftar Laporan</h4>
+    </div>
+    <!-- Card Body -->
+    <div class="card-body">
+        <div class="row">
+            <div class="table-responsive">
+                <table id="example" class="table table-striped table-auto" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>ID Laporan</th>
+                            <th>Tanggal</th>
+                            <th>NIM Mahasiswa</th>
+                            <th>Nama Mahasiswa</th>
+                            <th>Kelas</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $no = 1;
+                        foreach ($data['laporan'] as $laporan) : ?>
+                            <tr>
+                                <th><?= $no++; ?></th>
+                                <td><?= $laporan['id_laporan']; ?></td>
+                                <td><?= $laporan['tgl_laporan']; ?></td>
+                                <td><?= $laporan['nim_mahasiswa']; ?></td>
+                                <td><?= $laporan['nama_mahasiswa']; ?></td>
+                                <td><?= $laporan['kelas_mahasiswa']; ?></td>
+                                <?php if ($laporan['status_sanksi'] == 'Baru') : ?>
+                                    <td><span class="badge text-bg-primary"><?= $laporan['status_sanksi']; ?></span></td>
+                                <?php elseif ($laporan['status_sanksi'] == 'Disetujui') : ?>
+                                    <td><span class="badge text-bg-success"><?= $laporan['status_sanksi']; ?></span></td>
+                                <?php elseif ($laporan['status_sanksi'] == 'Selesai') : ?>
+                                    <td><span class="badge text-bg-info"><?= $laporan['status_sanksi']; ?></span></td>
+                                <?php elseif ($laporan['status_sanksi'] == 'Ditolak') : ?>
+                                    <td><span class="badge text-bg-danger"><?= $laporan['status_sanksi']; ?></span></td>
+                                <?php elseif ($laporan['status_sanksi'] == 'Tertund') : ?>
+                                    <td><span class="badge text-bg-warning"><?= $laporan['status_sanksi']; ?></span></td>
+                                <?php endif; ?>
+                                <td>
+                                    <a href="<?= BASEURL; ?>/AdminControllers/laporan/detail/<?= $laporan['id_laporan']; ?>" class="badge bg-primary tampilModalDetailLaporan" data-bs-toggle="modal" data-bs-target="#detailModalLaporan" data-id_laporan="<?= $laporan['id_laporan']; ?>">Detail</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 

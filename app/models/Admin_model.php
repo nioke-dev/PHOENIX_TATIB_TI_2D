@@ -72,14 +72,18 @@ class Admin_model
 
     public function hapusDataAdmin($id)
     {
-        $query = "DELETE FROM admin WHERE nip_admin = :id";
+        try {
+            $query = "DELETE FROM admin WHERE nip_admin = :id";
 
-        $this->db->query($query);
-        $this->db->bind('id', $id);
+            $this->db->query($query);
+            $this->db->bind('id', $id);
 
-        $this->db->execute();
+            $this->db->execute();
 
-        return $this->db->rowCount();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
 

@@ -66,72 +66,78 @@ class Dosen_model
 
     public function tambahUserDosen($data)
     {
-        $query = "INSERT INTO user (username, password, user_type)
-                    VALUES
-                  (:username, :password, :user_type)";
+        try {
+            $query = "INSERT INTO user (username, password, user_type)
+                        VALUES
+                      (:username, :password, :user_type)";
 
-        $this->db->query($query);
-        $this->db->bind('username', $data['nip']);
-        $this->db->bind('password', md5('rahasia'));
-        $this->db->bind('user_type', 'dosen');
+            $this->db->query($query);
+            $this->db->bind('username', $data['nip']);
+            $this->db->bind('password', md5('rahasia'));
+            $this->db->bind('user_type', 'dosen');
 
-        $this->db->execute();
+            $this->db->execute();
 
-        return $this->db->rowCount();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
     public function hapusDataDosen($id)
     {
-        $query = "DELETE FROM dosen WHERE nip_dosen = :id";
+        try {
+            $query = "DELETE FROM dosen WHERE nip_dosen = :id";
 
-        $this->db->query($query);
-        $this->db->bind('id', $id);
+            $this->db->query($query);
+            $this->db->bind('id', $id);
 
-        $this->db->execute();
+            $this->db->execute();
 
-        return $this->db->rowCount();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
 
     public function ubahDataDosen($data)
     {
-        $query = "UPDATE dosen SET
-                    nama_dosen = :nama_dosen,
-                    email_dosen = :email_dosen
-                  WHERE nip_dosen = :nip_dosen";
+        try {
+            $query = "UPDATE dosen SET
+                        nama_dosen = :nama_dosen,
+                        email_dosen = :email_dosen
+                      WHERE nip_dosen = :nip_dosen";
 
-        $this->db->query($query);
-        $this->db->bind('nama_dosen', $data['nama']);
-        $this->db->bind('email_dosen', $data['email']);
-        $this->db->bind('nip_dosen', $data['nip']);
+            $this->db->query($query);
+            $this->db->bind('nama_dosen', $data['nama']);
+            $this->db->bind('email_dosen', $data['email']);
+            $this->db->bind('nip_dosen', $data['nip']);
 
-        $this->db->execute();
+            $this->db->execute();
 
-        return $this->db->rowCount();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 
     public function ubahDataUser($data)
     {
-        $query = "UPDATE user SET
-                    username = :username                    
-                  WHERE id_user = :id_user";
+        try {
+            $query = "UPDATE user SET
+                        username = :username                    
+                      WHERE id_user = :id_user";
 
-        $this->db->query($query);
-        $this->db->bind('username', $data['nip']);
-        $this->db->bind('id_user', $data['id_user']);
+            $this->db->query($query);
+            $this->db->bind('username', $data['nip']);
+            $this->db->bind('id_user', $data['id_user']);
 
-        $this->db->execute();
+            $this->db->execute();
 
-        return $this->db->rowCount();
-    }
-
-
-    public function cariDataDosen()
-    {
-        $keyword = $_POST['keyword'];
-        $query = "SELECT * FROM dosen WHERE nama_dosen LIKE :keyword OR nip_dosen LIKE :keyword";
-        $this->db->query($query);
-        $this->db->bind('keyword', "%$keyword%");
-        return $this->db->resultSet();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
     }
 }

@@ -1,78 +1,49 @@
-<div class="container mt-3">
-
-  <!-- Flash message -->
-  <div class="row">
-    <div class="col-lg-6">
-      <?php Flasher::flash(); ?>
+<div class="card shadow mb-4">
+  <!-- Card Header - Dropdown -->
+  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <h4 class="m-0 font-weight-bold text-dark">Daftar DPA</h4>
+    <div class="row" style="margin-right: 1px;">
+        <button type="button" class="btn btn-primary tombolTambahDataDpa" data-bs-toggle="modal" data-bs-target="#formModalDpa">
+          Tambah Data DPA
+        </button>
     </div>
   </div>
-
-  <!-- Tambah Data DPA -->
-  <div class="row mb-3">
-    <div class="col-lg-6">
-      <button type="button" class="btn btn-primary tombolTambahDataDpa" data-bs-toggle="modal" data-bs-target="#formModalDpa">
-        Tambah Data DPA
-      </button>
-    </div>
-  </div>
-
-  <!-- Daftar DPA -->
-  <div class="row">
-    <h3>Daftar DPA</h3>
-    <div class="table-responsive">
-      <table id="example" class="table table-striped table-auto" style="width:100%">
-        <thead>
-          <tr>
-            <th scope="col">No</th>
-            <th scope="col">NIP</th>
-            <th scope="col">Nama</th>
-            <th scope="col">Kelas</th>
-            <th scope="col">Email</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php $no = 1;
-          foreach ($data['dp'] as $dpa) : ?>
+  <!-- Card Body -->
+  <div class="card-body">
+    <div class="row">
+      <div class="table-responsive">
+        <table id="example" class="table table-striped table-auto" style="width:100%">
+          <thead>
             <tr>
-              <th scope="row"><?= $no++; ?></th>
-              <td><?= $dpa['nip_dpa']; ?></td>
-              <td><?= $dpa['nama_dpa']; ?></td>
-              <td><?= $dpa['kelas_dpa']; ?></td>
-              <td><?= $dpa['email_dpa']; ?></td>
-              <td>
-                <a href="<?= BASEURL; ?>/AdminControllers/dpa/detail/<?= $dpa['nip_dpa']; ?>" class="badge bg-primary float-right tampilModalDetailDpa" data-bs-toggle="modal" data-bs-target="#detailModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Detail</a>
-                <a href="<?= BASEURL; ?>/AdminControllers/dpa/ubah/<?= $dpa['nip_dpa']; ?>" class="badge bg-success float-right tampilModalUbahDpa" data-bs-toggle="modal" data-bs-target="#formModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Ubah</a>
-                <a href="<?= BASEURL; ?>/AdminControllers/dpa/hapus/<?= $dpa['nip_dpa']; ?>" class="badge bg-danger float-right" onclick="return confirmAction()">Hapus</a>
-                <script>
-                  function confirmAction() {
-                    Swal.fire({
-                      title: "Apakah Kamu Yakin?",
-                      text: "Kamu Tidak Bisa Mengembalikan Data Ini!",
-                      icon: "warning",
-                      showCancelButton: true,
-                      confirmButtonColor: "#3085d6",
-                      cancelButtonColor: "#d33",
-                      confirmButtonText: "Yes, delete it!"
-                    }).then((result) => {
-                      if (result.isConfirmed) {
-                        // Redirect to the delete URL if the user confirms
-                        window.location.href = "<?= BASEURL; ?>/AdminControllers/dpa/hapus/<?= $dpa['nip_dpa']; ?>";
-                      }
-                    });
-
-                    // Prevent the default behavior of the anchor tag
-                    return false;
-                  }
-                </script>
-              </td>
+              <th scope="col">No</th>
+              <th scope="col">NIP</th>
+              <th scope="col">Nama</th>
+              <th scope="col">Kelas</th>
+              <th scope="col">Email</th>
+              <th scope="col">Action</th>
             </tr>
-          <?php endforeach; ?>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <?php $no = 1;
+            foreach ($data['dp'] as $dpa) : ?>
+              <tr>
+                <th scope="row"><?= $no++; ?></th>
+                <td><?= $dpa['nip_dpa']; ?></td>
+                <td><?= $dpa['nama_dpa']; ?></td>
+                <td><?= $dpa['kelas_dpa']; ?></td>
+                <td><?= $dpa['email_dpa']; ?></td>
+                <td>
+                  <a href="<?= BASEURL; ?>/AdminControllers/dpa/detail/<?= $dpa['nip_dpa']; ?>" class="badge bg-primary float-right tampilModalDetailDpa" data-bs-toggle="modal" data-bs-target="#detailModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Detail</a>
+                  <a href="<?= BASEURL; ?>/AdminControllers/dpa/ubah/<?= $dpa['nip_dpa']; ?>" class="badge bg-success float-right tampilModalUbahDpa" data-bs-toggle="modal" data-bs-target="#formModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Ubah</a>
+                  <a href="<?= BASEURL; ?>/AdminControllers/dpa/hapus/<?= $dpa['nip_dpa']; ?>" class="badge bg-danger float-right" onclick="return confirmAction('<?= BASEURL; ?>/AdminControllers/dpa/hapus/<?= $dpa['nip_dpa']; ?>')">Hapus</a>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-
 </div>
 
 <!-- Modal Detail DPA -->
@@ -106,18 +77,6 @@
             <td><span id="detailEmailDpa"></span></td>
           </tr>
         </table>
-        <!-- <div class="form-group">
-          <p><strong>NIP:</strong> <span id="detailNipDpa"></span></p>
-        </div>
-        <div class="form-group">
-          <p><strong>Nama:</strong> <span id="detailNamaDpa"></span></p>
-        </div>
-        <div class="form-group">
-          <p><strong>Kelas:</strong> <span id="detailKelasDpa"></span></p>
-        </div>
-        <div class="form-group">
-          <p><strong>Email:</strong> <span id="detailEmailDpa"></span></p>
-        </div> -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

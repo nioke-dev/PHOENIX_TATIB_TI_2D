@@ -1,81 +1,55 @@
-<div class="container mt-3">
-
-    <div class="row">
-        <div class="col-lg-6">
-            <?php Flasher::flash(); ?>
-        </div>
-    </div>
-
-    <div class="row mb-3">
-        <div class="col-lg-6">
+<div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h4 class="m-0 font-weight-bold text-dark">Daftar Tata Tertib</h4>
+        <div class="row" style="margin-right: 1px;">
             <button type="button" class="btn btn-primary tombolTambahDataTatib" data-bs-toggle="modal" data-bs-target="#formModalTatib">
                 Tambah Data Tata Tertib
             </button>
         </div>
     </div>
-
-    <div class="row">
-        <h3>Daftar Tata Tertib</h3>
-        <div class="table-responsive">
-            <table id="example" class="table table-striped table-auto" style="width:100%; table-layout: auto;">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th style="width: 65%;">Deskripsi Tata Tertib</th>
-                        <th>Tingkat Sanksi</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $no = 1;
-                    if (empty($data['tatib'])) : ?>
+    <!-- Card Body -->
+    <div class="card-body">
+        <div class="row">
+            <div class="table-responsive">
+                <table id="example" class="table table-striped table-auto" style="width:100%; table-layout: auto;">
+                    <thead>
                         <tr>
-                            <td colspan="7">
-                                <div class="alert alert-danger" role="alert">
-                                    Tidak ada data terkait.
-                                </div>
-                            </td>
+                            <th>No</th>
+                            <th style="width: 65%;">Deskripsi Tata Tertib</th>
+                            <th>Tingkat Sanksi</th>
+                            <th>Action</th>
                         </tr>
-                        <?php else :
-                        foreach ($data['tatib'] as $tatib) : ?>
+                    </thead>
+                    <tbody>
+                        <?php $no = 1;
+                        if (empty($data['tatib'])) : ?>
                             <tr>
-                                <th><?= $no++; ?></th>
-                                <td><?= $tatib['deskripsi']; ?></td>
-                                <td><?= $tatib['tingkat_sanksi']; ?></td>
-                                <td>
-                                    <a href="<?= BASEURL; ?>/AdminControllers/tatib/detail/<?= $tatib['id_tatib']; ?>" class="badge bg-primary float-right tampilModalDetailTatib" data-bs-toggle="modal" data-bs-target="#detailModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Detail</a>
-                                    <a href="<?= BASEURL; ?>/AdminControllers/tatib/ubah/<?= $tatib['id_tatib']; ?>" class="badge bg-success float-right tampilModalUbahTatib" data-bs-toggle="modal" data-bs-target="#formModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Ubah</a>
-                                    <a href="<?= BASEURL; ?>/AdminControllers/tatib/hapus/<?= $tatib['id_tatib']; ?>" class="badge bg-danger float-right" onclick="return confirmAction()">Hapus</a>
-                                    <script>
-                                        function confirmAction() {
-                                            Swal.fire({
-                                                title: "Apakah Kamu Yakin?",
-                                                text: "Kamu Tidak Bisa Mengembalikan Data Ini!",
-                                                icon: "warning",
-                                                showCancelButton: true,
-                                                confirmButtonColor: "#3085d6",
-                                                cancelButtonColor: "#d33",
-                                                confirmButtonText: "Yes, delete it!"
-                                            }).then((result) => {
-                                                if (result.isConfirmed) {
-                                                    // Redirect to the delete URL if the user confirms
-                                                    window.location.href = "<?= BASEURL; ?>/AdminControllers/tatib/hapus/<?= $tatib['id_tatib']; ?>";
-                                                }
-                                            });
-
-                                            // Prevent the default behavior of the anchor tag
-                                            return false;
-                                        }
-                                    </script>
+                                <td colspan="7">
+                                    <div class="alert alert-danger" role="alert">
+                                        Tidak ada data terkait.
+                                    </div>
                                 </td>
                             </tr>
-                    <?php endforeach;
-                    endif; ?>
-                </tbody>
-            </table>
+                            <?php else :
+                            foreach ($data['tatib'] as $tatib) : ?>
+                                <tr>
+                                    <th><?= $no++; ?></th>
+                                    <td><?= $tatib['deskripsi']; ?></td>
+                                    <td><?= $tatib['tingkat_sanksi']; ?></td>
+                                    <td>
+                                        <a href="<?= BASEURL; ?>/AdminControllers/tatib/detail/<?= $tatib['id_tatib']; ?>" class="badge bg-primary float-right tampilModalDetailTatib" data-bs-toggle="modal" data-bs-target="#detailModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Detail</a>
+                                        <a href="<?= BASEURL; ?>/AdminControllers/tatib/ubah/<?= $tatib['id_tatib']; ?>" class="badge bg-success float-right tampilModalUbahTatib" data-bs-toggle="modal" data-bs-target="#formModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Ubah</a>
+                                        <a href="<?= BASEURL; ?>/AdminControllers/tatib/hapus/<?= $tatib['id_tatib']; ?>" class="badge bg-danger float-right" onclick="return confirmAction('<?= BASEURL; ?>/AdminControllers/tatib/hapus/<?= $tatib['id_tatib']; ?>')">Hapus</a>
+                                    </td>
+                                </tr>
+                        <?php endforeach;
+                        endif; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-
 </div>
 
 <!-- Modal Detail -->
@@ -99,13 +73,6 @@
                         <td><span id="detailTingkatSanksi"></span></td>
                     </tr>
                 </table>
-
-                <!-- <div class="form-group">
-                    <p><strong>Deskripsi Tata Tertib :</strong> <br> <span id="detailDeskripsi"></span></p>
-                </div>
-                <div class="form-group">
-                    <p><strong>Tingkat Sanksi :</strong> <span id="detailTingkatSanksi"></span></p>
-                </div> -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

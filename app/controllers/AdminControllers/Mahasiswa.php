@@ -113,7 +113,7 @@ class Mahasiswa extends Controller
 
         // SweetAlert jika tidak ada perubahan di kedua entitas
         if (!$userChanged && !$mahasiswaChanged) {
-            $this->showSweetAlert('info', 'Tidak ada perubahan pada data Mahasiswa', 'info');
+            $this->showSweetAlert('info', 'Info', 'Tidak ada perubahan pada data Mahasiswa');
             header('Location: ' . BASEURL . '/AdminControllers/mahasiswa');
             exit;
         } else {

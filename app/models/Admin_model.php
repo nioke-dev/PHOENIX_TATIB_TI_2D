@@ -25,18 +25,27 @@ class Admin_model
 
     public function tambahDataAdmin($data, $id_user)
     {
-        $query = "INSERT INTO admin (nip_admin, id_user, nama_admin, email_admin)
-                    VALUES
-                  (:nip_admin, :id_user, :nama_admin, :email_admin)";
-        $this->db->query($query);
-        $this->db->bind('nip_admin', $data['nip_admin']);
-        $this->db->bind('id_user', $id_user['userAdminId']['id_user']);
-        $this->db->bind('nama_admin', $data['nama_admin']);
-        $this->db->bind('email_admin', $data['email_admin']);
+        try {
+            $query = "INSERT INTO admin (nip_admin, id_user, nama_admin, email_admin)
+                        VALUES
+                      (:nip_admin, :id_user, :nama_admin, :email_admin)";
+            $this->db->query($query);
+            $this->db->bind('nip_admin', $data['nip_admin']);
+            $this->db->bind('id_user', $id_user['userAdminId']['id_user']);
+            $this->db->bind('nama_admin', $data['nama_admin']);
+            $this->db->bind('email_admin', $data['email_admin']);
 
-        $this->db->execute();
+            $this->db->execute();
 
-        return $this->db->rowCount();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            // Duplicate entry handling
+            if ($e->getCode() == '23000') {
+                return -1; // Indicates a duplicate entry
+            } else {
+                throw $e; // Re-throw other exceptions
+            }
+        }
     }
 
     public function getUserAdminByNip($data)

@@ -24,10 +24,10 @@
   margin-right: 5px;
 }
 
-/* #example th:last-child,
+#example th:last-child,
 #example td:last-child {
   width: 20%;
-} */
+}
 
 .btn-danger {
   background-color: #bb2d3b !important;

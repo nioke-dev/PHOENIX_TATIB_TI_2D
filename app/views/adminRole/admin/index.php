@@ -2,7 +2,7 @@
   <!-- Card Header - Dropdown -->
   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
     <h4 class="m-0 font-weight-bold text-dark">Daftar Admin</h4>
-    <div class="row">
+    <div class="row" style="margin-right: 1px;">
       <button type="button" class="btn btn-primary tombolTambahDataAdmin" data-bs-toggle="modal" data-bs-target="#formModalAdmin">
         Tambah Data Admin
       </button>

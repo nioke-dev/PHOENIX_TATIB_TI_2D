@@ -535,3 +535,8 @@ $("#formModalDpa").on("shown.bs.modal", function () {
     dropdownParent: $("#formModalDpa"),
   });
 });
+$("#ubahModalLaporan").on("shown.bs.modal", function () {
+  $(".select-tatib-tingkatSanksi-ubah").select2({
+    dropdownParent: $("#ubahModalLaporan"),
+  });
+});

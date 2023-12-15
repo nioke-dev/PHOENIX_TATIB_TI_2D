@@ -11,6 +11,15 @@ class Laporan_model
         $this->db = new Database;
     }
 
+    // Function to get file information by ID
+    public function getFileInformation($id_laporan)
+    {
+        $this->db->query('SELECT file_bukti FROM ' . $this->table . ' WHERE id_laporan = :id_laporan');
+        $this->db->bind('id_laporan', $id_laporan);
+        $result = $this->db->single();
+        return $result['file_bukti'];
+    }
+
     public function getCount()
     {
         $this->db->query('SELECT COUNT(*) as total FROM laporan WHERE nim_mahasiswa = :nim_mahasiswa');

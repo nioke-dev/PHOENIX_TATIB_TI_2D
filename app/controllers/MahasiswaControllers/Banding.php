@@ -78,6 +78,7 @@ class Banding extends Controller
 
         $dataLaporan['dataLaporan'] = $this->model('Laporan_model')->getLaporanById($_POST['id_laporan']);
         if ($this->model('Banding_model')->ajukanBandingMhs($_POST, $dataLaporan, $filename, $filesize, $filetype) > 0) {
+            $this->model('Banding_model')->setLaporanStatusTertunda($_POST['id_laporan']);
             $this->showSweetAlert('success', 'Berhasil', 'Banding Berhasil Diajukan');
             header('Location: ' . BASEURL . '/MahasiswaControllers/banding');
             exit;

@@ -27,6 +27,34 @@ class Laporan extends Controller
         echo json_encode($this->model('Laporan_model')->getLaporanById($_POST['id_laporan']));
     }
 
+    // public function ubah()
+    // {
+    //     // Get file information before updating laporan data
+    //     $file_info = $this->model('Laporan_model')->getFileInformation($_POST['id_laporan']);
+
+    //     // Perform laporan data update
+    //     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //         // Handle file upload (similar to your tambah method)
+    //         // ...
+
+    //         // Handle data laporan update
+    //         if ($this->model('Laporan_model')->ubahDataLaporan($_POST) > 0) {
+    //             // Delete the associated file if it exists
+    //             if ($file_info) {
+    //                 $this->deleteFile($file_info);
+    //             }
+
+    //             $this->showSweetAlert('success', 'Berhasil', 'Data Laporan berhasil diubah');
+    //             header('Location: ' . BASEURL . '/DosenControllers/laporan');
+    //             exit;
+    //         } else {
+    //             $this->showSweetAlert('error', 'Ooops', 'Data Laporan Gagal diubah');
+    //             header('Location: ' . BASEURL . '/DosenControllers/laporan');
+    //             exit;
+    //         }
+    //     }
+    // }
+
     public function tambah()
     {
         // Handle file upload
@@ -77,13 +105,43 @@ class Laporan extends Controller
     // Fungsi untuk menghapus data laporan
     public function hapus($id_laporan)
     {
+        // Get file information before deleting laporan data
+        $file_info = $this->model('Laporan_model')->getFileInformation($id_laporan);
+
         if ($this->model('Laporan_model')->hapusDataLaporan($id_laporan) > 0) {
+            // Delete the associated file
+            $this->deleteFile($file_info);
+
             $this->showSweetAlert('success', 'Berhasil', 'Data Laporan berhasil dihapus');
             header('Location: ' . BASEURL . '/DosenControllers/laporan');
             exit;
         } else {
             $this->showSweetAlert('error', 'Ooops', 'Data Laporan Gagal dihapus');
             header('Location: ' . BASEURL . '/DosenControllers/laporan');
+            exit;
+        }
+    }
+
+    // Function to delete the file
+    private function deleteFile($filename)
+    {
+        $target_dir = $_SERVER['DOCUMENT_ROOT'] . BASEPUBLIC . "/img/bukti_laporan/";
+        $target_file = $target_dir . $filename;
+
+        // Check if the file exists before attempting to delete it
+        if (file_exists($target_file)) {
+            // Attempt to delete the file
+            if (unlink($target_file)) {
+                // File deletion success
+                return true;
+            } else {
+                // File deletion failure
+                echo "Sorry, there was an error deleting the file.";
+                exit;
+            }
+        } else {
+            // File doesn't exist
+            echo "File not found.";
             exit;
         }
     }

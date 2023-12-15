@@ -54,7 +54,28 @@
                         <?php endif; ?>
                         <td>
                             <a href="<?= BASEURL; ?>/AdminControllers/laporan/detail/<?= $laporan['id_laporan']; ?>" class="badge bg-primary tampilModalDetailLaporan" data-bs-toggle="modal" data-bs-target="#detailModalLaporan" data-id_laporan="<?= $laporan['id_laporan']; ?>">Detail</a>
-                            <a href="<?= BASEURL; ?>/DosenControllers/laporan/hapus/<?= $laporan['id_laporan']; ?>" class="badge bg-danger float-right" onclick="return confirm('Apakah Anda yakin untuk menghapus Data Laporan berikut?');">hapus</a>
+                            <a href="<?= BASEURL; ?>/DosenControllers/laporan/hapus/<?= $laporan['id_laporan']; ?>" class="badge bg-danger float-right" onclick="return confirmAction()">hapus</a>
+                            <script>
+                                function confirmAction() {
+                                    Swal.fire({
+                                        title: "Apakah Kamu Yakin?",
+                                        text: "Kamu Tidak Bisa Mengembalikan Data Ini!",
+                                        icon: "warning",
+                                        showCancelButton: true,
+                                        confirmButtonColor: "#3085d6",
+                                        cancelButtonColor: "#d33",
+                                        confirmButtonText: "Yes, delete it!"
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            // Redirect to the delete URL if the user confirms
+                                            window.location.href = "<?= BASEURL; ?>/DosenControllers/laporan/hapus/<?= $laporan['id_laporan']; ?>";
+                                        }
+                                    });
+
+                                    // Prevent the default behavior of the anchor tag
+                                    return false;
+                                }
+                            </script>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -62,7 +83,6 @@
         </table>
     </div>
 </div>
-
 
 <!-- Modal Detail Laporan -->
 <div class="modal fade" id="detailModalLaporan" tabindex="-1" aria-labelledby="detailModalLaporanLabel" aria-hidden="true">
@@ -104,6 +124,7 @@
 </div>
 
 
+
 <!-- Modal Tambah Laporan -->
 <div class="modal fade" id="formModalLaporan" aria-labelledby="formModalLaporanLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -116,7 +137,7 @@
                 <form action="<?= BASEURL; ?>/DosenControllers/laporan/tambah" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id_user" id="id_user">
                     <div class="form-group">
-                        <label for="nim_ahasiswa" class="form-label">Mahasiswa</label>
+                        <label for="nim_mahasiswa" class="form-label">Mahasiswa</label>
                         <select class="form-select select-mahasiswa-laporkan" id="nim_mahasiswa" name="nim_mahasiswa" autocomplete="off" required>
                             <?php
                             foreach ($data['mahasiswa'] as $mahasiswa) : ?>

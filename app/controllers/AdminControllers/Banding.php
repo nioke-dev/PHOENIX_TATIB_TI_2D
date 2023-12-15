@@ -41,32 +41,4 @@ class Banding extends Controller
             exit;
         }
     }
-
-    // Fungsi untuk mengajukan banding 
-    // public function tambah()
-    // {
-    //     if ($this->model('Banding_model')->ajukanBandingMhs($_POST) > 0) {
-    //         $this->showSweetAlert('success', 'Berhasil', 'Banding Berhasil Diajukan');
-    //         header('Location: ' . BASEURL . '/MahasiswaControllers/banding');
-    //         exit;
-    //     } else {
-    //         $this->showSweetAlert('error', 'Ooops', 'Banding Gagal Diajukan');
-    //         header('Location: ' . BASEURL . '/MahasiswaControllers/banding');
-    //         exit;
-    //     }
-    // }
-
-    // Fungsi untuk mencari banding berdasarkan keyword
-    // public function cari()
-    // {
-    //     $data['judul'] = 'Daftar Banding';
-    //     $data['bd'] = $this->model('Banding_model')->cariDataBanding();
-    //     $data['nama'] = $this->model('User_model')->getUser();
-
-    //     $this->view('templates/header', $data);
-    //     $this->view('templates/sidebar', $data);
-    //     $this->view('templates/headerNav', $data);
-    //     $this->view('adminRole/banding/index', $data);
-    //     $this->view('templates/footer', $data);
-    // }
 }

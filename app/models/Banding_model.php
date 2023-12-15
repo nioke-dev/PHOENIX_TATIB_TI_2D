@@ -11,6 +11,15 @@ class Banding_model
         $this->db = new Database;
     }
 
+    public function setLaporanStatusTertunda($data)
+    {
+        $this->db->query('UPDATE laporan SET id_statusSanksi = :id_statusSanksi WHERE id_laporan = :id_laporan');
+        $this->db->bind('id_laporan', $data);
+        $this->db->bind('id_statusSanksi', '6');
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
     public function getCount()
     {
         $this->db->query('SELECT COUNT(*) as total FROM banding where nim_mahasiswa = :nim_mahasiswa');

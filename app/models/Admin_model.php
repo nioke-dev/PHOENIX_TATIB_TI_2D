@@ -50,6 +50,13 @@ class Admin_model
         return $this->db->single();
     }
 
+    public function getUserAdminByNipToChangePass($data)
+    {
+        $this->db->query('SELECT * FROM user WHERE username=:nip_admin');
+        $this->db->bind('nip_admin', $data);
+        return $this->db->single();
+    }
+
     public function tambahUserAdmin($data)
     {
         try {

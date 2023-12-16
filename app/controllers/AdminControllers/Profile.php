@@ -21,9 +21,13 @@ class Profile extends Controller
 
     public function changePassword()
     {
-        if ($_POST[]) {
-            # code...
+        $getNipAdmin =  $this->model('Admin_model')->getUserAdminByNipToChangePass($_SESSION['username']);
+        if (md5($_POST['oldPassword']) !== $getNipAdmin['password']) {
+            $this->showSweetAlert('error', 'Ooops', 'Password Lama Anda Tidak Sama');
+            header('Location: ' . BASEURL . '/AdminControllers/profile');
+            exit;
         }
+
         if ($_POST['password'] !== $_POST['confirmPassword']) {
             $this->showSweetAlert('error', 'Ooops', 'Password & Confirm Password Harus Sama');
             header('Location: ' . BASEURL . '/AdminControllers/profile');

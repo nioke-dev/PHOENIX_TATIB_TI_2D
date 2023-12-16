@@ -21,6 +21,9 @@ class Profile extends Controller
 
     public function changePassword()
     {
+        if ($_POST[]) {
+            # code...
+        }
         if ($_POST['password'] !== $_POST['confirmPassword']) {
             $this->showSweetAlert('error', 'Ooops', 'Password & Confirm Password Harus Sama');
             header('Location: ' . BASEURL . '/AdminControllers/profile');

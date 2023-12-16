@@ -88,7 +88,8 @@ class Laporan extends Controller
         }
 
         // Handle data laporan
-        if ($this->model('Laporan_model')->tambahDataLaporan($_POST, $filename, $filesize, $filetype) > 0) {
+        $dataTatibSelect = $this->model('Tatib_model')->getTatibById($_POST);
+        if ($this->model('Laporan_model')->tambahDataLaporan($_POST, $dataTatibSelect, $filename, $filesize, $filetype) > 0) {
             $this->showSweetAlert('success', 'Berhasil', 'Data Laporan berhasil ditambahkan');
             header('Location: ' . BASEURL . '/DosenControllers/laporan');
             exit;

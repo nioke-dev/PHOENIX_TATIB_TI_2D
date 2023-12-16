@@ -86,7 +86,7 @@
 
 <!-- Modal Detail Laporan -->
 <div class="modal fade" id="detailModalLaporan" tabindex="-1" aria-labelledby="detailModalLaporanLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="detailModalLaporanLabel">Detail Data Laporan</h5>
@@ -100,6 +100,16 @@
                         <td><span id="detailNipDosen"></span></td>
                     </tr>
                     <tr>
+                        <td><strong>Nama Dosen</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailNamaDosen"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tata Tertib</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailTataTertib"></span></td>
+                    </tr>
+                    <tr>
                         <td><strong>Keterangan</strong></td>
                         <td><strong>:</strong></td>
                         <td><span id="detailDeskripsi"></span></td>
@@ -107,7 +117,7 @@
                     <tr>
                         <td><strong>Tingkat Sanksi</strong></td>
                         <td><strong>:</strong></td>
-                        <td><span id="detaiTingkatSaknsi"></span></td>
+                        <td><span id="detailTingkatSanksi"></span></td>
                     </tr>
                     <tr>
                         <td><strong>Bukti Laporan</strong></td>
@@ -148,11 +158,11 @@
 
                     <div class="form-group">
                         <label for="tingkat_sanksi" class="form-label">Pelanggaran</label>
-                        <select class="form-control choices-single select-tatib-tingkatSanksi" id="id_tingkatSanksi" name="id_tingkatSanksi" autocomplete="off" required>
+                        <select class="form-control choices-single select-tatib-tingkatSanksi" id="id_tatib" name="id_tatib" autocomplete="off" required>
                             <option></option>
                             <?php
                             foreach ($data['tatib'] as $tatib) : ?>
-                                <option value="<?= $tatib['id_tingkatSanksi']; ?>"><?= $tatib['deskripsi']; ?> - <?= $tatib['tingkat_sanksi']; ?></option>
+                                <option value="<?= $tatib['id_tatib']; ?>"><?= $tatib['deskripsi']; ?> - <?= $tatib['tingkat_sanksi']; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

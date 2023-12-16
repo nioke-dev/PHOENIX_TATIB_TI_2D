@@ -1,5 +1,7 @@
 const baseurl = "http://localhost/PHOENIX_TATIB_TI_2D/public";
 $(function () {
+  // Admin Role
+
   // Dosen Function
   $(".tombolTambahDataDosen").on("click", function () {
     $("#formModalDosenLabel").html("Tambah Data Dosen");
@@ -318,7 +320,6 @@ $(function () {
   });
 
   // Mahasiswa Melanggar Function
-
   $(".tampilModalDetailMahasiswaMelanggar").on("click", function () {
     $("#detailModalMahasiswaMelanggarLabel").html(
       "Detail Data Mahasiswa Melanggar"
@@ -411,8 +412,10 @@ $(function () {
         $("#detailNamaMahasiswa").text(data.nama_mahasiswa);
         $("#detailKelasMahasiswa").text(data.kelas_mahasiswa);
         $("#detailNipDosen").text(data.nip_dosen);
+        $("#detailNamaDosen").text(data.nama_dosen);
         $("#detailDeskripsi").text(data.deskripsi);
-        $("#detaiTingkatSaknsi").text(data.tingkat_sanksi);
+        $("#detailTataTertib").text(data.deskripsiTatib);
+        $("#detailTingkatSanksi").text(data.tingkat_sanksi);
         $("#detailBuktiLaporan").attr(
           "src",
           baseurl + "/img/bukti_laporan/" + data.file_bukti
@@ -475,7 +478,6 @@ $(function () {
   });
 
   //function banding
-
   $(".tampilTambahDataBanding").on("click", function () {
     $("#formModalBandingLabel").html("Ajukan Bandinggggg");
     $(".modal-footer button[type=submit]").html("Ajukan Banding");

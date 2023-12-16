@@ -35,9 +35,15 @@
                         <div class="col-6 mb-5">
                             <form action="<?= BASEURL; ?>/DosenControllers/profile/changePassword" method="POST">
                                 <div class="form-group">
-                                    <label for="password" class="form-label">Password :</label>
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="Change Your Password Here" required autofocus>
+                                    <label for="oldPassword" class="form-label">Old Password :</label>
+                                    <input type="password" class="form-control" name="oldPassword" id="oldPassword" placeholder="Input Your Old Password Here" required autofocus>
                                 </div>
+                        </div>
+                        <div class="col-6 mb-5">
+                            <div class="form-group">
+                                <label for="password" class="form-label">Password :</label>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Change Your Password Here" required autofocus>
+                            </div>
                         </div>
                         <div class="col-6 mb-5">
                             <div class="form-group">

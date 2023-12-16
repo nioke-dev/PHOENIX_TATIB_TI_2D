@@ -61,9 +61,11 @@ class Laporan_model
     // Function to get Laporan data by ID
     public function getLaporanById($id_laporan)
     {
-        $this->db->query('SELECT laporan.*, mahasiswa.*, tingkatSanksi.tingkat_sanksi AS tingkat_sanksi, statusSanksi.status_sanksi AS status_sanksi FROM ' . $this->table . ' 
+        $this->db->query('SELECT laporan.*, dosen.nama_dosen, tatib.deskripsi AS deskripsiTatib, mahasiswa.*, tingkatSanksi.tingkat_sanksi AS tingkat_sanksi, statusSanksi.status_sanksi AS status_sanksi FROM ' . $this->table . ' 
         INNER JOIN mahasiswa ON laporan.nim_mahasiswa = mahasiswa.nim_mahasiswa
+        INNER JOIN dosen ON laporan.nip_dosen = dosen.nip_dosen
         INNER JOIN tingkatSanksi ON laporan.id_tingkatSanksi = tingkatSanksi.id_tingkatSanksi
+        INNER JOIN tatib ON laporan.id_tatib = tatib.id_tatib
         INNER JOIN statusSanksi ON laporan.id_statusSanksi = statusSanksi.id_statusSanksi WHERE laporan.id_laporan = :id_laporan');
 
         $this->db->bind('id_laporan', $id_laporan);
@@ -73,15 +75,15 @@ class Laporan_model
 
 
     // Function to add Laporan data
-    public function tambahDataLaporan($data, $filename, $filesize, $filetype)
+    public function tambahDataLaporan($data, $dataTatibSelect, $filename, $filesize, $filetype)
     {
         try {
             $dateTimeNow = date("Y-m-d");
 
             // SQL query to add Laporan data
-            $query = "INSERT INTO laporan (tgl_laporan, nim_mahasiswa, nip_dosen, deskripsi, id_tingkatSanksi, id_statusSanksi, file_bukti)
+            $query = "INSERT INTO laporan (tgl_laporan, nim_mahasiswa, nip_dosen, deskripsi, id_tingkatSanksi, id_statusSanksi, id_tatib, file_bukti)
             VALUES
-            (:tgl_laporan, :nim_mahasiswa, :nip_dosen, :deskripsi, :tingkat_sanksi, :status_sanksi, :file_bukti)";
+            (:tgl_laporan, :nim_mahasiswa, :nip_dosen, :deskripsi, :tingkat_sanksi, :status_sanksi, :id_tatib, :file_bukti)";
 
             // Execute the query
             $this->db->query($query);
@@ -89,8 +91,9 @@ class Laporan_model
             $this->db->bind('nim_mahasiswa', $data['nim_mahasiswa']);
             $this->db->bind('nip_dosen', $_SESSION['username']);
             $this->db->bind('deskripsi', $data['deskripsi']);
-            $this->db->bind('tingkat_sanksi', $data['id_tingkatSanksi']);
+            $this->db->bind('tingkat_sanksi', $dataTatibSelect['id_tingkatSanksi']);
             $this->db->bind('status_sanksi', '1');
+            $this->db->bind('id_tatib', $data['id_tatib']);
             $this->db->bind('file_bukti', $filename);
 
             $this->db->execute();

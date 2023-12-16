@@ -91,13 +91,13 @@ class Dosen_model
         }
     }
 
-    public function hapusDataDosen($id)
+    public function hapusDataDosen($nip_dosen)
     {
         try {
-            $query = "DELETE FROM dosen WHERE nip_dosen = :id";
+            $query = "DELETE FROM dosen WHERE nip_dosen = :nip_dosen";
 
             $this->db->query($query);
-            $this->db->bind('id', $id);
+            $this->db->bind('nip_dosen', $nip_dosen);
 
             $this->db->execute();
 

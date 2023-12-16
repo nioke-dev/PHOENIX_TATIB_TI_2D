@@ -49,14 +49,14 @@ class Dosen extends Controller
         }
     }
 
-    public function hapus($id)
+    public function hapus($nip_dosen)
     {
-        if ($this->model('Dosen_model')->hapusDataDosen($id) > 0) {
+        if ($this->model('Dosen_model')->hapusDataDosen($nip_dosen) > 0) {
             $this->showSweetAlert('success', 'Berhasil', 'Data Dosen berhasil Dihapus');
             header('Location: ' . BASEURL . '/AdminControllers/dosen');
             exit;
         } else {
-            $this->showSweetAlert('error', 'Ooops', 'Data Dosen Gagal dihapus' . $id);
+            $this->showSweetAlert('error', 'Ooops', 'Data Dosen Gagal dihapus');
             header('Location: ' . BASEURL . '/AdminControllers/dosen');
             exit;
         }

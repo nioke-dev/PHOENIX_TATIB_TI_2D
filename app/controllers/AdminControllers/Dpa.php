@@ -13,7 +13,7 @@ class Dpa extends Controller
         $data['judul'] = 'Daftar DPA';
         $data['dp'] = $this->model('Dpa_model')->getAllDpa();
         $data['nama'] = $this->model('User_model')->getUser();
-        $data['dsn'] = $this->model('Dosen_model')->getAllDosen();
+        $data['dsn'] = $this->model('Dosen_model')->getAllDosenFilterDpaFound();
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);
@@ -28,27 +28,54 @@ class Dpa extends Controller
     }
 
     // Fungsi untuk menambahkan data dpa
+    // public function tambah()
+    // {
+    //     if ($this->model('Dpa_model')->tambahUserDpa($_POST) > 0) {
+    //         $dataUser['userDpaId'] = $this->model('Dpa_model')->getUserDpaByNip($_POST);
+    //         $this->model('Dpa_model')->ubahuserTypeUserDpa($dataUser);
+    //         $dataDosen['dataDosen'] = $this->model('Dpa_model')->getDosenByNip($_POST['nip_dpa']);
+    //         if ($this->model('Dpa_model')->tambahDataDpa($_POST, $dataUser, $dataDosen) > 0) {
+    //             $this->showSweetAlert('success', 'Berhasil', 'Data DPA Berhasil Ditambahkan');
+    //             header('Location: ' . BASEURL . '/AdminControllers/dpa');
+    //             exit;
+    //         } else {
+    //             $this->showSweetAlert('error', 'Gagal', 'Data DPA Gagal Ditambahkan');
+    //             header('Location: ' . BASEURL . '/AdminControllers/dpa');
+    //             exit;
+    //         }
+    //     } else {
+    //         $this->showSweetAlert('error', 'Gagal', 'Data DPA Gagal Ditambahkan');
+    //         header('Location: ' . BASEURL . '/AdminControllers/dpa');
+    //         exit;
+    //     }
+
+    // }
+
     public function tambah()
     {
-        if ($this->model('Dpa_model')->tambahUserDpa($_POST) > 0) {
-            $dataUser['userDpaId'] = $this->model('Dpa_model')->getUserDpaByNip($_POST);
-            $this->model('Dpa_model')->ubahuserTypeUserDpa($dataUser);
+        $dataUser['userDpaId'] = $this->model('Dpa_model')->getUserDpaByNip($_POST);
+        if ($this->model('Dpa_model')->ubahuserTypeUserDpa($dataUser) > 0) {
             $dataDosen['dataDosen'] = $this->model('Dpa_model')->getDosenByNip($_POST['nip_dpa']);
+            // Modifikasi bagian ini
             if ($this->model('Dpa_model')->tambahDataDpa($_POST, $dataUser, $dataDosen) > 0) {
                 $this->showSweetAlert('success', 'Berhasil', 'Data DPA Berhasil Ditambahkan');
                 header('Location: ' . BASEURL . '/AdminControllers/dpa');
                 exit;
             } else {
+                // Jika tambahDataDpa gagal
+                $this->model('Dpa_model')->ubahuserTypeUserDpaToDosen($dataUser); // Tambahkan fungsi hapusUserDpa sesuai dengan kebutuhan Anda
                 $this->showSweetAlert('error', 'Gagal', 'Data DPA Gagal Ditambahkan');
                 header('Location: ' . BASEURL . '/AdminControllers/dpa');
                 exit;
             }
         } else {
+            // Jika tambahUserDpa gagal
             $this->showSweetAlert('error', 'Gagal', 'Data DPA Gagal Ditambahkan');
             header('Location: ' . BASEURL . '/AdminControllers/dpa');
             exit;
         }
     }
+
 
     // Fungsi untuk menghapus data dpa
     public function hapus($nip_dpa)
@@ -115,7 +142,7 @@ class Dpa extends Controller
 
         // SweetAlert jika tidak ada perubahan di kedua entitas
         if (!$userChanged && !$dpaChanged) {
-            $this->showSweetAlert('info', 'Tidak ada perubahan pada data User dan DPA', 'Info');
+            $this->showSweetAlert('info', 'Info', 'Tidak ada perubahan pada data DPA');
             header('Location: ' . BASEURL . '/AdminControllers/dpa');
             exit;
         } else {
@@ -123,19 +150,5 @@ class Dpa extends Controller
             header('Location: ' . BASEURL . '/AdminControllers/dpa');
             exit;
         }
-    }
-
-    // Fungsi untuk mencari data dpa berdasarkan keyword
-    public function cari()
-    {
-        $data['judul'] = 'Daftar DPA';
-        $data['dpa'] = $this->model('Dpa_model')->cariDataDpa();
-        $data['nama'] = $this->model('User_model')->getUser();
-
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('templates/headerNav', $data);
-        $this->view('adminRole/dpa/index', $data);
-        $this->view('templates/footer', $data);
     }
 }

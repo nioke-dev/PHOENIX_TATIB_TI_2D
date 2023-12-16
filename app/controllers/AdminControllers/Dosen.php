@@ -108,7 +108,7 @@ class Dosen extends Controller
 
         // SweetAlert jika tidak ada perubahan di kedua entitas
         if (!$userChanged && !$dosenChanged) {
-            $this->showSweetAlert('info', 'Tidak ada perubahan pada data Dosen', 'info');
+            $this->showSweetAlert('info', 'Info', 'Tidak ada perubahan pada data Dosen');
             header('Location: ' . BASEURL . '/AdminControllers/dosen');
             exit;
         } else {
@@ -116,18 +116,5 @@ class Dosen extends Controller
             header('Location: ' . BASEURL . '/AdminControllers/dosen');
             exit;
         }
-    }
-
-    public function cari()
-    {
-        $data['judul'] = 'Daftar Dosen';
-        $data['dsn'] = $this->model('Dosen_model')->cariDataDosen();
-        $data['nama'] = $this->model('User_model')->getUser();
-
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('templates/headerNav', $data);
-        $this->view('adminRole/dosen/index', $data);
-        $this->view('templates/footer', $data);
     }
 }

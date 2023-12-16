@@ -76,6 +76,24 @@ class Dpa_model
             return -1;
         }
     }
+    public function ubahuserTypeUserDpaToDosen($data)
+    {
+        try {
+            $query = "UPDATE user SET
+                        user_type = :user_type                  
+                      WHERE id_user = :id_user";
+
+            $this->db->query($query);
+            $this->db->bind('user_type', 'dosen');
+            $this->db->bind('id_user', $data['userDpaId']['id_user']);
+
+            $this->db->execute();
+
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
+    }
 
     // Fungsi untuk menambahkan data dpa
     public function tambahDataDpa($data, $id_user, $dataDosen)
@@ -198,6 +216,26 @@ class Dpa_model
 
             $this->db->execute();
 
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
+    }
+
+
+
+    public function hapusUserDpa($id_user)
+    {
+        try {
+            // Query SQL untuk menghapus user
+            $query = "DELETE FROM user WHERE id_user = :id_user";
+
+            // Eksekusi query
+            $this->db->query($query);
+            $this->db->bind('id_user', $id_user);
+            $this->db->execute();
+
+            // Mengembalikan jumlah baris yang terpengaruh oleh operasi query
             return $this->db->rowCount();
         } catch (\PDOException $e) {
             return -1;

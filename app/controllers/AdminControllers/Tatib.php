@@ -70,17 +70,4 @@ class Tatib extends Controller
             exit;
         }
     }
-
-    public function cari()
-    {
-        $data['judul'] = 'Daftar Tatib';
-        $data['tatib'] = $this->model('Tatib_model')->cariDataTatib();
-        $data['nama'] = $this->model('User_model')->getUser();
-
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('templates/headerNav', $data);
-        $this->view('adminRole/tatib/index', $data);
-        $this->view('templates/footer', $data);
-    }
 }

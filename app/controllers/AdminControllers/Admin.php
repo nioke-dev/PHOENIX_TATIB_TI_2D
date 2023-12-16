@@ -108,7 +108,7 @@ class Admin extends Controller
 
         // SweetAlert jika tidak ada perubahan di kedua entitas
         if (!$userChanged && !$adminChanged) {
-            $this->showSweetAlert('info', 'Tidak ada perubahan pada data Admin', 'info');
+            $this->showSweetAlert('info', 'Info', 'Tidak ada perubahan pada data Admin');
             header('Location: ' . BASEURL . '/AdminControllers/admin');
             exit;
         } else {

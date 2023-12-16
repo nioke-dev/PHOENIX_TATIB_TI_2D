@@ -60,12 +60,30 @@ class Tatib extends Controller
 
     public function ubah()
     {
-        if ($this->model('Tatib_model')->ubahDataTatib($_POST) > 0) {
-            $this->showSweetAlert('success', 'Berhasil', 'Data Tatib Berhasil Diubah');
+        // Pengecekan perubahan di Tatib
+        $tatibChanged = false;
+        if (
+            $_POST['deskripsi'] != $_POST['deskripsiLama'] ||
+            $_POST['id_tingkatSanksi'] != $_POST['id_tingkatSanksiLama']
+        ) {
+            // Ubah data Tatib
+            if ($this->model('Tatib_model')->ubahDataTatib($_POST) > 0) {
+                $tatibChanged = true;
+            } else {
+                // SweetAlert jika ada masalah pada perubahan Tatib
+                $this->showSweetAlert('error', 'Ooops', 'Data Tatib Gagal Diubah');
+                header('Location: ' . BASEURL . '/AdminControllers/tatib');
+                exit;
+            }
+        }
+
+        // SweetAlert jika tidak ada perubahan di Tatib
+        if (!$tatibChanged) {
+            $this->showSweetAlert('info', 'Info', 'Tidak ada perubahan pada data Tatib');
             header('Location: ' . BASEURL . '/AdminControllers/tatib');
             exit;
         } else {
-            $this->showSweetAlert('error', 'Gagal', 'Data Tatib Gagal Diubah');
+            $this->showSweetAlert('success', 'Berhasil', 'Data Tatib berhasil Diubah');
             header('Location: ' . BASEURL . '/AdminControllers/tatib');
             exit;
         }

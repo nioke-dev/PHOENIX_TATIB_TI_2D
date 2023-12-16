@@ -95,6 +95,7 @@
                     <div class="form-group">
                         <label for="deskripsi">Deskripsi Tata Tertib</label>
                         <textarea name="deskripsi" class="form-control" id="deskripsi" autocomplete="off" cols="30" rows="10" required></textarea>
+                        <input type="hidden" id="deskripsiLama" name="deskripsiLama">
                     </div>
                     <div class="form-group">
                         <label for="id_tingkatSanksi">Tingkat Sanksi</label>
@@ -107,6 +108,7 @@
                             <option value="2">I/II</option>
                             <option value="1">I</option>
                         </select>
+                        <input type="hidden" id="id_tingkatSanksiLama" name="id_tingkatSanksiLama">
                     </div>
             </div>
             <div class="modal-footer">

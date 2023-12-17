@@ -104,4 +104,12 @@ class Tatib_model
             return -1;
         }
     }
+
+        // fungsi menghitung jumlah mahasiswa melanggar di dashboard admin
+        public function getCount()
+        {
+            $this->db->query('SELECT COUNT(*) as total FROM tatib');
+            $result = $this->db->single();
+            return $result['total'];
+        }
 }

@@ -38,11 +38,11 @@
                                     <td><span class="badge text-bg-info"><?= $laporan['status_sanksi']; ?></span></td>
                                 <?php elseif ($laporan['status_sanksi'] == 'Ditolak') : ?>
                                     <td><span class="badge text-bg-danger"><?= $laporan['status_sanksi']; ?></span></td>
-                                <?php elseif ($laporan['status_sanksi'] == 'Tertund') : ?>
+                                <?php elseif ($laporan['status_sanksi'] == 'Tertunda') : ?>
                                     <td><span class="badge text-bg-warning"><?= $laporan['status_sanksi']; ?></span></td>
                                 <?php endif; ?>
                                 <td>
-                                    <a href="<?= BASEURL; ?>/AdminControllers/laporan/detail/<?= $laporan['id_laporan']; ?>" class="badge bg-primary tampilModalDetailLaporan" data-bs-toggle="modal" data-bs-target="#detailModalLaporan" data-id_laporan="<?= $laporan['id_laporan']; ?>">Detail</a>
+                                    <a href="<?= BASEURL; ?>/AdminControllers/laporan/detail/<?= $laporan['id_laporan']; ?>" class="badge bg-primary tampilModalDetailLaporanAdminRole" data-bs-toggle="modal" data-bs-target="#detailModalLaporan" data-id_laporan="<?= $laporan['id_laporan']; ?>">Detail</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -56,7 +56,7 @@
 
 <!-- Modal Detail Laporan -->
 <div class="modal fade" id="detailModalLaporan" tabindex="-1" aria-labelledby="detailModalLaporanLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg modal-dialog-vertically modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="detailModalLaporanLabel">Detail Data Laporan</h5>
@@ -65,39 +65,29 @@
             <div class="modal-body">
                 <table class="table">
                     <tr>
-                        <td><strong>ID Laporan</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailIdLaporan"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>NIM Mahasiswa</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailNimMahasiswa"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Nama</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailNamaMahasiswa"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Kelas</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailKelasMahasiswa"></span></td>
-                    </tr>
-                    <tr>
                         <td><strong>NIP Dosen</strong></td>
                         <td><strong>:</strong></td>
                         <td><span id="detailNipDosen"></span></td>
                     </tr>
                     <tr>
-                        <td><strong>Deskripsi</strong></td>
+                        <td><strong>Nama Dosen</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailNamaDosen"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Keterangan</strong></td>
                         <td><strong>:</strong></td>
                         <td><span id="detailDeskripsi"></span></td>
                     </tr>
                     <tr>
+                        <td><strong>Tata Tertib</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailTataTertib"></span></td>
+                    </tr>
+                    <tr>
                         <td><strong>Tingkat Sanksi</strong></td>
                         <td><strong>:</strong></td>
-                        <td><span id="detaiTingkatSaknsi"></span></td>
+                        <td><span id="detailTingkatSanksi"></span></td>
                     </tr>
                     <tr>
                         <td><strong>Bukti Laporan</strong></td>

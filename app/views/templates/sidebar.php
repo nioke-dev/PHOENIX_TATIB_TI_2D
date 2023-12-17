@@ -87,7 +87,7 @@
                                 <span>
                                     <i class="bi bi-chat-left-text"></i>
                                 </span>
-                                <span class="hide-menu">Banding</span>
+                                <span class="hide-menu">Daftar Banding</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -104,7 +104,7 @@
                             <span class="hide-menu">Tata tertib</span>
                         </li>
                         <li class="sidebar-item">
-                            <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" class="badge bg-danger float-right" download><i class="bi bi-file-earmark-arrow-down"></i> Download .pdf</a>
+                            <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" class="badge bg-danger float-right" download><i class="bi bi-file-earmark-arrow-down"></i> TATIB</a>
                         </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -115,7 +115,7 @@
                                 <span>
                                     <i class="bi bi-info-circle"></i>
                                 </span>
-                                <span class="hide-menu">About</span>
+                                <span class="hide-menu">Tentang</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -123,7 +123,7 @@
                                 <span>
                                     <i class="bi bi-gear"></i>
                                 </span>
-                                <span class="hide-menu">Profile</span>
+                                <span class="hide-menu">Profil</span>
                             </a>
                         </li>
 
@@ -171,7 +171,7 @@
                             <span class="hide-menu">Tata tertib</span>
                         </li>
                         <li class="sidebar-item">
-                            <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" class="badge bg-danger float-right" download><i class="bi bi-file-earmark-arrow-down"></i> Download .pdf</a>
+                            <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" class="badge bg-danger float-right" download><i class="bi bi-file-earmark-arrow-down"></i> TATIB</a>
                         </li>
 
                         <li class="nav-small-cap">
@@ -183,7 +183,7 @@
                                 <span>
                                     <i class="bi bi-info-circle"></i>
                                 </span>
-                                <span class="hide-menu">About</span>
+                                <span class="hide-menu">Tentang</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -191,7 +191,7 @@
                                 <span>
                                     <i class="bi bi-gear"></i>
                                 </span>
-                                <span class="hide-menu">Profile</span>
+                                <span class="hide-menu">Profil</span>
                             </a>
                         </li>
 
@@ -236,7 +236,7 @@
                             <span class="hide-menu">Tata tertib</span>
                         </li>
                         <li class="sidebar-item">
-                            <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" class="badge bg-danger float-right" download><i class="bi bi-file-earmark-arrow-down"></i> Download .pdf</a>
+                            <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" class="badge bg-danger float-right" download><i class="bi bi-file-earmark-arrow-down"></i> TATIB</a>
                         </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -247,7 +247,7 @@
                                 <span>
                                     <i class="bi bi-info-circle"></i>
                                 </span>
-                                <span class="hide-menu">About</span>
+                                <span class="hide-menu">Tentang</span>
                             </a>
                         </li>
 
@@ -256,7 +256,7 @@
                                 <span>
                                     <i class="bi bi-gear"></i>
                                 </span>
-                                <span class="hide-menu">Profile</span>
+                                <span class="hide-menu">Profil</span>
                             </a>
                         </li>
 
@@ -276,7 +276,7 @@
                         </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">DPA Menu</span>
+                            <span class="hide-menu">Menu DPA</span>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= BASEURL; ?>/DpaControllers/mahasiswaMelanggar" aria-expanded="false">
@@ -294,10 +294,17 @@
                                 <span class="hide-menu">Banding</span>
                             </a>
                         </li>
-
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= BASEURL; ?>/DpaControllers/rekapLaporan" aria-expanded="false">
+                                <span>
+                                    <i class="bi bi-exclamation-triangle"></i>
+                                </span>
+                                <span class="hide-menu">Daftar Laporan Mahasiswa</span>
+                            </a>
+                        </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">Dosen Menu</span>
+                            <span class="hide-menu">Menu Dosen</span>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= BASEURL; ?>/DpaControllers/laporan" aria-expanded="false">
@@ -321,7 +328,7 @@
                         </li>
                         <!-- download tatib.pdf  -->
                         <li class="sidebar-item">
-                            <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" class="badge bg-danger float-right" download><i class="bi bi-file-earmark-arrow-down"></i> Download .pdf</a>
+                            <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" class="badge bg-danger float-right" download><i class="bi bi-file-earmark-arrow-down"></i> TATIB</a>
                         </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -332,7 +339,7 @@
                                 <span>
                                     <i class="bi bi-info-circle"></i>
                                 </span>
-                                <span class="hide-menu">About</span>
+                                <span class="hide-menu">Tentang</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -340,7 +347,7 @@
                                 <span>
                                     <i class="bi bi-gear"></i>
                                 </span>
-                                <span class="hide-menu">Profile</span>
+                                <span class="hide-menu">Profil</span>
                             </a>
                         </li>
 

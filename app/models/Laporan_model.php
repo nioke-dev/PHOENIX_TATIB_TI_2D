@@ -11,6 +11,23 @@ class Laporan_model
         $this->db = new Database;
     }
 
+    public function setujuLaporan($id_laporan)
+    {
+        try {
+            $query = "UPDATE laporan SET id_statusSanksi = :id_statusSanksi WHERE id_laporan = :id_laporan";
+
+            $this->db->query($query);
+            $this->db->bind('id_statusSanksi', '2');
+            $this->db->bind('id_laporan', $id_laporan);
+            $this->db->execute();
+
+            // Return the number of affected rows by the query operation
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
+    }
+
     // Function to get file information by ID
     public function getFileInformation($id_laporan)
     {
@@ -35,6 +52,16 @@ class Laporan_model
         INNER JOIN mahasiswa ON laporan.nim_mahasiswa = mahasiswa.nim_mahasiswa
         INNER JOIN tingkatSanksi ON laporan.id_tingkatSanksi = tingkatSanksi.id_tingkatSanksi
         INNER JOIN statusSanksi ON laporan.id_statusSanksi = statusSanksi.id_statusSanksi');
+        return $this->db->resultSet();
+    }
+
+    public function getAllLaporanInDpaRole($dataDpa)
+    {
+        $this->db->query('SELECT laporan.*, mahasiswa.*, tingkatSanksi.*, statusSanksi.* FROM ' . $this->table . ' 
+        INNER JOIN mahasiswa ON laporan.nim_mahasiswa = mahasiswa.nim_mahasiswa
+        INNER JOIN tingkatSanksi ON laporan.id_tingkatSanksi = tingkatSanksi.id_tingkatSanksi
+        INNER JOIN statusSanksi ON laporan.id_statusSanksi = statusSanksi.id_statusSanksi where mahasiswa.kelas_mahasiswa = :kelas_dpa');
+        $this->db->bind('kelas_dpa', $dataDpa['kelas_dpa']);
         return $this->db->resultSet();
     }
 
@@ -167,5 +194,13 @@ class Laporan_model
         } catch (\PDOException $e) {
             return -1;
         }
+    }
+
+    // fungsi menghitung total laporan di dashboard Admin
+    public function getCountMhs()
+    {
+        $this->db->query('SELECT COUNT(*) as total FROM laporan');
+        $result = $this->db->single();
+        return $result['total'];
     }
 }

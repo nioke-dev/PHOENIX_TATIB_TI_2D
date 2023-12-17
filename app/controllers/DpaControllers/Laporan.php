@@ -49,7 +49,8 @@ class Laporan extends Controller
                         $filesize = $_FILES["file_bukti"]["size"];
                         $filetype = $_FILES["file_bukti"]["type"];
                     } else {
-                        echo "Sorry, there was an error uploading your file.";
+                        $this->showSweetAlert('error', 'Ooops', 'Sorry, there was an error uploading your file.');
+                        header('Location: ' . BASEURL . '/DpaControllers/laporan');
                         exit;
                     }
                 }
@@ -60,7 +61,8 @@ class Laporan extends Controller
         }
 
         // Handle data laporan
-        if ($this->model('Laporan_model')->tambahDataLaporan($_POST, $filename, $filesize, $filetype) > 0) {
+        $dataTatibSelect = $this->model('Tatib_model')->getTatibById($_POST);
+        if ($this->model('Laporan_model')->tambahDataLaporan($_POST, $dataTatibSelect, $filename, $filesize, $filetype) > 0) {
             $this->showSweetAlert('success', 'Berhasil', 'Data Laporan berhasil ditambahkan');
             header('Location: ' . BASEURL . '/DpaControllers/laporan');
             exit;

@@ -41,7 +41,7 @@
                         </div>
                         <div class="col-6 mb-5">
                             <div class="form-group">
-                                <label for="password" class="form-label">Password :</label>
+                                <label for="password" class="form-label">New Password :</label>
                                 <input type="password" class="form-control" name="password" id="password" placeholder="Change Your Password Here" required autofocus>
                             </div>
                         </div>

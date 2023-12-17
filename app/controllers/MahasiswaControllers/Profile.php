@@ -21,6 +21,13 @@ class Profile extends Controller
 
     public function changePassword()
     {
+        $getNimMahasiswa =  $this->model('Mahasiswa_model')->getUserMahasiswaByNimToChangePass($_SESSION['username']);
+        if (md5($_POST['oldPassword']) !== $getNimMahasiswa['password']) {
+            $this->showSweetAlert('error', 'Ooops', 'Password Lama Anda Tidak Sama');
+            header('Location: ' . BASEURL . '/MahasiswaControllers/profile');
+            exit;
+        }
+
         if ($_POST['password'] !== $_POST['confirmPassword']) {
             $this->showSweetAlert('error', 'Ooops', 'Password & Confirm Password Harus Sama');
             header('Location: ' . BASEURL . '/MahasiswaControllers/profile');

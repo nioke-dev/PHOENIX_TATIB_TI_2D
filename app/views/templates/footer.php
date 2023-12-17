@@ -1,6 +1,6 @@
 </div>
 <div class="py-6 px-6 text-center bg-light fixed-bottom">
-    <p class="mb-0 fs-4">JTI <a href="https://jti.polinema.ac.id/" target="_blank" class="pe-1 text-primary text-decoration-underline">POLITEKNIK NEGERI MALANG</a>Didistribusikan oleh <a href="https://github.com/nioke-dev/PHOENIX_TATIB_TI_2D" target="_blank" class="pe-1 text-primary text-decoration-underline">Phoenix Team </a></p>
+    <p class="mb-0 fs-4">JTI <a href="https://jti.polinema.ac.id/" target="_blank" class="pe-1 text-primary text-decoration-underline">POLITEKNIK NEGERI MALANG</a>Diciptakan oleh <a href="https://github.com/nioke-dev/PHOENIX_TATIB_TI_2D" target="_blank" class="pe-1 text-primary text-decoration-underline">&copy; 2023 Phoenix Team </a></p>
 </div>
 </div>
 </div>
@@ -38,7 +38,7 @@
     $(document).ready(function() {
         $('#example').DataTable({
             "language": {
-                "emptyTable": "Tidak ada data yang tersedia"
+                "emptyTable": "Tidak ada data yang tersedia."
             }
         });
     });
@@ -47,13 +47,13 @@
 <script>
     function confirmAction(id) {
         Swal.fire({
-            title: "Apakah Kamu Yakin?",
-            text: "Kamu Tidak Bisa Mengembalikan Data Ini!",
+            title: "Apakah Anda Yakin?",
+            text: "Anda Tidak Bisa Mengembalikan Data Ini!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Ya"
         }).then((result) => {
             if (result.isConfirmed) {
                 // Redirect to the delete URL if the user confirms
@@ -67,14 +67,56 @@
 
     function confirmActionSetujuLaporan(id) {
         Swal.fire({
-            title: "Apakah Kamu Yakin?",
-            text: "Kamu Tidak Bisa Mengajukan Banding Jika Menyetujui",
+            title: "Apakah Anda Yakin?",
+            text: "Anda Tidak Bisa Mengajukan Banding Jika Menyetujui",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Setuju",
-            cancelButtonText: "Setuju"
+            confirmButtonText: "Ya",
+            cancelButtonText: "Batal"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirect to the delete URL if the user confirms
+                window.location.href = id;
+            }
+        });
+
+        // Prevent the default behavior of the anchor tag
+        return false;
+    }
+
+    function confirmActionSetujuBanding(id) {
+        Swal.fire({
+            title: "Apakah Anda Yakin?",
+            text: "Anda Tidak Dapat Membatalkan Pilihan Ini",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ya",
+            cancelButtonText: "Batal"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirect to the delete URL if the user confirms
+                window.location.href = id;
+            }
+        });
+
+        // Prevent the default behavior of the anchor tag
+        return false;
+    }
+
+    function confirmActionTolakBanding(id) {
+        Swal.fire({
+            title: "Apakah Anda Yakin?",
+            text: "Anda Tidak Dapat Membatalkan Pilihan Ini",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ya",
+            cancelButtonText: "Batal"
         }).then((result) => {
             if (result.isConfirmed) {
                 // Redirect to the delete URL if the user confirms

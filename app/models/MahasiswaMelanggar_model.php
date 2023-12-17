@@ -44,12 +44,14 @@ class MahasiswaMelanggar_model
     // Fungsi untuk mendapatkan data mahasiswa berdasarkan NIM
     public function getMahasiswaMelanggarByNim($nim_mahasiswa)
     {
-        $this->db->query('SELECT mahasiswa.*, laporan.*, status_sanksi, tingkatSanksi.*, laporan.file_bukti AS file_bukti FROM mahasiswaMelanggar 
-        INNER JOIN mahasiswa ON mahasiswaMelanggar.nim_mahasiswa = mahasiswa.nim_mahasiswa
-        INNER JOIN statusSanksi ON mahasiswaMelanggar.id_statusSanksi = statusSanksi.id_statusSanksi
-        INNER JOIN tingkatSanksi ON mahasiswaMelanggar.id_tingkatSanksi = tingkatSanksi.id_tingkatSanksi
-        INNER JOIN laporan ON mahasiswaMelanggar.id_laporan = laporan.id_laporan
-        WHERE mahasiswaMelanggar.nim_mahasiswa=:nim_mahasiswa');
+        $this->db->query('SELECT mahasiswa.*, laporan.*, status_sanksi, tingkatSanksi.*, laporan.file_bukti AS file_bukti,
+        (SELECT COUNT(*) FROM laporan WHERE nim_mahasiswa = :nim_mahasiswa AND id_statusSanksi != 4) AS jumlahPelanggaran
+FROM mahasiswaMelanggar 
+INNER JOIN mahasiswa ON mahasiswaMelanggar.nim_mahasiswa = mahasiswa.nim_mahasiswa
+INNER JOIN statusSanksi ON mahasiswaMelanggar.id_statusSanksi = statusSanksi.id_statusSanksi
+INNER JOIN tingkatSanksi ON mahasiswaMelanggar.id_tingkatSanksi = tingkatSanksi.id_tingkatSanksi
+INNER JOIN laporan ON mahasiswaMelanggar.id_laporan = laporan.id_laporan
+WHERE mahasiswaMelanggar.nim_mahasiswa=:nim_mahasiswa');
         $this->db->bind('nim_mahasiswa', $nim_mahasiswa);
         return $this->db->single();
     }
@@ -143,5 +145,13 @@ class MahasiswaMelanggar_model
         } catch (\PDOException $e) {
             return -1;
         }
+    }
+
+    // fungsi menghitung jumlah mahasiswa melanggar di dashboard admin
+    public function getCountMhs()
+    {
+        $this->db->query('SELECT COUNT(*) as total FROM mahasiswaMelanggar');
+        $result = $this->db->single();
+        return $result['total'];
     }
 }

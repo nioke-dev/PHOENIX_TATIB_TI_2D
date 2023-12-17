@@ -11,6 +11,14 @@ class Dpa_model
         $this->db = new Database;
     }
 
+    public function getUserDpaByNipToChangePass($data)
+    {
+        $this->db->query('SELECT * FROM user WHERE username = :nip_dpa');
+        $this->db->bind('nip_dpa', $data);
+        return $this->db->single();
+    }
+
+
     // Fungsi untuk mendapatkan semua data dpa
     public function getAllDpa()
     {
@@ -222,8 +230,6 @@ class Dpa_model
         }
     }
 
-
-
     public function hapusUserDpa($id_user)
     {
         try {
@@ -240,5 +246,13 @@ class Dpa_model
         } catch (\PDOException $e) {
             return -1;
         }
+    }
+
+    // fungsi menghitung total admin di dashboard Admin
+    public function getCount()
+    {
+        $this->db->query('SELECT COUNT(*) as total FROM dpa');
+        $result = $this->db->single();
+        return $result['total'];
     }
 }

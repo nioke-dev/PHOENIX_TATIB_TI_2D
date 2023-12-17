@@ -53,9 +53,10 @@ class Banding_model
 
     public function getAllBandingByDpa($data)
     {
-        $this->db->query('SELECT b.*, s.status_sanksi, m.nim_mahasiswa FROM banding b
+        $this->db->query('SELECT b.*, d.*, s.status_sanksi, m.nim_mahasiswa, m.nama_mahasiswa FROM banding b
         INNER JOIN statusSanksi s ON b.id_statusSanksi = s.id_statusSanksi
         INNER JOIN mahasiswa m ON b.nim_mahasiswa = m.nim_mahasiswa
+        INNER JOIN dosen d ON b.nip_dosen = d.nip_dosen
         WHERE m.kelas_mahasiswa = :kelas_dpa');
         $this->db->bind('kelas_dpa', $data['kelas_dpa']);
         return $this->db->resultSet();
@@ -152,7 +153,7 @@ class Banding_model
             return -1;
         }
     }
-    public function tolakBanding($id_banding)
+    public function tolakBandingTableBanding($id_banding)
     {
         try {
             $this->db->query('UPDATE banding SET id_statusSanksi = :id_statusSanksi WHERE id_banding = :id_banding');
@@ -163,5 +164,25 @@ class Banding_model
         } catch (\PDOException $e) {
             return -1;
         }
+    }
+    public function tolakBandingTableLaporan($id_laporan)
+    {
+        try {
+            $this->db->query('UPDATE laporan SET id_statusSanksi = :id_statusSanksi WHERE id_laporan = :id_laporan');
+            $this->db->bind('id_statusSanksi', '2');
+            $this->db->bind('id_laporan', $id_laporan);
+            $this->db->execute();
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
+    }
+
+    // fungsi menghitung jumlah banding mahasiswa di dashboard admin
+    public function getCountMhs()
+    {
+        $this->db->query('SELECT COUNT(*) as total FROM banding');
+        $result = $this->db->single();
+        return $result['total'];
     }
 }

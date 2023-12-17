@@ -11,6 +11,13 @@ class Mahasiswa_model
         $this->db = new Database;
     }
 
+    public function getUserMahasiswaByNimToChangePass($data)
+    {
+        $this->db->query('SELECT * FROM user WHERE username = :nim_mahasiswa');
+        $this->db->bind('nim_mahasiswa', $data);
+        return $this->db->single();
+    }
+
     // Fungsi untuk mendapatkan semua data mahasiswa
     public function getAllMahasiswa()
     {
@@ -149,5 +156,13 @@ class Mahasiswa_model
         } catch (\PDOException $e) {
             return -1;
         }
+    }
+
+    // Fungsi menghitung total Mahasiswa di Dashboard Admin
+    public function getCount()
+    {
+        $this->db->query('SELECT COUNT(*) as total FROM mahasiswa');
+        $result = $this->db->single();
+        return $result['total'];
     }
 }

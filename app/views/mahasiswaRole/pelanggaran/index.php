@@ -1,54 +1,57 @@
-<!-- Flash message -->
-<div class="row">
-    <div class="col-lg-6">
-        <?php Flasher::flash(); ?>
+<div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h4 class="m-0 font-weight-bold text-dark">Daftar Pelanggaran</h4>
     </div>
-</div>
+    <!-- Card Body -->
+    <div class="card-body">
+        <div class="row">
+            <div class="table-responsive">
+                <table id="example" class="table table-striped table-auto">
+                    <thead>
+                        <tr>
+                            <th scope="col" scope="col">No</th>
+                            <th scope="col">ID Laporan</th>
+                            <th scope="col">Nip Dosen</th>
+                            <th scope="col">Nama Dosen</th>
+                            <th scope="col">Status Sanksi</th>
+                            <th scope="col">Tingkat Sanksi</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $no = 1;
+                        foreach ($data['pelanggaran'] as $pelanggaran) : ?>
+                            <tr>
+                                <th scope="row"><?= $no++; ?></th>
+                                <td><?= $pelanggaran['id_laporan']; ?></td>
+                                <td><?= $pelanggaran['nip_dosen']; ?></td>
+                                <td><?= $pelanggaran['nama_dosen']; ?></td>
+                                <td>
+                                    <span class="badge text-bg-primary"><?= $pelanggaran['status_sanksi']; ?></span>
+                                </td>
+                                <td><?= $pelanggaran['tingkat_sanksi']; ?></td>
+                                <td>
+                                    <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/detail/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-primary float-right tampilModalDetailPelanggaran" data-bs-toggle="modal" data-bs-target="#detailModalPelanggaran" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Detail</a>
+                                    <?php if ($pelanggaran['id_statusSanksi'] == '1') : ?>
+                                        <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/setuju/<?= $pelanggaran['id_laporan']; ?>" onclick="return confirmActionSetujuLaporan('<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/setuju/<?= $pelanggaran['id_laporan']; ?>')" class="badge bg-primary float-right" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Setuju</a>
+                                    <?php endif; ?>
+                                    <?php if ($pelanggaran['id_statusSanksi'] == '2') : ?>
+                                        <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/kerjakan/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-info float-right tampilModalUploadSuratSanksi" data-bs-toggle="modal" data-bs-target="#detailModalKerjakanSanksi" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Kerjakan</a>
+                                    <?php endif; ?>
 
-<!-- Daftar Pelanggaran -->
-<div class="row">
-    <h3>Daftar Pelanggaran</h3>
-    <div class="table-responsive">
-        <table id="example" class="table table-striped table-auto">
-            <thead>
-                <tr>
-                    <th scope="col" scope="col">No</th>
-                    <th scope="col">ID Laporan</th>
-                    <th scope="col">Nip Dosen</th>
-                    <th scope="col">Nama Dosen</th>
-                    <th scope="col">Status Sanksi</th>
-                    <th scope="col">Tingkat Sanksi</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php $no = 1;
-                foreach ($data['pelanggaran'] as $pelanggaran) : ?>
-                    <tr>
-                        <th scope="row"><?= $no++; ?></th>
-                        <td><?= $pelanggaran['id_laporan']; ?></td>
-                        <td><?= $pelanggaran['nip_dosen']; ?></td>
-                        <td><?= $pelanggaran['nama_dosen']; ?></td>
-                        <td>
-                            <span class="badge text-bg-primary"><?= $pelanggaran['status_sanksi']; ?></span>
-                        </td>
-                        <td><?= $pelanggaran['tingkat_sanksi']; ?></td>
-                        <td>
-                            <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/detail/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-primary float-right tampilModalDetailPelanggaran" data-bs-toggle="modal" data-bs-target="#detailModalPelanggaran" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Detail</a>
-                            <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/setuju/<?= $pelanggaran['id_laporan']; ?>" onclick="return confirmAction('<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/setuju/<?= $pelanggaran['id_laporan']; ?>')" class="badge bg-primary float-right" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Setuju</a>
-                            <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/kerjakan/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-info float-right tampilModalUploadSuratSanksi" data-bs-toggle="modal" data-bs-target="#detailModalKerjakanSanksi" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Kerjakan</a>
-                            <?php if ($pelanggaran['id_statusSanksi'] == '6' || $pelanggaran['id_statusSanksi'] == '2') : ?>
-                            <?php else : ?>
-                                <a href="<?= BASEURL; ?>/MahasiswaControllers/banding/tambah/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-danger float-right tampilTambahDataBanding" data-bs-toggle="modal" data-bs-target="#formModalAjukanBanding" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Banding</a>
-                            <?php endif; ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                                    <?php if ($pelanggaran['id_statusSanksi'] == '6' || $pelanggaran['id_statusSanksi'] == '2') : ?>
+                                    <?php else : ?>
+                                        <a href="<?= BASEURL; ?>/MahasiswaControllers/banding/tambah/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-danger float-right tampilTambahDataBanding" data-bs-toggle="modal" data-bs-target="#formModalAjukanBanding" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Banding</a>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-</div>
-
 </div>
 
 <!-- Modal Kerjakan Sanksi Mahasiswa -->

@@ -10,6 +10,13 @@ class Dosen_model
         $this->db = new Database;
     }
 
+    public function getUserDosenByNipToChangePass($data)
+    {
+        $this->db->query('SELECT * FROM user WHERE username = :nip_dosen');
+        $this->db->bind('nip_dosen', $data);
+        return $this->db->single();
+    }
+
     public function getAllDosenFilterDpaFound()
     {
         $this->db->query('SELECT dosen.* FROM dosen LEFT JOIN dpa ON dosen.nip_dosen = dpa.nip_dpa WHERE dpa.nip_dpa IS NULL');
@@ -146,5 +153,13 @@ class Dosen_model
         } catch (\PDOException $e) {
             return -1;
         }
+    }
+
+    // fungsi menghitung total admin di dashboard Admin
+    public function getCount()
+    {
+        $this->db->query('SELECT COUNT(*) as total FROM dosen');
+        $result = $this->db->single();
+        return $result['total'];
     }
 }

@@ -1,7 +1,7 @@
 <div class="card shadow mb-4">
     <!-- Card Header - Dropdown -->
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-        <h6 class="m-0 font-weight-bold text-primary">Profile Dpa</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Profil Dpa</h6>
     </div>
     <!-- Card Body -->
     <div class="card-body">
@@ -35,9 +35,15 @@
                         <div class="col-6 mb-5">
                             <form action="<?= BASEURL; ?>/DpaControllers/profile/changePassword" method="POST">
                                 <div class="form-group">
-                                    <label for="password" class="form-label">Password :</label>
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="Change Your Password Here" required autofocus>
+                                    <label for="oldPassword" class="form-label">Old Password :</label>
+                                    <input type="password" class="form-control" name="oldPassword" id="oldPassword" placeholder="Input Your Old Password Here" required autofocus>
                                 </div>
+                        </div>
+                        <div class="col-6 mb-5">
+                            <div class="form-group">
+                                <label for="password" class="form-label">New Password :</label>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Change Your Password Here" required autofocus>
+                            </div>
                         </div>
                         <div class="col-6 mb-5">
                             <div class="form-group">

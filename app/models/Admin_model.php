@@ -133,4 +133,12 @@ class Admin_model
             return -1;
         }
     }
+
+    // fungsi menghitung total admin di dashboard Admin
+    public function getCount()
+    {
+        $this->db->query('SELECT COUNT(*) as total FROM admin');
+        $result = $this->db->single();
+        return $result['total'];
+    }
 }

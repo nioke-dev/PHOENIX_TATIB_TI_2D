@@ -21,6 +21,13 @@ class Profile extends Controller
 
     public function changePassword()
     {
+        $getNipDosen =  $this->model('Dosen_model')->getUserDosenByNipToChangePass($_SESSION['username']);
+        if (md5($_POST['oldPassword']) !== $getNipDosen['password']) {
+            $this->showSweetAlert('error', 'Ooops', 'Password Lama Anda Tidak Sama');
+            header('Location: ' . BASEURL . '/DosenControllers/profile');
+            exit;
+        }
+
         if ($_POST['password'] !== $_POST['confirmPassword']) {
             $this->showSweetAlert('error', 'Ooops', 'Password & Confirm Password Harus Sama');
             header('Location: ' . BASEURL . '/DosenControllers/profile');

@@ -21,6 +21,13 @@ class Profile extends Controller
 
     public function changePassword()
     {
+        $getNipDpa =  $this->model('Dpa_model')->getUserDpaByNipToChangePass($_SESSION['username']);
+        if (md5($_POST['oldPassword']) !== $getNipDpa['password']) {
+            $this->showSweetAlert('error', 'Ooops', 'Password Lama Anda Tidak Sama');
+            header('Location: ' . BASEURL . '/DpaControllers/profile');
+            exit;
+        }
+
         if ($_POST['password'] !== $_POST['confirmPassword']) {
             $this->showSweetAlert('error', 'Ooops', 'Password & Confirm Password Harus Sama');
             header('Location: ' . BASEURL . '/DpaControllers/profile');

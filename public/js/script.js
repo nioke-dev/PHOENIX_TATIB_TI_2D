@@ -340,9 +340,46 @@ $(function () {
         $("#detailKelasMahasiswaMelanggar").text(data.kelas_mahasiswa);
         $("#detailProdiMahasiswaMelanggar").text(data.prodi_mahasiswa);
         $("#detailEmailMahasiswaMelanggar").text(data.email_mahasiswa);
+        $("#detailJumlahPelanggaranMahasiswaMelanggar").text(
+          data.jumlahPelanggaran
+        );
         $("#detailDeskripsi").text(data.deskripsi);
         $("#detailStatusSanksiMahasiswaMelanggar").text(data.status_sanksi);
         $("#detailTingkatSanksiMahasiswaMelanggar").text(data.tingkat_sanksi);
+        $("#detailBuktiLaporan").attr(
+          "src",
+          baseurl + "/img/bukti_laporan/" + data.file_bukti
+        );
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      },
+    });
+  });
+  $(".tampilModalDetailLaporanDpaRole").on("click", function () {
+    $("#detailModalMahasiswaMelanggarLabel").html(
+      "Detail Data Mahasiswa Melanggar"
+    );
+
+    const id_laporan = $(this).data("id_laporan");
+    console.log(id_laporan);
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/DpaControllers/rekapLaporan/detail",
+      data: { id_laporan: id_laporan },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#detailIdLaporan").text(data.id_laporan);
+        $("#detailNimMahasiswa").text(data.nim_mahasiswa);
+        $("#detailNamaMahasiswa").text(data.nama_mahasiswa);
+        $("#detailKelasMahasiswa").text(data.kelas_mahasiswa);
+        $("#detailNipDosen").text(data.nip_dosen);
+        $("#detailNamaDosen").text(data.nama_dosen);
+        $("#detailDeskripsi").text(data.deskripsi);
+        $("#detailTataTertib").text(data.deskripsiTatib);
+        $("#detailTingkatSanksi").text(data.tingkat_sanksi);
         $("#detailBuktiLaporan").attr(
           "src",
           baseurl + "/img/bukti_laporan/" + data.file_bukti
@@ -426,6 +463,79 @@ $(function () {
       },
     });
   });
+  $(".tampilModalDetailLaporanDpaRoleMenuDosen").on("click", function () {
+    console.log("Clicked Detail"); // Pastikan event click terpanggil
+
+    $("#detailModalLaporanLabel").html("Detail Data Laporan");
+
+    const id_laporan = $(this).data("id_laporan");
+    console.log(id_laporan);
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/DpaControllers/laporan/detail",
+      data: { id_laporan: id_laporan },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+
+        // Pastikan ID elemen sesuai dengan elemen yang ada di HTML
+        $("#detailIdLaporan").text(data.id_laporan);
+        $("#detailNimMahasiswa").text(data.nim_mahasiswa);
+        $("#detailNamaMahasiswa").text(data.nama_mahasiswa);
+        $("#detailKelasMahasiswa").text(data.kelas_mahasiswa);
+        $("#detailNipDosen").text(data.nip_dosen);
+        $("#detailNamaDosen").text(data.nama_dosen);
+        $("#detailDeskripsi").text(data.deskripsi);
+        $("#detailTataTertib").text(data.deskripsiTatib);
+        $("#detailTingkatSanksi").text(data.tingkat_sanksi);
+        $("#detailBuktiLaporan").attr(
+          "src",
+          baseurl + "/img/bukti_laporan/" + data.file_bukti
+        );
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      },
+    });
+  });
+
+  $(".tampilModalDetailLaporanAdminRole").on("click", function () {
+    console.log("Clicked Detail"); // Pastikan event click terpanggil
+
+    $("#detailModalLaporanLabel").html("Detail Data Laporan");
+
+    const id_laporan = $(this).data("id_laporan");
+    console.log(id_laporan);
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/laporan/detail",
+      data: { id_laporan: id_laporan },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+
+        // Pastikan ID elemen sesuai dengan elemen yang ada di HTML
+        $("#detailIdLaporan").text(data.id_laporan);
+        $("#detailNimMahasiswa").text(data.nim_mahasiswa);
+        $("#detailNamaMahasiswa").text(data.nama_mahasiswa);
+        $("#detailKelasMahasiswa").text(data.kelas_mahasiswa);
+        $("#detailNipDosen").text(data.nip_dosen);
+        $("#detailNamaDosen").text(data.nama_dosen);
+        $("#detailDeskripsi").text(data.deskripsi);
+        $("#detailTataTertib").text(data.deskripsiTatib);
+        $("#detailTingkatSanksi").text(data.tingkat_sanksi);
+        $("#detailBuktiLaporan").attr(
+          "src",
+          baseurl + "/img/bukti_laporan/" + data.file_bukti
+        );
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      },
+    });
+  });
 
   $(".tampilModalUploadSuratSanksi").on("click", function () {
     $("#detailModalKerjakanSanksiLabel").html("Detail Data Laporan");
@@ -479,7 +589,7 @@ $(function () {
 
   //function banding
   $(".tampilTambahDataBanding").on("click", function () {
-    $("#formModalBandingLabel").html("Ajukan Bandinggggg");
+    $("#formModalBandingLabel").html("Ajukan Banding");
     $(".modal-footer button[type=submit]").html("Ajukan Banding");
 
     const id_laporan = $(this).data("id_laporan");
@@ -506,6 +616,58 @@ $(function () {
 
     $.ajax({
       url: "http://localhost/PHOENIX_TATIB_TI_2D/public/MahasiswaControllers/banding/detail",
+      data: { id_banding: id_banding },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#detailDeskripsi").text(data.deskripsi);
+        $("#detailBuktiBanding").attr(
+          "src",
+          baseurl + "/img/bukti_banding/" + data.file_bukti
+        );
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      },
+    });
+  });
+  $(".tampilModalDetailBandingAdminRole").on("click", function () {
+    console.log("Clicked Detail");
+
+    $("#detailModalBandingLabel").html("Detail Data Banding");
+
+    const id_banding = $(this).data("id_banding");
+    console.log(id_banding);
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/AdminControllers/banding/detail",
+      data: { id_banding: id_banding },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#detailDeskripsi").text(data.deskripsi);
+        $("#detailBuktiBanding").attr(
+          "src",
+          baseurl + "/img/bukti_banding/" + data.file_bukti
+        );
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      },
+    });
+  });
+  $(".tampilModalDetailBandingDpaRole").on("click", function () {
+    console.log("Clicked Detail");
+
+    $("#detailModalBandingLabel").html("Detail Data Banding");
+
+    const id_banding = $(this).data("id_banding");
+    console.log(id_banding);
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/DpaControllers/banding/detail",
       data: { id_banding: id_banding },
       method: "post",
       dataType: "json",

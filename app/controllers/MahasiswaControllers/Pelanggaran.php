@@ -9,7 +9,15 @@ class Pelanggaran extends Controller
 
     public function setuju($id_laporan)
     {
-        var_dump($id_laporan);
+        if ($this->model('Laporan_model')->setujuLaporan($id_laporan) > 0) {
+            $this->showSweetAlert('success', 'Berhasil', 'Berhasil Menyetujui Laporan');
+            header('Location: ' . BASEURL . '/MahasiswaControllers/pelanggaran');
+            exit;
+        } else {
+            $this->showSweetAlert('error', 'Ooops', 'Gagal Menyetujui Laporan');
+            header('Location: ' . BASEURL . '/MahasiswaControllers/pelanggaran');
+            exit;
+        }
     }
 
     // Fungsi untuk menampilkan halaman daftar Pelanggaran

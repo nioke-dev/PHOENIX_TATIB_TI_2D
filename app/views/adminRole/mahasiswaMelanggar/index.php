@@ -41,7 +41,7 @@
                                 <td><?= $mhs_melanggar['tingkat_sanksi']; ?></td>
                                 <td>
                                     <a href="<?= BASEURL; ?>/AdminControllers/mahasiswaMelanggar/detail/<?= $mhs_melanggar['nim_mahasiswa']; ?>" class="badge bg-primary float-right tampilModalDetailMahasiswaMelanggar" data-bs-toggle="modal" data-bs-target="#detailModalMahasiswaMelanggar" data-nim_mahasiswa="<?= $mhs_melanggar['nim_mahasiswa']; ?>">Detail</a>
-                                    <a href="<?= BASEURL; ?>/AdminControllers/mahasiswaMelanggar/ubah/<?= $mhs_melanggar['nim_mahasiswa']; ?>" class="badge bg-success float-right tampilModalUbahMahasiswa" data-bs-toggle="modal" data-bs-target="#formModalMahasiswaMelanggar" data-nim_mahasiswa="<?= $mhs_melanggar['nim_mahasiswa']; ?>">ubah</a>
+                                    <a href="<?= BASEURL; ?>/AdminControllers/mahasiswaMelanggar/ubah/<?= $mhs_melanggar['nim_mahasiswa']; ?>" class="badge bg-success float-right tampilModalUbahMahasiswaMelanggar" data-bs-toggle="modal" data-bs-target="#formModalMahasiswaMelanggar" data-nim_mahasiswa="<?= $mhs_melanggar['nim_mahasiswa']; ?>">ubah</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -98,6 +98,13 @@
                         <td><strong>:</strong></td>
                         <td><span id="detailTingkatSanksiMahasiswaMelanggar"></span></td>
                     </tr>
+                    <tr>
+                        <td><strong>Jumlah Pelanggaran</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailJumlahPelanggaranMahasiswaMelanggar"></span></td>
+                    </tr>
+
+                    
                 </table>
                 <!-- <div class="form-group">
                     <p><strong>NIM Mahasiswa:</strong> <span id="detailNimMahasiswaMelanggar"></span></p>

@@ -40,8 +40,7 @@
                                     <td><span class="badge text-bg-info"><?= $banding['status_sanksi']; ?></span></td>
                                 <?php endif; ?>
                                 <td>
-                                    <a href="<?= BASEURL; ?>/AdminControllers/banding/detail/<?= $banding['id_banding']; ?>" class="badge bg-success float-right tampilModalDetailBanding" data-bs-toggle="modal" data-bs-target="#detailModalBanding" data-id_banding="<?= $banding['id_banding']; ?>">detail</a>
-                                    <a href="<?= BASEURL; ?>/AdminControllers/banding/hapus/<?= $banding['id_banding']; ?>" class="badge bg-danger float-right" onclick="return confirmAction('<?= BASEURL; ?>/AdminControllers/banding/hapus/<?= $banding['id_banding']; ?>')">Hapus</a>
+                                    <a href="<?= BASEURL; ?>/AdminControllers/banding/detail/<?= $banding['id_banding']; ?>" class="badge bg-success float-right tampilModalDetailBandingAdminRole" data-bs-toggle="modal" data-bs-target="#detailModalBanding" data-id_banding="<?= $banding['id_banding']; ?>">detail</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -51,10 +50,6 @@
         </div>
     </div>
 </div>
-
-
-
-
 
 <!-- Modal Detail -->
 <div class="modal fade" id="detailModalBanding" tabindex="-1" aria-labelledby="detailModalBandingLabel" aria-hidden="true">

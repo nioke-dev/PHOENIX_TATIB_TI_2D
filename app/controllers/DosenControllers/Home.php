@@ -12,8 +12,8 @@ class Home extends Controller
         $data['judul'] = 'Home';
         $data['nama'] = $this->model('User_model')->getUser();
 
-        $data['countBanding'] = $this->model('Banding_model')->getCountMhs();
-        $data['countLaporan'] = $this->model('Laporan_model')->getCountMhs();
+        $data['countBanding'] = $this->model('Banding_model')->getCountDosenBanding();
+        $data['countLaporan'] = $this->model('Laporan_model')->getCountDosen();
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);

@@ -130,6 +130,18 @@
         return false;
     }
 </script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    // Menambahkan event listener untuk menanggapi klik pada tombol lapor
+    document.getElementById("laporButton").addEventListener("click", function() {
+        // Navigasi ke halaman laporan
+        window.location.href = "<?= BASEURL; ?>/DosenControllers/laporan";
+    });
+    // Menambahkan event listener untuk menekan tombol lapor otomatis
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("autoClickButton").click();
+    });
+</script>
 </body>
 
 </html>

@@ -3,7 +3,7 @@
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h4 class="m-0 font-weight-bold text-dark">Daftar Laporan</h4>
         <div class="row" style="margin-right: 1px;">
-            <button type="button" class="btn btn-danger tombolTambahDataLaporan" data-bs-toggle="modal" data-bs-target="#formModalLaporan">
+            <button type="button" class="btn btn-danger tombolTambahDataLaporan" data-bs-toggle="modal" data-bs-target="#formModalLaporan" id="autoClickButton">
                 LAPOR!
             </button>
         </div>
@@ -31,7 +31,7 @@
                             <tr>
                                 <th><?= $no++; ?></th>
                                 <td><?= $laporan['id_laporan']; ?></td>
-                                <td><?= $laporan['tgl_laporan']; ?></td>
+                                <td><?= date('d-m-Y', strtotime($laporan['tgl_laporan'])); ?></td>
                                 <td><?= $laporan['nim_mahasiswa']; ?></td>
                                 <td><?= $laporan['nama_mahasiswa']; ?></td>
                                 <td><?= $laporan['kelas_mahasiswa']; ?></td>

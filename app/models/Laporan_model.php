@@ -45,6 +45,14 @@ class Laporan_model
         return $result['total'];
     }
 
+    public function getCountDosen()
+    {
+        $this->db->query('SELECT COUNT(*) as total FROM laporan WHERE nip_dosen = :nip_dosen');
+        $this->db->bind('nip_dosen', $_SESSION['username']);
+        $result = $this->db->single();
+        return $result['total'];
+    }
+
     // Function to get all Laporan data
     public function getAllLaporanInAdminRole()
     {

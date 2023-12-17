@@ -243,7 +243,7 @@
                             <span class="hide-menu">More</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="<?= BASEURL; ?>/DpaControllers/about" aria-expanded="false">
+                            <a class="sidebar-link" href="<?= BASEURL; ?>/DosenControllers/about" aria-expanded="false">
                                 <span>
                                     <i class="bi bi-info-circle"></i>
                                 </span>

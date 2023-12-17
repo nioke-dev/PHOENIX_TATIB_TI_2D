@@ -39,6 +39,7 @@
                                     <input type="password" class="form-control" name="oldPassword" id="oldPassword" placeholder="Masukkan Kata Sandi Lama" required autofocus>
                                 </div>
                         </div>
+                        <br>
                         <div class="col-6 mb-5">
                             <div class="form-group">
                                 <label for="password" class="form-label">Kata Sandi Baru :</label>
@@ -57,7 +58,7 @@
         </div>
     </div>
     <div class="card-footer d-flex justify-content-end">
-        <button type="submit" class="btn btn-danger"><span><i class="bi bi-gear me-2"></i></span>Change Password</button>
+        <button type="submit" class="btn btn-danger"><span><i class="bi bi-gear me-2"></i></span>Perbarui Kata Sandi</button>
         </form>
     </div>
 </div>

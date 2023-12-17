@@ -38,7 +38,7 @@
                                     <td><span class="badge text-bg-info"><?= $banding['status_sanksi']; ?></span></td>
                                 <?php endif; ?>
                                 <td>
-                                    <a href="<?= BASEURL; ?>/MahasiswaControllers/banding/detail/<?= $banding['id_banding']; ?>" class="badge bg-success float-right tampilModalDetailBanding" data-bs-toggle="modal" data-bs-target="#detailModalBanding" data-id_banding="<?= $banding['id_banding']; ?>">Detail</a>
+                                    <a href="<?= BASEURL; ?>/MahasiswaControllers/banding/detail/<?= $banding['id_banding']; ?>" class="badge bg-success float-right tampilModalDetailBandingMahasiswaRole" data-bs-toggle="modal" data-bs-target="#detailModalBanding" data-id_banding="<?= $banding['id_banding']; ?>">Detail</a>
                                     <a href="<?= BASEURL; ?>/MahasiswaControllers/banding/hapus/<?= $banding['id_banding']; ?>" class="badge bg-danger float-right" onclick="return confirmAction()">Hapus</a>
                                     <script>
                                         function confirmAction() {

@@ -600,7 +600,7 @@ $(function () {
     });
   });
 
-  $(".tampilModalDetailBanding").on("click", function () {
+  $(".tampilModalDetailBandingMahasiswaRole").on("click", function () {
     console.log("Clicked Detail");
 
     $("#detailModalBandingLabel").html("Detail Data Banding");
@@ -610,6 +610,32 @@ $(function () {
 
     $.ajax({
       url: "http://localhost/PHOENIX_TATIB_TI_2D/public/MahasiswaControllers/banding/detail",
+      data: { id_banding: id_banding },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Server:", data);
+        $("#detailDeskripsi").text(data.deskripsi);
+        $("#detailBuktiBanding").attr(
+          "src",
+          baseurl + "/img/bukti_banding/" + data.file_bukti
+        );
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      },
+    });
+  });
+  $(".tampilModalDetailBandingDosenRole").on("click", function () {
+    console.log("Clicked Detail");
+
+    $("#detailModalBandingLabel").html("Detail Data Banding");
+
+    const id_banding = $(this).data("id_banding");
+    console.log(id_banding);
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/DosenControllers/banding/detail",
       data: { id_banding: id_banding },
       method: "post",
       dataType: "json",

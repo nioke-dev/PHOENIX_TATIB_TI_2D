@@ -32,7 +32,7 @@
                                 <td><?= $banding['nim_mahasiswa']; ?></td>
                                 <td><?= $banding['nama_mahasiswa']; ?></td>
                                 <td><?= $banding['kelas_mahasiswa']; ?></td>
-                                <?php if ($banding['status_sanksi'] == 'Diterima') : ?>
+                                <?php if ($banding['status_sanksi'] == 'Disetujui') : ?>
                                     <td><span class="badge text-bg-success"><?= $banding['status_sanksi']; ?></span></td>
                                 <?php elseif ($banding['status_sanksi'] == 'Ditolak') : ?>
                                     <td><span class="badge text-bg-danger"><?= $banding['status_sanksi']; ?></span></td>

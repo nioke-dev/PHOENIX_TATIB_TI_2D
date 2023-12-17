@@ -27,9 +27,19 @@
                                 <td><?= $pelanggaran['id_laporan']; ?></td>
                                 <td><?= $pelanggaran['nip_dosen']; ?></td>
                                 <td><?= $pelanggaran['nama_dosen']; ?></td>
-                                <td>
-                                    <span class="badge text-bg-primary"><?= $pelanggaran['status_sanksi']; ?></span>
-                                </td>
+                                <?php if ($pelanggaran['status_sanksi'] == 'Disetujui') : ?>
+                                    <td><span class="badge text-bg-success"><?= $pelanggaran['status_sanksi']; ?></span></td>
+                                <?php elseif ($pelanggaran['status_sanksi'] == 'Ditolak') : ?>
+                                    <td><span class="badge text-bg-danger"><?= $pelanggaran['status_sanksi']; ?></span></td>
+                                <?php elseif ($pelanggaran['status_sanksi'] == 'Dikerjakan') : ?>
+                                    <td><span class="badge text-bg-light"><?= $pelanggaran['status_sanksi']; ?></span></td>
+                                <?php elseif ($pelanggaran['status_sanksi'] == 'Selesai') : ?>
+                                    <td><span class="badge text-bg-dark"><?= $pelanggaran['status_sanksi']; ?></span></td>
+                                <?php elseif ($pelanggaran['status_sanksi'] == 'Baru') : ?>
+                                    <td><span class="badge text-bg-info"><?= $pelanggaran['status_sanksi']; ?></span></td>
+                                <?php elseif ($pelanggaran['status_sanksi'] == 'Tertunda') : ?>
+                                    <td><span class="badge text-bg-warning"><?= $pelanggaran['status_sanksi']; ?></span></td>
+                                <?php endif; ?>
                                 <td><?= $pelanggaran['tingkat_sanksi']; ?></td>
                                 <td>
                                     <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/detail/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-primary float-right tampilModalDetailPelanggaran" data-bs-toggle="modal" data-bs-target="#detailModalPelanggaran" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Detail</a>
@@ -94,10 +104,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h3>Silahkan Temui Admin Jurusan dan Dpa Anda</h3>            
+                <h3>Silahkan Temui Admin Jurusan dan Dpa Anda</h3>
             </div>
-            <div class="modal-footer">                
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>                
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>

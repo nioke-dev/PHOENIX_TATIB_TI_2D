@@ -161,7 +161,7 @@ class Dosen_model
     }
 
     // fungsi menghitung total admin di dashboard Admin
-    public function getCount()
+    public function getCountDosen()
     {
         $this->db->query('SELECT COUNT(*) as total FROM dosen');
         $result = $this->db->single();

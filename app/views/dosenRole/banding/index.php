@@ -40,7 +40,7 @@
                                     <td><span class="badge text-bg-info"><?= $banding['status_sanksi']; ?></span></td>
                                 <?php endif; ?>
                                 <td>
-                                    <a href="<?= BASEURL; ?>/DosenControllers/banding/detail/<?= $banding['id_banding']; ?>" class="badge bg-primary float-right tampilModalDetailBanding" data-bs-toggle="modal" data-bs-target="#detailModalBanding" data-id_banding="<?= $banding['id_banding']; ?>">detail</a>
+                                    <a href="<?= BASEURL; ?>/DosenControllers/banding/detail/<?= $banding['id_banding']; ?>" class="badge bg-primary float-right tampilModalDetailBandingDosenRole" data-bs-toggle="modal" data-bs-target="#detailModalBanding" data-id_banding="<?= $banding['id_banding']; ?>">Detail</a>
                                     <?php if ($banding['status_sanksi'] !== 'Disetujui' && $banding['status_sanksi'] !== 'Ditolak') : ?>
                                         <a href="<?= BASEURL; ?>/DosenControllers/banding/setujuBanding/<?= $banding['id_banding']; ?>" class="badge bg-success float-right" onclick="return confirmActionSetujuBanding('<?= BASEURL; ?>/DosenControllers/banding/setujuBanding/<?= $banding['id_banding']; ?>')">Setuju</a>
                                         <a href="<?= BASEURL; ?>/DosenControllers/banding/tolakBanding/<?= $banding['id_banding']; ?>" class="badge bg-danger float-right" onclick="return confirmActionTolakBanding('<?= BASEURL; ?>/DosenControllers/banding/tolakBanding/<?= $banding['id_banding']; ?>')">Tolak</a>
@@ -68,12 +68,12 @@
             <div class="modal-body">
                 <table class="table">
                     <tr>
-                        <td><strong>Deskripsi</strong></td>
+                        <td><strong>Keterangan</strong></td>
                         <td><strong>:</strong></td>
                         <td><span id="detailDeskripsi"></span></td>
                     </tr>
                     <tr>
-                        <td><strong>Bukti Pelanggaran</strong></td>
+                        <td><strong>Bukti Banding</strong></td>
                         <td><strong>:</strong></td>
                         <td><img id="detailBuktiBanding" alt="Bukti Banding" style="max-width: 100%;" /></td>
                     </tr>

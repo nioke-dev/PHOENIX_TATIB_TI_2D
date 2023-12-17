@@ -31,24 +31,25 @@
                                 <input type="text" class="form-control" name="email_mahasiswa" id="email_mahasiswa" value="<?= $data['mhs']['email_mahasiswa']; ?>" readonly>
                             </div>
                         </div>
-                        <h3>Ubah Password Anda Sekarang!</h3>
+                        <h3>Yuk Perbarui Kata Sandi Anda!</h3>
                         <div class="col-6 mb-5">
                             <form action="<?= BASEURL; ?>/MahasiswaControllers/profile/changePassword" method="POST">
                                 <div class="form-group">
-                                    <label for="oldPassword" class="form-label">Password Lama :</label>
-                                    <input type="password" class="form-control" name="oldPassword" id="oldPassword" placeholder="Masukkan Password Lama" required autofocus>
+                                    <label for="oldPassword" class="form-label">Kata Sandi Lama :</label>
+                                    <input type="password" class="form-control" name="oldPassword" id="oldPassword" placeholder="Masukkan Kata Sandi Lama" required autofocus>
                                 </div>
                         </div>
+                        <br>
                         <div class="col-6 mb-5">
                             <div class="form-group">
-                                <label for="password" class="form-label">Password Baru :</label>
-                                <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Password Baru" required autofocus>
+                                <label for="password" class="form-label">Kata Sandi Baru :</label>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Kata Sandi Baru" required autofocus>
                             </div>
                         </div>
                         <div class="col-6 mb-5">
                             <div class="form-group">
-                                <label for="confirmPassword" class="form-label">Konfirmasi Password :</label>
-                                <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Masukkan Password Sekali Lagi" required>
+                                <label for="confirmPassword" class="form-label">Konfirmasi Kata Sandi :</label>
+                                <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Masukkan Kata Sandi Baru Sekali Lagi" required>
                             </div>
                         </div>
                     </div>
@@ -57,7 +58,7 @@
         </div>
     </div>
     <div class="card-footer d-flex justify-content-end">
-        <button type="submit" class="btn btn-danger"><span><i class="bi bi-gear me-2"></i></span>Ubah Password</button>
+        <button type="submit" class="btn btn-danger"><span><i class="bi bi-gear me-2"></i></span>Perbarui Kata Sandi</button>
         </form>
     </div>
 </div>

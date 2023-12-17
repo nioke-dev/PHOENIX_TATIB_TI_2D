@@ -32,6 +32,14 @@ class Banding_model
         return $result['total'];
     }
 
+    public function getCountDosenBanding()
+    {
+        $this->db->query('SELECT COUNT(*) as total FROM banding where nip_dosen = :nip_dosen AND id_statusSanksi != 4');
+        $this->db->bind('nip_dosen', $_SESSION['username']);
+        $result = $this->db->single();
+        return $result['total'];
+    }
+
     // Fungsi untuk mendapatkan semua data laporan banding
     public function getAllBanding()
     {

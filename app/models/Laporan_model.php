@@ -199,7 +199,8 @@ class Laporan_model
     // fungsi menghitung total laporan di dashboard Admin
     public function getCountMhs()
     {
-        $this->db->query('SELECT COUNT(*) as total FROM laporan');
+        $this->db->query('SELECT COUNT(*) as total FROM laporan WHERE id_statusSanksi != :id_statusSanksi');
+        $this->db->bind('id_statusSanksi', '4');
         $result = $this->db->single();
         return $result['total'];
     }

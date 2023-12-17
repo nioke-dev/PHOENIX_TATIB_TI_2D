@@ -14,6 +14,7 @@ class Dpa extends Controller
         $data['dp'] = $this->model('Dpa_model')->getAllDpa();
         $data['nama'] = $this->model('User_model')->getUser();
         $data['dsn'] = $this->model('Dosen_model')->getAllDosenFilterDpaFound();
+        $data['dsn_ubah'] = $this->model('Dosen_model')->getAllDosenFilterDpaFoundExceptChange();
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/headerNav', $data);
@@ -97,56 +98,32 @@ class Dpa extends Controller
     public function getubah()
     {
         echo json_encode($this->model('Dpa_model')->getDpaByNip($_POST['nip_dpa']));
-    }
+    }    
 
-    // Fungsi untuk mengubah data dpa
     public function ubah()
     {
-        // Pengecekan perubahan di user
+        $dpaChanged = false;
         if (
-            $_POST['nip_dpa'] != $_POST['nip_dpa_lama']
+            $_POST['kelas_dpa_ubah'] != $_POST['kelas_dpa_ubah_Lama']
         ) {
-            // Ubah data user dpa
-            if ($this->model('Dpa_model')->ubahDataUserDpa($_POST) > 0) {
-                $userChanged = true;
-            } else {
-                // SweetAlert jika ada masalah pada perubahan user
-                $this->showSweetAlert('error', 'Gagal', 'Data User Gagal Diubah');
-                header('Location: ' . BASEURL . '/AdminControllers/dpa');
-                exit;
-            }
-        } else {
-            // Tidak ada perubahan di user
-            $userChanged = false;
-        }
-
-        // Pengecekan perubahan di dpa
-        if (
-            $_POST['nama_dpa'] != $_POST['nama_dpa_lama'] ||
-            $_POST['kelas_dpa'] != $_POST['kelas_dpa_lama'] ||
-            $_POST['email_dpa'] != $_POST['email_dpa_lama']
-        ) {
-            // Ubah data dpa
+            // Ubah data Tatib
             if ($this->model('Dpa_model')->ubahDataDpa($_POST) > 0) {
                 $dpaChanged = true;
             } else {
-                // SweetAlert jika ada masalah pada perubahan dpa
-                $this->showSweetAlert('error', 'Gagal', 'Data DPA Gagal Diubah');
+                // SweetAlert jika ada masalah pada perubahan Tatib
+                $this->showSweetAlert('error', 'Gagal', 'Data Dpa Gagal Diubah');
                 header('Location: ' . BASEURL . '/AdminControllers/dpa');
                 exit;
             }
-        } else {
-            // Tidak ada perubahan di dpa
-            $dpaChanged = false;
         }
 
-        // SweetAlert jika tidak ada perubahan di kedua entitas
-        if (!$userChanged && !$dpaChanged) {
-            $this->showSweetAlert('info', 'Info', 'Tidak ada perubahan pada data DPA');
+        // SweetAlert jika tidak ada perubahan di Tatib
+        if (!$dpaChanged) {
+            $this->showSweetAlert('info', 'Info', 'Tidak ada perubahan pada data Dpa');
             header('Location: ' . BASEURL . '/AdminControllers/dpa');
             exit;
         } else {
-            $this->showSweetAlert('success', 'Berhasil', 'Data Berhasil Diubah');
+            $this->showSweetAlert('success', 'Berhasil', 'Data Dpa berhasil Diubah');
             header('Location: ' . BASEURL . '/AdminControllers/dpa');
             exit;
         }

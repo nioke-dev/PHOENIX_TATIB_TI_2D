@@ -14,19 +14,24 @@ class MahasiswaMelanggar_model
     // Fungsi untuk mendapatkan semua data mahasiswa
     public function getAllMahasiswaMelanggar()
     {
-        $this->db->query('SELECT mahasiswa.*, status_sanksi, tingkat_sanksi FROM ' . $this->table . ' 
+        $this->db->query('SELECT mahasiswa.*, tingkat_sanksi FROM ' . $this->table . ' 
         INNER JOIN mahasiswa ON mahasiswaMelanggar.nim_mahasiswa = mahasiswa.nim_mahasiswa
-        INNER JOIN statusSanksi ON mahasiswaMelanggar.id_statusSanksi = statusSanksi.id_statusSanksi
         INNER JOIN tingkatSanksi ON mahasiswaMelanggar.id_tingkatSanksi = tingkatSanksi.id_tingkatSanksi');
 
         return $this->db->resultSet();
     }
 
+    public function getTingkatSanksiByNim($nim_mahasiswa)
+    {
+        $this->db->query('SELECT id_tingkatSanksi FROM mahasiswaMelanggar WHERE nim_mahasiswa=:nim_mahasiswa');
+        $this->db->bind('nim_mahasiswa', $nim_mahasiswa);
+        return $this->db->single();
+    }
+
     public function getAllMahasiswaMelanggarFilterKelas($data)
     {
-        $this->db->query('SELECT mahasiswa.*, status_sanksi, tingkat_sanksi FROM ' . $this->table . ' 
+        $this->db->query('SELECT mahasiswa.*, tingkat_sanksi FROM ' . $this->table . ' 
             INNER JOIN mahasiswa ON mahasiswaMelanggar.nim_mahasiswa = mahasiswa.nim_mahasiswa
-            INNER JOIN statusSanksi ON mahasiswaMelanggar.id_statusSanksi = statusSanksi.id_statusSanksi
             INNER JOIN tingkatSanksi ON mahasiswaMelanggar.id_tingkatSanksi = tingkatSanksi.id_tingkatSanksi
             WHERE mahasiswa.kelas_mahasiswa = :kelas_dpa');
         $this->db->bind('kelas_dpa', $data['kelas_dpa']);
@@ -44,14 +49,13 @@ class MahasiswaMelanggar_model
     // Fungsi untuk mendapatkan data mahasiswa berdasarkan NIM
     public function getMahasiswaMelanggarByNim($nim_mahasiswa)
     {
-        $this->db->query('SELECT mahasiswa.*, laporan.*, status_sanksi, tingkatSanksi.*, laporan.file_bukti AS file_bukti,
+        $this->db->query('SELECT mahasiswa.*, laporan.*, tingkatSanksi.*, laporan.file_bukti AS file_bukti,
         (SELECT COUNT(*) FROM laporan WHERE nim_mahasiswa = :nim_mahasiswa AND id_statusSanksi != 4) AS jumlahPelanggaran
-FROM mahasiswaMelanggar 
-INNER JOIN mahasiswa ON mahasiswaMelanggar.nim_mahasiswa = mahasiswa.nim_mahasiswa
-INNER JOIN statusSanksi ON mahasiswaMelanggar.id_statusSanksi = statusSanksi.id_statusSanksi
-INNER JOIN tingkatSanksi ON mahasiswaMelanggar.id_tingkatSanksi = tingkatSanksi.id_tingkatSanksi
-INNER JOIN laporan ON mahasiswaMelanggar.id_laporan = laporan.id_laporan
-WHERE mahasiswaMelanggar.nim_mahasiswa=:nim_mahasiswa');
+        FROM mahasiswaMelanggar 
+        INNER JOIN mahasiswa ON mahasiswaMelanggar.nim_mahasiswa = mahasiswa.nim_mahasiswa
+        INNER JOIN tingkatSanksi ON mahasiswaMelanggar.id_tingkatSanksi = tingkatSanksi.id_tingkatSanksi
+        INNER JOIN laporan ON mahasiswaMelanggar.id_laporan = laporan.id_laporan
+        WHERE mahasiswaMelanggar.nim_mahasiswa=:nim_mahasiswa');
         $this->db->bind('nim_mahasiswa', $nim_mahasiswa);
         return $this->db->single();
     }

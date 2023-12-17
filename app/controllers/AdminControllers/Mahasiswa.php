@@ -122,18 +122,4 @@ class Mahasiswa extends Controller
             exit;
         }
     }
-
-    // Fungsi untuk mencari data mahasiswa berdasarkan keyword
-    public function cari()
-    {
-        $data['judul'] = 'Daftar Mahasiswa';
-        $data['mhs'] = $this->model('Mahasiswa_model')->cariDataMahasiswa();
-        $data['nama'] = $this->model('User_model')->getUser();
-
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('templates/headerNav', $data);
-        $this->view('adminRole/mahasiswa/index', $data);
-        $this->view('templates/footer', $data);
-    }
 }

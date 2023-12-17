@@ -23,28 +23,18 @@
                     </thead>
                     <tbody>
                         <?php $no = 1;
-                        if (empty($data['tatib'])) : ?>
+                        foreach ($data['tatib'] as $tatib) : ?>
                             <tr>
-                                <td colspan="7">
-                                    <div class="alert alert-danger" role="alert">
-                                        Tidak ada data terkait.
-                                    </div>
+                                <th><?= $no++; ?></th>
+                                <td><?= $tatib['deskripsi']; ?></td>
+                                <td><?= $tatib['tingkat_sanksi']; ?></td>
+                                <td>
+                                    <a href="<?= BASEURL; ?>/AdminControllers/tatib/detail/<?= $tatib['id_tatib']; ?>" class="badge bg-primary float-right tampilModalDetailTatib" data-bs-toggle="modal" data-bs-target="#detailModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Detail</a>
+                                    <a href="<?= BASEURL; ?>/AdminControllers/tatib/ubah/<?= $tatib['id_tatib']; ?>" class="badge bg-success float-right tampilModalUbahTatib" data-bs-toggle="modal" data-bs-target="#formModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Ubah</a>
+                                    <a href="<?= BASEURL; ?>/AdminControllers/tatib/hapus/<?= $tatib['id_tatib']; ?>" class="badge bg-danger float-right" onclick="return confirmAction('<?= BASEURL; ?>/AdminControllers/tatib/hapus/<?= $tatib['id_tatib']; ?>')">Hapus</a>
                                 </td>
                             </tr>
-                            <?php else :
-                            foreach ($data['tatib'] as $tatib) : ?>
-                                <tr>
-                                    <th><?= $no++; ?></th>
-                                    <td><?= $tatib['deskripsi']; ?></td>
-                                    <td><?= $tatib['tingkat_sanksi']; ?></td>
-                                    <td>
-                                        <a href="<?= BASEURL; ?>/AdminControllers/tatib/detail/<?= $tatib['id_tatib']; ?>" class="badge bg-primary float-right tampilModalDetailTatib" data-bs-toggle="modal" data-bs-target="#detailModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Detail</a>
-                                        <a href="<?= BASEURL; ?>/AdminControllers/tatib/ubah/<?= $tatib['id_tatib']; ?>" class="badge bg-success float-right tampilModalUbahTatib" data-bs-toggle="modal" data-bs-target="#formModalTatib" data-id_tatib="<?= $tatib['id_tatib']; ?>">Ubah</a>
-                                        <a href="<?= BASEURL; ?>/AdminControllers/tatib/hapus/<?= $tatib['id_tatib']; ?>" class="badge bg-danger float-right" onclick="return confirmAction('<?= BASEURL; ?>/AdminControllers/tatib/hapus/<?= $tatib['id_tatib']; ?>')">Hapus</a>
-                                    </td>
-                                </tr>
-                        <?php endforeach;
-                        endif; ?>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

@@ -3,9 +3,9 @@
   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
     <h4 class="m-0 font-weight-bold text-dark">Daftar Dosen</h4>
     <div class="row" style="margin-right: 1px;">
-        <button type="button" class="btn btn-primary tombolTambahDataDosen" data-bs-toggle="modal" data-bs-target="#formModalDosen">
-          Tambah Data Dosen
-        </button>
+      <button type="button" class="btn btn-primary tombolTambahDataDosen" data-bs-toggle="modal" data-bs-target="#formModalDosen">
+        Tambah Data Dosen
+      </button>
     </div>
   </div>
   <!-- Card Body -->
@@ -32,8 +32,8 @@
                 <td><?= $dsn['email_dosen']; ?></td>
                 <td>
                   <a href="<?= BASEURL; ?>/AdminControllers/dosen/detail/<?= $dsn['nip_dosen']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">Detail</a>
-                  <a href="<?= BASEURL; ?>/AdminControllers/dosen/ubah/<?= $dsn['nip_dosen']; ?>" class="badge bg-success float-right tampilModalUbahDosen" data-bs-toggle="modal" data-bs-target="#formModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">ubah</a>
-                  <a href="<?= BASEURL; ?>/AdminControllers/dosen/hapus/<?= $dsn['nip_dosen']; ?>" class="badge bg-danger float-right" onclick="return confirmAction('<?= BASEURL; ?>/AdminControllers/dosen/hapus/<?= $dsn['nip_dosen']; ?>')">hapus</a>
+                  <a href="<?= BASEURL; ?>/AdminControllers/dosen/ubah/<?= $dsn['nip_dosen']; ?>" class="badge bg-success float-right tampilModalUbahDosen" data-bs-toggle="modal" data-bs-target="#formModalDosen" data-nip_dosen="<?= $dsn['nip_dosen']; ?>">Ubah</a>
+                  <a href="<?= BASEURL; ?>/AdminControllers/dosen/hapus/<?= $dsn['nip_dosen']; ?>" class="badge bg-danger float-right" onclick="return confirmAction('<?= BASEURL; ?>/AdminControllers/dosen/hapus/<?= $dsn['nip_dosen']; ?>')">Hapus</a>
                 </td>
               </tr>
             <?php endforeach; ?>
@@ -69,11 +69,6 @@
             <td><strong>:</strong></td>
             <td><span id="detailEmail"></span></td>
           </tr>
-          <tr>
-            <td><strong>Username</strong></td>
-            <td><strong>:</strong></td>
-            <td><span id="detailUsername"></span></td>
-          </tr>
         </table>
       </div>
       <div class="modal-footer">
@@ -100,7 +95,7 @@
           <input type="hidden" name="id_user" id="id_user">
           <div class="form-group">
             <label for="nip">NIP</label>
-            <input type="number" class="form-control" id="nip" name="nip" autocomplete="off">
+            <input type="number" class="form-control" id="nip" name="nip" autocomplete="off" required>
             <input type="hidden" class="form-control" id="nip_lama" name="nip_lama" autocomplete="off">
           </div>
 

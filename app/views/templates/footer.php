@@ -38,7 +38,8 @@
     $(document).ready(function() {
         $('#example').DataTable({
             "language": {
-                "emptyTable": "Tidak ada data yang tersedia."
+                "emptyTable": "Tidak ada data yang tersedia.",
+                "zeroRecords": "Tidak ada data terkait."
             }
         });
     });
@@ -53,7 +54,8 @@
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Ya"
+            confirmButtonText: "Ya",
+            cancelButtonText: "Batal"
         }).then((result) => {
             if (result.isConfirmed) {
                 // Redirect to the delete URL if the user confirms

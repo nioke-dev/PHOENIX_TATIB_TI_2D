@@ -131,7 +131,6 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
-
                     <div class="form-group">
                         <label for="tingkat_sanksi" class="form-label">Pelanggaran</label>
                         <select class="form-control choices-single select-tatib-tingkatSanksi" id="id_tatib" name="id_tatib" autocomplete="off" required>

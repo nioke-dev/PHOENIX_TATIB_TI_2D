@@ -3,9 +3,9 @@
   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
     <h4 class="m-0 font-weight-bold text-dark">Daftar DPA</h4>
     <div class="row" style="margin-right: 1px;">
-        <button type="button" class="btn btn-primary tombolTambahDataDpa" data-bs-toggle="modal" data-bs-target="#formModalDpa">
-          Tambah Data DPA
-        </button>
+      <button type="button" class="btn btn-primary tombolTambahDataDpa" data-bs-toggle="modal" data-bs-target="#formModalDpa">
+        Tambah Data DPA
+      </button>
     </div>
   </div>
   <!-- Card Body -->
@@ -34,7 +34,7 @@
                 <td><?= $dpa['email_dpa']; ?></td>
                 <td>
                   <a href="<?= BASEURL; ?>/AdminControllers/dpa/detail/<?= $dpa['nip_dpa']; ?>" class="badge bg-primary float-right tampilModalDetailDpa" data-bs-toggle="modal" data-bs-target="#detailModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Detail</a>
-                  <a href="<?= BASEURL; ?>/AdminControllers/dpa/ubah/<?= $dpa['nip_dpa']; ?>" class="badge bg-success float-right tampilModalUbahDpa" data-bs-toggle="modal" data-bs-target="#formModalDpa" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Ubah</a>
+                  <a href="<?= BASEURL; ?>/AdminControllers/dpa/ubah/<?= $dpa['nip_dpa']; ?>" class="badge bg-success float-right tampilModalUbahDpa" data-bs-toggle="modal" data-bs-target="#formModalDpaUbah" data-nip_dpa="<?= $dpa['nip_dpa']; ?>">Ubah</a>
                   <a href="<?= BASEURL; ?>/AdminControllers/dpa/hapus/<?= $dpa['nip_dpa']; ?>" class="badge bg-danger float-right" onclick="return confirmAction('<?= BASEURL; ?>/AdminControllers/dpa/hapus/<?= $dpa['nip_dpa']; ?>')">Hapus</a>
                 </td>
               </tr>
@@ -113,7 +113,31 @@
             <input type="text" class="form-control" id="kelas_dpa" name="kelas_dpa" autocomplete="off" required>
             <input type="hidden" class="form-control" id="kelas_dpa_lama" name="kelas_dpa_lama" autocomplete="off" required>
           </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Tambah Data</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="modal fade" id="formModalDpaUbah" tabindex="-1" aria-labelledby="formModalDpaLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="formModalDpaLabel">Ubah Data DPA</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="<?= BASEURL; ?>/AdminControllers/dpa/ubah" method="post">
+          <input type="hidden" name="nip_dpa_ubah" id="nip_dpa_ubah">
+          <div class="form-group">
+            <label for="kelas_dpa">Kelas</label>
+            <input type="text" class="form-control" id="kelas_dpa_ubah" name="kelas_dpa_ubah" autocomplete="off" required>
+            <input type="hidden" class="form-control" id="kelas_dpa_ubah_Lama" name="kelas_dpa_ubah_Lama" autocomplete="off" required>
+          </div>
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary">Tambah Data</button>

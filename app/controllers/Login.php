@@ -47,7 +47,7 @@ class Login extends Controller
             exit;
         } else {
             // Jika login gagal, mungkin tampilkan pesan kesalahan atau arahkan kembali ke halaman login
-            $this->showSweetAlert('error', 'Login Gagal', 'Username atau Password yang Anda Masukkan Salah.');
+            $this->showSweetAlert('error', 'Login Gagal', 'Nama Pengguna atau Kata Sandi yang Anda Masukkan Salah.');
             header('Location: ' . BASEURL . '/login');
         }
     }

@@ -110,7 +110,7 @@ class Laporan_model
             // SQL query to add Laporan data
             $query = "INSERT INTO laporan (tgl_laporan, nim_mahasiswa, nip_dosen, deskripsi, id_tingkatSanksi, id_statusSanksi, id_tatib, file_bukti)
             VALUES
-            (:tgl_laporan, :nim_mahasiswa, :nip_dosen, :deskripsi, :tingkat_sanksi, :status_sanksi, :id_tatib, :file_bukti)";
+            (:tgl_laporan, :nim_mahasiswa, :nip_dosen, :deskripsi, :id_tingkat_sanksi, :id_statusSanksi, :id_tatib, :file_bukti)";
 
             // Execute the query
             $this->db->query($query);
@@ -118,8 +118,8 @@ class Laporan_model
             $this->db->bind('nim_mahasiswa', $data['nim_mahasiswa']);
             $this->db->bind('nip_dosen', $_SESSION['username']);
             $this->db->bind('deskripsi', $data['deskripsi']);
-            $this->db->bind('tingkat_sanksi', $dataTatibSelect['id_tingkatSanksi']);
-            $this->db->bind('status_sanksi', '1');
+            $this->db->bind('id_tingkat_sanksi', $dataTatibSelect['id_tingkatSanksi']);
+            $this->db->bind('id_statusSanksi', '1');
             $this->db->bind('id_tatib', $data['id_tatib']);
             $this->db->bind('file_bukti', $filename);
 

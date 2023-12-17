@@ -3,9 +3,9 @@
   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
     <h4 class="m-0 font-weight-bold text-dark">Daftar Mahasiswa</h4>
     <div class="row" style="margin-right: 1px;">
-        <button type="button" class="btn btn-primary tombolTambahDataMahasiswa" data-bs-toggle="modal" data-bs-target="#formModalMahasiswa">
-          Tambah Data Mahasiswa
-        </button>
+      <button type="button" class="btn btn-primary tombolTambahDataMahasiswa" data-bs-toggle="modal" data-bs-target="#formModalMahasiswa">
+        Tambah Data Mahasiswa
+      </button>
     </div>
   </div>
   <!-- Card Body -->
@@ -26,31 +26,21 @@
           </thead>
           <tbody>
             <?php $no = 1;
-            if (empty($data['mhs'])) : ?>
+            foreach ($data['mhs'] as $mhs) : ?>
               <tr>
+                <th><?= $no++; ?></th>
+                <td><?= $mhs['nim_mahasiswa']; ?></td>
+                <td><?= $mhs['nama_mahasiswa']; ?></td>
+                <td><?= $mhs['kelas_mahasiswa']; ?></td>
+                <td><?= $mhs['prodi_mahasiswa']; ?></td>
+                <td><?= $mhs['email_mahasiswa']; ?></td>
                 <td>
-                  <div class="alert alert-danger" role="alert">
-                    Tidak ada data terkait.
-                  </div>
+                  <a href="<?= BASEURL; ?>/AdminControllers/mahasiswa/detail/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-primary float-right tampilModalDetailMahasiswa" data-bs-toggle="modal" data-bs-target="#detailModalMahasiswa" data-nim_mahasiswa="<?= $mhs['nim_mahasiswa']; ?>">Detail</a>
+                  <a href="<?= BASEURL; ?>/AdminControllers/mahasiswa/ubah/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-success float-right tampilModalUbahMahasiswa" data-bs-toggle="modal" data-bs-target="#formModalMahasiswa" data-nim_mahasiswa="<?= $mhs['nim_mahasiswa']; ?>">Ubah</a>
+                  <a href="<?= BASEURL; ?>/AdminControllers/mahasiswa/hapus/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-danger float-right" onclick="return confirmAction('<?= BASEURL; ?>/AdminControllers/mahasiswa/hapus/<?= $mhs['nim_mahasiswa']; ?>')">Hapus</a>
                 </td>
               </tr>
-              <?php else :
-              foreach ($data['mhs'] as $mhs) : ?>
-                <tr>
-                  <th><?= $no++; ?></th>
-                  <td><?= $mhs['nim_mahasiswa']; ?></td>
-                  <td><?= $mhs['nama_mahasiswa']; ?></td>
-                  <td><?= $mhs['kelas_mahasiswa']; ?></td>
-                  <td><?= $mhs['prodi_mahasiswa']; ?></td>
-                  <td><?= $mhs['email_mahasiswa']; ?></td>
-                  <td>
-                    <a href="<?= BASEURL; ?>/AdminControllers/mahasiswa/detail/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-primary float-right tampilModalDetailMahasiswa" data-bs-toggle="modal" data-bs-target="#detailModalMahasiswa" data-nim_mahasiswa="<?= $mhs['nim_mahasiswa']; ?>">Detail</a>
-                    <a href="<?= BASEURL; ?>/AdminControllers/mahasiswa/ubah/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-success float-right tampilModalUbahMahasiswa" data-bs-toggle="modal" data-bs-target="#formModalMahasiswa" data-nim_mahasiswa="<?= $mhs['nim_mahasiswa']; ?>">ubah</a>
-                    <a href="<?= BASEURL; ?>/AdminControllers/mahasiswa/hapus/<?= $mhs['nim_mahasiswa']; ?>" class="badge bg-danger float-right" onclick="return confirmAction('<?= BASEURL; ?>/AdminControllers/mahasiswa/hapus/<?= $mhs['nim_mahasiswa']; ?>')">Hapus</a>
-                  </td>
-                </tr>
-            <?php endforeach;
-            endif; ?>
+            <?php endforeach; ?>
           </tbody>
         </table>
       </div>
@@ -116,7 +106,7 @@
           <input type="hidden" name="id_user" id="id_user">
           <div class="form-group">
             <label for="nim_mahasiswa">NIM</label>
-            <input type="number" class="form-control" id="nim_mahasiswa" name="nim_mahasiswa" autocomplete="off">
+            <input type="number" class="form-control" id="nim_mahasiswa" name="nim_mahasiswa" autocomplete="off" required>
             <input type="hidden" class="form-control" id="nim_mahasiswa_lama" name="nim_mahasiswa_lama" autocomplete="off">
           </div>
           <div class="form-group">

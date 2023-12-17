@@ -29,10 +29,28 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                                 <div class="message-body">
-                                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                        <i class="ti ti-user fs-6"></i>
-                                        <p class="mb-0 fs-3">Profil</p>
-                                    </a>
+                                    <?php if ($_SESSION['user_type'] == 'admin') : ?>
+                                        <a href="<?= BASEURL; ?>/AdminControllers/profile" class="d-flex align-items-center gap-2 dropdown-item">
+                                            <i class="ti ti-user fs-6"></i>
+                                            <p class="mb-0 fs-3">Profil</p>
+                                        </a>
+                                    <?php elseif ($_SESSION['user_type'] == 'dosen') : ?>
+                                        <a href="<?= BASEURL; ?>/DosenControllers/profile" class="d-flex align-items-center gap-2 dropdown-item">
+                                            <i class="ti ti-user fs-6"></i>
+                                            <p class="mb-0 fs-3">Profil</p>
+                                        </a>
+                                    <?php elseif ($_SESSION['user_type'] == 'dpa') : ?>
+                                        <a href="<?= BASEURL; ?>/DpaControllers/profile" class="d-flex align-items-center gap-2 dropdown-item">
+                                            <i class="ti ti-user fs-6"></i>
+                                            <p class="mb-0 fs-3">Profil</p>
+                                        </a>
+                                    <?php elseif ($_SESSION['user_type'] == 'mahasiswa') : ?>
+                                        <a href="<?= BASEURL; ?>/MahasiswaControllers/profile" class="d-flex align-items-center gap-2 dropdown-item">
+                                            <i class="ti ti-user fs-6"></i>
+                                            <p class="mb-0 fs-3">Profil</p>
+                                        </a>
+                                    <?php endif; ?>
+
                                     <a href="<?= BASEURL; ?>/login/logout" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                                 </div>
                             </div>

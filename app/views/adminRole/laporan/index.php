@@ -26,7 +26,7 @@
                             <tr>
                                 <th><?= $no++; ?></th>
                                 <td><?= $laporan['id_laporan']; ?></td>
-                                <td><?= $laporan['tgl_laporan']; ?></td>
+                                <td><?= date('d-m-Y', strtotime($laporan['tgl_laporan'])); ?></td>
                                 <td><?= $laporan['nim_mahasiswa']; ?></td>
                                 <td><?= $laporan['nama_mahasiswa']; ?></td>
                                 <td><?= $laporan['kelas_mahasiswa']; ?></td>

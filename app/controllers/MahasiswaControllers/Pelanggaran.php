@@ -25,6 +25,7 @@ class Pelanggaran extends Controller
     {
         $data['judul'] = 'Daftar Pelanggaran';
         $data['pelanggaran'] = $this->model('Laporan_model')->getAllLaporanByNim();
+        $data['getTingkatSanksi'] = $this->model('MahasiswaMelanggar_model')->getTingkatSanksiByNim($_SESSION['username']);
         $data['nama'] = $this->model('User_model')->getUser();
 
         $this->view('templates/header', $data);

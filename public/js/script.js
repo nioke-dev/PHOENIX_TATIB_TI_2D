@@ -53,8 +53,7 @@ $(function () {
         console.log("Respons Server:", data);
         $("#detailNip").text(data.nip_dosen);
         $("#detailNama").text(data.nama_dosen);
-        $("#detailEmail").text(data.email_dosen);
-        $("#detailUsername").text(data.username);
+        $("#detailEmail").text(data.email_dosen);        
       },
       error: function (xhr, status, error) {
         console.error("Error:", error);
@@ -166,7 +165,7 @@ $(function () {
     });
   });
 
-  $(".tampilModalDetail").on("click", function () {
+  $(".tampilModalDetailAdminAdminRole").on("click", function () {
     $("#detailModalAdminLabel").html("Detail Data Admin");
 
     const nip_admin = $(this).data("nip_admin");
@@ -182,7 +181,6 @@ $(function () {
         $("#detailNipAdmin").text(data.nip_admin);
         $("#detailNamaAdmin").text(data.nama_admin);
         $("#detailEmailAdmin").text(data.email_admin);
-        $("#detailUsernameAdmin").text(data.username);
       },
       error: function (xhr, status, error) {
         console.error("Error:", error);
@@ -242,13 +240,13 @@ $(function () {
       dataType: "json",
       success: function (data) {
         console.log("Respons Server:", data);
-        $("#nip_dpa").val(data.nip_dpa);
+        $("#nip_dpa_ubah").val(data.nip_dpa);
         $("#nama_dpa").val(data.nama_dpa);
-        $("#kelas_dpa").val(data.kelas_dpa);
+        $("#kelas_dpa_ubah").val(data.kelas_dpa);
         $("#email_dpa").val(data.email_dpa);
         $("#nip_dpa_lama").val(data.nip_dpa);
         $("#nama_dpa_lama").val(data.nama_dpa);
-        $("#kelas_dpa_lama").val(data.kelas_dpa);
+        $("#kelas_dpa_ubah_Lama").val(data.kelas_dpa);
         $("#email_dpa_lama").val(data.email_dpa);
         $("#id_user").val(data.id_user);
       },
@@ -334,18 +332,13 @@ $(function () {
       method: "post",
       dataType: "json",
       success: function (data) {
-        console.log("Respons Server:", data);
-        $("#detailNimMahasiswaMelanggar").text(data.nim_mahasiswa);
-        $("#detailNamaMahasiswaMelanggar").text(data.nama_mahasiswa);
-        $("#detailKelasMahasiswaMelanggar").text(data.kelas_mahasiswa);
+        console.log("Respons Server:", data);                
         $("#detailProdiMahasiswaMelanggar").text(data.prodi_mahasiswa);
         $("#detailEmailMahasiswaMelanggar").text(data.email_mahasiswa);
         $("#detailJumlahPelanggaranMahasiswaMelanggar").text(
           data.jumlahPelanggaran
         );
-        $("#detailDeskripsi").text(data.deskripsi);
-        $("#detailStatusSanksiMahasiswaMelanggar").text(data.status_sanksi);
-        $("#detailTingkatSanksiMahasiswaMelanggar").text(data.tingkat_sanksi);
+        $("#detailDeskripsi").text(data.deskripsi);        
         $("#detailBuktiLaporan").attr(
           "src",
           baseurl + "/img/bukti_laporan/" + data.file_bukti
@@ -409,6 +402,7 @@ $(function () {
       success: function (data) {
         console.log("Respons Server:", data);
         $("#id_tingkatSanksi").val(data.id_tingkatSanksi);
+        $("#id_tingkatSanksiLama").val(data.id_tingkatSanksi);
         $("#nim_mahasiswa").val(data.nim_mahasiswa);
       },
     });
@@ -648,6 +642,8 @@ $(function () {
       success: function (data) {
         console.log("Respons Server:", data);
         $("#detailDeskripsi").text(data.deskripsi);
+        $("#detailNamaDosen").text(data.nama_dosen);
+        $("#detailNamaMahasiswa").text(data.nama_mahasiswa);
         $("#detailBuktiBanding").attr(
           "src",
           baseurl + "/img/bukti_banding/" + data.file_bukti

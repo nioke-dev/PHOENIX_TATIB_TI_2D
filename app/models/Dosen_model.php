@@ -22,6 +22,11 @@ class Dosen_model
         $this->db->query('SELECT dosen.* FROM dosen LEFT JOIN dpa ON dosen.nip_dosen = dpa.nip_dpa WHERE dpa.nip_dpa IS NULL');
         return $this->db->resultSet();
     }
+    public function getAllDosenFilterDpaFoundExceptChange()
+    {
+        $this->db->query('SELECT * FROM dosen');
+        return $this->db->resultSet();
+    }
 
 
     public function getAllDosen()

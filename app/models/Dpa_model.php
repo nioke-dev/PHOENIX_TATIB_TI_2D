@@ -32,7 +32,7 @@ class Dpa_model
         $this->db->query('SELECT * FROM dpa dp INNER JOIN user u ON dp.nip_dpa = u.username WHERE nip_dpa=:nip_dpa');
         $this->db->bind('nip_dpa', $nip_dpa);
         return $this->db->single();
-    }
+    }    
 
     public function getDosenByNip($nip_dosen)
     {
@@ -191,18 +191,14 @@ class Dpa_model
     {
         try {
             // Query SQL untuk mengubah data dpa     
-            $query = "UPDATE dpa SET
-                        nama_dpa = :nama_dpa,
-                        kelas_dpa = :kelas_dpa,
-                        email_dpa = :email_dpa
+            $query = "UPDATE dpa SET                        
+                        kelas_dpa = :kelas_dpa                        
                       WHERE nip_dpa = :nip_dpa";
 
             // Eksekusi query
-            $this->db->query($query);
-            $this->db->bind('nama_dpa', $data['nama_dpa']);
-            $this->db->bind('kelas_dpa', $data['kelas_dpa']);
-            $this->db->bind('email_dpa', $data['email_dpa']);
-            $this->db->bind('nip_dpa', $data['nip_dpa']);
+            $this->db->query($query);            
+            $this->db->bind('kelas_dpa', $data['kelas_dpa_ubah']);            
+            $this->db->bind('nip_dpa', $data['nip_dpa_ubah']);
             $this->db->execute();
 
             // Mengembalikan jumlah baris yang terpengaruh oleh operasi query

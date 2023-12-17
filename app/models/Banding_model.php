@@ -35,7 +35,9 @@ class Banding_model
     // Fungsi untuk mendapatkan semua data laporan banding
     public function getAllBanding()
     {
-        $this->db->query('SELECT banding.*, status_sanksi, mahasiswa.nama_mahasiswa AS nama_mahasiswa FROM banding INNER JOIN statusSanksi ON banding.id_statusSanksi = statusSanksi.id_statusSanksi INNER JOIN mahasiswa ON mahasiswa.nim_mahasiswa = banding.nim_mahasiswa');
+        $this->db->query('SELECT banding.*, status_sanksi, mahasiswa.nama_mahasiswa AS nama_mahasiswa FROM banding 
+        INNER JOIN statusSanksi ON banding.id_statusSanksi = statusSanksi.id_statusSanksi 
+        INNER JOIN mahasiswa ON mahasiswa.nim_mahasiswa = banding.nim_mahasiswa');
         return $this->db->resultSet();
     }
 
@@ -123,7 +125,10 @@ class Banding_model
 
     public function getBandingById($id_banding)
     {
-        $this->db->query('SELECT banding.*, mahasiswa.nama_mahasiswa AS nama_mahasiswa FROM banding INNER JOIN mahasiswa ON mahasiswa.nim_mahasiswa = banding.nim_mahasiswa WHERE id_banding=:id_banding');
+        $this->db->query('SELECT banding.*, dosen.nama_dosen, mahasiswa.nama_mahasiswa AS nama_mahasiswa FROM banding 
+        INNER JOIN mahasiswa ON mahasiswa.nim_mahasiswa = banding.nim_mahasiswa
+        INNER JOIN dosen ON dosen.nip_dosen = banding.nip_dosen 
+        WHERE id_banding=:id_banding');
         $this->db->bind('id_banding', $id_banding);
         return $this->db->single();
     }

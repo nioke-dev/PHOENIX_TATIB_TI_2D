@@ -37,7 +37,11 @@
                                         <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/setuju/<?= $pelanggaran['id_laporan']; ?>" onclick="return confirmActionSetujuLaporan('<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/setuju/<?= $pelanggaran['id_laporan']; ?>')" class="badge bg-primary float-right" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Setuju</a>
                                     <?php endif; ?>
                                     <?php if ($pelanggaran['id_statusSanksi'] == '2') : ?>
-                                        <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/kerjakan/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-info float-right tampilModalUploadSuratSanksi" data-bs-toggle="modal" data-bs-target="#detailModalKerjakanSanksi" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Kerjakan</a>
+                                        <?php if ($data['getTingkatSanksi']['id_tingkatSanksi'] == '1' || $data['getTingkatSanksi']['id_tingkatSanksi'] == '2' || $data['getTingkatSanksi']['id_tingkatSanksi'] == '3') : ?>
+                                            <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/kerjakan/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-info float-right tampilModalUploadSuratSanksi" data-bs-toggle="modal" data-bs-target="#detailModalKerjakanSanksiKhusus" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Kerjakan</a>
+                                        <?php else : ?>
+                                            <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/kerjakan/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-info float-right tampilModalUploadSuratSanksi" data-bs-toggle="modal" data-bs-target="#detailModalKerjakanSanksi" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Kerjakan</a>
+                                        <?php endif; ?>
                                     <?php endif; ?>
 
                                     <?php if ($pelanggaran['id_statusSanksi'] == '6' || $pelanggaran['id_statusSanksi'] == '2') : ?>
@@ -81,7 +85,24 @@
         </div>
     </div>
 </div>
+<!-- Modal Kerjakan Sanksi Mahasiswa tingkat pelanggaran 1 dan 2 -->
+<div class="modal fade" id="detailModalKerjakanSanksiKhusus" tabindex="-1" aria-labelledby="detailModalKerjakanSanksiLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailModalKerjakanSanksiLabel">Detail Pengerjaan Sanksi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h3>Silahkan Temui Admin Jurusan dan Dpa Anda</h3>            
+            </div>
+            <div class="modal-footer">                
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>                
+            </div>
+        </div>
+    </div>
 </div>
+
 
 <!-- Modal Detail Mahasiswa Pelanggaran -->
 <div class="modal fade" id="detailModalPelanggaran" tabindex="-1" aria-labelledby="detailModalPelanggaranLabel" aria-hidden="true">

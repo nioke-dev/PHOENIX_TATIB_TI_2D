@@ -14,7 +14,6 @@
                             <th>Nim Mahasiswa</th>
                             <th>Nama</th>
                             <th>Kelas</th>
-                            <th>Status Sanksi</th>
                             <th>Tingkat Sanksi</th>
                             <th>Action</th>
                         </tr>
@@ -27,21 +26,10 @@
                                 <td><?= $mhs_melanggar['nim_mahasiswa']; ?></td>
                                 <td><?= $mhs_melanggar['nama_mahasiswa']; ?></td>
                                 <td><?= $mhs_melanggar['kelas_mahasiswa']; ?></td>
-                                <?php if ($mhs_melanggar['status_sanksi'] == 'Baru') : ?>
-                                    <td><span class="badge text-bg-primary"><?= $mhs_melanggar['status_sanksi']; ?></span></td>
-                                <?php elseif ($mhs_melanggar['status_sanksi'] == 'Disetujui') : ?>
-                                    <td><span class="badge text-bg-success"><?= $mhs_melanggar['status_sanksi']; ?></span></td>
-                                <?php elseif ($mhs_melanggar['status_sanksi'] == 'Selesai') : ?>
-                                    <td><span class="badge text-bg-info"><?= $mhs_melanggar['status_sanksi']; ?></span></td>
-                                <?php elseif ($mhs_melanggar['status_sanksi'] == 'Ditolak') : ?>
-                                    <td><span class="badge text-bg-danger"><?= $mhs_melanggar['status_sanksi']; ?></span></td>
-                                <?php elseif ($mhs_melanggar['status_sanksi'] == 'Tertunda') : ?>
-                                    <td><span class="badge text-bg-warning"><?= $mhs_melanggar['status_sanksi']; ?></span></td>
-                                <?php endif; ?>
                                 <td><?= $mhs_melanggar['tingkat_sanksi']; ?></td>
                                 <td>
                                     <a href="<?= BASEURL; ?>/AdminControllers/mahasiswaMelanggar/detail/<?= $mhs_melanggar['nim_mahasiswa']; ?>" class="badge bg-primary float-right tampilModalDetailMahasiswaMelanggar" data-bs-toggle="modal" data-bs-target="#detailModalMahasiswaMelanggar" data-nim_mahasiswa="<?= $mhs_melanggar['nim_mahasiswa']; ?>">Detail</a>
-                                    <a href="<?= BASEURL; ?>/AdminControllers/mahasiswaMelanggar/ubah/<?= $mhs_melanggar['nim_mahasiswa']; ?>" class="badge bg-success float-right tampilModalUbahMahasiswaMelanggar" data-bs-toggle="modal" data-bs-target="#formModalMahasiswaMelanggar" data-nim_mahasiswa="<?= $mhs_melanggar['nim_mahasiswa']; ?>">ubah</a>
+                                    <a href="<?= BASEURL; ?>/AdminControllers/mahasiswaMelanggar/ubah/<?= $mhs_melanggar['nim_mahasiswa']; ?>" class="badge bg-success float-right tampilModalUbahMahasiswaMelanggar" data-bs-toggle="modal" data-bs-target="#formModalMahasiswaMelanggar" data-nim_mahasiswa="<?= $mhs_melanggar['nim_mahasiswa']; ?>">Ubah</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -64,21 +52,6 @@
             <div class="modal-body">
                 <table class="table">
                     <tr>
-                        <td><strong>NIM Mahasiswa</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailNimMahasiswaMelanggar"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Nama Mahasiswa</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailNamaMahasiswaMelanggar"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Kelas Mahasiswa</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailKelasMahasiswaMelanggar"></span></td>
-                    </tr>
-                    <tr>
                         <td><strong>Program Studi Mahasiswa</strong></td>
                         <td><strong>:</strong></td>
                         <td><span id="detailProdiMahasiswaMelanggar"></span></td>
@@ -87,46 +60,13 @@
                         <td><strong>Email Mahasiswa</strong></td>
                         <td><strong>:</strong></td>
                         <td><span id="detailEmailMahasiswaMelanggar"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Status Sanksi Mahasiswa</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailStatusSanksiMahasiswaMelanggar"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Tingkat Sanksi Mahasiswa</strong></td>
-                        <td><strong>:</strong></td>
-                        <td><span id="detailTingkatSanksiMahasiswaMelanggar"></span></td>
-                    </tr>
+                    </tr>                    
                     <tr>
                         <td><strong>Jumlah Pelanggaran</strong></td>
                         <td><strong>:</strong></td>
                         <td><span id="detailJumlahPelanggaranMahasiswaMelanggar"></span></td>
                     </tr>
-
-                    
                 </table>
-                <!-- <div class="form-group">
-                    <p><strong>NIM Mahasiswa:</strong> <span id="detailNimMahasiswaMelanggar"></span></p>
-                </div>
-                <div class="form-group">
-                    <p><strong>Nama Mahasiswa:</strong> <span id="detailNamaMahasiswaMelanggar"></span></p>
-                </div>
-                <div class="form-group">
-                    <p><strong>Kelas Mahasiswa:</strong> <span id="detailKelasMahasiswaMelanggar"></span></p>
-                </div>
-                <div class="form-group">
-                    <p><strong>Program Studi Mahasiswa:</strong> <span id="detailProdiMahasiswaMelanggar"></span></p>
-                </div>
-                <div class="form-group">
-                    <p><strong>Email Mahasiswa:</strong> <span id="detailEmailMahasiswaMelanggar"></span></p>
-                </div>
-                <div class="form-group">
-                    <p><strong>Status Sanksi Mahasiswa:</strong> <span id="detailStatusSanksiMahasiswaMelanggar"></span></p>
-                </div>
-                <div class="form-group">
-                    <p><strong>Tingkat Sanksi Mahasiswa:</strong> <span id="detailTingkatSanksiMahasiswaMelanggar"></span></p>
-                </div> -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -158,6 +98,7 @@
                             <option value="2">I/II</option>
                             <option value="1">I</option>
                         </select>
+                        <input type="hidden" name="id_tingkatSanksiLama" id="id_tingkatSanksiLama">
                     </div>
             </div>
             <div class="modal-footer">

@@ -112,7 +112,7 @@ class Dosen extends Controller
             header('Location: ' . BASEURL . '/AdminControllers/dosen');
             exit;
         } else {
-            $this->showSweetAlert('success', 'Berhasil', 'Data berhasil Diubah');
+            $this->showSweetAlert('success', 'Berhasil', 'Data berhasil Dosen Diubah');
             header('Location: ' . BASEURL . '/AdminControllers/dosen');
             exit;
         }

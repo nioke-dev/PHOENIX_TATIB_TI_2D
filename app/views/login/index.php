@@ -14,6 +14,30 @@
     <!-- SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <style>
+        .password-container {
+            width: 100%;
+            position: relative;
+        }
+
+        .password-container input[type="password"],
+        .password-container input[type="text"] {
+            width: 100%;
+            padding: 12px 36px 12px 12px;
+            box-sizing: border-box;
+        }
+
+        .fa-eye {
+            position: absolute;
+            top: 35%;
+            right: 4%;
+            cursor: pointer;
+            color: lightgray;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -29,24 +53,26 @@
                                     <img src="<?= BASEURL; ?>/assets/images/logos/new_logo.png" width="180" alt="">
                                 </a>
                                 <div class="alert alert-danger mb-3" id="alert-login" style="text-align:center;margin-bottom: 0;">
-                                    Masukkan Username dan Password <br> (Menggunakan NIM / NIP &amp; Password : rahasia)</div>
+                                    Masukkan Nama Pengguna dan Kata Sandi <br> (Menggunakan NIM / NIP &amp; Kata Sandi : rahasia)</div>
 
                                 <?php if (isset($data['error'])) : ?>
                                     <p style="color: red;"><?php echo $data['error']; ?></p>
                                 <?php endif; ?>
                                 <form action="<?= BASEURL; ?>/login/processLogin" method="post">
                                     <div class="mb-3">
-                                        <label for="username" class="form-label">Username</label>
+                                        <label for="username" class="form-label">Nama Pengguna</label>
                                         <input type="username" class="form-control" id="username" placeholder="Masukkan NIM / NIP" name="username" aria-describedby="emailHelp">
                                     </div>
                                     <div class="mb-4">
-                                        <label for="password" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="password" placeholder="Masukkan Password" name="password">
+                                        <label for="password" class="form-label">Kata Sandi</label>
+                                        <div class="password-container">
+                                            <div class="password-container">
+                                                <input type="password" class="form-control" id="password" placeholder="Masukkan Kata Sandi" name="password">
+                                                <i class="fa-solid fa-eye fa-eye-slash" id="eye"></i>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-4">
-                                        <a class="text-primary fw-bold" href="./index.html">Forgot Password ?</a>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</button>
+                                    <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">LOGIN</button>
                                 </form>
                             </div>
                         </div>
@@ -68,6 +94,16 @@
             });
             <?php unset($_SESSION['sweetalert']); ?>
         <?php endif; ?>
+
+
+        const passwordField = document.querySelector("#password");
+        const eyeIcon = document.querySelector("#eye");
+
+        eye.addEventListener("click", function() {
+            this.classList.toggle("fa-eye-slash");
+            const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+            passwordField.setAttribute("type", type);
+        })
     </script>
 </body>
 

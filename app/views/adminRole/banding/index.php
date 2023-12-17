@@ -11,10 +11,10 @@
                     <thead>
                         <tr>
                             <th scope="col">No</th>
-                            <th scope="col">Id Laporan</th>
+                            <th scope="col">ID Laporan</th>
+                            <th scope="col">Tanggal</th>
                             <th scope="col">NIP Dosen</th>
                             <th scope="col">NIM Mahasiswa</th>
-                            <th scope="col">Nama Mahasiswa</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -25,9 +25,9 @@
                             <tr>
                                 <th scope="row"><?= $no++; ?></th>
                                 <td><?= $banding['id_laporan']; ?></td>
+                                <td><?= date('d-m-Y', strtotime($banding['tgl_banding'])); ?></td>
                                 <td><?= $banding['nip_dosen']; ?></td>
                                 <td><?= $banding['nim_mahasiswa']; ?></td>
-                                <td><?= $banding['nama_mahasiswa']; ?></td>
                                 <?php if ($banding['status_sanksi'] == 'Disetujui') : ?>
                                     <td><span class="badge text-bg-success"><?= $banding['status_sanksi']; ?></span></td>
                                 <?php elseif ($banding['status_sanksi'] == 'Ditolak') : ?>
@@ -40,7 +40,7 @@
                                     <td><span class="badge text-bg-info"><?= $banding['status_sanksi']; ?></span></td>
                                 <?php endif; ?>
                                 <td>
-                                    <a href="<?= BASEURL; ?>/AdminControllers/banding/detail/<?= $banding['id_banding']; ?>" class="badge bg-success float-right tampilModalDetailBandingAdminRole" data-bs-toggle="modal" data-bs-target="#detailModalBanding" data-id_banding="<?= $banding['id_banding']; ?>">detail</a>
+                                    <a href="<?= BASEURL; ?>/AdminControllers/banding/detail/<?= $banding['id_banding']; ?>" class="badge bg-primary float-right tampilModalDetailBandingAdminRole" data-bs-toggle="modal" data-bs-target="#detailModalBanding" data-id_banding="<?= $banding['id_banding']; ?>">Detail</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -53,7 +53,7 @@
 
 <!-- Modal Detail -->
 <div class="modal fade" id="detailModalBanding" tabindex="-1" aria-labelledby="detailModalBandingLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="detailModalBandingLabel"></h5>
@@ -62,12 +62,22 @@
             <div class="modal-body">
                 <table class="table">
                     <tr>
-                        <td><strong>Deskripsi</strong></td>
+                        <td><strong>Nama Dosen</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailNamaDosen"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nama Mahasiswa</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailNamaMahasiswa"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Keterangan</strong></td>
                         <td><strong>:</strong></td>
                         <td><span id="detailDeskripsi"></span></td>
                     </tr>
                     <tr>
-                        <td><strong>Bukti Pelanggaran</strong></td>
+                        <td><strong>Bukti Banding</strong></td>
                         <td><strong>:</strong></td>
                         <td><img id="detailBuktiBanding" alt="Bukti Banding" style="max-width: 100%;" /></td>
                     </tr>

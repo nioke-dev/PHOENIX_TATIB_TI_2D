@@ -36,29 +36,31 @@ class MahasiswaMelanggar extends Controller
 
     // Fungsi untuk mengubah data mahasiswa
     public function ubah()
-    {
-        if ($this->model('MahasiswaMelanggar_model')->ubahDataMahasiswaMelanggar($_POST) > 0) {
-            $this->showSweetAlert('success', 'Berhasil', 'Data Mahasiswa Melanggar Berhasil Diubah');
+    {        
+        $mahasiswaMelanggarChanged = false;
+        if (
+            $_POST['id_tingkatSanksi'] != $_POST['id_tingkatSanksiLama']
+        ) {
+            // Ubah data Tatib
+            if ($this->model('MahasiswaMelanggar_model')->ubahDataMahasiswaMelanggar($_POST) > 0) {
+                $mahasiswaMelanggarChanged = true;
+            } else {
+                // SweetAlert jika ada masalah pada perubahan Tatib
+                $this->showSweetAlert('error', 'Gagal', 'Data Mahasiswa Melanggar Gagal Diubah');
+                header('Location: ' . BASEURL . '/AdminControllers/mahasiswaMelanggar');
+                exit;
+            }
+        }
+
+        // SweetAlert jika tidak ada perubahan di Tatib
+        if (!$mahasiswaMelanggarChanged) {
+            $this->showSweetAlert('info', 'Info', 'Tidak ada perubahan pada data Mahasiswa Melanggar');
             header('Location: ' . BASEURL . '/AdminControllers/mahasiswaMelanggar');
             exit;
         } else {
-            $this->showSweetAlert('error', 'Gagal', 'Data Mahasiswa Melanggar Gagal Diubah');
+            $this->showSweetAlert('success', 'Berhasil', 'Data Mahasiswa Melanggar berhasil Diubah');
             header('Location: ' . BASEURL . '/AdminControllers/mahasiswaMelanggar');
             exit;
         }
-    }
-
-    // Fungsi untuk mencari data mahasiswa berdasarkan keyword
-    public function cari()
-    {
-        $data['judul'] = 'Daftar Mahasiswa';
-        $data['mhs'] = $this->model('Mahasiswa_model')->cariDataMahasiswa();
-        $data['nama'] = $this->model('User_model')->getUser();
-
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('templates/headerNav', $data);
-        $this->view('adminRole/mahasiswa/index', $data);
-        $this->view('templates/footer', $data);
     }
 }

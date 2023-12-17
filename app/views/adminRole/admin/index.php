@@ -24,29 +24,19 @@
           </thead>
           <tbody>
             <?php $no = 1;
-            if (empty($data['adm'])) : ?>
+            foreach ($data['adm'] as $adm) : ?>
               <tr>
-                <td colspan="7">
-                  <div class="alert alert-danger" role="alert">
-                    Tidak ada data terkait.
-                  </div>
+                <th scope="row"><?= $no++; ?></th>
+                <td><?= $adm['nip_admin']; ?></td>
+                <td><?= $adm['nama_admin']; ?></td>
+                <td><?= $adm['email_admin']; ?></td>
+                <td>
+                  <a href="<?= BASEURL; ?>/AdminControllers/admin/detail/<?= $adm['nip_admin']; ?>" class="badge bg-primary float-right tampilModalDetailAdminAdminRole" data-bs-toggle="modal" data-bs-target="#detailModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">Detail</a>
+                  <a href="<?= BASEURL; ?>/AdminControllers/admin/ubah/<?= $adm['nip_admin']; ?>" class="badge bg-success float-right tampilModalUbahAdmin" data-bs-toggle="modal" data-bs-target="#formModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">Ubah</a>
+                  <a href="<?= BASEURL; ?>/AdminControllers/admin/hapus/<?= $adm['nip_admin']; ?>" class="badge bg-danger float-right" onclick="return confirmAction('<?= BASEURL; ?>/AdminControllers/admin/hapus/<?= $adm['nip_admin']; ?>')">Hapus</a>
                 </td>
               </tr>
-              <?php else :
-              foreach ($data['adm'] as $adm) : ?>
-                <tr>
-                  <th scope="row"><?= $no++; ?></th>
-                  <td><?= $adm['nip_admin']; ?></td>
-                  <td><?= $adm['nama_admin']; ?></td>
-                  <td><?= $adm['email_admin']; ?></td>
-                  <td>
-                    <a href="<?= BASEURL; ?>/AdminControllers/admin/detail/<?= $adm['nip_admin']; ?>" class="badge bg-primary float-right tampilModalDetail" data-bs-toggle="modal" data-bs-target="#detailModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">Detail</a>
-                    <a href="<?= BASEURL; ?>/AdminControllers/admin/ubah/<?= $adm['nip_admin']; ?>" class="badge bg-success float-right tampilModalUbahAdmin" data-bs-toggle="modal" data-bs-target="#formModalAdmin" data-nip_admin="<?= $adm['nip_admin']; ?>">Ubah</a>
-                    <a href="<?= BASEURL; ?>/AdminControllers/admin/hapus/<?= $adm['nip_admin']; ?>" class="badge bg-danger float-right" onclick="return confirmAction('<?= BASEURL; ?>/AdminControllers/admin/hapus/<?= $adm['nip_admin']; ?>')">Hapus</a>
-                  </td>
-                </tr>
-            <?php endforeach;
-            endif; ?>
+            <?php endforeach; ?>
           </tbody>
         </table>
       </div>
@@ -59,7 +49,7 @@
 
 <!-- Modal Detail -->
 <div class="modal fade" id="detailModalAdmin" tabindex="-1" aria-labelledby="detailModalAdminLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="detailModalAdminLabel"></h5>
@@ -82,11 +72,6 @@
             <td><strong>:</strong></td>
             <td><span id="detailEmailAdmin"></span></td>
           </tr>
-          <tr>
-            <td><strong>Username</strong></td>
-            <td><strong>:</strong></td>
-            <td><span id="detailUsernameAdmin"></span></td>
-          </tr>
         </table>
 
       </div>
@@ -99,7 +84,7 @@
 
 <!-- Modal Add and Edit -->
 <div class="modal fade" id="formModalAdmin" tabindex="-1" aria-labelledby="formModalAdminLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="formModalAdminLabel">Tambah Data Admin</h5>
@@ -111,7 +96,7 @@
           <input type="hidden" name="id_user" id="id_user">
           <div class="form-group">
             <label for="nip_admin">NIP</label>
-            <input type="number" class="form-control" id="nip_admin" name="nip_admin" autocomplete="off">
+            <input type="number" class="form-control" id="nip_admin" name="nip_admin" autocomplete="off" required>
             <input type="hidden" class="form-control" id="nip_admin_lama" name="nip_admin_lama" autocomplete="off">
           </div>
 

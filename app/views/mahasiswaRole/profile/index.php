@@ -15,7 +15,7 @@
                     <div class="row">
                         <div class="col-6 mb-5">
                             <div class="form-group">
-                                <label for="nim_mahasiswa" class="form-label">Nim :</label>
+                                <label for="nim_mahasiswa" class="form-label">NIM :</label>
                                 <input type="text" class="form-control" name="nim_mahasiswa" id="nim_mahasiswa" value="<?= $data['mhs']['nim_mahasiswa']; ?>" readonly>
                             </div>
                         </div>
@@ -31,17 +31,17 @@
                                 <input type="text" class="form-control" name="email_mahasiswa" id="email_mahasiswa" value="<?= $data['mhs']['email_mahasiswa']; ?>" readonly>
                             </div>
                         </div>
-                        <h3>Ubah Password Kamu Sekarang Yuk!</h3>
+                        <h3>Ubah Password Anda Sekarang!</h3>
                         <div class="col-6 mb-5">
                             <form action="<?= BASEURL; ?>/MahasiswaControllers/profile/changePassword" method="POST">
                                 <div class="form-group">
-                                    <label for="oldPassword" class="form-label">Old Password :</label>
-                                    <input type="password" class="form-control" name="oldPassword" id="oldPassword" placeholder="Input Your Old Password Here" required autofocus>
+                                    <label for="oldPassword" class="form-label">Password Lama :</label>
+                                    <input type="password" class="form-control" name="oldPassword" id="oldPassword" placeholder="Masukkan Password Lama" required autofocus>
                                 </div>
                         </div>
                         <div class="col-6 mb-5">
                             <div class="form-group">
-                                <label for="password" class="form-label">New Password :</label>
+                                <label for="password" class="form-label">Password Baru :</label>
                                 <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Password Baru" required autofocus>
                             </div>
                         </div>

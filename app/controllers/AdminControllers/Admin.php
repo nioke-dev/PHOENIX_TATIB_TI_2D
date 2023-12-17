@@ -112,7 +112,7 @@ class Admin extends Controller
             header('Location: ' . BASEURL . '/AdminControllers/admin');
             exit;
         } else {
-            $this->showSweetAlert('success', 'Berhasil', 'Data berhasil Diubah');
+            $this->showSweetAlert('success', 'Berhasil', 'Data berhasil Admin Diubah');
             header('Location: ' . BASEURL . '/AdminControllers/admin');
             exit;
         }

@@ -53,7 +53,7 @@ class Banding_model
 
     public function getAllBandingByDpa($data)
     {
-        $this->db->query('SELECT b.*, d.*, s.status_sanksi, m.nim_mahasiswa, m.nama_mahasiswa FROM banding b
+        $this->db->query('SELECT b.*, d.*, s.status_sanksi, m.nim_mahasiswa, m.nama_mahasiswa, m.kelas_mahasiswa FROM banding b
         INNER JOIN statusSanksi s ON b.id_statusSanksi = s.id_statusSanksi
         INNER JOIN mahasiswa m ON b.nim_mahasiswa = m.nim_mahasiswa
         INNER JOIN dosen d ON b.nip_dosen = d.nip_dosen

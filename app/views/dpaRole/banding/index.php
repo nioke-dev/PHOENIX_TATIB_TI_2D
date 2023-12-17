@@ -11,11 +11,12 @@
                     <thead>
                         <tr>
                             <th scope="col">No</th>
-                            <th scope="col">Id Laporan</th>
+                            <th scope="col">ID Laporan</th>
                             <th scope="col">NIP Dosen</th>
-                            <th scope="col">Nama Dosen Dosen</th>
+                            <th scope="col">Nama Dosen</th>
                             <th scope="col">NIM Mahasiswa</th>
                             <th scope="col">Nama Mahasiswa</th>
+                            <th scope="col">Kelas</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -30,6 +31,7 @@
                                 <td><?= $banding['nama_dosen']; ?></td>
                                 <td><?= $banding['nim_mahasiswa']; ?></td>
                                 <td><?= $banding['nama_mahasiswa']; ?></td>
+                                <td><?= $banding['kelas_mahasiswa']; ?></td>
                                 <?php if ($banding['status_sanksi'] == 'Diterima') : ?>
                                     <td><span class="badge text-bg-success"><?= $banding['status_sanksi']; ?></span></td>
                                 <?php elseif ($banding['status_sanksi'] == 'Ditolak') : ?>

@@ -67,9 +67,10 @@ class Laporan extends Controller
                 $filename = "file_" . time() . "." . $file_extension;
                 $target_file = $target_dir . $filename;
 
-                $allowed_types = array("jpg", "jpeg", "png", "gif", "pdf");
+                $allowed_types = array("jpg", "jpeg", "png");
                 if (!in_array($file_extension, $allowed_types)) {
-                    echo "Sorry, only JPG, JPEG, PNG, GIF, and PDF files are allowed.";
+                    $this->showSweetAlert('error', 'Ooops', 'Anda Hanya Boleh Menambahkan Foto Dengan Format png, jpeg, jpg Sebagai Bukti Laporan');
+                    header('Location: ' . BASEURL . '/DosenControllers/laporan');
                     exit;
                 } else {
                     if (move_uploaded_file($_FILES["file_bukti"]["tmp_name"], $target_file)) {
@@ -77,7 +78,8 @@ class Laporan extends Controller
                         $filesize = $_FILES["file_bukti"]["size"];
                         $filetype = $_FILES["file_bukti"]["type"];
                     } else {
-                        echo "Sorry, there was an error uploading your file.";
+                        $this->showSweetAlert('error', 'Ooops', 'Tidak Ada Bukti Yang Di Upload');
+                        header('Location: ' . BASEURL . '/DosenControllers/laporan');
                         exit;
                     }
                 }
@@ -136,13 +138,15 @@ class Laporan extends Controller
                 // File deletion success
                 return true;
             } else {
-                // File deletion failure
-                echo "Sorry, there was an error deleting the file.";
+                // File deletion failure                
+                $this->showSweetAlert('error', 'Ooops', 'Maaf Terjadi Error Saat Menghapus File');
+                header('Location: ' . BASEURL . '/DosenControllers/laporan');
                 exit;
             }
         } else {
-            // File doesn't exist
-            echo "File not found.";
+            // File doesn't exist            
+            $this->showSweetAlert('error', 'Ooops', 'File Tidak Ada');
+            header('Location: ' . BASEURL . '/DosenControllers/laporan');
             exit;
         }
     }

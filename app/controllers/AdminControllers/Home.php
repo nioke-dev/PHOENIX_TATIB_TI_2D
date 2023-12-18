@@ -15,7 +15,7 @@ class Home extends Controller
         // menampilkan total jumlahnya
         $data['countMahasiswa'] = $this->model('Mahasiswa_model')->getCount();
         $data['countAdmin'] = $this->model('Admin_model')->getCount();
-        $data['countDosen'] = $this->model('Dosen_model')->getCount();
+        $data['countDosen'] = $this->model('Dosen_model')->getCountDosen();
         $data['countDpa'] = $this->model('Dpa_model')->getCount();
         $data['countTatib'] = $this->model('Tatib_model')->getCount();
 

@@ -69,7 +69,7 @@ class Pelanggaran extends Controller
 
                 $allowed_types = array("pdf");
                 if (!in_array($file_extension, $allowed_types)) {
-                    $this->showSweetAlert('error', 'Gagal', 'Sorry, only PDF files are allowed.');
+                    $this->showSweetAlert('error', 'Gagal', 'Maaf, Anda Hanya Boleh Meng upload PDF file');
                     header('Location: ' . BASEURL . '/MahasiswaControllers/pelanggaran');
                     exit;
                 } else {
@@ -78,7 +78,8 @@ class Pelanggaran extends Controller
                         $filesize = $_FILES["file_kumpulSanksi"]["size"];
                         $filetype = $_FILES["file_kumpulSanksi"]["type"];
                     } else {
-                        echo "Sorry, there was an error uploading your file.";
+                        $this->showSweetAlert('error', 'Gagal', 'Maaf, Tidak ada file yang di upload');
+                        header('Location: ' . BASEURL . '/MahasiswaControllers/pelanggaran');
                         exit;
                     }
                 }

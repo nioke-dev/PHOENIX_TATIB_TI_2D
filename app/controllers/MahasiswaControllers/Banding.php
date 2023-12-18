@@ -58,7 +58,8 @@ class Banding extends Controller
 
                 $allowed_types = array("jpg", "jpeg", "png");
                 if (!in_array($file_extension, $allowed_types)) {
-                    echo "Sorry, only JPG, JPEG, PNG, GIF, and PDF files are allowed.";
+                    $this->showSweetAlert('error', 'Ooops', 'Anda Hanya Boleh Menambahkan Foto Dengan Format png, jpeg, jpg Sebagai Bukti Laporan');
+                    header('Location: ' . BASEURL . '/MahasiswaControllers/banding');
                     exit;
                 } else {
                     if (move_uploaded_file($_FILES["file_bukti"]["tmp_name"], $target_file)) {
@@ -66,7 +67,8 @@ class Banding extends Controller
                         $filesize = $_FILES["file_bukti"]["size"];
                         $filetype = $_FILES["file_bukti"]["type"];
                     } else {
-                        echo "Sorry, there was an error uploading your file.";
+                        $this->showSweetAlert('error', 'Ooops', 'Tidak Ada Bukti Yang Di Upload');
+                        header('Location: ' . BASEURL . '/MahasiswaControllers/banding');
                         exit;
                     }
                 }

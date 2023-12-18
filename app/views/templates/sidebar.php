@@ -104,7 +104,7 @@
                             <span class="hide-menu">Tata tertib</span>
                         </li>
                         <li class="sidebar-item">
-                            <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" class="badge bg-danger float-right" download><i class="bi bi-file-earmark-arrow-down"></i> TATIB</a>
+                            <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" class="badge bg-danger float-right" target="_blank"><i class="bi bi-file-earmark-arrow-down"></i> TATIB</a>
                         </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -171,7 +171,7 @@
                             <span class="hide-menu">Tata tertib</span>
                         </li>
                         <li class="sidebar-item">
-                            <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" class="badge bg-danger float-right" download><i class="bi bi-file-earmark-arrow-down"></i> TATIB</a>
+                            <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" class="badge bg-danger float-right" target="_blank"><i class="bi bi-file-earmark-arrow-down"></i> TATIB</a>
                         </li>
 
                         <li class="nav-small-cap">
@@ -236,7 +236,7 @@
                             <span class="hide-menu">Tata tertib</span>
                         </li>
                         <li class="sidebar-item">
-                            <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" class="badge bg-danger float-right" download><i class="bi bi-file-earmark-arrow-down"></i> TATIB</a>
+                            <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" class="badge bg-danger float-right" target="_blank"><i class="bi bi-file-earmark-arrow-down"></i> TATIB</a>
                         </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -328,7 +328,7 @@
                         </li>
                         <!-- download tatib.pdf  -->
                         <li class="sidebar-item">
-                            <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" class="badge bg-danger float-right" download><i class="bi bi-file-earmark-arrow-down"></i> TATIB</a>
+                            <a href="<?= BASEURL; ?>/assets/file/Tata_tertib.pdf" class="badge bg-danger float-right" target="_blank"><i class="bi bi-file-earmark-arrow-down"></i> TATIB</a>
                         </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>

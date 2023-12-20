@@ -29,9 +29,9 @@
 </script>
 
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="<?= BASEURL; ?>/js/script.js"></script>
+
 <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 <script>
@@ -44,6 +44,7 @@
         });
     });
 </script>
+
 
 <script>
     function confirmAction(id) {
@@ -130,8 +131,8 @@
         return false;
     }
 </script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
+<!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
+<!-- <script>
     // Menambahkan event listener untuk menanggapi klik pada tombol lapor
     document.getElementById("laporButton").addEventListener("click", function() {
         // Navigasi ke halaman laporan
@@ -141,7 +142,7 @@
     document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("autoClickButton").click();
     });
-</script>
+</script> -->
 </body>
 
 </html>

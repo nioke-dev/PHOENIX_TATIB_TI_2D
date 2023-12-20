@@ -32,6 +32,14 @@ class Banding_model
         return $result['total'];
     }
 
+    // public function getCountMahasisawaRole()
+    // {
+    //     $this->db->query('SELECT COUNT(*) as total FROM banding where nim_mahasiswa = :nim_mahasiswa AND id_statusSanksi != 4');
+    //     $this->db->bind('nim_mahasiswa', $_SESSION['username']);
+    //     $result = $this->db->single();
+    //     return $result['total'];
+    // }
+
     public function getCountDosenBanding()
     {
         $this->db->query('SELECT COUNT(*) as total FROM banding where nip_dosen = :nip_dosen AND id_statusSanksi != 4');

@@ -1,7 +1,7 @@
 <h1 class="mb-5">Dashboard Mahasiswa</h1>
 <div class="row">
   <div class="col">
-    <div class="card shadow" style="border-width: 7px; border-color: red">
+    <div class="card shadow" style="border-width: 7px; border-color: #FA896B">
       <div class="card-body">
         <div class="row align-items-center">
           <div class="col-2">

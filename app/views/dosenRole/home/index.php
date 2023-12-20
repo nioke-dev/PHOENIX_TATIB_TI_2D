@@ -4,7 +4,7 @@
 <div class="row">
   <!-- Daftar Laporan -->
   <div class="col">
-    <div class="card shadow" style="border-width: 7px; border-color: red">
+    <div class="card shadow" style="border-width: 7px; border-color: #FA896B">
       <div class="card-body">
         <div class="row align-items-center">
           <div class="col-2">
@@ -18,7 +18,7 @@
           </div>
           <div class="col-4">
             <button class="btn btn-danger d-flex align-items-center" id="laporButton">
-              <a href="#" id="btnRedirect" style="text-decoration: none; color: white; font-size: 20px;">
+              <a href="<?= BASEURL; ?>/DosenControllers/laporan" id="btnRedirect" style="text-decoration: none; color: white; font-size: 20px;">
                 LAPOR!
               </a>
             </button>

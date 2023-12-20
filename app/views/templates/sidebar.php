@@ -297,7 +297,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= BASEURL; ?>/DpaControllers/rekapLaporan" aria-expanded="false">
                                 <span>
-                                    <i class="bi bi-exclamation-triangle"></i>
+                                    <i class="bi bi-list-task"></i>
                                 </span>
                                 <span class="hide-menu">Daftar Laporan Mahasiswa</span>
                             </a>

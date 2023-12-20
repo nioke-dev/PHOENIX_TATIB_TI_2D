@@ -58,6 +58,71 @@ class Tatib extends Controller
         echo json_encode($this->model('Tatib_model')->getTatibById(['id_tatib' => $_POST['id_tatib']]));
     }
 
+    public function upload()
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_FILES["fileTatib"]) && $_FILES["fileTatib"]["error"] == 0) {
+                $target_dir = $_SERVER['DOCUMENT_ROOT'] . BASEPUBLIC . "/assets/file/";
+                $file_extension = strtolower(pathinfo($_FILES["fileTatib"]["name"], PATHINFO_EXTENSION));
+
+                // Generate a unique filename using timestamp
+                $filename = "Tata_tertib." . $file_extension;
+                $target_file = $target_dir . $filename;
+
+                $allowed_types = array("pdf");
+                if (!in_array($file_extension, $allowed_types)) {
+                    $this->showSweetAlert('error', 'Ooops', 'Sorry, Hanya Diperbolehkan PDF');
+                    header('Location: ' . BASEURL . '/AdminControllers/tatib');
+                    exit;
+                } else {
+                    $this->deleteFile('Tata_tertib.pdf');
+                    if (move_uploaded_file($_FILES["fileTatib"]["tmp_name"], $target_file)) {
+                        // File upload success
+                        $filesize = $_FILES["fileTatib"]["size"];
+                        $filetype = $_FILES["fileTatib"]["type"];
+
+                        $this->showSweetAlert('success', 'Berhasil', 'Upload berhasil');
+                        header('Location: ' . BASEURL . '/AdminControllers/tatib');
+                        exit;
+                    } else {
+                        $this->showSweetAlert('error', 'Ooops', 'Sorry, there was an error uploading your file.');
+                        header('Location: ' . BASEURL . '/AdminControllers/tatib');
+                        exit;
+                    }
+                }
+            } else {
+                $this->showSweetAlert('error', 'Ooops', 'Sorry, Tidak ada file yang di upload');
+                header('Location: ' . BASEURL . '/AdminControllers/tatib');
+                exit;
+            }
+        }
+    }
+
+    private function deleteFile($filename)
+    {
+        $target_dir = $_SERVER['DOCUMENT_ROOT'] . BASEPUBLIC . "/assets/file/";
+        $target_file = $target_dir . $filename;
+
+        // Check if the file exists before attempting to delete it
+        if (file_exists($target_file)) {
+            // Attempt to delete the file
+            if (unlink($target_file)) {
+                // File deletion success
+                return true;
+            } else {
+                // File deletion failure                
+                $this->showSweetAlert('error', 'Ooops', 'Maaf Terjadi Error Saat Menghapus File');
+                header('Location: ' . BASEURL . '/AdminControllers/tatib');
+                exit;
+            }
+        } else {
+            // File doesn't exist            
+            $this->showSweetAlert('error', 'Ooops', 'File Tidak Ada');
+            header('Location: ' . BASEURL . '/AdminControllers/tatib');
+            exit;
+        }
+    }
+
     public function ubah()
     {
         // Pengecekan perubahan di Tatib

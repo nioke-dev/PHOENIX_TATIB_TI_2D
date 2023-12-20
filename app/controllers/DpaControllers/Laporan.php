@@ -39,9 +39,10 @@ class Laporan extends Controller
                 $filename = "file_" . time() . "." . $file_extension;
                 $target_file = $target_dir . $filename;
 
-                $allowed_types = array("jpg", "jpeg", "png", "gif", "pdf");
+                $allowed_types = array("jpg", "jpeg", "png");
                 if (!in_array($file_extension, $allowed_types)) {
-                    echo "Sorry, only JPG, JPEG, PNG, GIF, and PDF files are allowed.";
+                    $this->showSweetAlert('error', 'Ooops', 'Sorry, Hanya JPG, JPEG, PNG yang diperbolehkan');
+                    header('Location: ' . BASEURL . '/DpaControllers/laporan');
                     exit;
                 } else {
                     if (move_uploaded_file($_FILES["file_bukti"]["tmp_name"], $target_file)) {

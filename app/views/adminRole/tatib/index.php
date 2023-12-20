@@ -1,13 +1,19 @@
 <div class="card shadow mb-4">
     <!-- Card Header - Dropdown -->
-    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-        <h4 class="m-0 font-weight-bold text-dark">Daftar Tata Tertib</h4>
-        <div class="row" style="margin-right: 1px;">
+    <div class="card-header py-3 d-flex flex-row align-items-center">
+        <div class="col-6">
+            <h4 class="m-0 font-weight-bold text-dark">Daftar Tata Tertib</h4>
+        </div>
+        <div class="col-6 text-end">
+            <button type="button" class="btn btn-secondary me-2" data-bs-toggle="modal" data-bs-target="#formModalUploadTatib">
+                Upload Tata Tertib
+            </button>
             <button type="button" class="btn btn-primary tombolTambahDataTatib" data-bs-toggle="modal" data-bs-target="#formModalTatib">
-                Tambah Data Tata Tertib
+                Tambah Tata Tertib
             </button>
         </div>
     </div>
+
     <!-- Card Body -->
     <div class="card-body">
         <div class="row">
@@ -104,6 +110,31 @@
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Tambah Data</button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Upload Tatib -->
+<div class="modal fade" id="formModalUploadTatib" tabindex="-1" aria-labelledby="formModalTatibLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formModalTatibLabel">Upload Data Tatib</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="<?= BASEURL; ?>/AdminControllers/tatib/upload" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="fileTatib" class="form-label">Upload File Tata Tertib Terbaru</label>
+                        <input type="file" class="form-control" id="fileTatib" name="fileTatib">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Upload</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>
                 </form>
             </div>
         </div>

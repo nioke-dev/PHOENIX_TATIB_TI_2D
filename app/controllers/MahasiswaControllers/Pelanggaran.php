@@ -84,7 +84,8 @@ class Pelanggaran extends Controller
                     }
                 }
             } else {
-                echo "Tidak ada file yang diupload.";
+                $this->showSweetAlert('error', 'Gagal', 'Maaf, Tidak ada file yang di upload');
+                header('Location: ' . BASEURL . '/MahasiswaControllers/pelanggaran');
                 exit;
             }
         }
@@ -146,7 +147,8 @@ class Pelanggaran extends Controller
                     }
                 }
             } else {
-                echo "Tidak ada file yang diupload.";
+                $this->showSweetAlert('error', 'Gagal', 'Maaf, Tidak ada file yang di upload');
+                header('Location: ' . BASEURL . '/MahasiswaControllers/pelanggaran');
                 exit;
             }
         }

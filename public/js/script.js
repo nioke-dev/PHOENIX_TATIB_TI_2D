@@ -590,6 +590,7 @@ $(function () {
 
         // Pastikan ID elemen sesuai dengan elemen yang ada di HTML
         $("#detailDeskripsiMahasiswaMelanggar").text(data.deskripsi);
+        $("#detailTatibMahasiswaMelanggar").text(data.deskripsiTatib);
         $("#detailBuktiLaporan").attr(
           "src",
           baseurl + "/img/bukti_laporan/" + data.file_bukti

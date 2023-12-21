@@ -56,9 +56,9 @@
                                         <?php endif; ?>
                                     <?php endif; ?>
 
-                                    <?php if ($pelanggaran['id_statusSanksi'] == '6' || $pelanggaran['id_statusSanksi'] == '2' || $pelanggaran['id_statusSanksi'] !== '5') : ?>
-                                    <?php else : ?>
+                                    <?php if ($pelanggaran['id_statusSanksi'] == '1') : ?>
                                         <a href="<?= BASEURL; ?>/MahasiswaControllers/banding/tambah/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-danger float-right tampilTambahDataBanding" data-bs-toggle="modal" data-bs-target="#formModalAjukanBanding" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Banding</a>
+                                    <?php else : ?>
                                     <?php endif; ?>
                                 </td>
                             </tr>
@@ -162,6 +162,11 @@
                         <td><strong>Keterangan</strong></td>
                         <td><strong>:</strong></td>
                         <td><span id="detailDeskripsiMahasiswaMelanggar"></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tata Tertib</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><span id="detailTatibMahasiswaMelanggar"></span></td>
                     </tr>
                     <tr>
                         <td><strong>Bukti Pelanggaran</strong></td>

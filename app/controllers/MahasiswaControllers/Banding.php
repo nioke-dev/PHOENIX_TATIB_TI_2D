@@ -58,7 +58,7 @@ class Banding extends Controller
 
                 $allowed_types = array("jpg", "jpeg", "png");
                 if (!in_array($file_extension, $allowed_types)) {
-                    $this->showSweetAlert('error', 'Ooops', 'Anda Hanya Boleh Menambahkan Foto Dengan Format png, jpeg, jpg Sebagai Bukti Laporan');
+                    $this->showSweetAlert('error', 'Ooops', 'Anda Hanya Boleh Menambahkan Dengan Format png, jpeg, jpg');
                     header('Location: ' . BASEURL . '/MahasiswaControllers/banding');
                     exit;
                 } else {

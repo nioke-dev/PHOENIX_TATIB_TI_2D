@@ -29,7 +29,7 @@ class Profile extends Controller
         }
 
         if ($_POST['password'] !== $_POST['confirmPassword']) {
-            $this->showSweetAlert('error', 'Ooops', 'Password & Confirm Password Harus Sama');
+            $this->showSweetAlert('error', 'Ooops', 'Kata Sandi Baru dan Kata Sandi Konfirmasi Harus Sama');
             header('Location: ' . BASEURL . '/MahasiswaControllers/profile');
             exit;
         }

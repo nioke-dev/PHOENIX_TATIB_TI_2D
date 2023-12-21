@@ -29,7 +29,7 @@ class Profile extends Controller
         }
 
         if ($_POST['password'] !== $_POST['confirmPassword']) {
-            $this->showSweetAlert('error', 'Gagal', 'Kata Sandi Lama Anda Tidak Sesuai');
+            $this->showSweetAlert('error', 'Gagal', 'Kata Sandi Baru dan Kata Sandi Konfirmasi Harus Sama');
             header('Location: ' . BASEURL . '/DosenControllers/profile');
             exit;
         }

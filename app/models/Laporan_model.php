@@ -37,7 +37,7 @@ class Laporan_model
         return $result['file_bukti'];
     }
 
-    public function getCount()
+    public function getCountLaporanMahasiswaRole()
     {
         $this->db->query('SELECT COUNT(*) as total FROM laporan WHERE nim_mahasiswa = :nim_mahasiswa');
         $this->db->bind('nim_mahasiswa', $_SESSION['username']);
@@ -45,7 +45,7 @@ class Laporan_model
         return $result['total'];
     }
 
-    public function getCountDosen()
+    public function getCountLaporanDosenRole()
     {
         $this->db->query('SELECT COUNT(*) as total FROM laporan WHERE nip_dosen = :nip_dosen');
         $this->db->bind('nip_dosen', $_SESSION['username']);
@@ -148,7 +148,26 @@ class Laporan_model
             $this->db->query($query);
             $this->db->bind('file_kumpulSanksi', $filename);
             $this->db->bind('id_laporan', $data['id_laporanKerjakanSanksi']);
-            $this->db->bind('id_statusSanksi', '5');
+            $this->db->bind('id_statusSanksi', '3');
+            $this->db->execute();
+
+            // Return the number of affected rows by the query operation
+            return $this->db->rowCount();
+        } catch (\PDOException $e) {
+            return -1;
+        }
+    }
+
+    public function uploadSuratSanksiKhusus($data, $filename1, $filename2, $filesize, $filetype)
+    {
+        try {
+            $query = "UPDATE laporan SET file_kumpulSanksi = :file_kumpulSanksi, file_buktiSanksiKhusus	= :file_buktiSanksiKhusus, id_statusSanksi = :id_statusSanksi WHERE id_laporan = :id_laporan";
+
+            $this->db->query($query);
+            $this->db->bind('file_kumpulSanksi', $filename1);
+            $this->db->bind('file_buktiSanksiKhusus', $filename2);
+            $this->db->bind('id_laporan', $data['id_laporanKerjakanSanksiKhusus']);
+            $this->db->bind('id_statusSanksi', '3');
             $this->db->execute();
 
             // Return the number of affected rows by the query operation
@@ -205,7 +224,7 @@ class Laporan_model
     }
 
     // fungsi menghitung total laporan di dashboard Admin
-    public function getCountMhs()
+    public function getCountMhsLaporanAdminRole()
     {
         $this->db->query('SELECT COUNT(*) as total FROM laporan WHERE id_statusSanksi != :id_statusSanksi');
         $this->db->bind('id_statusSanksi', '4');

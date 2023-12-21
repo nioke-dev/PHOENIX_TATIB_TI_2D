@@ -159,7 +159,7 @@ class Mahasiswa_model
     }
 
     // Fungsi menghitung total Mahasiswa di Dashboard Admin
-    public function getCount()
+    public function getCountMahasiswaAdminRole()
     {
         $this->db->query('SELECT COUNT(*) as total FROM mahasiswa');
         $result = $this->db->single();

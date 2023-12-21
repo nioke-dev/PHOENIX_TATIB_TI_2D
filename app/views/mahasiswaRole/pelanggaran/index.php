@@ -32,13 +32,13 @@
                                 <?php elseif ($pelanggaran['status_sanksi'] == 'Ditolak') : ?>
                                     <td><span class="badge text-bg-danger"><?= $pelanggaran['status_sanksi']; ?></span></td>
                                 <?php elseif ($pelanggaran['status_sanksi'] == 'Dikerjakan') : ?>
-                                    <td><span class="badge text-bg-light"><?= $pelanggaran['status_sanksi']; ?></span></td>
-                                <?php elseif ($pelanggaran['status_sanksi'] == 'Selesai') : ?>
                                     <td><span class="badge text-bg-dark"><?= $pelanggaran['status_sanksi']; ?></span></td>
-                                <?php elseif ($pelanggaran['status_sanksi'] == 'Baru') : ?>
-                                    <td><span class="badge text-bg-info"><?= $pelanggaran['status_sanksi']; ?></span></td>
                                 <?php elseif ($pelanggaran['status_sanksi'] == 'Tertunda') : ?>
                                     <td><span class="badge text-bg-warning"><?= $pelanggaran['status_sanksi']; ?></span></td>
+                                <?php elseif ($pelanggaran['status_sanksi'] == 'Selesai') : ?>
+                                    <td><span class="badge text-bg-secondary"><?= $pelanggaran['status_sanksi']; ?></span></td>
+                                <?php elseif ($pelanggaran['status_sanksi'] == 'Baru') : ?>
+                                    <td><span class="badge text-bg-primary"><?= $pelanggaran['status_sanksi']; ?></span></td>
                                 <?php endif; ?>
                                 <td><?= $pelanggaran['tingkat_sanksi']; ?></td>
                                 <td>
@@ -47,14 +47,16 @@
                                         <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/setuju/<?= $pelanggaran['id_laporan']; ?>" onclick="return confirmActionSetujuLaporan('<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/setuju/<?= $pelanggaran['id_laporan']; ?>')" class="badge bg-primary float-right" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Setuju</a>
                                     <?php endif; ?>
                                     <?php if ($pelanggaran['id_statusSanksi'] == '2') : ?>
-                                        <?php if ($data['getTingkatSanksi']['id_tingkatSanksi'] == '1' || $data['getTingkatSanksi']['id_tingkatSanksi'] == '2' || $data['getTingkatSanksi']['id_tingkatSanksi'] == '3') : ?>
+                                        <?php if ($data['getTingkatSanksi']['id_tingkatSanksi'] == '1' || $data['getTingkatSanksi']['id_tingkatSanksi'] == '2') : ?>
                                             <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/kerjakan/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-info float-right tampilModalUploadSuratSanksi" data-bs-toggle="modal" data-bs-target="#detailModalKerjakanSanksiKhusus" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Kerjakan</a>
+                                        <?php elseif ($data['getTingkatSanksi']['id_tingkatSanksi'] == '3') : ?>
+                                            <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/kerjakan/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-info float-right tampilModalUploadSuratSanksiKhusus" data-bs-toggle="modal" data-bs-target="#detailModalKerjakanSanksiKhususTingkatTiga" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Kerjakan</a>
                                         <?php else : ?>
                                             <a href="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/kerjakan/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-info float-right tampilModalUploadSuratSanksi" data-bs-toggle="modal" data-bs-target="#detailModalKerjakanSanksi" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Kerjakan</a>
                                         <?php endif; ?>
                                     <?php endif; ?>
 
-                                    <?php if ($pelanggaran['id_statusSanksi'] == '6' || $pelanggaran['id_statusSanksi'] == '2') : ?>
+                                    <?php if ($pelanggaran['id_statusSanksi'] == '6' || $pelanggaran['id_statusSanksi'] == '2' || $pelanggaran['id_statusSanksi'] !== '5') : ?>
                                     <?php else : ?>
                                         <a href="<?= BASEURL; ?>/MahasiswaControllers/banding/tambah/<?= $pelanggaran['id_laporan']; ?>" class="badge bg-danger float-right tampilTambahDataBanding" data-bs-toggle="modal" data-bs-target="#formModalAjukanBanding" data-id_laporan="<?= $pelanggaran['id_laporan']; ?>">Banding</a>
                                     <?php endif; ?>
@@ -77,7 +79,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Silahkan Download Surat Sanksi Dibawah Ini Lalu Upload Pada Tempat Pengumpulan Dibawah, Proses 1x24 jam pada hari kerja untuk update status</p>
+                <p>Silahkan Download Surat Sanksi Dibawah Ini Lalu Upload Pada Tempat Pengumpulan Dibawah, Proses 1x24 jam pada hari kerja untuk update status.</p>
 
                 <button class="btn btn-primary mb-5"><a href="<?= BASEURL; ?>/assets/file/Surat_Peringatan.doc" style="color: white;">Download Surat Sanksi</a></button>
                 <form action="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/uploadSuratSanksi" method="post" enctype="multipart/form-data">
@@ -85,6 +87,38 @@
                     <div class="form-group">
                         <label for="file_kumpulSanksi" class="form-label">Upload Surat Sanksi</label>
                         <input type="file" class="form-control" name="file_kumpulSanksi" id="file_kumpulSanksi" required>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Upload</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Kerjakan Sanksi Mahasiswa Tingkat 3 Saja -->
+<div class="modal fade" id="detailModalKerjakanSanksiKhususTingkatTiga" tabindex="-1" aria-labelledby="detailModalKerjakanSanksiLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailModalKerjakanSanksiLabel">Detail Pengerjaan Sanksi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Silahkan Download Surat Sanksi Dibawah Ini Lalu Upload Pada Tempat Pengumpulan Dibawah, Proses 1x24 jam pada hari kerja untuk update status.</p>
+
+                <button class="btn btn-primary mb-5"><a href="<?= BASEURL; ?>/assets/file/Surat_Peringatan.doc" style="color: white;">Download Surat Sanksi</a></button>
+                <form action="<?= BASEURL; ?>/MahasiswaControllers/pelanggaran/uploadSuratSanksiKhusus" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id_laporanKerjakanSanksiKhusus" id="id_laporanKerjakanSanksiKhusus">
+                    <div class="form-group">
+                        <label for="file_kumpulSanksi" class="form-label">Upload Surat Sanksi</label>
+                        <input type="file" class="form-control" name="file_kumpulSanksi" id="file_kumpulSanksi" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="file_buktiSanksiKhusus" class="form-label">Upload Bukti Sanksi</label>
+                        <input type="file" class="form-control" name="file_buktiSanksiKhusus" id="file_buktiSanksiKhusus" required>
                     </div>
             </div>
             <div class="modal-footer">

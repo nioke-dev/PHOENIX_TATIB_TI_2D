@@ -23,7 +23,7 @@ class Profile extends Controller
     {
         $getNimMahasiswa =  $this->model('Mahasiswa_model')->getUserMahasiswaByNimToChangePass($_SESSION['username']);
         if (md5($_POST['oldPassword']) !== $getNimMahasiswa['password']) {
-            $this->showSweetAlert('error', 'Ooops', 'Password Lama Anda Tidak Sama');
+            $this->showSweetAlert('error', 'Gagal', 'Kata Sandi Lama Anda Tidak Sesuai');
             header('Location: ' . BASEURL . '/MahasiswaControllers/profile');
             exit;
         }
@@ -34,11 +34,11 @@ class Profile extends Controller
             exit;
         }
         if ($this->model('User_model')->changePassword($_POST) > 0) {
-            $this->showSweetAlert('success', 'Berhasil', 'Data Password berhasil Diperbarui Silahkan Login Kembali');
+            $this->showSweetAlert('success', 'Berhasil', 'Kata Sandi Berhasil Diperbarui Silahkan Login Kembali');
             header('Location: ' . BASEURL . '/MahasiswaControllers/profile');
             exit;
         } else {
-            $this->showSweetAlert('error', 'Ooops', 'Data Password Gagal Diperbarui');
+            $this->showSweetAlert('error', 'Gagal', 'Kata Sandi Baru dan Lama Tidak Boleh Sama');
             header('Location: ' . BASEURL . '/MahasiswaControllers/profile');
             exit;
         }

@@ -24,26 +24,33 @@ class Banding_model
         }
     }
 
-    public function getCount()
+    public function getCountBandingMahasiswaRole()
     {
-        $this->db->query('SELECT COUNT(*) as total FROM banding where nim_mahasiswa = :nim_mahasiswa');
+        $this->db->query('SELECT COUNT(*) as total FROM banding where nim_mahasiswa = :nim_mahasiswa AND id_statusSanksi != :id_statusSanksi');
         $this->db->bind('nim_mahasiswa', $_SESSION['username']);
+        $this->db->bind('id_statusSanksi', '4');
         $result = $this->db->single();
         return $result['total'];
     }
 
-    // public function getCountMahasisawaRole()
-    // {
-    //     $this->db->query('SELECT COUNT(*) as total FROM banding where nim_mahasiswa = :nim_mahasiswa AND id_statusSanksi != 4');
-    //     $this->db->bind('nim_mahasiswa', $_SESSION['username']);
-    //     $result = $this->db->single();
-    //     return $result['total'];
-    // }
-
-    public function getCountDosenBanding()
+    public function getCountBandingDosenRole()
     {
-        $this->db->query('SELECT COUNT(*) as total FROM banding where nip_dosen = :nip_dosen AND id_statusSanksi != 4');
+        $this->db->query('SELECT COUNT(*) as total FROM banding where nip_dosen = :nip_dosen AND id_statusSanksi != :id_statusSanksi');
         $this->db->bind('nip_dosen', $_SESSION['username']);
+        $this->db->bind('id_statusSanksi', '4');
+        $result = $this->db->single();
+        return $result['total'];
+    }
+
+    public function getCountBandingDpaRole()
+    {
+        $this->db->query('SELECT COUNT(*) as total FROM banding 
+        INNER JOIN mahasiswa ON mahasiswa.nim_mahasiswa = banding.nim_mahasiswa
+        INNER JOIN dpa ON dpa.nip_dpa = :nip_dosen 
+        where mahasiswa.kelas_mahasiswa = dpa.kelas_dpa AND id_statusSanksi != :id_statusSanksi');
+
+        $this->db->bind('nip_dosen', $_SESSION['username']);
+        $this->db->bind('id_statusSanksi', '4');
         $result = $this->db->single();
         return $result['total'];
     }
@@ -200,9 +207,10 @@ class Banding_model
     }
 
     // fungsi menghitung jumlah banding mahasiswa di dashboard admin
-    public function getCountMhs()
+    public function getCountMhsBandingAdminRole()
     {
-        $this->db->query('SELECT COUNT(*) as total FROM banding');
+        $this->db->query('SELECT COUNT(*) as total FROM banding where id_statusSanksi != :id_statusSanksi');
+        $this->db->bind('id_statusSanksi', '4');
         $result = $this->db->single();
         return $result['total'];
     }

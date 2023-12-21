@@ -244,8 +244,8 @@ class Dpa_model
         }
     }
 
-    // fungsi menghitung total admin di dashboard Admin
-    public function getCount()
+    // fungsi menghitung total DPA di dashboard Admin
+    public function getCountDpaAdminRole()
     {
         $this->db->query('SELECT COUNT(*) as total FROM dpa');
         $result = $this->db->single();

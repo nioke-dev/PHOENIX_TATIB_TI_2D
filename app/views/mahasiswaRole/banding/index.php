@@ -26,16 +26,18 @@
                                 <td><?= $banding['id_laporan']; ?></td>
                                 <td><?= $banding['nip_dosen']; ?></td>
                                 <td><?= $banding['nama_dosen']; ?></td>
-                                <?php if ($banding['status_sanksi'] == 'Diterima') : ?>
+                                <?php if ($banding['status_sanksi'] == 'Disetujui') : ?>
                                     <td><span class="badge text-bg-success"><?= $banding['status_sanksi']; ?></span></td>
                                 <?php elseif ($banding['status_sanksi'] == 'Ditolak') : ?>
                                     <td><span class="badge text-bg-danger"><?= $banding['status_sanksi']; ?></span></td>
                                 <?php elseif ($banding['status_sanksi'] == 'Dikerjakan') : ?>
-                                    <td><span class="badge text-bg-light"><?= $banding['status_sanksi']; ?></span></td>
-                                <?php elseif ($banding['status_sanksi'] == 'Selesai') : ?>
                                     <td><span class="badge text-bg-dark"><?= $banding['status_sanksi']; ?></span></td>
+                                <?php elseif ($banding['status_sanksi'] == 'Tertunda') : ?>
+                                    <td><span class="badge text-bg-warning"><?= $banding['status_sanksi']; ?></span></td>
+                                <?php elseif ($banding['status_sanksi'] == 'Selesai') : ?>
+                                    <td><span class="badge text-bg-secondary"><?= $banding['status_sanksi']; ?></span></td>
                                 <?php elseif ($banding['status_sanksi'] == 'Baru') : ?>
-                                    <td><span class="badge text-bg-info"><?= $banding['status_sanksi']; ?></span></td>
+                                    <td><span class="badge text-bg-primary"><?= $banding['status_sanksi']; ?></span></td>
                                 <?php endif; ?>
                                 <td>
                                     <a href="<?= BASEURL; ?>/MahasiswaControllers/banding/detail/<?= $banding['id_banding']; ?>" class="badge bg-success float-right tampilModalDetailBandingMahasiswaRole" data-bs-toggle="modal" data-bs-target="#detailModalBanding" data-id_banding="<?= $banding['id_banding']; ?>">Detail</a>

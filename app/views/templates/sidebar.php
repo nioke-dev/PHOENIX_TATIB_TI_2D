@@ -291,7 +291,7 @@
                                 <span>
                                     <i class="bi bi-chat-left-text"></i>
                                 </span>
-                                <span class="hide-menu">Banding</span>
+                                <span class="hide-menu">Banding Mahasiswa</span>
                             </a>
                         </li>
                         <li class="sidebar-item">

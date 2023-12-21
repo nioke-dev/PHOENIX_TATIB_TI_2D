@@ -135,7 +135,7 @@ class Admin_model
     }
 
     // fungsi menghitung total admin di dashboard Admin
-    public function getCount()
+    public function getCountAdminAdminRole()
     {
         $this->db->query('SELECT COUNT(*) as total FROM admin');
         $result = $this->db->single();

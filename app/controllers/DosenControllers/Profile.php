@@ -23,22 +23,22 @@ class Profile extends Controller
     {
         $getNipDosen =  $this->model('Dosen_model')->getUserDosenByNipToChangePass($_SESSION['username']);
         if (md5($_POST['oldPassword']) !== $getNipDosen['password']) {
-            $this->showSweetAlert('error', 'Ooops', 'Password Lama Anda Tidak Sama');
+            $this->showSweetAlert('error', 'Gagal', 'Kata Sandi Lama Anda Tidak Sesuai');
             header('Location: ' . BASEURL . '/DosenControllers/profile');
             exit;
         }
 
         if ($_POST['password'] !== $_POST['confirmPassword']) {
-            $this->showSweetAlert('error', 'Ooops', 'Password & Confirm Password Harus Sama');
+            $this->showSweetAlert('error', 'Gagal', 'Kata Sandi Lama Anda Tidak Sesuai');
             header('Location: ' . BASEURL . '/DosenControllers/profile');
             exit;
         }
         if ($this->model('User_model')->changePassword($_POST) > 0) {
-            $this->showSweetAlert('success', 'Berhasil', 'Data Password berhasil Diperbarui Silahkan Login Kembali');
+            $this->showSweetAlert('success', 'Berhasil', 'Kata Sandi Berhasil Diperbarui Silahkan Login Kembali');
             header('Location: ' . BASEURL . '/DosenControllers/profile');
             exit;
         } else {
-            $this->showSweetAlert('error', 'Ooops', 'Data Password Gagal Diperbarui');
+            $this->showSweetAlert('error', 'Gagal', 'Kata Sandi Baru dan Lama Tidak Boleh Sama');
             header('Location: ' . BASEURL . '/DosenControllers/profile');
             exit;
         }

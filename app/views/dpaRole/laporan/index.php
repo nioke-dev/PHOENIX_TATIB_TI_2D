@@ -37,12 +37,22 @@
                                 <td><?= $laporan['nim_mahasiswa']; ?></td>
                                 <td><?= $laporan['nama_mahasiswa']; ?></td>
                                 <td><?= $laporan['kelas_mahasiswa']; ?></td>
-                                <?php if ($laporan['status_sanksi'] == 'Baru') : ?>
-                                    <td><span class="badge bg-success"><?= $laporan['status_sanksi']; ?></span></td>
+                                <?php if ($laporan['status_sanksi'] == 'Disetujui') : ?>
+                                    <td><span class="badge text-bg-success"><?= $laporan['status_sanksi']; ?></span></td>
+                                <?php elseif ($laporan['status_sanksi'] == 'Ditolak') : ?>
+                                    <td><span class="badge text-bg-danger"><?= $laporan['status_sanksi']; ?></span></td>
+                                <?php elseif ($laporan['status_sanksi'] == 'Dikerjakan') : ?>
+                                    <td><span class="badge text-bg-dark"><?= $laporan['status_sanksi']; ?></span></td>
+                                <?php elseif ($laporan['status_sanksi'] == 'Tertunda') : ?>
+                                    <td><span class="badge text-bg-warning"><?= $laporan['status_sanksi']; ?></span></td>
+                                <?php elseif ($laporan['status_sanksi'] == 'Selesai') : ?>
+                                    <td><span class="badge text-bg-secondary"><?= $laporan['status_sanksi']; ?></span></td>
+                                <?php elseif ($laporan['status_sanksi'] == 'Baru') : ?>
+                                    <td><span class="badge text-bg-primary"><?= $laporan['status_sanksi']; ?></span></td>
                                 <?php endif; ?>
                                 <td>
                                     <a href="<?= BASEURL; ?>/DpaControllers/laporan/detail/<?= $laporan['id_laporan']; ?>" class="badge bg-primary tampilModalDetailLaporanDpaRoleMenuDosen" data-bs-toggle="modal" data-bs-target="#detailModalLaporan" data-id_laporan="<?= $laporan['id_laporan']; ?>">Detail</a>
-                                    <a href="<?= BASEURL; ?>/DpaControllers/laporan/hapus/<?= $laporan['id_laporan']; ?>" class="badge bg-danger float-right" onclick="return confirmAction('<?= BASEURL; ?>/DpaControllers/laporan/hapus/<?= $laporan['id_laporan']; ?>')">hapus</a>
+                                    <a href="<?= BASEURL; ?>/DpaControllers/laporan/hapus/<?= $laporan['id_laporan']; ?>" class="badge bg-danger float-right" onclick="return confirmAction('<?= BASEURL; ?>/DpaControllers/laporan/hapus/<?= $laporan['id_laporan']; ?>')">Hapus</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

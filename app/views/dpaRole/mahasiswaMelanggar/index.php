@@ -15,6 +15,7 @@
                             <th>Nama</th>
                             <th>Kelas</th>
                             <th>Tingkat Sanksi</th>
+                            <th>Jumlah Pelanggaran</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,6 +27,7 @@
                                 <td><?= $mhs_melanggar['nama_mahasiswa']; ?></td>
                                 <td><?= $mhs_melanggar['kelas_mahasiswa']; ?></td>
                                 <td><?= $mhs_melanggar['tingkat_sanksi']; ?></td>
+                                <td><?= $mhs_melanggar['jumlahPelanggaran']; ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

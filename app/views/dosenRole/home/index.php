@@ -14,11 +14,11 @@
           </div>
           <div class="col-6">
             <h3>Laporan</h3>
-            <h6 class="card-title text-start text-muted" style="font-size: 50px;"><?= $data['countLaporan']; ?></h6>
+            <h6 class="card-title text-start text-muted" style="font-size: 50px;"><?= $data['countLaporanDosenRole']; ?></h6>
           </div>
           <div class="col-4">
             <button class="btn btn-danger d-flex align-items-center" id="laporButton">
-              <a href="<?= BASEURL; ?>/DosenControllers/laporan" id="btnRedirect" style="text-decoration: none; color: white; font-size: 20px;">
+            <a href="<?= BASEURL; ?>/DosenControllers/laporan" id="btnRedirect" style="text-decoration: none; color: white; font-size: 20px;">
                 LAPOR!
               </a>
             </button>
@@ -39,7 +39,7 @@
           </div>
           <div class="col-6">
             <h3>Banding</h3>
-            <h6 class="card-title text-start text-muted" style="font-size: 50px;"><?= $data['countBanding']; ?></h6>
+            <h6 class="card-title text-start text-muted" style="font-size: 50px;"><?= $data['countBandingDosenRole']; ?></h6>
           </div>
           <div class="col-4">
             <button class="btn btn-primary d-flex align-items-center">

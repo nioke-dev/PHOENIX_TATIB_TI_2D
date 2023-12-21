@@ -30,7 +30,8 @@ class MahasiswaMelanggar_model
 
     public function getAllMahasiswaMelanggarFilterKelas($data)
     {
-        $this->db->query('SELECT mahasiswa.*, tingkat_sanksi FROM ' . $this->table . ' 
+        $this->db->query('SELECT mahasiswa.*, tingkat_sanksi, (SELECT COUNT(*) FROM laporan WHERE nim_mahasiswa = mahasiswa.nim_mahasiswa AND id_statusSanksi != 4) AS jumlahPelanggaran 
+        FROM ' . $this->table . ' 
             INNER JOIN mahasiswa ON mahasiswaMelanggar.nim_mahasiswa = mahasiswa.nim_mahasiswa
             INNER JOIN tingkatSanksi ON mahasiswaMelanggar.id_tingkatSanksi = tingkatSanksi.id_tingkatSanksi
             WHERE mahasiswa.kelas_mahasiswa = :kelas_dpa');
@@ -152,9 +153,20 @@ class MahasiswaMelanggar_model
     }
 
     // fungsi menghitung jumlah mahasiswa melanggar di dashboard admin
-    public function getCountMhs()
+    public function getCountMhsMelanggarAdminRole()
     {
         $this->db->query('SELECT COUNT(*) as total FROM mahasiswaMelanggar');
+        $result = $this->db->single();
+        return $result['total'];
+    }
+    // fungsi menghitung jumlah mahasiswa melanggar di dashboard DPA
+    public function getCountMhsMelanggarDpaRole()
+    {
+        $this->db->query('SELECT COUNT(*) as total FROM mahasiswaMelanggar 
+    INNER JOIN mahasiswa ON mahasiswa.nim_mahasiswa = mahasiswaMelanggar.nim_mahasiswa
+    INNER JOIN dpa ON dpa.kelas_dpa = mahasiswa.kelas_mahasiswa 
+    WHERE dpa.nip_dpa = :nip_dpa');
+        $this->db->bind('nip_dpa', $_SESSION['username']);
         $result = $this->db->single();
         return $result['total'];
     }

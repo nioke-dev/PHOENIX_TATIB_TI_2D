@@ -53,7 +53,7 @@ $(function () {
         console.log("Respons Server:", data);
         $("#detailNip").text(data.nip_dosen);
         $("#detailNama").text(data.nama_dosen);
-        $("#detailEmail").text(data.email_dosen);        
+        $("#detailEmail").text(data.email_dosen);
       },
       error: function (xhr, status, error) {
         console.error("Error:", error);
@@ -332,13 +332,13 @@ $(function () {
       method: "post",
       dataType: "json",
       success: function (data) {
-        console.log("Respons Server:", data);                
+        console.log("Respons Server:", data);
         $("#detailProdiMahasiswaMelanggar").text(data.prodi_mahasiswa);
         $("#detailEmailMahasiswaMelanggar").text(data.email_mahasiswa);
         $("#detailJumlahPelanggaranMahasiswaMelanggar").text(
           data.jumlahPelanggaran
         );
-        $("#detailDeskripsi").text(data.deskripsi);        
+        $("#detailDeskripsi").text(data.deskripsi);
         $("#detailBuktiLaporan").attr(
           "src",
           baseurl + "/img/bukti_laporan/" + data.file_bukti
@@ -544,6 +544,26 @@ $(function () {
         console.log("Respons Serverr:", data);
         // Pastikan ID elemen sesuai dengan elemen yang ada di HTML
         $("#id_laporanKerjakanSanksi").val(data.id_laporan);
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      },
+    });
+  });
+
+  $(".tampilModalUploadSuratSanksiKhusus").on("click", function () {
+    $("#detailModalKerjakanSanksiLabel").html("Detail Data Laporan");
+    const id_laporan = $(this).data("id_laporan");
+
+    $.ajax({
+      url: "http://localhost/PHOENIX_TATIB_TI_2D/public/MahasiswaControllers/pelanggaran/detail",
+      data: { id_laporan: id_laporan },
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log("Respons Serverr:", data);
+        // Pastikan ID elemen sesuai dengan elemen yang ada di HTML
+        $("#id_laporanKerjakanSanksiKhusus").val(data.id_laporan);
       },
       error: function (xhr, status, error) {
         console.error("Error:", error);

@@ -35,16 +35,18 @@
                                 <td><?= $laporan['nim_mahasiswa']; ?></td>
                                 <td><?= $laporan['nama_mahasiswa']; ?></td>
                                 <td><?= $laporan['kelas_mahasiswa']; ?></td>
-                                <?php if ($laporan['status_sanksi'] == 'Baru') : ?>
-                                    <td><span class="badge text-bg-primary"><?= $laporan['status_sanksi']; ?></span></td>
-                                <?php elseif ($laporan['status_sanksi'] == 'Disetujui') : ?>
+                                <?php if ($laporan['status_sanksi'] == 'Disetujui') : ?>
                                     <td><span class="badge text-bg-success"><?= $laporan['status_sanksi']; ?></span></td>
-                                <?php elseif ($laporan['status_sanksi'] == 'Selesai') : ?>
-                                    <td><span class="badge text-bg-info"><?= $laporan['status_sanksi']; ?></span></td>
                                 <?php elseif ($laporan['status_sanksi'] == 'Ditolak') : ?>
                                     <td><span class="badge text-bg-danger"><?= $laporan['status_sanksi']; ?></span></td>
+                                <?php elseif ($laporan['status_sanksi'] == 'Dikerjakan') : ?>
+                                    <td><span class="badge text-bg-dark"><?= $laporan['status_sanksi']; ?></span></td>
                                 <?php elseif ($laporan['status_sanksi'] == 'Tertunda') : ?>
                                     <td><span class="badge text-bg-warning"><?= $laporan['status_sanksi']; ?></span></td>
+                                <?php elseif ($laporan['status_sanksi'] == 'Selesai') : ?>
+                                    <td><span class="badge text-bg-secondary"><?= $laporan['status_sanksi']; ?></span></td>
+                                <?php elseif ($laporan['status_sanksi'] == 'Baru') : ?>
+                                    <td><span class="badge text-bg-primary"><?= $laporan['status_sanksi']; ?></span></td>
                                 <?php endif; ?>
                                 <td>
                                     <a href="<?= BASEURL; ?>/AdminControllers/laporan/detail/<?= $laporan['id_laporan']; ?>" class="badge bg-primary tampilModalDetailLaporan" data-bs-toggle="modal" data-bs-target="#detailModalLaporan" data-id_laporan="<?= $laporan['id_laporan']; ?>">Detail</a>

@@ -106,7 +106,7 @@ class Tatib_model
     }
 
         // fungsi menghitung jumlah mahasiswa melanggar di dashboard admin
-        public function getCount()
+        public function getCountTatibAdminRole()
         {
             $this->db->query('SELECT COUNT(*) as total FROM tatib');
             $result = $this->db->single();
